@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+   	<meta charset="utf-8">
+    	<title>BUGswarm API, from Bug Labs</title>
+    	<link rel="stylesheet" type="text/css" href="assets/css/bootstrap-1.2.0.css">
+  	</head>
+
+  	<body>
+
+   	<!-- TOPBAR -->        
+		<div class="topbar">
+      
+      	<div class="topbar-inner">
+        
+        		<div class="container">
+         
+          		<h3><a href="index.html">BUGswarm Developers</a></h3>
+
+					<ul class="nav">
+            
+           			<li class><a href="index.html">Home</a></li>
+           
+           			<li class="dropdown">
+           				<a class="dropdown-toggle" href="documentation.html">Documentation</a>
+							<ul class="dropdown-menu">
+            				<li><a href="rest_api.html">REST API</a></li>
+              				<li><a href="streaming_api.html">Streaming API</a></li>              
+            			</ul>
+           			</li>
+           			
+           			<li>
+            
+					</ul> 
+        
+   			</div> <!-- end of container div --> 
+      
+   		</div> <!-- end of topbar-inner div -->
+    
+   	</div> <!-- end of topbar div -->
+
+		
+		<!-- CONTENT -->
+		<div class="container">
+
+			<div class="page-header"><a href="index.html">Home</a></div>
+
+			<h1>Documentation</h1>
+			<p>
+				These pages contain all of the information needed to get started on BUGswarm development.
+				At <a href="http://buglabs.net">Bug</a>, we are always looking for ways to improve upon the way we
+				support our users and document our products.  If you have any questions, comments, or concerns, 
+				please feel free to <a href="#">Contact Us</a>.
+			</p> 
+ 
+ 			<div class="page-header"><h2>API Libraries</h2></div>
+ 			<p>
+				BUGswarm makes use of two primary APIs for configuring and participating in <em>swarms</em>:      
+      	</p> 		
+ 		
+ 				<div class="row">
+ 			
+ 					<div class="span8 columns">
+						<h3><a href="rest_api.html">REST API</a></h3>
+						<p>
+							BUGswarm uses a REST (Representational State Transfer) API for configuring <em>swarms</em> and their <em>resources</em>.
+							The API consists of several HTTP GET, POST, DELETE, and PUT requests through the use of curl.  The REST
+							API is not a streaming API. For each method call, a connection is opened, HTTP requests are sent, HTTP 
+							responses are returned,	and the connection is closed.  This API is used for creating and destroying <em>swarms</em> 
+							and <em>resources</em>, adding and removing <em>resources</em> from <em>swarms</em>, and generating a <em>user</em>'s <em>API keys</em>.
+						</p> 		
+ 					</div> <!-- end of span8 columns div -->
+ 			
+ 					<div class="span8 columns">
+						<h3><a href="streaming_api.html">Streaming API</a></h3>
+						<p>
+							The BUGswarm Streaming API is used by <em>users</em> and <em>resources</em> to participate in a configured <em>swarm</em>.  The 
+							Streaming API also uses HTTP requests, however, it does not follow REST guidelines. In the Streaming API,
+							connections are opened and remain open while HTTP requests are sent in succession.  This API is used for
+							producing and consuming information from a <em>swarm</em>.				
+						</p> 			
+ 					</div> <!-- end of span8 columns div -->
+  							
+				</div> <!-- end of row div --> 
+	
+		</div> <!-- end of container div -->   
+    
+ 	</body>
+
+</html>

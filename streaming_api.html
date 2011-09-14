@@ -1,65 +1,73 @@
 <!DOCTYPE html>
 <html>
 
-  <head>
-    <meta charset="utf-8">
-    <title>BUGswarm API, from Bug Labs</title>
-    <link rel="stylesheet" type="text/css" href="assets/css/bootstrap-1.2.0.css">
-  </head>
+	<head>
+   	<meta charset="utf-8">
+    	<title>BUGswarm API, from Bug Labs</title>
+    	<link rel="stylesheet" type="text/css" href="assets/css/bootstrap-1.2.0.css">
+    	<script src="http://code.jquery.com/jquery-1.5.2.js"></script>
+    	<script src="assets/js/google-code-prettify/prettify.js"></script>
+    	<script src="assets/js/application.js"></script>
+  	</head>
 
-  <body>
-
-    <!-- TOPBAR -->        
-    <div class="topbar">
+ 	<body>
+    
+		<!-- TOPBAR -->        
+		<div class="topbar">
       
-      <div class="topbar-inner">
+      	<div class="topbar-inner">
         
-        <div class="container">
+        		<div class="container">
          
-          <h3>
-            <a href="index.html">BUGswarm API</a>
-          </h3>
+          		<h3><a href="index.html">BUGswarm Developers</a></h3>
 
-          <ul class="nav">
-            <li class>
-              <a href="index.html">Home</a>
-            </li>
-            <li class>
-              <a href="rest_api.html">REST API</a>
-            </li>
-            <li class>
-					<a href="streaming_api.html">Streaming API</a>            
-            </li>
-          </ul> 
-         
-        </div> <!-- end of container div --> 
+					<ul class="nav">
+            
+           			<li class><a href="index.html">Home</a></li>
+           
+           			<li class="dropdown">
+           				<a class="dropdown-toggle" href="documentation.html">Documentation</a>
+							<ul class="dropdown-menu">
+            				<li><a href="rest_api.html">REST API</a></li>
+              				<li><a href="streaming_api.html">Streaming API</a></li>              
+            			</ul>
+           			</li>
+            
+					</ul> 
+        
+   			</div> <!-- end of container div --> 
       
-      </div> <!-- end of topbar-inner div -->
+   		</div> <!-- end of topbar-inner div -->
     
-    </div> <!-- end of topbar div -->
+   	</div> <!-- end of topbar div -->   
     
-	<div class="container-fluid">
+    	<!-- CONTAINER -->
+		<div class="container-fluid">
 
-		<div class="sidebar">
-		   <ul>
-				<li><h5><a href="#">Sidebar</a></h5></li>		
-			</ul>		
-		</div>
+			<!-- SIDEBAR -->
+			<div class="sidebar">
+		   	<ul>
+					<li><h5><a href="#">Sidebar</a></h5></li>		
+				</ul>		
+			</div> <!-- end of sidebar div -->
 		
-		<div class="content">
+			<!-- CONTENT -->
+			<div class="content">
 
-			<div class="page-header">
-				<a href="index.html">Home</a>		
-			</div>
+				<div class="page-header">
+					<a href="index.html">Home</a>
+					&rarr;
+					<a href="documentation.html">Documentation</a>				
+				</div>
 			
-			<h1>Streaming API</h1>		
-			<p>
-				Produce and consume information from a Swarm through the use of streaming HTTP.		
-			</p>
+				<h1>Streaming API</h1>		
+				<p>
+					Produce and consume information from a Swarm through the use of streaming HTTP.		
+				</p>
 			
-		</div>	
+			</div> <!-- end of content div -->	
  							
-	</div>    
+		</div> <!-- end of container-fluid div -->   
     
   </body>
 

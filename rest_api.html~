@@ -70,7 +70,7 @@
 					Configure <em>swarms</em> and their <em>resources</em> through the use of HTTP requests.		
 				</p>
 	 		
-	 			<h3><a id="api_keys" href="rest_api_keys.html">API Keys</a></h3>
+	 			<h3><a id="api_keys" href="#">API Keys</a></h3>
 				<p>
 					<em>API keys</em> are used as credentials when interacting with BUGswarm.    		
 				</p>

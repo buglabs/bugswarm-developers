@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+   	<meta charset="utf-8">
+    	<title>BUGswarm API, from Bug Labs</title>
+    	<link rel="stylesheet" type="text/css" href="assets/css/bootstrap-1.2.0.css">
+    	<script src="http://code.jquery.com/jquery-1.5.2.js"></script>
+    	<script src="assets/js/google-code-prettify/prettify.js"></script>
+    	<script src="assets/js/application.js"></script>
+  	</head>
+
+ 	<body>
+    
+		<!-- TOPBAR -->        
+		<div class="topbar">
+      
+      	<div class="topbar-inner">
+        
+        		<div class="container">
+         
+          		<h3><a href="index.html">BUGswarm Developers</a></h3>
+
+					<ul class="nav">
+            
+           			<li class><a href="index.html">Home</a></li>
+           
+           			<li class="dropdown">
+           				<a class="dropdown-toggle" href="documentation.html">Documentation</a>
+							<ul class="dropdown-menu">
+            				<li><a href="rest_api.html">REST API</a></li>
+              				<li><a href="streaming_api.html">Streaming API</a></li>              
+            			</ul>
+           			</li>
+            
+					</ul> 
+        
+   			</div> <!-- end of container div --> 
+      
+   		</div> <!-- end of topbar-inner div -->
+    
+   	</div> <!-- end of topbar div -->   
+    
+    	<!-- CONTAINER -->
+		<div class="container-fluid">
+
+			<!-- SIDEBAR -->
+			<div class="sidebar">
+		   	<ul>
+					<li><h5><a href="#create">Create</a></h5></li>
+					<li><h5><a href="#list">List</a></h5></li>		
+				</ul>		
+			</div> <!-- end of sidebar div -->
+		
+			<!-- CONTENT -->
+			<div class="content">
+
+				<div class="page-header">
+					<a href="index.html">Home</a>
+					&rarr;
+					<a href="documentation.html">Documentation</a>
+					&rarr;
+					<a href="rest_api.html">REST API</a>				
+				</div>
+			
+				<h1>API Keys</h1>		
+				<p>
+					Manage your <em>API keys</em> with the REST API.		
+				</p>
+				
+				<div class="page-header"></div>
+				
+				<h3>Create</h3>
+				
+					<div class="row">
+						<div class="span5 columns">
+							<ul class="unstyled">
+								<li><strong>URL:</strong> <code>http://api.bugswarm.net/keys</code>
+								<li><strong>Method:</strong> POST</li>	
+								<li><strong>Authentication:</strong> <code>"username:password"</code>
+								<li><strong>Parameters (Required):</strong> None</li>
+								<li><strong>Parameters (Optional):</strong> <code>type</code></li>	
+							</ul>					
+						</div>
+						<div class="span11 columns">
+							<p>
+								Each <em>user</em> must possess at least a master <em>API key</em>. In addition to the master key, <em>producer</em> 
+								and <em>consumer</em> keys can be generated. This method is used to create <em>API keys</em>. If a key already exists, 
+								this method will replace that key with a new one. Users have the option of specifying the type of key they wish to create
+								in the URL. For instance, <code>http://api.bugswarm.net/keys/master</code> will generate a master key, while 
+								<code>http://api.bugswarm.net/keys/producer</code> will generate a producer key.  By default, if no key type is
+								specified, a master key is created. Each key holds a different set of permissions with regards to participating in <em>swarms</em>.   							
+							</p>						
+						</div>									
+					</div>
+					
+					<strong>Returns:</strong> The created key in JSON format. <br/>
+					<pre>{ <br/>	"apikey": "911cbc244827dba9c6dbdd09aff3e5e8fe5eee02",<br/>	"type": "master", <br/> }</pre>
+			
+			</div> <!-- end of content div -->	
+ 							
+		</div> <!-- end of container-fluid div -->   
+    
+  </body>
+
+</html>

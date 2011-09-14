@@ -15,29 +15,7 @@
    	<!-- TOPBAR -->        
 		<div class="topbar">
       
-      	<div class="topbar-inner">
-        
-        		<div class="container">
-         
-          		<h3><a href="index.html">BUGswarm Developers</a></h3>
-
-					<ul class="nav">
-            
-           			<li class><a href="index.html">Home</a></li>
-           
-           			<li class="dropdown">
-           				<a class="dropdown-toggle" href="documentation.html">Documentation</a>
-							<ul class="dropdown-menu">
-            				<li><a href="rest_api.html">REST API</a></li>
-              				<li><a href="streaming_api.html">Streaming API</a></li>              
-            			</ul>
-           			</li>
-            
-					</ul> 
-        
-   			</div> <!-- end of container div --> 
-      
-   		</div> <!-- end of topbar-inner div -->
+      	<script type="test/javascript" src="assets/js/topmenu.js"></script>
     
    	</div> <!-- end of topbar div -->
 
