@@ -31,6 +31,18 @@
 					<a href="streaming_api.html">Streaming API</a>            
             </li>
           </ul> 
+         
+          <ul class="nav secondary-nav">
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle">Links</a>
+              <ul class="dropdown-menu">
+                <li><a href="#">BUGswarm Web UI</a></li>
+                <li><a href="#">Bug Labs</a></li>
+                <li class="divider"></li>
+                <li><a href="#">Contact Us</a></li>
+              </ul>
+            </li>
+          </ul>
         
         </div> <!-- end of container div --> 
       

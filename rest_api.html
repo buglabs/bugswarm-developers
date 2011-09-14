@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset="utf-8">
+    <title>BUGswarm API, from Bug Labs</title>
+    <link rel="stylesheet" type="text/css" href="assets/css/bootstrap-1.2.0.css">
+  </head>
+
+  <body>
+
+    <!-- TOPBAR -->        
+    <div class="topbar">
+      
+      <div class="topbar-inner">
+        
+        <div class="container">
+         
+          <h3>
+            <a href="index.html">BUGswarm API</a>
+          </h3>
+
+          <ul class="nav">
+            <li class>
+              <a href="index.html">Home</a>
+            </li>
+            <li class>
+              <a href="rest_api.html">REST API</a>
+            </li>
+            <li class>
+					<a href="streaming_api.html">Streaming API</a>            
+            </li>
+          </ul> 
+         
+        </div> 
+      
+      </div> 
+    
+    </div> 
+    
+	<div class="container-fluid">
+		
+		<div class="sidebar">
+			<ul>
+				<li><h5><a href="#api_keys">API Keys</a></h5></li>
+				<li><h5><a href="#user_resources">User Resources</a></h5></li>
+				<li><h5><a href="#swarms">Swarms</a></h5></li>
+				<li><h5><a href="#swarm_resources">Swarm Resources</a></h5></li>			
+			</ul>		
+		</div>
+		
+		<div class="content">
+		
+			<div class="page-header">
+				<a href="index.html">Home</a>		
+			</div>		
+			
+			<h1>REST API</h1>		
+			<p>
+				Configure Swarms and their Resources through the use of HTTP requests.		
+			</p>
+	 		
+	 				
+		 		<h3><a id="api_keys" href="#">API Keys</a></h3>
+				<p>
+					API Keys are used as credentials when interacting with BUGswarm.    		
+				</p>
+				
+			   <div class="row">
+			   	<div class="span6 columns">
+						<h5>Method</h5>		   	
+			   	</div>
+			   	<div class="span6 columns">
+						<h5>Description</h5>		   	
+			   	</div>
+			   </div>
+			   <div class="page-header"></div>
+					
+					<div class="row">
+						<div class="span6 columns">
+							<a href="#">Create (POST)</a>				
+						</div>	
+						<div class="span10 columns">
+							<p>
+								Create an API Key. Users can hold up to 3 API Keys, a master key, producer key, and consumer key.
+								Each key holds a different set of permissions.
+						 	</p>				
+						</div>		
+					</div>
+					<div class="page-header"></div>
+					
+					<div class="row">
+						<div class="span6 columns">
+							<a href="#">List (GET)</a>			
+						</div>	
+						<div class="span10 columns">
+							<p>
+								Create an API Key. Users can hold up to 3 API Keys, a master key, producer key, and consumer key.
+								Each key holds a different set of permissions.
+						 	</p>				
+						</div>		
+					</div>
+					<div class="page-header"></div>
+					
+				<h3><a id="user_resources" href="#">User Resources</a></h3>
+				<p>
+					Resources belong to a given User account and may be created, updated, and destroyed.    		
+				</p>
+				
+			   <div class="row">
+			   	<div class="span6 columns">
+						<h5>Method</h5>		   	
+			   	</div>
+			   	<div class="span6 columns">
+						<h5>Description</h5>		   	
+			   	</div>
+			   </div>
+			   <div class="page-header"></div>
+					
+					<div class="row">
+						<div class="span6 columns">
+							<a href="#">Create (POST)</a>				
+						</div>	
+						<div class="span10 columns">
+							<p>
+								Create a Resource. POST a JSON file containing information about the Resource to be
+								created.
+						 	</p>				
+						</div>		
+					</div>
+					<div class="page-header"></div>
+					
+					<div class="row">
+						<div class="span6 columns">
+							<a href="#">Update (PUT)</a>			
+						</div>	
+						<div class="span10 columns">
+							<p>
+								Update an already existing Resource. PUT a JSON file containing the information to update.
+						 	</p>				
+						</div>		
+					</div>
+					<div class="page-header"></div>
+					
+					<div class="row">
+						<div class="span6 columns">
+							<a href="#">Destroy (DELETE)</a>			
+						</div>	
+						<div class="span10 columns">
+							<p>
+								Destroy a Resource. Remove a Resource from your User account.
+						 	</p>				
+						</div>		
+					</div>
+					<div class="page-header"></div>
+					
+					<div class="row">
+						<div class="span6 columns">
+							<a href="#">List (GET)</a>			
+						</div>	
+						<div class="span10 columns">
+							<p>
+								List all of the Resources in your User account.  Resources listed as JSON.
+						 	</p>				
+						</div>		
+					</div>
+					<div class="page-header"></div>
+					
+					<div class="row">
+						<div class="span6 columns">
+							<a href="#">Get Resource Info (GET)</a>			
+						</div>	
+						<div class="span10 columns">
+							<p>
+								Get the information of a specific Resource. Information presented as JSON.
+						 	</p>				
+						</div>		
+					</div>
+					<div class="page-header"></div>
+					
+					<div class="row">
+						<div class="span6 columns">
+							<a href="#">List Swarms With Resource (GET)</a>			
+						</div>	
+						<div class="span10 columns">
+							<p>
+								List the Swarms that a specific Resource belongs to. Swarms listed as JSON.
+						 	</p>				
+						</div>		
+					</div>
+					<div class="page-header"></div>
+					
+				<h3><a id="swarms" href="#">Swarms</a></h3>
+				<p>
+					Swarms are owned by a User but may contain the Resources of many Users.    		
+				</p>
+				
+			   <div class="row">
+			   	<div class="span6 columns">
+						<h5>Method</h5>		   	
+			   	</div>
+			   	<div class="span6 columns">
+						<h5>Description</h5>		   	
+			   	</div>
+			   </div>
+			   <div class="page-header"></div>
+					
+					<div class="row">
+						<div class="span6 columns">
+							<a href="#">Create (POST)</a>				
+						</div>	
+						<div class="span10 columns">
+							<p>
+								Create a Swarm. POST a JSON file containing information about the Swarm to be
+								created.
+						 	</p>				
+						</div>		
+					</div>
+					<div class="page-header"></div>
+					
+					<div class="row">
+						<div class="span6 columns">
+							<a href="#">Update (PUT)</a>			
+						</div>	
+						<div class="span10 columns">
+							<p>
+								Update an already existing Swarm. PUT a JSON file containing the information to update.
+						 	</p>				
+						</div>		
+					</div>
+					<div class="page-header"></div>
+					
+					<div class="row">
+						<div class="span6 columns">
+							<a href="#">Destroy (DELETE)</a>			
+						</div>	
+						<div class="span10 columns">
+							<p>
+								Destroy a Swarm. Remove a Swarm from your User account.
+						 	</p>				
+						</div>		
+					</div>
+					<div class="page-header"></div>
+					
+					<div class="row">
+						<div class="span6 columns">
+							<a href="#">List (GET)</a>			
+						</div>	
+						<div class="span10 columns">
+							<p>
+								List all of the Swarms in your User account. Swarms listed as JSON.
+						 	</p>				
+						</div>		
+					</div>
+					<div class="page-header"></div>
+					
+					<div class="row">
+						<div class="span6 columns">
+							<a href="#">Get Swarm Info (GET)</a>			
+						</div>	
+						<div class="span10 columns">
+							<p>
+								Get the information of a specific Swarm, including it's contained Resources. 
+								Information presented as JSON.
+						 	</p>				
+						</div>		
+					</div>
+					<div class="page-header"></div>
+					
+				<h3><a id="swarm_resources" href="#">Swarm Resources</a></h3>
+				<p>
+					Resources can be added and removed from a Swarm. Additionally, all of the Resources in a Swarm
+					may be listed.    		
+				</p>
+				
+			   <div class="row">
+			   	<div class="span6 columns">
+						<h5>Method</h5>		   	
+			   	</div>
+			   	<div class="span6 columns">
+						<h5>Description</h5>		   	
+			   	</div>
+			   </div>
+			   <div class="page-header"></div>
+					
+					<div class="row">
+						<div class="span6 columns">
+							<a href="#">Add (POST)</a>				
+						</div>	
+						<div class="span10 columns">
+							<p>
+								Add a Resource to a Swarm. POST a JSON file containing information about the Resource to
+								be added that pertains to being a member of a Swarm.
+						 	</p>				
+						</div>		
+					</div>
+					<div class="page-header"></div>
+					
+					<div class="row">
+						<div class="span6 columns">
+							<a href="#">Remove (DELETE)</a>			
+						</div>	
+						<div class="span10 columns">
+							<p>
+								Remove a Resource from a Swarm. Send a JSON file containing information about the Resource
+								to remove.
+						 	</p>				
+						</div>		
+					</div>
+					<div class="page-header"></div>
+					
+					<div class="row">
+						<div class="span6 columns">
+							<a href="#">List (GET)</a>			
+						</div>	
+						<div class="span10 columns">
+							<p>
+								List the Resources in a Swarm. Users may choose to list all Resources, only Consumers, or only Producers.
+						 	</p>				
+						</div>		
+					</div>
+					<div class="page-header"></div>	
+		
+		</div>
+ 							
+	  </div> 
+    
+  </body>
+
+</html>
