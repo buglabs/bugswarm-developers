@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 	<head>
    	<meta charset="utf-8">
@@ -12,7 +12,7 @@
 
   	<body>
 
-   	<!-- TOPBAR -->        
+   	<!-- NAVIGATION -->        
 		<div class="topbar">
       
       	<div class="topbar-inner">
@@ -32,8 +32,6 @@
               				<li><a href="streaming_api.html">Streaming API</a></li>              
             			</ul>
            			</li>
-           			
-           			<li>
             
 					</ul> 
         
@@ -59,7 +57,7 @@
  
  			<div class="page-header"><h2>API Libraries</h2></div>
  			<p>
-				BUGswarm makes use of two primary APIs for configuring and participating in <em>swarms</em>:      
+				BUGswarm makes use of two primary APIs for configuring and participating in swarms:      
       	</p> 		
  		
  				<div class="row">
@@ -67,21 +65,21 @@
  					<div class="span8 columns">
 						<h3><a href="rest_api.html">REST API</a></h3>
 						<p>
-							BUGswarm uses a REST (Representational State Transfer) API for configuring <em>swarms</em> and their <em>resources</em>.
+							BUGswarm uses a REST (Representational State Transfer) API for configuring swarms and their resources.
 							The API consists of several HTTP GET, POST, DELETE, and PUT requests through the use of curl.  The REST
 							API is not a streaming API. For each method call, a connection is opened, HTTP requests are sent, HTTP 
-							responses are returned,	and the connection is closed.  This API is used for creating and destroying <em>swarms</em> 
-							and <em>resources</em>, adding and removing <em>resources</em> from <em>swarms</em>, and generating a <em>user</em>'s <em>API keys</em>.
+							responses are returned,	and the connection is closed.  This API is used for creating and destroying swarms 
+							and resources, adding and removing resources from swarms, and generating a user's API keys.
 						</p> 		
  					</div> <!-- end of span8 columns div -->
  			
  					<div class="span8 columns">
 						<h3><a href="streaming_api.html">Streaming API</a></h3>
 						<p>
-							The BUGswarm Streaming API is used by <em>users</em> and <em>resources</em> to participate in a configured <em>swarm</em>.  The 
+							The BUGswarm Streaming API is used by users and resources to participate in a configured swarm.  The 
 							Streaming API also uses HTTP requests, however, it does not follow REST guidelines. In the Streaming API,
 							connections are opened and remain open while HTTP requests are sent in succession.  This API is used for
-							producing and consuming information from a <em>swarm</em>.				
+							producing and consuming information from a swarm.				
 						</p> 			
  					</div> <!-- end of span8 columns div -->
   							

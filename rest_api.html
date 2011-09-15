@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 	<head>
    	<meta charset="utf-8">
@@ -12,7 +12,7 @@
 
   	<body>
 
-		<!-- TOPBAR -->        
+		<!-- NAVIGATION -->        
 		<div class="topbar">
       
       	<div class="topbar-inner">
@@ -67,12 +67,12 @@
 			
 				<h1>REST API</h1>		
 				<p>
-					Configure <em>swarms</em> and their <em>resources</em> through the use of HTTP requests.		
+					Configure swarms and their resources through the use of HTTP requests.		
 				</p>
 	 		
 	 			<h3><a id="api_keys" href="rest_api_keys.html">API Keys</a></h3>
 				<p>
-					<em>API keys</em> are used as credentials when interacting with BUGswarm.    		
+					API keys are used as credentials when interacting with BUGswarm.    		
 				</p>
 				
 			   	<div class="row">
@@ -83,10 +83,10 @@
 			   	<div class="page-header"></div>
 					
 					<div class="row">
-						<div class="span6 columns"><a href="#">Create (POST)</a></div>	
+						<div class="span6 columns"><a href="rest_api_keys.html#create">Create (POST)</a></div>	
 						<div class="span10 columns">
 							<p>
-								Create an <em>API key</em>. Users can hold up to 3 <em>API keys</em>, a master key, producer key, and consumer key.
+								Create an API key. Users can hold up to 3 API keys, a master key, producer key, and consumer key.
 								Each key holds a different set of permissions.
 						 	</p>				
 						</div> 	
@@ -121,7 +121,7 @@
 						<div class="span6 columns"><a href="#">Create (POST)</a></div>	
 						<div class="span10 columns">
 							<p>
-								Create a Resource. POST a JSON file containing information about the Resource to be
+								Create a resource. POST a JSON file containing information about the resource to be
 								created.
 						 	</p>				
 						</div>		
@@ -133,7 +133,7 @@
 						<div class="span6 columns"><a href="#">Update (PUT)</a></div>	
 						<div class="span10 columns">
 							<p>
-								Update an already existing Resource. PUT a JSON file containing the information to update.
+								Update an already existing resource. PUT a JSON file containing the information to update.
 						 	</p>				
 						</div>		
 					</div>
@@ -144,7 +144,7 @@
 						<div class="span6 columns"><a href="#">Destroy (DELETE)</a></div>	
 						<div class="span10 columns">
 							<p>
-								Destroy a Resource. Remove a Resource from your User account.
+								Destroy a resource. Remove a resource from your user account.
 						 	</p>				
 						</div>		
 					</div>
@@ -155,7 +155,7 @@
 						<div class="span6 columns"><a href="#">List (GET)</a></div>	
 						<div class="span10 columns">
 							<p>
-								List all of the Resources in your User account.  Resources listed as JSON.
+								List all of the resources in your user account.  Resources listed as JSON.
 						 	</p>				
 						</div>		
 					</div>
@@ -166,7 +166,7 @@
 						<div class="span6 columns"><a href="#">Get Resource Info (GET)</a></div>	
 						<div class="span10 columns">
 							<p>
-								Get the information of a specific Resource. Information presented as JSON.
+								Get the information of a specific resource. Information presented as JSON.
 						 	</p>				
 						</div>		
 					</div>
@@ -177,7 +177,7 @@
 						<div class="span6 columns"><a href="#">List Swarms With Resource (GET)</a></div>	
 						<div class="span10 columns">
 							<p>
-								List the Swarms that a specific Resource belongs to. Swarms listed as JSON.
+								List the swarms that a specific resource belongs to. Swarms listed as JSON.
 						 	</p>				
 						</div>		
 					</div>
@@ -186,7 +186,7 @@
 					
 				<h3><a id="swarms" href="#">Swarms</a></h3>
 				<p>
-					Swarms are owned by a User but may contain the Resources of many Users.    		
+					Swarms are owned by a user but may contain the resources of many users.    		
 				</p>
 				
 				   <div class="row">
@@ -200,7 +200,7 @@
 						<div class="span6 columns"><a href="#">Create (POST)</a></div>	
 						<div class="span10 columns">
 							<p>
-								Create a Swarm. POST a JSON file containing information about the Swarm to be
+								Create a swarm. POST a JSON file containing information about the swarm to be
 								created.
 						 	</p>				
 						</div>		
@@ -212,7 +212,7 @@
 						<div class="span6 columns"><a href="#">Update (PUT)</a></div>	
 						<div class="span10 columns">
 							<p>
-								Update an already existing Swarm. PUT a JSON file containing the information to update.
+								Update an already existing swarm. PUT a JSON file containing the information to update.
 						 	</p>				
 						</div>		
 					</div>
@@ -223,7 +223,7 @@
 						<div class="span6 columns"><a href="#">Destroy (DELETE)</a></div>	
 						<div class="span10 columns">
 							<p>
-								Destroy a Swarm. Remove a Swarm from your User account.
+								Destroy a swarm. Remove a swarm from your user account.
 						 	</p>				
 						</div>		
 					</div>
@@ -234,7 +234,7 @@
 						<div class="span6 columns"><a href="#">List (GET)</a></div>	
 						<div class="span10 columns">
 							<p>
-								List all of the Swarms in your User account. Swarms listed as JSON.
+								List all of the swarms in your user account. Swarms listed as JSON.
 						 	</p>				
 						</div>		
 					</div>
@@ -245,7 +245,7 @@
 						<div class="span6 columns"><a href="#">Get Swarm Info (GET)</a></div>	
 						<div class="span10 columns">
 							<p>
-								Get the information of a specific Swarm, including it's contained Resources. 
+								Get the information of a specific swarm, including it's contained resources. 
 								Information presented as JSON.
 						 	</p>				
 						</div>		
@@ -255,7 +255,7 @@
 					
 				<h3><a id="swarm_resources" href="#">Swarm Resources</a></h3>
 				<p>
-					Resources can be added and removed from a Swarm. Additionally, all of the Resources in a Swarm
+					Resources can be added and removed from a swarm. Additionally, all of the resources in a swarm
 					may be listed.    		
 				</p>
 				
@@ -270,8 +270,8 @@
 						<div class="span6 columns"><a href="#">Add (POST)</a></div>	
 						<div class="span10 columns">
 							<p>
-								Add a Resource to a Swarm. POST a JSON file containing information about the Resource to
-								be added that pertains to being a member of a Swarm.
+								Add a resource to a swarm. POST a JSON file containing information about the resource to
+								be added that pertains to being a member of a swarm.
 						 	</p>				
 						</div>		
 					</div>
@@ -282,7 +282,7 @@
 						<div class="span6 columns"><a href="#">Remove (DELETE)</a></div>	
 						<div class="span10 columns">
 							<p>
-								Remove a Resource from a Swarm. Send a JSON file containing information about the Resource
+								Remove a resource from a swarm. Send a JSON file containing information about the resource
 								to remove.
 						 	</p>				
 						</div>		
@@ -294,7 +294,7 @@
 						<div class="span6 columns"><a href="#">List (GET)</a></div>	
 						<div class="span10 columns">
 							<p>
-								List the Resources in a Swarm. Users may choose to list all Resources, only Consumers, or only Producers.
+								List the resources in a swarm. Users may choose to list all resources, only consumers, or only producers.
 						 	</p>				
 						</div>		
 					</div>

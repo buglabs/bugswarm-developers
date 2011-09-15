@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 	<head>
    	<meta charset="utf-8">
@@ -12,7 +12,7 @@
 
  	<body>
     
-		<!-- TOPBAR -->        
+		<!-- NAVIGATION -->        
 		<div class="topbar">
       
       	<div class="topbar-inner">
@@ -65,12 +65,12 @@
 			
 				<h1>API Keys</h1>		
 				<p>
-					Manage your <em>API keys</em> with the REST API.		
+					Manage your API keys with the REST API.		
 				</p>
 				
 				<div class="page-header"></div>
 				
-				<h3>Create</h3>
+				<h3 id="create">Create</h3>
 				
 					<div class="row">
 						<div class="span5 columns">
@@ -79,23 +79,27 @@
 								<li><strong>Method:</strong> POST</li>	
 								<li><strong>Authentication:</strong> <code>"username:password"</code>
 								<li><strong>Parameters (Required):</strong> None</li>
-								<li><strong>Parameters (Optional):</strong> <code>type</code></li>	
+								<li><strong>Parameters (Optional):</strong> Key type</li>	
 							</ul>					
 						</div>
 						<div class="span11 columns">
 							<p>
-								Each <em>user</em> must possess at least a master <em>API key</em>. In addition to the master key, <em>producer</em> 
-								and <em>consumer</em> keys can be generated. This method is used to create <em>API keys</em>. If a key already exists, 
+								Each user must possess at least a master API key. In addition to the master key, producer 
+								and consumer keys can be generated. This method is used to create API keys. If a key already exists, 
 								this method will replace that key with a new one. Users have the option of specifying the type of key they wish to create
 								in the URL. For instance, <code>http://api.bugswarm.net/keys/master</code> will generate a master key, while 
 								<code>http://api.bugswarm.net/keys/producer</code> will generate a producer key.  By default, if no key type is
-								specified, a master key is created. Each key holds a different set of permissions with regards to participating in <em>swarms</em>.   							
+								specified, a master key is created. Each key holds a different set of permissions with regards to participating in swarms.   							
 							</p>						
 						</div>									
 					</div>
 					
 					<strong>Returns:</strong> The created key in JSON format. <br/>
-					<pre>{ <br/>	"apikey": "911cbc244827dba9c6dbdd09aff3e5e8fe5eee02",<br/>	"type": "master" <br/> }</pre>
+<pre>{
+  "apikey": "911cbc244827dba9c6dbdd09aff3e5e8fe5eee02",
+  "type": "master" 
+}
+</pre>
 			
 			</div> <!-- end of content div -->	
  							
