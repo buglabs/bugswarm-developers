@@ -70,6 +70,7 @@
 				
 				<div class="page-header"></div>
 				
+				<!-- Create -->
 				<h3 id="create">Create</h3>
 				
 					<div class="row">
@@ -93,12 +94,81 @@
 							</p>						
 						</div>									
 					</div>
+
+					<strong>Usage:</strong>
+<pre>curl -X POST --user "username:password" http://api.bugswarm.net/keys
+curl -X POST --user "username:password" http://api.bugswarm.net/keys/master
+curl -X POST --user "username:password" http://api.bugswarm.net/keys/producer
+curl -X POST --user "username:password" http://api.bugswarm.net/keys/consumer
+</pre>
 					
 					<strong>Returns:</strong> The created key in JSON format. <br/>
 <pre>{
-  "apikey": "911cbc244827dba9c6dbdd09aff3e5e8fe5eee02",
-  "type": "master" 
+	"apikey": "911cbc244827dba9c6dbdd09aff3e5e8fe5eee02",
+  	"type": "master" 
 }
+</pre>
+
+			<div class="page-header"></div>
+
+			<!-- List -->
+			<h3 id="list">List</h3>
+						
+				<div class="row">
+						<div class="span5 columns">
+							<ul class="unstyled">
+								<li><strong>URL:</strong> <code>http://api.bugswarm.net/keys</code>
+								<li><strong>Method:</strong> GET</li>	
+								<li><strong>Authentication:</strong> <code>"username:password"</code>
+								<li><strong>Parameters (Required):</strong> None</li>
+								<li><strong>Parameters (Optional):</strong> Key type</li>	
+							</ul>					
+						</div>
+						<div class="span11 columns">                                             
+							<p>
+								A user's API key (generally the master key) must be passed as a header when using the rest of the 
+								methods in this API as a form of account authorization.  This method will list the API keys
+								associated with the user's account. Users may specify which key the would like to retrieve through 
+								the URL. For instance, <code>http://api.bugswarm.net/keys/master</code> will retrieve the master key,
+								while <code>http://api.bugswarm.net/keys/producer</code> will retrieve the producer key, if one exists.    							
+							</p>						
+						</div>									
+					</div>
+
+					<strong>Usage:</strong>
+<pre>curl -X GET --user "username:password" http://api.bugswarm.net/keys
+curl -X GET --user "username:password" http://api.bugswarm.net/keys/master
+curl -X GET --user "username:password" http://api.bugswarm.net/keys/producer
+curl -X GET --user "username:password" http://api.bugswarm.net/keys/consumer
+</pre>
+					
+					<strong>Returns:</strong> The desired key(s) and their relative information in JSON format. <br/>
+<pre>[
+    {
+        "_id": "4e6aa512a88f3afe13007a2e", 
+        "created_at": "2011-09-09T23:45:22.109Z", 
+        "key": "c7cf33294f91c29abc778c8f6382eaaed8405372", 
+        "status": "active", 
+        "type": "producer", 
+        "user_id": "username"
+    }, 
+    {
+        "_id": "4e6aa512a88f3afe13007a2f", 
+        "created_at": "2011-09-09T23:45:22.221Z", 
+        "key": "33d1e9e8fe9802e34c99b6c465552a0bc2ca0714", 
+        "status": "active", 
+        "type": "consumer", 
+        "user_id": "username"
+    }, 
+    {
+        "_id": "4e70ffba6e28bb5e1f037196", 
+        "created_at": "2011-09-14T19:25:46.291Z", 
+        "key": "911cbc244827dba9c6dbdd09aff3e5e8fe5eee02", 
+        "status": "active", 
+        "type": "master", 
+        "user_id": "username"
+    }
+]
 </pre>
 			
 			</div> <!-- end of content div -->	
