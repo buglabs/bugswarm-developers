@@ -10,9 +10,9 @@
     	<script src="assets/js/application.js"></script>
   	</head>
 
-  	<body>
-
-   	<!-- NAVIGATION -->        
+ 	<body>
+    
+		<!-- NAVIGATION -->        
 		<div class="topbar">
       
       	<div class="topbar-inner">
@@ -22,7 +22,7 @@
           		<h3><a href="index.html">BUGswarm Developers</a></h3>
 
 					<ul class="nav">
-           
+            
            			<li class><a href="index.html">Home</a></li>
            
            			<li class="dropdown">
@@ -39,32 +39,36 @@
       
    		</div> <!-- end of topbar-inner div -->
     
-   	</div> <!-- end of topbar div -->
-
-		
-		<!-- CONTENT -->
-		<div class="container">
-
-			<div class="page-header"><h1>Welcome to BUGswarm!</h1></div>
-			<p>
-				<strong>BUGswarm is a messaging platform that allows resources to communicate with each other through HTTP.</strong>
-			</p> 
-			
-			<form class="actions">
-				<fieldset>
-					<legend><strong>Developer Preview, October 11</strong></legend>
-					<div class="clearfix">
-						<label for="email"><strong>Email</strong></label>
-						<div class="input">
-							<input class="xlarge" id="email" name="email" size="30" type="text"> <br> <br>
-							<input type="submit" class="btn primary" value="Sign Up!"> 						
-						</div>					
-					</div>							
-				</fieldset>			
-			</form>
-				
-		</div> <!-- end of container div -->   
+   	</div> <!-- end of topbar div -->   
     
- 	</body>
+    	<!-- CONTAINER -->
+		<div class="container-fluid">
+
+			<!-- SIDEBAR -->
+			<div class="sidebar">
+		   	<ul>
+					<li><h5><a href="#">Sidebar</a></h5></li>		
+				</ul>		
+			</div> <!-- end of sidebar div -->
+		
+			<!-- CONTENT -->
+			<div class="content">
+
+				<div class="page-header">
+					<a href="index.html">Home</a>
+					&rarr;
+					<a href="documentation.html">Documentation</a>				
+				</div>
+			
+				<h1>Streaming API</h1>		
+				<p>
+					Produce and consume information from a Swarm through the use of streaming HTTP.		
+				</p>
+			
+			</div> <!-- end of content div -->	
+ 							
+		</div> <!-- end of container-fluid div -->   
+    
+  </body>
 
 </html>

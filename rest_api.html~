@@ -48,10 +48,10 @@
 			<div class="sidebar">
 
 				<ul>
-					<li><h5><a href="#api-keys">API Keys</a></h5></li>
-					<li><h5><a href="#user-resources">User Resources</a></h5></li>
+					<li><h5><a href="#api_keys">API Keys</a></h5></li>
+					<li><h5><a href="#user_resources">User Resources</a></h5></li>
 					<li><h5><a href="#swarms">Swarms</a></h5></li>
-					<li><h5><a href="#swarm-resources">Swarm Resources</a></h5></li>			
+					<li><h5><a href="#swarm_resources">Swarm Resources</a></h5></li>			
 				</ul>		
 			
 			</div> <!-- end of sidebar div -->
@@ -70,7 +70,7 @@
 					Configure swarms and their resources through the use of HTTP requests.		
 				</p>
 	 		
-	 			<h3><a id="api-keys" href="rest_api_keys.html">API Keys</a></h3>
+	 			<h3><a id="api_keys" href="rest_api_keys.html">API Keys</a></h3>
 				<p>
 					API keys are used as credentials when interacting with BUGswarm.    		
 				</p>
@@ -95,7 +95,7 @@
 					<div class="page-header"></div>
 					
 					<div class="row">
-						<div class="span6 columns"><a href="rest_api_keys.html#list">List (GET)</a>			</div>	
+						<div class="span6 columns"><a href="#">List (GET)</a>			</div>	
 						<div class="span10 columns">
 							<p>
 								List your API keys. Keys are listed as JSON.	
@@ -105,7 +105,7 @@
 					
 					<div class="page-header"></div>
 					
-				<h3><a id="user-resources" href="rest_user_resources.html">User Resources</a></h3>
+				<h3><a id="user_resources" href="#">User Resources</a></h3>
 				<p>
 					Resources belong to a given User account and may be created, updated, and destroyed.    		
 				</p>
@@ -118,7 +118,7 @@
 			   	<div class="page-header"></div>
 					
 					<div class="row">
-						<div class="span6 columns"><a href="rest_user_resources.html#create">Create (POST)</a></div>	
+						<div class="span6 columns"><a href="#">Create (POST)</a></div>	
 						<div class="span10 columns">
 							<p>
 								Create a resource. POST a JSON file containing information about the resource to be
@@ -253,7 +253,7 @@
 					
 					<div class="page-header"></div>
 					
-				<h3><a id="swarm-resources" href="#">Swarm Resources</a></h3>
+				<h3><a id="swarm_resources" href="#">Swarm Resources</a></h3>
 				<p>
 					Resources can be added and removed from a swarm. Additionally, all of the resources in a swarm
 					may be listed.    		

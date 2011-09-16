@@ -74,7 +74,7 @@
 				<h3 id="create">Create</h3>
 				
 					<div class="row">
-						<div class="span6 columns">
+						<div class="span5 columns">
 							<ul class="unstyled">
 								<li><strong>URL:</strong> <code>http://api.bugswarm.net/keys</code>
 								<li><strong>Method:</strong> POST</li>	
@@ -83,7 +83,7 @@
 								<li><strong>Parameters (Optional):</strong> Key type</li>	
 							</ul>					
 						</div>
-						<div class="span10 columns">
+						<div class="span11 columns">
 							<p>
 								Each user must possess at least a master API key. In addition to the master key, producer 
 								and consumer keys can be generated. This method is used to create API keys. If a key already exists, 
@@ -115,7 +115,7 @@ curl -X POST --user "username:password" http://api.bugswarm.net/keys/consumer
 			<h3 id="list">List</h3>
 						
 				<div class="row">
-						<div class="span6 columns">
+						<div class="span5 columns">
 							<ul class="unstyled">
 								<li><strong>URL:</strong> <code>http://api.bugswarm.net/keys</code>
 								<li><strong>Method:</strong> GET</li>	
@@ -124,7 +124,7 @@ curl -X POST --user "username:password" http://api.bugswarm.net/keys/consumer
 								<li><strong>Parameters (Optional):</strong> Key type</li>	
 							</ul>					
 						</div>
-						<div class="span10 columns">                                             
+						<div class="span11 columns">                                             
 							<p>
 								A user's API key (generally the master key) must be passed as a header when using the rest of the 
 								methods in this API as a form of account authorization.  This method will list the API keys

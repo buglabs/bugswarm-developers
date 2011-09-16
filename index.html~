@@ -50,19 +50,22 @@
 				<strong>BUGswarm is a messaging platform that allows resources to communicate with each other through HTTP.</strong>
 			</p> 
 			
-			<form class="actions">
-				<fieldset>
-					<legend><strong>Developer Preview, October 11</strong></legend>
-					<div class="clearfix">
-						<label for="email"><strong>Email</strong></label>
-						<div class="input">
-							<input class="xlarge" id="email" name="email" size="30" type="text"> <br> <br>
-							<input type="submit" class="btn primary" value="Sign Up!"> 						
-						</div>					
-					</div>							
-				</fieldset>			
-			</form>
+			
 				
+					<form class="actions">
+						<fieldset>
+							<legend><strong>Developer Preview, October 11</strong></legend>
+							<div class="clearfix">
+								<label for="email"><strong>Email</strong></label>
+								<div class="input">
+									<input class="xlarge" id="email" name="email" size="30" type="text"> <br> <br>
+									<input type="submit" class="btn primary" value="Sign Up!"> 						
+								</div>					
+							</div>							
+						</fieldset>			
+					</form>
+				
+ 
 		</div> <!-- end of container div -->   
     
  	</body>
