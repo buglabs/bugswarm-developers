@@ -6,6 +6,7 @@
     	<title>BUGswarm API, from Bug Labs</title>
     	<link rel="stylesheet" type="text/css" href="assets/css/bootstrap-1.2.0.css">
     	<link rel="stylesheet" type="text/css" href="assets/css/this.css">
+    	<link rel="stylesheet" type="text/css" href="assets/js/google-code-prettify/prettify.css">
     	<script src="http://code.jquery.com/jquery-1.5.2.js"></script>
     	<script src="assets/js/google-code-prettify/prettify.js"></script>
     	<script src="assets/js/application.js"></script>
@@ -98,7 +99,7 @@
 					</div>				
 					
 					<strong>Body:</strong> The "id", "name", and "machine_type" fields are <strong>required</strong>. The "description" and "position" fields are <strong>optional</strong>.
-<pre>{
+<pre class="prettyprint language-javascript">{
     "id": "my unique resource id",    
     "name": "My resource",
     "machine_type": "pc",
@@ -112,7 +113,7 @@
 
 					<strong>Usage:</strong>
 					Create a JSON file with the name <code>create_resource.json</code> and matching the above format. Then execute:
-<pre>curl -X POST -d@create_resource.json --header "x-bugswarmapikey: 911cbc244827dba9c6dbdd09aff3e5e8fe5eee02" --header "content-type: application/json" http://api.bugswarm.net/resources</pre>				
+<pre class="prettyprint language-javascript">curl -X POST -d@create_resource.json --header "x-bugswarmapikey: 911cbc244827dba9c6dbdd09aff3e5e8fe5eee02" --header "content-type: application/json" http://api.bugswarm.net/resources</pre>				
 
 					<strong>Returns:</strong> <a href="http_response_codes.html">HTTP Response Codes</a> <br> <br>
 
@@ -140,7 +141,7 @@
 					</div>				
 					
 					<strong>Body:</strong> All fields are <strong>optional</strong>.
-<pre>{
+<pre class="prettyprint language-javascript">{
     "name": "My Resource Updated",
     "machine_type": "bug",
     "description": "My Resource description updated",
@@ -153,7 +154,7 @@
 
 					<strong>Usage:</strong>
 					Create a JSON file with the name <code>update_resource.json</code> and matching the above format. Then execute:
-<pre>curl -X PUT -d@update_resource.json --header "x-bugswarmapikey: 911cbc244827dba9c6dbdd09aff3e5e8fe5eee02" --header "content-type: application/json" http://api.bugswarm.net/resources/RESOURCE_ID</pre>				
+<pre class="prettyprint language-javascript">curl -X PUT -d@update_resource.json --header "x-bugswarmapikey: 911cbc244827dba9c6dbdd09aff3e5e8fe5eee02" --header "content-type: application/json" http://api.bugswarm.net/resources/RESOURCE_ID</pre>				
 
 					<strong>Returns:</strong> <a href="http_response_codes.html">HTTP Response Codes</a> <br> <br>
 					
@@ -181,7 +182,7 @@
 					</div>				
 					
 					<strong>Usage:</strong>
-<pre>curl -X DELETE --header "x-bugswarmapikey: 911cbc244827dba9c6dbdd09aff3e5e8fe5eee02" http://api.bugswarm.net/resources/RESOURCE_ID</pre>				
+<pre class="prettyprint language-javascript">curl -X DELETE --header "x-bugswarmapikey: 911cbc244827dba9c6dbdd09aff3e5e8fe5eee02" http://api.bugswarm.net/resources/RESOURCE_ID</pre>				
 
 					<strong>Returns:</strong> <a href="http_response_codes.html">HTTP Response Codes</a> <br> <br>
 					
@@ -209,7 +210,7 @@
 					</div>				
 					
 					<strong>Usage:</strong>
-<pre>curl -X GET --header "x-bugswarmapikey: 911cbc244827dba9c6dbdd09aff3e5e8fe5eee02" http://api.bugswarm.net/resources
+<pre class="prettyprint language-javascript">curl -X GET --header "x-bugswarmapikey: 911cbc244827dba9c6dbdd09aff3e5e8fe5eee02" http://api.bugswarm.net/resources
 
 curl -X GET --header "x-bugswarmapikey: 911cbc244827dba9c6dbdd09aff3e5e8fe5eee02" http://api.bugswarm.net/resources?type=producer
 
@@ -217,7 +218,7 @@ curl -X GET --header "x-bugswarmapikey: 911cbc244827dba9c6dbdd09aff3e5e8fe5eee02
 </pre>				
 
 					<strong>Returns:</strong> A list of resources in JSON format.
-<pre>[
+<pre class="prettyprint language-javascript">[
     {
         "_id": "4e612e4e8371a27b5a0031bd", 
         "created_at": "2011-09-02T19:28:14.644Z", 
@@ -266,11 +267,11 @@ curl -X GET --header "x-bugswarmapikey: 911cbc244827dba9c6dbdd09aff3e5e8fe5eee02
 					</div>				
 					
 					<strong>Usage:</strong>
-<pre>curl -X GET --header "x-bugswarmapikey: 911cbc244827dba9c6dbdd09aff3e5e8fe5eee02" http://api.bugswarm.net/resources/RESOURCE_ID
+<pre class="prettyprint language-javascript">curl -X GET --header "x-bugswarmapikey: 911cbc244827dba9c6dbdd09aff3e5e8fe5eee02" http://api.bugswarm.net/resources/RESOURCE_ID
 </pre>				
 
 					<strong>Returns:</strong> A resource in JSON format.
-<pre>{
+<pre class="prettyprint language-javascript">{
         "_id": "4e626c1d0c693fe05b011ef7", 
         "created_at": "2011-09-03T18:04:13.882Z", 
         "description": "My Other Resource description", 
@@ -307,11 +308,11 @@ curl -X GET --header "x-bugswarmapikey: 911cbc244827dba9c6dbdd09aff3e5e8fe5eee02
 					</div>				
 					
 					<strong>Usage:</strong>
-<pre>curl -X GET --header "x-bugswarmapikey: 911cbc244827dba9c6dbdd09aff3e5e8fe5eee02" http://api.bugswarm.net/resources/RESOURCE_ID/swarms
+<pre class="prettyprint language-javascript">curl -X GET --header "x-bugswarmapikey: 911cbc244827dba9c6dbdd09aff3e5e8fe5eee02" http://api.bugswarm.net/resources/RESOURCE_ID/swarms
 </pre>				
 
 					<strong>Returns:</strong> A list of swarms that the given resource is a member of in JSON format.
-<pre>[   
+<pre class="prettyprint language-javascript">[   
     {
         "_id": "4e5bf3c4cc1fdb5970000028", 
         "created_at": "2011-08-29T20:17:08.676Z", 

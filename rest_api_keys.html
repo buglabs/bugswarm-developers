@@ -6,6 +6,7 @@
     	<title>BUGswarm API, from Bug Labs</title>
     	<link rel="stylesheet" type="text/css" href="assets/css/bootstrap-1.2.0.css">
     	<link rel="stylesheet" type="text/css" href="assets/css/this.css">
+    	<link rel="stylesheet" type="text/css" href="assets/js/google-code-prettify/prettify.css">
     	<script src="http://code.jquery.com/jquery-1.5.2.js"></script>
     	<script src="assets/js/google-code-prettify/prettify.js"></script>
     	<script src="assets/js/application.js"></script>
@@ -97,14 +98,14 @@
 					</div>
 
 					<strong>Usage:</strong>
-<pre>curl -X POST --user "username:password" http://api.bugswarm.net/keys
+<pre class="prettyprint language-javascript">curl -X POST --user "username:password" http://api.bugswarm.net/keys
 curl -X POST --user "username:password" http://api.bugswarm.net/keys/master
 curl -X POST --user "username:password" http://api.bugswarm.net/keys/producer
 curl -X POST --user "username:password" http://api.bugswarm.net/keys/consumer
 </pre>
 					
 					<strong>Returns:</strong> The created key in JSON format. 
-<pre>{
+<pre class="prettyprint language-javascript">{
 	"apikey": "911cbc244827dba9c6dbdd09aff3e5e8fe5eee02",
   	"type": "master" 
 }
@@ -137,14 +138,14 @@ curl -X POST --user "username:password" http://api.bugswarm.net/keys/consumer
 					</div>
 
 					<strong>Usage:</strong>
-<pre>curl -X GET --user "username:password" http://api.bugswarm.net/keys
+<pre class="prettyprint language-javascript">curl -X GET --user "username:password" http://api.bugswarm.net/keys
 curl -X GET --user "username:password" http://api.bugswarm.net/keys/master
 curl -X GET --user "username:password" http://api.bugswarm.net/keys/producer
 curl -X GET --user "username:password" http://api.bugswarm.net/keys/consumer
 </pre>
 					
 					<strong>Returns:</strong> The desired key(s) and their relative information in JSON format. <br/>
-<pre>[
+<pre class="prettyprint language-javascript">[
     {
         "_id": "4e6aa512a88f3afe13007a2e", 
         "created_at": "2011-09-09T23:45:22.109Z", 
