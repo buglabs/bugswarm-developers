@@ -4,19 +4,11 @@ html(lang='en')
     include includes/assets
   body
     include includes/navigation
-    // CONTAINER 
     .container-fluid
-      // SIDEBAR 
       .sidebar
         ul
-          li
-            h5
-              a(href='#create') Create
-          li
-            h5
-              a(href='#list') List
-      // end of sidebar div 
-      // CONTENT 
+          li: h5: a(href='#create') Create
+          li: h5: a(href='#list') List
       .content
         .page-header
           a(href='index.html') Home
@@ -28,7 +20,6 @@ html(lang='en')
         p
           | Manage your API keys with the REST API.
         .page-header
-        // Create 
         h3#create Create
         .row
           .span8.columns
@@ -69,7 +60,7 @@ html(lang='en')
           curl -X POST --user "username:password" http://api.bugswarm.net/keys/master
           curl -X POST --user "username:password" http://api.bugswarm.net/keys/producer
           curl -X POST --user "username:password" http://api.bugswarm.net/keys/consumer
-                    
+
         strong Returns:
         | The created key in JSON format.
         pre.prettyprint.language-javascript.
@@ -77,9 +68,7 @@ html(lang='en')
             "apikey": "911cbc244827dba9c6dbdd09aff3e5e8fe5eee02",
               "type": "master"
           }
-                    
         .page-header
-        // List 
         h3#list List
         .row
           .span8.columns
@@ -119,7 +108,7 @@ html(lang='en')
           curl -X GET --user "username:password" http://api.bugswarm.net/keys/master
           curl -X GET --user "username:password" http://api.bugswarm.net/keys/producer
           curl -X GET --user "username:password" http://api.bugswarm.net/keys/consumer
-                    
+
         strong Returns:
         | The desired key(s) and their relative information in JSON format.
         br
@@ -150,6 +139,3 @@ html(lang='en')
                   "user_id": "username"
               }
           ]
-                    
-      // end of content div 
-    // end of container-fluid div 

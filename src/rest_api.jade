@@ -7,19 +7,10 @@ html(lang='en')
     .container-fluid
       .sidebar
         ul
-          li
-            h5
-              a(href='#api-keys') API Keys
-          li
-            h5
-              a(href='#user-resources') User Resources
-          li
-            h5
-              a(href='#swarms') Swarms
-          li
-            h5
-              a(href='#swarm-resources') Swarm Resources
-      // CONTENT
+          li: h5: a(href='#api-keys') API Keys
+          li: h5: a(href='#user-resources') User Resources
+          li: h5: a(href='#swarms') Swarms
+          li: h5: a(href='#swarm-resources') Swarm Resources
       .content
         .page-header
           a(href='index.html') Home
@@ -28,8 +19,7 @@ html(lang='en')
         h1 REST API
         p
           | Configure swarms and their resources through the use of HTTP requests.
-        h3
-          a#api-keys(href='rest_api_keys.html') API Keys
+        h3: a#api-keys(href='rest_api_keys.html') API Keys
         p
           | API keys are used as credentials when interacting with BUGswarm.
         .row
@@ -54,8 +44,7 @@ html(lang='en')
             p
               | List your API keys. Keys are listed as JSON.
         .page-header
-        h3
-          a#user-resources(href='rest_user_resources.html') User Resources
+        h3: a#user-resources(href='rest_user_resources.html') User Resources
         p
           | Resources belong to a given User account and may be created, updated, and
           | destroyed.
@@ -110,8 +99,7 @@ html(lang='en')
             p
               | List the swarms that a specific resource belongs to. Swarms listed as JSON.
         .page-header
-        h3
-          a#swarms(href='rest_swarms.html') Swarms
+        h3: a#swarms(href='rest_swarms.html') Swarms
         p
           | Swarms are owned by a user but may contain the resources of many users.
         .row
@@ -158,12 +146,10 @@ html(lang='en')
               | Get the information of a specific swarm, including it's contained resources.
               | Information presented as JSON.
         .page-header
-        h3
-          a#swarm-resources(href='rest_swarm_resources.html') Swarm Resources
+        h3: a#swarm-resources(href='rest_swarm_resources.html') Swarm Resources
         p
           | Resources can be added and removed from a swarm. Additionally, all of the
-          | resources in a swarm
-          | may be listed.
+          | resources in a swarm may be listed.
         .row
           .span6.columns
             h5 Method
@@ -196,5 +182,3 @@ html(lang='en')
               | List the resources in a swarm. Users may choose to list all resources, only
               | consumers, or only producers.
         .page-header
-      // end of content div 
-    // end of container-fluid div 

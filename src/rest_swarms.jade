@@ -7,23 +7,11 @@ html(lang='en')
     .container-fluid
       .sidebar
         ul
-          li
-            h5
-              a(href='#create') Create
-          li
-            h5
-              a(href='#update') Update
-          li
-            h5
-              a(href='#destroy') Destroy
-          li
-            h5
-              a(href='#list') List
-          li
-            h5
-              a(href='#get-swarm-info') Get Swarm Info
-      // end of sidebar div 
-      // CONTENT 
+          li: h5: a(href='#create') Create
+          li: h5: a(href='#update') Update
+          li: h5: a(href='#destroy') Destroy
+          li: h5: a(href='#list') List
+          li: h5: a(href='#get-swarm-info') Get Swarm Info
       .content
         .page-header
           a(href='index.html') Home
@@ -35,7 +23,6 @@ html(lang='en')
         p
           | Manage your swarms with the REST API.
         .page-header
-        // Create 
         h3#create Create
         .row
           .span8.columns
@@ -49,16 +36,16 @@ html(lang='en')
                 li
                   strong Headers:
                   br
-                  code
-                    | "x-bugswarmapikey: API KEY",
-                    br
-                    | "content-type: application/json"
-                  li
-                    strong Parameters (Required):
-                    | None
-                  li
-                    strong Parameters (Optional):
-                    | None
+                  code "x-bugswarmapikey: ${API_KEY}"
+                  ,
+                  br
+                  code "content-type: application/json"
+                li
+                  strong Parameters (Required):
+                  | None
+                li
+                  strong Parameters (Optional):
+                  | None
           .span8.columns
             p
               | Each swarm is created by and belongs to a given user, however, many user's
@@ -75,27 +62,24 @@ html(lang='en')
         strong optional
         | .
         pre.prettyprint.language-javascript.
-          \n{
+          {
               "name": "My Swarm",
               "description": "My Swarm Description",
               "public": false
           }
-                    
         strong Usage:
         | Create a JSON file with the name
         code create_swarm.json
         | and matching the above format. Then execute:
         pre.prettyprint.language-javascript.
-          \ncurl -X POST -d@create_swarm.json --header "x-bugswarmapikey: 911cbc244827dba9c6dbdd09aff3e5e8fe5eee02" --header "content-type: application/json" http://api.bugswarm.net/swarms          
+          curl -X POST -d@create_swarm.json --header "x-bugswarmapikey: 911cbc244827dba9c6dbdd09aff3e5e8fe5eee02" --header "content-type: application/json" http://api.bugswarm.net/swarms
         strong Returns:
         | The created swarm and its unique ID in JSON format.
         pre.prettyprint.language-javascript.
-          \n{
+          {
               "swarm":"a16fb1d896817c58d4f4be9dea51e74b86519579"
           }
-                    
         .page-header
-        // Update 
         h3#update Update
         .row
           .span8.columns
@@ -109,16 +93,16 @@ html(lang='en')
                 li
                   strong Headers:
                   br
-                  code
-                    | "x-bugswarmapikey: API KEY",
-                    br
-                    | "content-type: application/json"
-                  li
-                    strong Parameters (Required):
-                    | None
-                  li
-                    strong Parameters (Optional):
-                    | None
+                  code "x-bugswarmapikey: ${API_KEY}"
+                  ,
+                  br
+                  code "content-type: application/json"
+                li
+                  strong Parameters (Required):
+                  | None
+                li
+                  strong Parameters (Optional):
+                  | None
           .span8.columns
             p
               | Swarms belonging to a given user can have some of their information updated after
@@ -129,23 +113,21 @@ html(lang='en')
         strong optional
         | .
         pre.prettyprint.language-javascript.
-          \n{
+          {
               "description": "My Swarm description updated",
               "public": true
           }
-                    
         strong Usage:
         | Create a JSON file with the name
         code update_swarm.json
         | and matching the above format. Then execute:
         pre.prettyprint.language-javascript.
-          \ncurl -X PUT -d@update_swarm.json --header "x-bugswarmapikey: 911cbc244827dba9c6dbdd09aff3e5e8fe5eee02" --header "content-type: application/json" http://api.bugswarm.net/swarms/a16fb1d896817c58d4f4be9dea51e74b86519579          
+          curl -X PUT -d@update_swarm.json --header "x-bugswarmapikey: 911cbc244827dba9c6dbdd09aff3e5e8fe5eee02" --header "content-type: application/json" http://api.bugswarm.net/swarms/a16fb1d896817c58d4f4be9dea51e74b86519579          
         strong Returns:
         a(href='http_response_codes.html') HTTP Response Codes
         br
         br
         .page-header
-        // Destroy 
         h3#destroy Destroy
         .row
           .span8.columns
@@ -158,8 +140,7 @@ html(lang='en')
                   | DELETE
                 li
                   strong Headers:
-                  br
-                  code "x-bugswarmapikey: API KEY"
+                  code "x-bugswarmapikey: ${API_KEY}"
                   li
                     strong Parameters (Required):
                     | None
@@ -193,7 +174,7 @@ html(lang='en')
                 li
                   strong Headers:
                   br
-                  code "x-bugswarmapikey: API KEY"
+                  code "x-bugswarmapikey: ${API_KEY}"
                   li
                     strong Parameters (Required):
                     | None
@@ -206,12 +187,11 @@ html(lang='en')
               | resources that are a member of that swarm.
         strong Usage:
         pre.prettyprint.language-javascript.
-          \ncurl -X GET --header "x-bugswarmapikey: 911cbc244827dba9c6dbdd09aff3e5e8fe5eee02" http://api.bugswarm.net/swarms
-                    
+          curl -X GET --header "x-bugswarmapikey: 911cbc244827dba9c6dbdd09aff3e5e8fe5eee02" http://api.bugswarm.net/swarms
         strong Returns:
         | A list of swarms in JSON format.
         pre.prettyprint.language-javascript.
-          \n[
+          [
               {
                   "_id": "4e5bf3c4cc1fdb5970000028",
                   "created_at": "2011-08-29T20:17:08.676Z",
@@ -240,23 +220,21 @@ html(lang='en')
                   "user_id": "username"
               }
           ]
-                    
         .page-header
-        // Get Swarm Info 
         h3#get-swarm-info Get Swarm Info
         .row
           .span8.columns
             ul.unstyled
               li
                 strong URL:
-                code http://api.bugswarm.net/swarms/SWARM_ID
+                code http://api.bugswarm.net/swarms/${SWARM_ID}
                 li
                   strong Method:
                   | GET
                 li
                   strong Headers:
                   br
-                  code "x-bugswarmapikey: API KEY"
+                  code "x-bugswarmapikey: ${API_KEY}"
                   li
                     strong Parameters (Required):
                     | None
@@ -272,12 +250,11 @@ html(lang='en')
               | is given in the URL.
         strong Usage:
         pre.prettyprint.language-javascript.
-          \ncurl -X GET --header "x-bugswarmapikey: 911cbc244827dba9c6dbdd09aff3e5e8fe5eee02" http://api.bugswarm.net/swarms/a16fb1d896817c58d4f4be9dea51e74b86519579
-                    
+          curl -X GET --header "x-bugswarmapikey: 911cbc244827dba9c6dbdd09aff3e5e8fe5eee02" http://api.bugswarm.net/swarms/a16fb1d896817c58d4f4be9dea51e74b86519579
         strong Returns:
         | A swarm in JSON format with its contained resources.
         pre.prettyprint.language-javascript.
-          \n[
+          [
               {
                   "_id": "4e5bf3c4cc1fdb5970000028",
                   "created_at": "2011-08-29T20:17:08.676Z",
@@ -306,7 +283,4 @@ html(lang='en')
                   "user_id": "username"
               }
           ]
-                    
         .page-header
-      // end of content div 
-    // end of container-fluid div 
