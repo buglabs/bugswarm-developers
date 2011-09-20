@@ -1,28 +1,9 @@
 !!! 5
 html(lang='en')
   head
-    meta(charset='utf-8')
-    title BUGswarm API, from Bug Labs
-    link(rel='stylesheet', type='text/css', href='assets/css/bootstrap-1.2.0.css')
-    link(rel='stylesheet', type='text/css', href='assets/css/this.css')
-    link(rel='stylesheet', type='text/css', href='assets/js/google-code-prettify/prettify.css')
-    script(src='http://code.jquery.com/jquery-1.5.2.js')
-    script(src='assets/js/google-code-prettify/prettify.js')
-    script(src='assets/js/application.js')
+    include includes/assets
   body
-    // NAVIGATION
-    .topbar
-      .topbar-inner
-        .container
-          h3: a(href='index.html') BUGswarm Developers
-          ul.nav
-            li.class: a(href='index.html') Home
-            li.dropdown
-              a.dropdown-toggle(href='documentation.html') Documentation
-              ul.dropdown-menu
-                li: a(href='rest_api.html') REST API
-                li: a(href='streaming_api.html') Streaming API
-    // CONTENT
+    include includes/navigation
     .container
       section#documentation
         .page-header

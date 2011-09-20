@@ -1,29 +1,9 @@
 !!! 5
 html(lang='en')
   head
-    meta(charset='utf-8')
-    title BUGswarm API, from Bug Labs
-    link(rel='stylesheet', href='http://twitter.github.com/bootstrap/1.3.0/bootstrap.min.css')
-    link(rel='stylesheet', type='text/css', href='assets/css/this.css')
-    link(rel='stylesheet', type='text/css', href='assets/js/google-code-prettify/prettify.css')
-    script(src='http://code.jquery.com/jquery-1.5.2.js')
-    script(src='assets/js/google-code-prettify/prettify.js')
-    script(src='assets/js/application.js')
+    include includes/assets
   body
-    .topbar
-      .topbar-inner
-        .container
-          a.brand(href='#') BUGswarm Developers
-          ul.nav
-            li.active
-              a(href='#') Home
-            li.dropdown
-              a.dropdown-toggle(href='documentation.html') Documentation
-              ul.dropdown-menu
-                li
-                  a(href='rest_api.html') REST API
-                li
-                  a(href='streaming_api.html') Streaming API
+    include includes/navigation
     header#overview.jumbotron.masthead
       .inner
         .container
