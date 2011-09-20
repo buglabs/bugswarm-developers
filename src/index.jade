@@ -33,7 +33,7 @@ html(lang='en')
             | hardware and software in swarms, and listen in on the conversation.
             | It includes javascript and
             a(href='http://buglabs.net') BUGbase
-            | libraries to get up and running as quickly as possible.
+            |  libraries to get up and running as quickly as possible.
             br
     .container
       section#about
@@ -58,7 +58,6 @@ html(lang='en')
               | Native libraries exist for javascript and the BUG series of hardware, with
               | planned support for arduino, android, and whatever else the community challenges
               | us to come up with.
-        // /ROW
       h1
         | Developer Preview
         small Signup for October 11
@@ -67,12 +66,12 @@ html(lang='en')
         | the platform you love to use.
       // CONTENT
       .container
-        form#mc-embedded-subscribe-form.validate(action='http://bugswarm.us2.list-manage.com/subscribe/post?u=876a1af227de66fbb5520a055&id=5e569d1e96', method='post', name='mc-embedded-subscribe-form', target='_blank')
+        form#mc-embedded-subscribe-form.validate(action='http://bugswarm.us2.list-manage.com/subscribe/post?u=876a1af227de66fbb5520a055&id=5e569d1e96', method='post', name='mc-embedded-subscribe-form')
           fieldset
             .clearfix
               label(for='mce-EMAIL')
                 strong Email
               .input
-                input#mce-EMAIL.xlarge.email.input(type='email', value='', name='EMAIL', placeholder='email address', size='30', required='required')
+                input#mce-EMAIL.xlarge.email(type='email', value='', name='EMAIL', placeholder='email address', size='30', required='required')
               .actions
-                input#mc-embedded-subscribe.btn.primary.button(type='submit', value='Sign Up!')
+                input#mc-embedded-subscribe.btn.primary(type='submit', value='Sign Up!')

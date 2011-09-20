@@ -10,26 +10,19 @@ html(lang='en')
     script(src='assets/js/google-code-prettify/prettify.js')
     script(src='assets/js/application.js')
   body
-    // NAVIGATION 
+    // NAVIGATION
     .topbar
       .topbar-inner
         .container
-          h3
-            a(href='index.html') BUGswarm Developers
+          h3: a(href='index.html') BUGswarm Developers
           ul.nav
-            li.class
-              a(href='index.html') Home
+            li.class: a(href='index.html') Home
             li.dropdown
               a.dropdown-toggle(href='documentation.html') Documentation
               ul.dropdown-menu
-                li
-                  a(href='rest_api.html') REST API
-                li
-                  a(href='streaming_api.html') Streaming API
-        // end of container div 
-      // end of topbar-inner div 
-    // end of topbar div 
-    // CONTENT 
+                li: a(href='rest_api.html') REST API
+                li: a(href='streaming_api.html') Streaming API
+    // CONTENT
     .container
       .page-header
         a(href='index.html') Home

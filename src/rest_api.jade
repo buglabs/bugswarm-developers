@@ -14,24 +14,15 @@ html(lang='en')
     .topbar
       .topbar-inner
         .container
-          h3
-            a(href='index.html') BUGswarm Developers
+          h3: a(href='index.html') BUGswarm Developers
           ul.nav
-            li.class
-              a(href='index.html') Home
+            li.class: a(href='index.html') Home
             li.dropdown
               a.dropdown-toggle(href='documentation.html') Documentation
               ul.dropdown-menu
-                li
-                  a(href='rest_api.html') REST API
-                li
-                  a(href='streaming_api.html') Streaming API
-        // end of container div 
-      // end of topbar-inner div 
-    // end of topbar div 
-    // CONTAINER 
+                li: a(href='rest_api.html') REST API
+                li: a(href='streaming_api.html') Streaming API
     .container-fluid
-      // SIDEBAR 
       .sidebar
         ul
           li
@@ -46,8 +37,7 @@ html(lang='en')
           li
             h5
               a(href='#swarm-resources') Swarm Resources
-      // end of sidebar div 
-      // CONTENT 
+      // CONTENT
       .content
         .page-header
           a(href='index.html') Home
