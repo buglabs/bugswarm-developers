@@ -25,19 +25,19 @@ html(lang='en')
           .span8.columns
             ul.unstyled
               li
-                strong URL:
+                strong URL: 
                 code http://api.bugswarm.net/keys
                 li
-                  strong Method:
+                  strong Method: 
                   | POST
                 li
-                  strong Authentication:
+                  strong Authentication: 
                   code "username:password"
                   li
-                    strong Parameters (Required):
+                    strong Parameters (Required): 
                     | None
                   li
-                    strong Parameters (Optional):
+                    strong Parameters (Optional): 
                     | Key type
           .span8.columns
             p
@@ -54,17 +54,17 @@ html(lang='en')
               | will generate a producer key.  By default, if no key type is
               | specified, a master key is created. Each key holds a different set of permissions
               | with regards to participating in swarms.
-        strong Usage:
+        strong Usage: 
         pre.prettyprint.language-javascript.
-          \ncurl -X POST --user "username:password" http://api.bugswarm.net/keys
+          curl -X POST --user "username:password" http://api.bugswarm.net/keys
           curl -X POST --user "username:password" http://api.bugswarm.net/keys/master
           curl -X POST --user "username:password" http://api.bugswarm.net/keys/producer
           curl -X POST --user "username:password" http://api.bugswarm.net/keys/consumer
 
-        strong Returns:
-        | The created key in JSON format.
+        strong Returns: 
+        |  The created key in JSON format.
         pre.prettyprint.language-javascript.
-          \n{
+          {
             "apikey": "911cbc244827dba9c6dbdd09aff3e5e8fe5eee02",
               "type": "master"
           }
@@ -74,19 +74,19 @@ html(lang='en')
           .span8.columns
             ul.unstyled
               li
-                strong URL:
+                strong URL: 
                 code http://api.bugswarm.net/keys
                 li
-                  strong Method:
+                  strong Method: 
                   | GET
                 li
-                  strong Authentication:
+                  strong Authentication: 
                   code "username:password"
                   li
-                    strong Parameters (Required):
+                    strong Parameters (Required): 
                     | None
                   li
-                    strong Parameters (Optional):
+                    strong Parameters (Optional): 
                     | Key type
           .span8.columns
             p
@@ -102,14 +102,14 @@ html(lang='en')
               | while
               code http://api.bugswarm.net/keys/producer
               | will retrieve the producer key, if one exists.
-        strong Usage:
+        strong Usage: 
         pre.prettyprint.language-javascript.
           \ncurl -X GET --user "username:password" http://api.bugswarm.net/keys
           curl -X GET --user "username:password" http://api.bugswarm.net/keys/master
           curl -X GET --user "username:password" http://api.bugswarm.net/keys/producer
           curl -X GET --user "username:password" http://api.bugswarm.net/keys/consumer
 
-        strong Returns:
+        strong Returns: 
         | The desired key(s) and their relative information in JSON format.
         br
         pre.prettyprint.language-javascript.

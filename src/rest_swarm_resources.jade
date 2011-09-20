@@ -26,22 +26,22 @@ html(lang='en')
           .span8.columns
             ul.unstyled
               li
-                strong URL:
+                strong URL: 
                 code http://api.bugswarm.net/swarms/SWARM_ID
                 li
-                  strong Method:
+                  strong Method: 
                   | POST
                 li
-                  strong Headers:
+                  strong Headers: 
                   br
                   code "x-bugswarmapikey: ${API_KEY}"
                   br
                   code "content-type: application/json"
                   li
-                    strong Parameters (Required):
+                    strong Parameters (Required): 
                     | None
                   li
-                    strong Parameters (Optional):
+                    strong Parameters (Optional): 
                     | None
           .span8.columns
             p
@@ -51,7 +51,7 @@ html(lang='en')
               | containing the swarm-relevant information regarding the
               | resource to add. The "type" field passed in the JSON refers to whether the
               | resource with be a producer or a consumer.
-        strong Body:
+        strong Body: 
         | A JSON file containing the information of the resource to add that is relevant to
         | the context of a swarm.
         pre.prettyprint.language-javascript.
@@ -61,13 +61,13 @@ html(lang='en')
               "type": "consumer"
           }
 
-        strong Usage:
+        strong Usage: 
         | Create a JSON file with the name
         code add_resource.json
-        | and matching the above format. Then execute:
+        | and matching the above format. Then execute: 
         pre.prettyprint.language-javascript.
           curl -X POST -d@add_resource.json --header "x-bugswarmapikey: 911cbc244827dba9c6dbdd09aff3e5e8fe5eee02" --header "content-type: application/json" http://api.bugswarm.net/swarms/a16fb1d896817c58d4f4be9dea51e74b86519579          
-        strong Returns:
+        strong Returns: 
         a(href='http_response_codes.html') HTTP Response Codes
         br
         br
@@ -77,22 +77,22 @@ html(lang='en')
           .span8.columns
             ul.unstyled
               li
-                strong URL:
+                strong URL: 
                 code http://api.bugswarm.net/swarms/SWARM_ID
                 li
-                  strong Method:
+                  strong Method: 
                   | DELETE
                 li
-                  strong Headers:
+                  strong Headers: 
                   br
                   code "x-bugswarmapikey: ${API_KEY}",
                   br
                   code "content-type: application/json"
                   li
-                    strong Parameters (Required):
+                    strong Parameters (Required): 
                     | None
                   li
-                    strong Parameters (Optional):
+                    strong Parameters (Optional): 
                     | None
           .span8.columns
             p
@@ -104,7 +104,7 @@ html(lang='en')
               | user account. To perform this action, use the
               a(href='rest_user_resources.html#destroy') Destroy
               |  method for user resources.
-        strong Body:
+        strong Body: 
         | A JSON file containing the information of the resource to remove from the swarm.
         pre.prettyprint.language-javascript.
           {
@@ -113,13 +113,13 @@ html(lang='en')
               "type": "consumer"
           }
 
-        strong Usage:
+        strong Usage: 
         | Create a JSON file with the name
         code remove_resource.json
-        | and matching the above format. Then execute:
+        | and matching the above format. Then execute: 
         pre.prettyprint.language-javascript.
           curl -X DELETE -d@remove_resource.json --header "x-bugswarmapikey: 911cbc244827dba9c6dbdd09aff3e5e8fe5eee02" --header "content-type: application/json" http://api.bugswarm.net/swarms/a16fb1d896817c58d4f4be9dea51e74b86519579          
-        strong Returns:
+        strong Returns: 
         a(href='http_response_codes.html') HTTP Response Codes
         br
         br
@@ -129,30 +129,30 @@ html(lang='en')
           .span8.columns
             ul.unstyled
               li
-                strong URL:
+                strong URL: 
                 code http://api.bugswarm.net/swarms/SWARM_ID/resources
                 li
-                  strong Method:
+                  strong Method: 
                   | GET
                 li
-                  strong Headers:
+                  strong Headers: 
                   br
                   code "x-bugswarmapikey: ${API_KEY}"
                   li
-                    strong Parameters (Required):
+                    strong Parameters (Required): 
                     | None
                   li
-                    strong Parameters (Optional):
+                    strong Parameters (Optional): 
                     | Resource type
           .span8.columns
             p
               | Users may list the resources that are members of a given swarm. The list will
               | print each resource and its swarm-relevant
               | information in JSON format.
-        strong Usage:
+        strong Usage: 
         pre.prettyprint.language-javascript.
           curl -X GET -d@remove_resource.json --header "x-bugswarmapikey: 911cbc244827dba9c6dbdd09aff3e5e8fe5eee02" --header "content-type: application/json" http://api.bugswarm.net/swarms/a16fb1d896817c58d4f4be9dea51e74b86519579/resources          
-        strong Returns:
+        strong Returns: 
         | A list of resources in JSON format and their swarm-relevant information.
         pre.prettyprint.language-javascript.
           [

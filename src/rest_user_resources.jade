@@ -29,23 +29,23 @@ html(lang='en')
           .span8.columns
             ul.unstyled
               li
-                strong URL:
+                strong URL: 
                 code http://api.bugswarm.net/resources
                 li
-                  strong Method:
+                  strong Method: 
                   | POST
                 li
-                  strong Headers:
+                  strong Headers: 
                   br
                   code "x-bugswarmapikey: ${API_KEY}"
                   ,
                   br
                   code "content-type: application/json"
                 li
-                  strong Parameters (Required):
+                  strong Parameters (Required): 
                   | None
                 li
-                  strong Parameters (Optional):
+                  strong Parameters (Optional): 
                   | None
           .span8.columns
             p
@@ -56,7 +56,7 @@ html(lang='en')
               | that resource to the swarm. Creating a resource involves passing a JSON file
               | containing the
               | configuration of the resource as a header.
-        strong Body:
+        strong Body: 
         | The "id", "name", and "machine_type" fields are
         strong required
         | . The "description" and "position" fields are
@@ -73,13 +73,13 @@ html(lang='en')
                               "latitude": 0
                           }
           }
-        strong Usage:
+        strong Usage: 
         | Create a JSON file with the name
         code create_resource.json
-        | and matching the above format. Then execute:
+        | and matching the above format. Then execute: 
         pre.prettyprint.language-javascript.
           curl -X POST -d@create_resource.json --header "x-bugswarmapikey: 911cbc244827dba9c6dbdd09aff3e5e8fe5eee02" --header "content-type: application/json" http://api.bugswarm.net/resources          
-        strong Returns:
+        strong Returns: 
         a(href='http_response_codes.html') HTTP Response Codes
         br
         br
@@ -89,30 +89,30 @@ html(lang='en')
           .span8.columns
             ul.unstyled
               li
-                strong URL:
+                strong URL: 
                 code http://api.bugswarm.net/resources/RESOURCE_ID
                 li
-                  strong Method:
+                  strong Method: 
                   | PUT
                 li
-                  strong Headers:
+                  strong Headers: 
                   br
                   code "x-bugswarmapikey: ${API_KEY}",
                   ,
                   br
                   code "content-type: application/json"
                   li
-                    strong Parameters (Required):
+                    strong Parameters (Required): 
                     | None
                   li
-                    strong Parameters (Optional):
+                    strong Parameters (Optional): 
                     | None
           .span8.columns
             p
               | Resources belonging to a given user can have some of their information updated
               | after creation. Updating a resource involves
               | passing a JSON file containing the fields that the user wishes to update.
-        strong Body:
+        strong Body: 
         | All fields are
         strong optional
         | .
@@ -126,13 +126,13 @@ html(lang='en')
                               "latitude": 1
                           }
           }
-        strong Usage:
+        strong Usage: 
         | Create a JSON file with the name
         code update_resource.json
-        | and matching the above format. Then execute:
+        | and matching the above format. Then execute: 
         pre.prettyprint.language-javascript.
           curl -X PUT -d@update_resource.json --header "x-bugswarmapikey: 911cbc244827dba9c6dbdd09aff3e5e8fe5eee02" --header "content-type: application/json" http://api.bugswarm.net/resources/RESOURCE_ID
-        strong Returns:
+        strong Returns: 
         a(href='http_response_codes.html') HTTP Response Codes
         br
         br
@@ -142,19 +142,19 @@ html(lang='en')
           .span8.columns
             ul.unstyled
               li
-                strong URL:
+                strong URL: 
                 code http://api.bugswarm.net/resources/RESOURCE_ID
                 li
-                  strong Method:
+                  strong Method: 
                   | DELETE
                 li
-                  strong Headers:
+                  strong Headers: 
                   code "x-bugswarmapikey: ${API_KEY}"
                   li
-                    strong Parameters (Required):
+                    strong Parameters (Required): 
                     | None
                   li
-                    strong Parameters (Optional):
+                    strong Parameters (Optional): 
                     | None
           .span8.columns
             p
@@ -162,10 +162,10 @@ html(lang='en')
               | account and any swarms of which it is a member.
               | The method uses the unique resource id specified in the URL to determine which
               | resource to destroy.
-        strong Usage:
+        strong Usage: 
         pre.prettyprint.language-javascript.
           curl -X DELETE --header "x-bugswarmapikey: 911cbc244827dba9c6dbdd09aff3e5e8fe5eee02" http://api.bugswarm.net/resources/RESOURCE_ID          
-        strong Returns:
+        strong Returns: 
         a(href='http_response_codes.html') HTTP Response Codes
         br
         br
@@ -175,20 +175,20 @@ html(lang='en')
           .span8.columns
             ul.unstyled
               li
-                strong URL:
+                strong URL: 
                 code http://api.bugswarm.net/resources
                 li
-                  strong Method:
+                  strong Method: 
                   | GET
                 li
-                  strong Headers:
+                  strong Headers: 
                   br
                   code "x-bugswarmapikey: ${API_KEY}"
                   li
-                    strong Parameters (Required):
+                    strong Parameters (Required): 
                     | None
                   li
-                    strong Parameters (Optional):
+                    strong Parameters (Optional): 
                     | Resource type
           .span8.columns
             p
@@ -196,12 +196,12 @@ html(lang='en')
               | the option of specifying whether they would like to
               | list all resources, only producers, or only consumers. The option can be passed
               | into the url as seen below.
-        strong Usage:
+        strong Usage: 
         pre.prettyprint.language-javascript.
           curl -X GET --header "x-bugswarmapikey: 911cbc244827dba9c6dbdd09aff3e5e8fe5eee02" http://api.bugswarm.net/resources
           curl -X GET --header "x-bugswarmapikey: 911cbc244827dba9c6dbdd09aff3e5e8fe5eee02" http://api.bugswarm.net/resources?type=producer
           curl -X GET --header "x-bugswarmapikey: 911cbc244827dba9c6dbdd09aff3e5e8fe5eee02" http://api.bugswarm.net/resources?type=consumer
-        strong Returns:
+        strong Returns: 
         | A list of resources in JSON format.
         pre.prettyprint.language-javascript.
           [
@@ -232,20 +232,20 @@ html(lang='en')
           .span8.columns
             ul.unstyled
               li
-                strong URL:
+                strong URL: 
                 code http://api.bugswarm.net/resources/RESOURCE_ID
                 li
-                  strong Method:
+                  strong Method: 
                   | GET
                 li
-                  strong Headers:
+                  strong Headers: 
                   br
                   code "x-bugswarmapikey: ${API_KEY}"
                   li
-                    strong Parameters (Required):
+                    strong Parameters (Required): 
                     | None
                   li
-                    strong Parameters (Optional):
+                    strong Parameters (Optional): 
                     | None
           .span8.columns
             p
@@ -254,10 +254,10 @@ html(lang='en')
               | includes the resource's name, the date of resource creation, and several other
               | fields. This method returns this information in JSON
               | format.
-        strong Usage:
+        strong Usage: 
         pre.prettyprint.language-javascript.
           curl -X GET --header "x-bugswarmapikey: 911cbc244827dba9c6dbdd09aff3e5e8fe5eee02" http://api.bugswarm.net/resources/RESOURCE_ID
-        strong Returns:
+        strong Returns: 
         | A resource in JSON format.
         pre.prettyprint.language-javascript.
           {
@@ -276,20 +276,20 @@ html(lang='en')
           .span8.columns
             ul.unstyled
               li
-                strong URL:
+                strong URL: 
                 code http://api.bugswarm.net/resources/RESOURCE_ID/swarms
                 li
-                  strong Method:
+                  strong Method: 
                   | GET
                 li
-                  strong Headers:
+                  strong Headers: 
                   br
                   code "x-bugswarmapikey: ${API_KEY}"
                   li
-                    strong Parameters (Required):
+                    strong Parameters (Required): 
                     | None
                   li
-                    strong Parameters (Optional):
+                    strong Parameters (Optional): 
                     | None
           .span8.columns
             p
@@ -299,10 +299,10 @@ html(lang='en')
               | a unique resource ID and lists all of the swarms of which that resource is a
               | member. A JSON representation of
               | the swarm(s) and their resources is printed.
-        strong Usage:
+        strong Usage: 
         pre.prettyprint.language-javascript.
           curl -X GET --header "x-bugswarmapikey: 911cbc244827dba9c6dbdd09aff3e5e8fe5eee02" http://api.bugswarm.net/resources/RESOURCE_ID/swarms
-        strong Returns:
+        strong Returns: 
         | A list of swarms that the given resource is a member of in JSON format.
         pre.prettyprint.language-javascript.
           [

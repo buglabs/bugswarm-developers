@@ -28,23 +28,23 @@ html(lang='en')
           .span8.columns
             ul.unstyled
               li
-                strong URL:
+                strong URL: 
                 code http://api.bugswarm.net/swarms
                 li
-                  strong Method:
+                  strong Method: 
                   | POST
                 li
-                  strong Headers:
+                  strong Headers: 
                   br
                   code "x-bugswarmapikey: ${API_KEY}"
                   ,
                   br
                   code "content-type: application/json"
                 li
-                  strong Parameters (Required):
+                  strong Parameters (Required): 
                   | None
                 li
-                  strong Parameters (Optional):
+                  strong Parameters (Optional): 
                   | None
           .span8.columns
             p
@@ -55,7 +55,7 @@ html(lang='en')
               | of a swarm. Once a swarm is created, users can then
               a(href='rest_swarm_resources.html#add') add
               | resources to it.
-        strong Body:
+        strong Body: 
         | The "name" and "description" fields are
         strong required
         | . The "public" field is
@@ -67,13 +67,13 @@ html(lang='en')
               "description": "My Swarm Description",
               "public": false
           }
-        strong Usage:
+        strong Usage: 
         | Create a JSON file with the name
         code create_swarm.json
-        | and matching the above format. Then execute:
+        | and matching the above format. Then execute: 
         pre.prettyprint.language-javascript.
           curl -X POST -d@create_swarm.json --header "x-bugswarmapikey: 911cbc244827dba9c6dbdd09aff3e5e8fe5eee02" --header "content-type: application/json" http://api.bugswarm.net/swarms
-        strong Returns:
+        strong Returns: 
         | The created swarm and its unique ID in JSON format.
         pre.prettyprint.language-javascript.
           {
@@ -85,30 +85,30 @@ html(lang='en')
           .span8.columns
             ul.unstyled
               li
-                strong URL:
+                strong URL: 
                 code http://api.bugswarm.net/swarms/SWARM_ID
                 li
-                  strong Method:
+                  strong Method: 
                   | PUT
                 li
-                  strong Headers:
+                  strong Headers: 
                   br
                   code "x-bugswarmapikey: ${API_KEY}"
                   ,
                   br
                   code "content-type: application/json"
                 li
-                  strong Parameters (Required):
+                  strong Parameters (Required): 
                   | None
                 li
-                  strong Parameters (Optional):
+                  strong Parameters (Optional): 
                   | None
           .span8.columns
             p
               | Swarms belonging to a given user can have some of their information updated after
               | creation. Updating a swarm involves
               | passing a JSON file containing the fields that the user wishes to update.
-        strong Body:
+        strong Body: 
         | All fields are
         strong optional
         | .
@@ -117,13 +117,13 @@ html(lang='en')
               "description": "My Swarm description updated",
               "public": true
           }
-        strong Usage:
+        strong Usage: 
         | Create a JSON file with the name
         code update_swarm.json
-        | and matching the above format. Then execute:
+        | and matching the above format. Then execute: 
         pre.prettyprint.language-javascript.
           curl -X PUT -d@update_swarm.json --header "x-bugswarmapikey: 911cbc244827dba9c6dbdd09aff3e5e8fe5eee02" --header "content-type: application/json" http://api.bugswarm.net/swarms/a16fb1d896817c58d4f4be9dea51e74b86519579          
-        strong Returns:
+        strong Returns: 
         a(href='http_response_codes.html') HTTP Response Codes
         br
         br
@@ -133,29 +133,29 @@ html(lang='en')
           .span8.columns
             ul.unstyled
               li
-                strong URL:
+                strong URL: 
                 code http://api.bugswarm.net/swarms/SWARM_ID
                 li
-                  strong Method:
+                  strong Method: 
                   | DELETE
                 li
-                  strong Headers:
+                  strong Headers: 
                   code "x-bugswarmapikey: ${API_KEY}"
                   li
-                    strong Parameters (Required):
+                    strong Parameters (Required): 
                     | None
                   li
-                    strong Parameters (Optional):
+                    strong Parameters (Optional): 
                     | None
           .span8.columns
             p
               | Destroy a swarm. Destroying a swarm removes it completely from the user account.
               | The method uses the unique swarm id specified in the URL to determine which swarm
               | to destroy.
-        strong Usage:
+        strong Usage: 
         pre.prettyprint.language-javascript.
           \ncurl -X DELETE --header "x-bugswarmapikey: 911cbc244827dba9c6dbdd09aff3e5e8fe5eee02" http://api.bugswarm.net/swarms/a16fb1d896817c58d4f4be9dea51e74b86519579          
-        strong Returns:
+        strong Returns: 
         a(href='http_response_codes.html') HTTP Response Codes
         br
         br
@@ -166,29 +166,29 @@ html(lang='en')
           .span8.columns
             ul.unstyled
               li
-                strong URL:
+                strong URL: 
                 code http://api.bugswarm.net/swarms
                 li
-                  strong Method:
+                  strong Method: 
                   | GET
                 li
-                  strong Headers:
+                  strong Headers: 
                   br
                   code "x-bugswarmapikey: ${API_KEY}"
                   li
-                    strong Parameters (Required):
+                    strong Parameters (Required): 
                     | None
                   li
-                    strong Parameters (Optional):
+                    strong Parameters (Optional): 
                     | Resource type
           .span8.columns
             p
               | List all of the swarms owned by the user. Each listed swarm will also contain the
               | resources that are a member of that swarm.
-        strong Usage:
+        strong Usage: 
         pre.prettyprint.language-javascript.
           curl -X GET --header "x-bugswarmapikey: 911cbc244827dba9c6dbdd09aff3e5e8fe5eee02" http://api.bugswarm.net/swarms
-        strong Returns:
+        strong Returns: 
         | A list of swarms in JSON format.
         pre.prettyprint.language-javascript.
           [
@@ -226,20 +226,20 @@ html(lang='en')
           .span8.columns
             ul.unstyled
               li
-                strong URL:
+                strong URL: 
                 code http://api.bugswarm.net/swarms/${SWARM_ID}
                 li
-                  strong Method:
+                  strong Method: 
                   | GET
                 li
-                  strong Headers:
+                  strong Headers: 
                   br
                   code "x-bugswarmapikey: ${API_KEY}"
                   li
-                    strong Parameters (Required):
+                    strong Parameters (Required): 
                     | None
                   li
-                    strong Parameters (Optional):
+                    strong Parameters (Optional): 
                     | None
           .span8.columns
             p
@@ -248,10 +248,10 @@ html(lang='en')
               | This method retrieves that information for a given swarm and prints it in JSON
               | format. The ID of the swarm to retrieve the information from
               | is given in the URL.
-        strong Usage:
+        strong Usage: 
         pre.prettyprint.language-javascript.
           curl -X GET --header "x-bugswarmapikey: 911cbc244827dba9c6dbdd09aff3e5e8fe5eee02" http://api.bugswarm.net/swarms/a16fb1d896817c58d4f4be9dea51e74b86519579
-        strong Returns:
+        strong Returns: 
         | A swarm in JSON format with its contained resources.
         pre.prettyprint.language-javascript.
           [
