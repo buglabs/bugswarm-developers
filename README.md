@@ -1,6 +1,6 @@
 Installation
 ------------
-    
+
   In order to set up the developer portal to run locally for testing purposes, follow the steps below.
 
     git clone git@github.com:buglabs/bugswarm-developers.git
