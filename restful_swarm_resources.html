@@ -46,7 +46,7 @@ user account. To perform this action, use the
 </li><li><strong>Parameters (Optional): </strong>Resource type
 </li></li></li></ul></div><div class="span8 columns"><p>Users may list the resources that are members of a given swarm. The list will
 print each resource and its swarm-relevant information in JSON format.
-</p></div></div><!-- usage--><strong>Usage: </strong><pre class="prettyprint language-javascript">curl -X GET -d@remove_resource.json --header &quot;x-bugswarmapikey: 911cbc244827dba9c6dbdd09aff3e5e8fe5eee02&quot; --header &quot;content-type: application/json&quot; http://api.bugswarm.net/swarms/a16fb1d896817c58d4f4be9dea51e74b86519579/resources          
+</p></div></div><!-- usage--><strong>Usage: </strong><pre class="prettyprint language-javascript">curl -X GET --header &quot;x-bugswarmapikey: 911cbc244827dba9c6dbdd09aff3e5e8fe5eee02&quot; http://api.bugswarm.net/swarms/a16fb1d896817c58d4f4be9dea51e74b86519579/resources          
 
 </pre><!-- returns --><strong>Returns: </strong>A list of resources in JSON format and their swarm-relevant information.
 <pre class="prettyprint language-javascript">[
