@@ -3,14 +3,11 @@ Installation
 
     git submodule init
     git submodule update
-    npm install jade
-    cd src
-    jade *jade --out ../
+    npm install
 
-Contribution / Style Guide
---------------------------
+Contributing
+------------
 
-  Fork, make your changes in `src/`, regenerate and test the docs, then submit a pull request.
-  Do not submit a pull request with the regenerated docs, only the source files.
+  Fork, make your changes, run `npm test` to test those changes, and submit a pull request with ONLY the source files.
 
   Please use consistent language. Wherever there is ambiguity, use the conventions found on wikipedia (RESTful, real-time, etc...)

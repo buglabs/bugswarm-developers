@@ -1,0 +1,11 @@
+{ "name" : "bugswarm-developers"
+, "description" : "source for developer.bugswarm.net"
+, "version" : "0.0.1"
+, "dependencies" :
+    { "jade": "0.15.x" }
+, "engines": "node >= 0.4.10"
+, "scripts":
+  { "start": "open index.html"
+  , "install": "cd src; jade -o '{ filename: \".\" }' -O ../ *jade; cd .."
+  , "test": "cd src; jade -o '{ filename: \".\" }' -O ../ *jade; cd ..; open index.html" }
+}
