@@ -12,9 +12,10 @@ Installation
 Contribution
 ------------
 
-  In order to contribute to the developer portal, fork the repository, make your changes, and run `npm test` to 
-  generate new html files in order to view and test those changes locally. When you are satisfied with your changes,
-  submit a pull request with ONLY the source jade files.
+  In order to contribute to the developer portal, fork the repository, make your changes, and run `npm test` 
+  **with root priveledges** from the root of the repository to generate new html files in order to view and 
+  test those changes locally. When you are satisfied with your changes, submit a pull request with ONLY the
+  source jade files.
 
-  **Note:** When contributing, please reference the [wiki](https://github.com/buglabs/bugswarm-developers/wiki) and
-  make an effort to use consistent language and grammar. Thank you!
+  **Note:** When contributing, please reference the [wiki](https://github.com/buglabs/bugswarm-developers/wiki) 
+  and make an effort to use consistent language and grammar. Thank you!
