@@ -4,12 +4,12 @@ $(document).ready(function(){
 	prettyPrint();
 
 	// Dropdown mouseover
-	$(".dropdown").mouseover(function () {
-		$(".dropdown").toggleClass('open');
+	$(".nav-dropdown").mouseover(function () {
+		$(".nav-dropdown").toggleClass('open');
 	});
 
-	$(".dropdown").mouseout(function () {
-		$(".dropdown").toggleClass('open');
+	$(".nav-dropdown").mouseout(function () {
+		$(".nav-dropdown").toggleClass('open');
 	});
 
 });

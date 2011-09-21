@@ -1,16 +1,15 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><title>BUGswarm API, from Bug Labs</title><link rel="stylesheet" type="text/css" href="assets/bootstrap/bootstrap.css"><link rel="stylesheet" type="text/css" href="assets/css/this.css"><link rel="stylesheet" type="text/css" href="assets/js/google-code-prettify/prettify.css"><script src="http://code.jquery.com/jquery-1.5.2.js"></script><script src="assets/js/google-code-prettify/prettify.js"></script><script src="assets/js/application.js"></script></head><body><div class="topbar"><div class="topbar-inner"><div class="container"><a href="http://developer.bugswarm.net" class="brand">BUGswarm Developers</a><ul class="nav"><li><a href="http://developer.bugswarm.net">Home</a></li><li class="dropdown"><a href="documentation.html" class="dropdown-toggle">Documentation</a><ul class="dropdown-menu"><li><a href="rest_api.html">REST API</a></li><li><a href="streaming_api.html">Streaming API</a></li></ul></li></ul></div></div></div><div class="container-fluid"><div class="sidebar"><ul><li><h5><a href="#add">Create</a></h5></li><li><h5><a href="#remove">Update</a></h5></li><li><h5><a href="#list">List</a></h5></li></ul></div><div class="content"><div class="page-header"><a href="index.html">Home</a> &rarr;
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><title>BUGswarm API, from Bug Labs</title><link rel="stylesheet" type="text/css" href="assets/bootstrap/bootstrap.css"><link rel="stylesheet" type="text/css" href="assets/css/this.css"><link rel="stylesheet" type="text/css" href="assets/js/google-code-prettify/prettify.css"><script src="http://code.jquery.com/jquery-1.5.2.js"></script><script src="assets/js/google-code-prettify/prettify.js"></script><script src="assets/js/application.js"></script></head><body><!-- NAVIGATION--><div class="topbar"><div class="topbar-inner"><div class="container"><h3><a href="http://developer.bugswarm.net">BUGswarm Developers</a></h3><ul class="nav"><li><a href="http://developer.bugswarm.net">Home</a></li><li data-dropdown="dropdown" class="dropdown nav-dropdown"><a href="documentation.html" class="dropdown-toggle">Documentation</a><ul class="dropdown-menu"><li><a href="rest_api.html">RESTful API</a></li><li><a href="streaming_api.html">Streaming API</a></li></ul></li></ul></div></div></div><!-- CONTAINER--><div class="container-fluid"><!-- SIDEBAR--><div class="sidebar"><strong>Jump to:</strong><ul class="unstyled"><li><h5><a href="#add">Add</a></h5></li><li><h5><a href="#remove">Remove</a></h5></li><li><h5><a href="#list">List</a></h5></li></ul></div><!-- CONTENT--><div class="content"><!-- Path--><div class="page-header"><a href="index.html">Home</a> &rarr;
 <a href="documentation.html">Documentation</a> &rarr;
-<a href="rest_api.html">REST API</a></div><h1>Swarm Resources</h1><p>Configure the resources in your swarms with the REST API.
-</p><div class="page-header"></div><h3 id="add">Add</h3><div class="row"><div class="span8 columns"><ul class="unstyled"><li><strong>URL: </strong><code>http://api.bugswarm.net/swarms/SWARM_ID</code><li><strong>Method: </strong>POST
+<a href="rest_api.html">REST API</a></div><!-- Header--><h1>Swarm Resources</h1><p>Configure the resources in your swarms with the REST API.
+</p><div class="page-header"></div><!-- Add--><h3 id="add">Add</h3><!-- description--><div class="row"><div class="span8 columns"><ul class="unstyled"><li><strong>URL: </strong><code>http://api.bugswarm.net/swarms/SWARM_ID</code><li><strong>Method: </strong>POST
 </li><li><strong>Headers: </strong><br><code>"x-bugswarmapikey: ${API_KEY}"</code><br><code>"content-type: application/json"</code><li><strong>Parameters (Required): </strong>None
 </li><li><strong>Parameters (Optional): </strong>None
 </li></li></li></ul></div><div class="span8 columns"><p>Each swarm is owned by a given user and can be configured to contain resources.
-Swarms can contain the resources of many members.
-This method adds a resource to a given swarm. The method passes a JSON file
-containing the swarm-relevant information regarding the
-resource to add. The "type" field passed in the JSON refers to whether the
-resource with be a producer or a consumer.
-</p></div></div><strong>Body: </strong>A JSON file containing the information of the resource to add that is relevant to
+Swarms can contain the resources of many members. This method adds a resource 
+to a given swarm. The method passes a JSON file containing the swarm-relevant 
+information regarding the resource to add. The "type" field passed in the JSON 
+refers to whether the resource with be a producer or a consumer.
+</p></div></div><!-- body --><strong>Body: </strong>A JSON file containing the information of the resource to add that is relevant to
 the context of a swarm.
 <pre class="prettyprint language-javascript">{
     &quot;user_id&quot;: &quot;username&quot;,
@@ -18,37 +17,38 @@ the context of a swarm.
     &quot;type&quot;: &quot;consumer&quot;
 }
 
-</pre><strong>Usage: </strong>Create a JSON file with the name
+</pre><!-- usage--><strong>Usage: </strong>Create a JSON file with the name
 <code>add_resource.json</code>and matching the above format. Then execute: 
 <pre class="prettyprint language-javascript">curl -X POST -d@add_resource.json --header &quot;x-bugswarmapikey: 911cbc244827dba9c6dbdd09aff3e5e8fe5eee02&quot; --header &quot;content-type: application/json&quot; http://api.bugswarm.net/swarms/a16fb1d896817c58d4f4be9dea51e74b86519579          
-</pre><strong>Returns: </strong><a href="http_response_codes.html">HTTP Response Codes</a><br><br><div class="page-header"></div><h3 id="remove">Remove</h3><div class="row"><div class="span8 columns"><ul class="unstyled"><li><strong>URL: </strong><code>http://api.bugswarm.net/swarms/SWARM_ID</code><li><strong>Method: </strong>DELETE
+
+</pre><!-- returns--><strong>Returns: </strong><a href="http_response_codes.html">HTTP Response Codes</a><br><br><div class="page-header"></div><!-- Remove--><h3 id="remove">Remove</h3><!-- description--><div class="row"><div class="span8 columns"><ul class="unstyled"><li><strong>URL: </strong><code>http://api.bugswarm.net/swarms/SWARM_ID</code><li><strong>Method: </strong>DELETE
 </li><li><strong>Headers: </strong><br><code>"x-bugswarmapikey: ${API_KEY}",</code><br><code>"content-type: application/json"</code><li><strong>Parameters (Required): </strong>None
 </li><li><strong>Parameters (Optional): </strong>None
 </li></li></li></ul></div><div class="span8 columns"><p>Each swarm is owned by a given user and can be configured to contain resources.
-Swarms can contain the resources of many members.
-This method removes a resource from a given swarm. The method passes a JSON file
-containing the information regarding the
+Swarms can contain the resources of many members. This method removes a resource 
+from a given swarm. The method passes a JSON file containing the information regarding the
 resource to remove. Removing a resource from a swarm does not remove it from the
 user account. To perform this action, use the
 <a href="rest_user_resources.html#destroy">Destroy</a> method for user resources.
-</p></div></div><strong>Body: </strong>A JSON file containing the information of the resource to remove from the swarm.
+</p></div></div><!-- body--><strong>Body: </strong>A JSON file containing the information of the resource to remove from the swarm.
 <pre class="prettyprint language-javascript">{
     &quot;user_id&quot;: &quot;username&quot;,
     &quot;resource&quot;: &quot;My Resource id&quot;,
     &quot;type&quot;: &quot;consumer&quot;
 }
 
-</pre><strong>Usage: </strong>Create a JSON file with the name
+</pre><!-- usage--><strong>Usage: </strong>Create a JSON file with the name
 <code>remove_resource.json</code>and matching the above format. Then execute: 
 <pre class="prettyprint language-javascript">curl -X DELETE -d@remove_resource.json --header &quot;x-bugswarmapikey: 911cbc244827dba9c6dbdd09aff3e5e8fe5eee02&quot; --header &quot;content-type: application/json&quot; http://api.bugswarm.net/swarms/a16fb1d896817c58d4f4be9dea51e74b86519579          
-</pre><strong>Returns: </strong><a href="http_response_codes.html">HTTP Response Codes</a><br><br><div class="page-header"></div><h3 id="list">List</h3><div class="row"><div class="span8 columns"><ul class="unstyled"><li><strong>URL: </strong><code>http://api.bugswarm.net/swarms/SWARM_ID/resources</code><li><strong>Method: </strong>GET
+
+</pre><!-- returns--><strong>Returns: </strong><a href="http_response_codes.html">HTTP Response Codes</a><br><br><div class="page-header"></div><!-- List--><h3 id="list">List</h3><!-- description--><div class="row"><div class="span8 columns"><ul class="unstyled"><li><strong>URL: </strong><code>http://api.bugswarm.net/swarms/SWARM_ID/resources</code><li><strong>Method: </strong>GET
 </li><li><strong>Headers: </strong><br><code>"x-bugswarmapikey: ${API_KEY}"</code><li><strong>Parameters (Required): </strong>None
 </li><li><strong>Parameters (Optional): </strong>Resource type
 </li></li></li></ul></div><div class="span8 columns"><p>Users may list the resources that are members of a given swarm. The list will
-print each resource and its swarm-relevant
-information in JSON format.
-</p></div></div><strong>Usage: </strong><pre class="prettyprint language-javascript">curl -X GET -d@remove_resource.json --header &quot;x-bugswarmapikey: 911cbc244827dba9c6dbdd09aff3e5e8fe5eee02&quot; --header &quot;content-type: application/json&quot; http://api.bugswarm.net/swarms/a16fb1d896817c58d4f4be9dea51e74b86519579/resources          
-</pre><strong>Returns: </strong>A list of resources in JSON format and their swarm-relevant information.
+print each resource and its swarm-relevant information in JSON format.
+</p></div></div><!-- usage--><strong>Usage: </strong><pre class="prettyprint language-javascript">curl -X GET -d@remove_resource.json --header &quot;x-bugswarmapikey: 911cbc244827dba9c6dbdd09aff3e5e8fe5eee02&quot; --header &quot;content-type: application/json&quot; http://api.bugswarm.net/swarms/a16fb1d896817c58d4f4be9dea51e74b86519579/resources          
+
+</pre><!-- returns --><strong>Returns: </strong>A list of resources in JSON format and their swarm-relevant information.
 <pre class="prettyprint language-javascript">[
     {
         &quot;_id&quot;: &quot;4e5bf5c8cc1fdb597000005b&quot;,
@@ -67,5 +67,4 @@ information in JSON format.
         &quot;user_id&quot;: &quot;username&quot;
     }
 ]
-
 </pre><div class="page-header"></div></div></div></body></html>

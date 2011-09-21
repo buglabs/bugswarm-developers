@@ -2,38 +2,48 @@
 html(lang='en')
   head
     include includes/assets
+  
   body
+    
+    // NAVIGATION
     include includes/navigation
+    
+    // CONTENT
     .container
+      
+      // Path
       .page-header
         a(href='index.html') Home
 
+      // Header
       h1 Documentation
       p
-        | These pages contain all of the information needed to get started on BUGswarm development.
-        | We are always looking for ways to improve upon the way we
-        | support our users and document our products. If you have any questions, comments,
-        | or concerns,
-        | please feel free to
-        a(href='#') Contact Us
-      h3 API Libraries
-      p
-        | BUGswarm makes use of two primary APIs for configuring and participating in swarms: 
-        .row
-          .span8
-            h3: a(href='rest_api.html') REST API
-            p
-              | BUGswarm uses a RESTful (Representational State Transfer) API for configuring swarms
-              | and their resources.
-              | This API is used for creating and destroying swarms and resources,
-              | adding and removing resources from swarms, and generating API keys.
-              | The REST API is different from the Streaming API, though they both are exposed over HTTP.
-              | For each method call in the REST API, connections are closed after HTTP requests are processed.
-          .span8
-            h3: a(href='streaming_api.html') Streaming API
-            p
-              | The BUGswarm Streaming API is used by users and resources to participate in a
-              | configured swarm. It is used for producing and consuming information from a swarm.
-              | The Streaming API uses HTTP requests, but
-              strong is not RESTful
-              | . For each method call in the Streaming API, connections remain open while HTTP requests are processed
+        | BUGswarm is fast, easy, and simple to use. Developers can configure swarms and resources and begin sharing information
+        | in a matter of minutes. This documentation contains all of the information needed to begin developing on the platform.
+
+      // API Libraries
+      .page-header
+        h3 API Libraries
+        p
+          | BUGswarm makes use of two primary APIs for configuring and participating in swarms. 
+      .row
+        .span8
+          h3
+            a(href='restful_api.html') RESTful API 
+            small Configure swarms and resources
+          p
+            | BUGswarm uses a RESTful (Representational State Transfer) API for configuring swarms
+            | and their resources. This API is used for creating and destroying swarms and resources,
+            | adding and removing resources from swarms, and generating API keys.
+            | The RESTful API is different from the Streaming API, though they both are exposed over HTTP.
+            | For each method call in the RESTful API, connections are closed after HTTP requests are processed.
+        .span8
+          h3
+            a(href='streaming_api.html') Streaming API
+            small Participate in swarms
+          p
+            | The BUGswarm Streaming API is used by users and resources to participate in a
+            | configured swarm. It is used for producing and consuming information from a swarm.
+            | The Streaming API uses HTTP requests, but
+            strong is not RESTful
+            | . For each method call in the Streaming API, connections remain open while HTTP requests are processed.

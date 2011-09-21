@@ -2,55 +2,56 @@
 html(lang='en')
   head
     include includes/assets
+
   body
+ 
+    // NAVIGATION
     include includes/navigation
-    header#overview.jumbotron.masthead
-      .inner
-        .container
-          h1 Welcome to BUGswarm
-          p.lead
-            | BUGswarm teaches devices how to speak the language you know. Organize both
-            | hardware and software in swarms, and listen in on the conversation.
-            | It includes javascript and
-            a(href='http://buglabs.net') BUGbase
-            |  libraries to get up and running as quickly as possible.
-            br
-    .container
-      section#about
-        .page-header
-          h1
-            | About BUGswarm
-            small Features, introduction and support
-        .row
-          .span-one-third
-            h3 Presence
-            p
-              | Our messaging platform is one of the few that support real-time presence
-              | notifications that work much like a chat room.
-          .span-one-third
-            h3 Standards
-            p
-              | We expose a RESTful web service that supports real-time communications and
-              | streaming.
-          .span-one-third
-            h3 What's included
-            p
-              | Native libraries exist for javascript and the BUG series of hardware, with
-              | planned support for arduino, android, and whatever else the community challenges
-              | us to come up with.
-      h1
-        | Developer Preview
-        small Signup for October 11
-      p
-        | Sign up for our developer preview to help provide feedback and turn BUGswarm into
-        | the platform you love to use.
+    
+    // MASTHEAD
+    .masthead
       .container
-        form#mc-embedded-subscribe-form.validate(action='http://bugswarm.us2.list-manage.com/subscribe/post?u=876a1af227de66fbb5520a055&id=5e569d1e96', method='post', name='mc-embedded-subscribe-form')
-          fieldset
-            .clearfix
-              label(for='mce-EMAIL')
-                strong Email
-              .input
-                input#mce-EMAIL.xlarge.email(type='email', value='', name='EMAIL', placeholder='email address', size='30', required='required')
-              .actions
-                input#mc-embedded-subscribe.btn.primary(type='submit', value='Sign Up!')
+        h1 Welcome to BUGswarm
+        p
+          | A brand new M2M platform that gives your devices a voice on the internet. See what you can build with
+          | real-time communication between computers.
+    
+    // CONTENT        
+    .container
+      
+      // About
+      .page-header
+        h1
+          | About BUGswarm
+      .row
+        .span-one-third
+          h3 Presence
+          p
+            | BUGswarm is one of the few cloud messeging platforms that supports real-time presence
+            | of physical devices and web applications.
+        .span-one-third
+          h3 Get social
+          p
+            | Join your resources in another user's swarm or invite somebody else's resources to join yours.
+            | With BUGswarm, users can easily share each other's data and information.
+        .span-one-third
+          h3 What's included
+          p
+            | Configure groups of devices and web applications through the use of a RESTful API and watch them
+            | communicate with each other through the use of HTTP streaming.
+
+      // Developer Preview
+      form#mc-embedded-subscribe-form.validate.actions(action='http://bugswarm.us2.list-manage.com/subscribe/post?u=876a1af227de66fbb5520a055&id=5e569d1e96', method='post', name='mc-embedded-subscribe-form')
+        fieldset
+          legend
+            h2 
+              | Developer Preview
+              small October 11
+          .clearfix  
+            label(for='mce-EMAIL')
+              strong Email
+            .input
+              input#mce-EMAIL.xlarge.email(type='email', value='', name='EMAIL', placeholder='email address', size='30', required='required')
+              br
+              br
+              input#mc-embedded-subscribe.btn.primary(type='submit', value='Sign Up!')
