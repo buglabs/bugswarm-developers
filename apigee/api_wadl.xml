@@ -1,0 +1,49 @@
+<application xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+  xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+  xmlns:apigee="http://api.apigee.com/wadl/2010/07/" 
+  xmlns="http://wadl.dev.java.net/2009/02"
+  xsi:schemaLocation="http://wadl.dev.java.net/2009/02 http://apigee.com/schemas/wadl-schema.xsd http://api.apigee.com/wadl/2010/07/ http://apigee.com/schemas/apigee-wadl-extensions.xsd">
+
+  <resources base="http://api.bugswarm.net">
+
+    <resource path="resources">
+
+      <method id="create_resource" name="POST" apigee:displayName="Create">
+
+        <apigee:tags>
+          <apigee:tag primary="true">User Resources</apigee:tag>
+        </apigee:tags>
+
+        <apigee:authentication required="true"/>
+
+        <apigee:example url="/resources" />
+
+      </method>
+
+      <method id="list_user_resources" name="GET" apigee:displayName="List">
+
+        <apigee:tags>
+          <apigee:tag primary="true">User Resources</apigee:tag>
+        </apigee:tags>
+
+        <apigee:authentication required="true"/>
+
+        <apigee:example url="/resources" />
+      
+      </method>
+
+      <method id="get_resource_info" name="GET" apigee:displayName="Get Resource Info">
+        
+        <apigee:tags>
+          <apigee:tag primary="true">User Resources</apigee:tag>
+        </apigee:tags>
+
+        <apigee:authentication required="true"/>
+
+        <apigee:example url="/resources/{resource_id}" />
+    
+      </method>
+
+    </resource>
+  </resources>
+</application>
