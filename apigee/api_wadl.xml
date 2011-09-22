@@ -8,7 +8,7 @@
 
     <resource path="resources">
 
-      <method id="create_resource" name="POST" apigee:displayName="Create">
+      <method id="create_resource" name="POST" apigee:displayName="Create" apigee:mediaType="application/json">
 
         <apigee:tags>
           <apigee:tag primary="true">User Resources</apigee:tag>
