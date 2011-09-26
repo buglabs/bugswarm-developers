@@ -14,7 +14,7 @@ Contribution
 
   In order to contribute to the developer portal, fork the repository, make your changes, and run `npm test` to view those changes.
   When you are satisfied, submit a pull request for the master branch only.
-  After merging a pull request, run `npm run-script doc` to regenerate the docs and push to gh-pages.
+  After merging a pull request, run `npm test; npm run-script doc` to regenerate the docs. Check one more time and push to gh-pages.
 
   **Note:** When contributing, please reference the [wiki](https://github.com/buglabs/bugswarm-developers/wiki)
   and make an effort to use consistent language and grammar. Thank you!
