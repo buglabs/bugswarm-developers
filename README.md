@@ -23,9 +23,13 @@ Contributing
 
 Merging
 -------
+  Who does it: If you have push access then you allowed to respond to a pull request by merging the changes.
 
-  If you have push access, please run `npm test` first.
-  For convinience, there is `npm run-script doc` for automagically regenerating gh-pages.
+  What to do: Review the changes. If there is a problem, notify the user who requested the pull. If the changes are acceptable, merge the changes, review the merge in a browser, and push the changes to gh-pages.
+
+  When to do it: Do this whenever you receive a pull request.
+
+  How to do it: Run `npm test` and review the changes. When you are satisfied with the changes, run `npm run-script doc` to automagically regenerate gh-pages.
 
 [0]: https://github.com/buglabs/bugswarm-developers/wiki
 [1]: http://help.github.com/forking/
