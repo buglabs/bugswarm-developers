@@ -5,7 +5,9 @@
     { "jade": "0.15.x" }
 , "engines": "node >= 0.4.10"
 , "scripts":
-  { "start": "open index.html"
-  , "install": "cd src; jade -o '{ filename: \".\" }' -O ../ *jade; cd .."
-  , "test": "cd src; jade -o '{ filename: \".\" }' -O ../ *jade; cd ..; open index.html" }
+  { "postinstall": "grep tmp .gitignore || echo 'tmp' >> .gitignore; git checkout gh-pages && grep tmp .gitignore || echo 'tmp' >> .gitignore"
+  , "pretest": "rm -rf tmp; mkdir tmp"
+  , "test": "cd src; jade -o '{ filename: \".\" }' -O ../tmp *jade; cd .. && cp -av assets tmp; npm run-script open"
+  , "doc": "git checkout gh-pages; cd .; rm -rf assets *html && mv tmp/* . && git commit -a -m 'regenerated docs'; nm run-script open; echo git checkout master"
+  , "open": "[ $OSTYPE==darwin* ] && open index.html || xdg-open index.html" }
 }
