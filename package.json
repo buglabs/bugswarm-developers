@@ -7,7 +7,7 @@
 , "scripts":
   { "postinstall": "grep tmp .gitignore || echo 'tmp' >> .gitignore; git checkout gh-pages && grep tmp .gitignore || echo 'tmp' >> .gitignore"
   , "pretest": "rm -rf tmp; mkdir tmp"
-  , "test": "cd src; jade -o '{ filename: \".\" }' -O ../tmp *jade; cd .. && cp -av assets tmp; npm run-script open"
-  , "doc": "git checkout gh-pages; cd .; rm -rf assets *html && mv tmp/* . && git commit -a -m 'regenerated docs'; npm run-script open; echo git checkout master"
-  , "open": "[ $OSTYPE==darwin* ] && open index.html || xdg-open index.html" }
+  , "test": "cd src; jade -o '{ filename: \".\" }' -O ../tmp *jade; cd .. && cp -av assets tmp; npm run-script open-tmp"
+  , "doc": "git checkout gh-pages; cd .; rm -rf assets *html && mv tmp/* . && git commit -a -m 'regenerated docs'; echo file:///`pwd`/index.html; echo git checkout master"
+  , "open-tmp": "[ $OSTYPE==darwin* ] && open tmp/index.html || xdg-open tmp/index.html; echo file:///`pwd`/tmp/index.html" }
 }
