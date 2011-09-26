@@ -15,7 +15,7 @@ Contributing
   **Note:** When contributing, please reference the [wiki][0]
   and make an effort to use consistent language and grammar. Thank you!
 
-  1. [Fork][1] hub
+  1. [Fork][1] bugswarm-developers
   2. Create a topic branch - `git checkout -b my_branch`
   3. Test your changes with `npm test`
   4. Push to your branch - `git push origin my_branch`
