@@ -9,12 +9,23 @@ Installation
     git submodule update
     npm install
 
-Contribution
+Contributing
 ------------
-
-  In order to contribute to the developer portal, fork the repository, make your changes, and run `npm test` to view those changes.
-  When you are satisfied, submit a pull request for the master branch only.
-  After merging a pull request, run `npm test; npm run-script doc` to regenerate the docs. Check one more time and push to gh-pages.
 
   **Note:** When contributing, please reference the [wiki](https://github.com/buglabs/bugswarm-developers/wiki)
   and make an effort to use consistent language and grammar. Thank you!
+
+  1. [Fork][0] hub
+  2. Create a topic branch - `git checkout -b my_branch`
+  3. Test your changes with `npm test`
+  4. Push to your branch - `git push origin my_branch`
+  5. Create an [Issue][1] with a link to your branch
+
+Merging
+-------
+
+  If you have push access, please run `npm test` first
+  For convinience, there is `npm run-script doc` for automagically regenerating gh-pages
+
+[0]: http://help.github.com/forking/
+[1]: http://github.com/buglabs/bugswarm-developers/issues
