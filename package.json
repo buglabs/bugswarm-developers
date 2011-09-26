@@ -2,7 +2,8 @@
 , "description" : "source for developer.bugswarm.net"
 , "version" : "0.0.1"
 , "dependencies" :
-    { "jade": "0.15.x" }
+    { "jade": "0.15.x"
+    , "markdown-js": "0.0.x" }
 , "engines": "node >= 0.4.10"
 , "scripts":
   { "postinstall": "grep tmp .gitignore || echo 'tmp' >> .gitignore; git checkout gh-pages && grep tmp .gitignore || echo 'tmp' >> .gitignore"
