@@ -2,20 +2,52 @@
 html(lang='en')
   head
     include includes/assets
-  
+
   body
-    
-    // NAVIGATION
     include includes/navigation
-    
-    // CONTENT
+
     .container
-      
-      // Path
       .page-header
         a(href='index.html') Home
 
-      // Header
-      h1 Tutorial
-      p
-        | Coming soon.
+      :markdown
+        Let's say Prometheus and Bob have a shopping list for their brand new cave.
+        They both hunt in different jungles, and have a common set of supplies
+        needed for the winter:
+
+          * impala meat
+          * flint
+          * red vine fruit
+          * snakeskin
+
+        Last year both had made a similar list before hunting, but when they joined
+        up before winter found that both had found way too much impala meat and no
+        flint to cook it with!
+
+        This year, they have shiny new smartphones and decide to make a synced todo
+        list that can be checked at each hunter's convinience. The lists should update
+        silently to not scare away any impala.
+
+        Lets start with Bob's job - make the website:
+
+            <html>
+              <head>
+                <title>WINTER IS COMING</title>
+                <link ref="cdn.bugswarm.net/bugswarm-v0.js" />
+                <link ref="cdn.bugswarm.net/jquery-v1.6.js" />
+              </head>
+              <body>
+                <h1> What do we need? </h1>
+                <form>
+                  <input type='checkbox' name='impala_meat'/><label for='impala_meat'>impala meat</label>
+                  <br />
+                  <input type='text' placeholder='add an item' />
+                  <br />
+                  <input type='submit' />
+                </form>
+              </body>
+            </html>
+
+        So Bob might not win any design awards but he at least included the .js files for Prometheus.
+
+
