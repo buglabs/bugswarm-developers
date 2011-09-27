@@ -25,7 +25,7 @@ Merging
 -------
 
   For those with commit access, review [Managing Pull Requests][pull_requests] to understand how to merge a pull request.
-  If the reviewed pull request looks good, run `npm test; npm run-script doc` to automagically renerate gh-pages before a `git push`.
+  If the reviewed pull request looks good, run `npm test; npm run-script doc` to automagically regenerate gh-pages before a `git push`.
 
 [wiki]: https://github.com/buglabs/bugswarm-developers/wiki
 [forking]: http://help.github.com/forking/
