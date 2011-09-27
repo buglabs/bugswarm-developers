@@ -26,7 +26,7 @@ Merging
   If everything looks good after merging:
   
     npm test
-    npm run-script doc && git push
+    npm run-script doc && git push; git checkout master
 
 [wiki]: https://github.com/buglabs/bugswarm-developers/wiki
 [forking]: http://help.github.com/forking/
