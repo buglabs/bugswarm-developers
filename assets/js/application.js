@@ -1,15 +1,19 @@
-$(document).ready(function(){
+$(document).ready(function() {
 
-	// Google code prettify
-	prettyPrint();
+  // add prettyprint class to all <pre><code></code></pre> blocks
+  $("pre code").parent().each(function() {
+      $(this).addClass('prettyprint');
+  });
 
-	// Dropdown mouseover
-	$(".nav-dropdown").mouseover(function () {
-		$(".nav-dropdown").toggleClass('open');
-	});
+  // Instantiate prettyprint
+  prettyPrint();
 
-	$(".nav-dropdown").mouseout(function () {
-		$(".nav-dropdown").toggleClass('open');
-	});
+  // Dropdown mouseover
+  $(".nav-dropdown").mouseover(function () {
+    $(".nav-dropdown").toggleClass('open');
+  });
 
+  $(".nav-dropdown").mouseout(function () {
+    $(".nav-dropdown").toggleClass('open');
+  });
 });
