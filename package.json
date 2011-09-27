@@ -10,5 +10,5 @@
   , "pretest": "rm -rf tmp; mkdir tmp"
   , "test": "cd src; jade -o '{ filename: \".\" }' -O ../tmp *jade; cd .. && cp -a assets tmp; npm run-script open-tmp"
   , "doc": "git checkout gh-pages; cd .; rm -rf assets *html && mv tmp/* . && git commit -a -m 'regenerated docs'; echo file:///`pwd`/index.html; echo git checkout master"
-  , "open-tmp": "[[ $OSTYPE = darwin* ]] && open tmp/index.html || xdg-open tmp/index.html; echo file:///`pwd`/tmp/index.html" }
+  , "open-tmp": "[ \"$OSTYPE\" = \"linux-gnu\" ] && xdg-open tmp/index.html || open tmp/index.html; echo file:///`pwd`/tmp/index.html" }
 }
