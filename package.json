@@ -6,7 +6,7 @@
     , "markdown-js": "0.0.x" }
 , "engines": "node >= 0.4.10"
 , "scripts":
-  { "postinstall": "grep tmp .gitignore || echo 'tmp' >> .gitignore; git checkout gh-pages && grep tmp .gitignore || echo 'tmp' >> .gitignore"
+  { "postinstall": "grep -Fxq tmp .gitignore || echo 'tmp' >> .gitignore; git checkout gh-pages && grep -Fxq tmp .gitignore || echo 'tmp' >> .gitignore"
   , "pretest": "rm -rf tmp; mkdir tmp"
   , "test": "cd src; jade -o '{ filename: \".\" }' -O ../tmp *jade; cd .. && cp -av assets tmp; npm run-script open-tmp"
   , "doc": "git checkout gh-pages; cd .; rm -rf assets *html && mv tmp/* . && git commit -a -m 'regenerated docs'; echo file:///`pwd`/index.html; echo git checkout master"
