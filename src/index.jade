@@ -39,13 +39,19 @@ html(lang='en')
           p
             | Invite other users' resources into your swarms, and join their swarms.
             | If you create something useful, share it!
+
+      .page-header
+
       // Developer Preview
+      h2 
+        | Developer Preview
+        small October 11
+      p
+        | Sign up for the BUGswarm developer preview to receive free access for a limited time to our services starting on October 11.
+        | Participating in the preview will allow you to use BUGswarm to its fullest potential to build exciting
+        | new applications while helping us refine the platform at the same time.
       form#mc-embedded-subscribe-form.validate.actions(action='http://bugswarm.us2.list-manage.com/subscribe/post?u=876a1af227de66fbb5520a055&id=5e569d1e96', method='post', name='mc-embedded-subscribe-form')
         fieldset
-          legend
-            h2 
-              | Developer Preview
-              small October 11
           .clearfix
             label(for='mce-EMAIL')
               strong Email
@@ -53,4 +59,4 @@ html(lang='en')
               input#mce-EMAIL.xlarge.email(type='email', value='', name='EMAIL', placeholder='email address', size='30', required='required')
               br
               br
-              input#mc-embedded-subscribe.btn.primary(type='submit', value='Sign Up!')
+              input#mc-embedded-subscribe.btn.primary(type='submit', value='Sign Me Up!')
