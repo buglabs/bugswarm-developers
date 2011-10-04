@@ -18,31 +18,32 @@ html(lang='en')
       // Header
       h1 API Documentation
       p
-        | BUGswarm makes use of two primary APIs for configuring and participating in swarms. 
+        | The BUGswarm API can be broken down into two primary sections, configuration and participation.
+        | Configuration includes the creation, updating, and destruction of swarms and their resources.
+        | Participation inclues producing and consuming data within one or many swarms. 
   
       // Descriptions
       .row
         .span8
           h3
-            a(href='restful_api.html') RESTful API 
-            small Configure swarms and resources
+            a(href='configuration_api.html') Configuration 
+            small Establish swarms and their resources
           p
             | BUGswarm uses a RESTful (Representational State Transfer) API for configuring swarms
             | and their resources. This API is used for creating and destroying swarms and resources,
-            | adding and removing resources from swarms, and generating API keys.
-            | The RESTful API is different from the Streaming API, though they both are exposed over HTTP.
-            | For each method call in the RESTful API, connections are closed after HTTP requests are processed.
+            | adding and removing resources from swarms, and generating API keys. The RESTful API is not
+            | a streaming API. For each method called, connections are closed after the requests are processed.
         .span8
           h3
-            a(href='streaming_api.html') Streaming API 
-            small Participate in swarms
+            a(href='participation_api.html') Participation 
+            small Produce and consume data
           p
-            | The BUGswarm Streaming API is used by users and resources to participate in a
-            | configured swarm. It is used for producing and consuming information from a swarm.
-            | The Streaming API uses HTTP requests, but
-            strong is not RESTful
-            | . For each method call in the Streaming API, connections remain open while HTTP requests are processed.
-            | The Streaming API also comes with a set of 
+            | BUGswarm makes use of an HTTP streaming API to participate in a
+            | configured swarm. The streaming API is used for producing and consuming
+            | data from a swarm. While it uses HTTP requests, the streaming API is 
+            strong not RESTful
+            | . For each method call, connections remain open while bidirectional HTTP requests are processed.
+            | The streaming API has been wrapped in a set of  
             a(href='libraries.html') libraries 
             | that make it easy to get your resources participating in swarms as soon as possible.
  
