@@ -6,6 +6,22 @@
 
   <resources base="http://api.bugswarm.net">
 
+    <resource path="keys">
+ 
+      <method id="list_api_keys" name="GET" apigee:displayName="List">
+
+        <apigee:tags>
+          <apigee:tag primary="true">API Keys</apigee:tag>
+        </apigee:tags>
+
+        <apigee:authentication required="true"/>
+ 
+        <apigee:example url="/keys" />
+      
+      </method>
+
+    </resource>
+
     <resource path="resources">
 
       <method id="create_resource" name="POST" apigee:displayName="Create" apigee:mediaType="application/json">
