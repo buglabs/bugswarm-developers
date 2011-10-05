@@ -9,3 +9,7 @@ body {
 pre code {
   background: none;
 }
+
+#muc {
+  width: 100%;
+}
