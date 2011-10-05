@@ -3,7 +3,7 @@ html(lang='en')
   head
     include includes/assets
   
-  body
+  body(onload="loadValues()")
     
     // NAVIGATION
     include includes/navigation
@@ -48,12 +48,33 @@ html(lang='en')
       p
         | BUGswarm is one of the few cloud messaging platforms that allows for real-time communication between devices.
         | Use this embedded tool to observe these real-time messages.
-      .actions
-        br
-        br
-        br
-        h3 Coming soon
-        br
-        br
-        br
+      
+      form#swarmfields(name='swarmfields')
+        fieldset
+          .clearfix
+            label(for="apikey") 
+              strong Consumer API Key
+            .input
+              input.xxlarge#apikey(name="apikey", size="14", type="text")
+          
+          .clearfix
+            label(for="swarmID") 
+              strong Swarm ID
+            .input
+              input.xxlarge#swarmID(name="swarmID", size="14", type="text")
 
+          .clearfix
+            label(for="muc")
+              strong Global Messages
+            .input
+              textarea.xxlarge#muc(name="muc", rows="15", readonly="readonly")
+
+          .actions
+            input.btn.primary(type="button", value="Join Swarm", onclick="javascript: joinSwarm()") 
+            | 
+            button.btn(type="reset") Cancel
+
+      script(language="javascript", type="text/javascript", src="assets/js/messaging.js")
+
+      .page-header
+ 
