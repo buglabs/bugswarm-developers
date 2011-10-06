@@ -1,13 +1,33 @@
 body, html {
-  background-color: #CFCFCF;
-  color: #626262;
+  background-color: #F8F8F8;
+  /*color: #626262;*/
 }
 
 body {
   padding-top: 50px;
 }
 
-h1 small, h2 small, h3 small, h4 small {
+pre code {
+  background: none;
+}
+
+#banner {
+  color: #F1D32C;
+}
+
+#muc {
+  width: 100%;
+}
+
+.masthead {
+  padding-bottom: 15px;
+}
+
+.actions {
+  background-color: #F1F1F1;
+}
+
+/*h1 small, h2 small, h3 small, h4 small {
   color: #525252;
 }
 
@@ -19,28 +39,7 @@ pre {
   border: 1px solid rgba(0, 0, 0, .2);
 }
 
-pre code {
-  background: none;
-}
-
-#banner {
-  color: #F1D32C;
-}
-
-.masthead {
-  padding-bottom: 15px;
-}
-
-#muc {
-  width: 100%;
-}
-
-.actions {
-  background-color: #C7C7C7;
-  border-top: 1px solid #525252;
-}
-
 .page-header {
   border-bottom: 1px solid #525252;
   box-shadow: 0 1px 0 rgba(100, 100, 100, 0.5);
-}
+}*/
