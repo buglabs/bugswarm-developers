@@ -21,6 +21,23 @@ pre code {
 
 .masthead {
   padding-bottom: 15px;
+  background-color: #616469;
+  color: #FFFFFF;
+  margin-top: -10px;
+  margin-bottom: 10px;
+}
+
+.masthead h1 {
+  color: #FFFFFF;
+  margin-top: 10px;
+}
+
+#tagline {
+  font-size: 17px;
+}
+
+#cubes {
+  margin-top: 10px;
 }
 
 .actions {
