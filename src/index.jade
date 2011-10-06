@@ -11,9 +11,14 @@ html(lang='en')
     // MASTHEAD
     .masthead
       .container
-        h1 Welcome to BUGswarm
-        p
-          | BUGswarm is a way to acquire data from and control embedded devices using JavaScript or plain old HTTP.
+
+        .row
+          .span10.columns
+            h1 Welcome to BUGswarm
+            p#tagline
+              | BUGswarm is a way to acquire data from and control embedded devices using JavaScript or plain old HTTP.
+          .span6.columns
+            img#cubes(src="assets/images/bs_cubes.png", alt="")
 
     // CONTENT
     .container
@@ -57,4 +62,4 @@ html(lang='en')
               input#mce-EMAIL.xlarge.email(type='email', value='', name='EMAIL', placeholder='email address', size='30', required='required')
               br
               br
-              input#mc-embedded-subscribe.btn.primary(type='submit', value='Sign Me Up!')
+              input#mc-embedded-subscribe.btn.danger(type='submit', value='Sign Me Up!')

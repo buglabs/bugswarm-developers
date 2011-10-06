@@ -1,15 +1,66 @@
-body {
-  padding-top: 50px;
+body, html {
+  background-color: #F8F8F8;
+  /*color: #626262;*/
 }
 
-.masthead {
-  padding-bottom: 15px;
+body {
+  padding-top: 50px;
 }
 
 pre code {
   background: none;
 }
 
+#banner {
+  color: #F1D32C;
+}
+
 #muc {
   width: 100%;
 }
+
+.masthead {
+  padding-bottom: 15px;
+  background-color: #616469;
+  color: #FFFFFF;
+  margin-top: -10px;
+  margin-bottom: 10px;
+}
+
+.masthead h1 {
+  color: #FFFFFF;
+  margin-top: 10px;
+}
+
+#tagline {
+  font-size: 17px;
+}
+
+#cubes {
+  margin-top: 10px;
+}
+
+.actions {
+  background-color: #F1F1F1;
+}
+
+a {
+  color: #09C;
+}
+
+/*h1 small, h2 small, h3 small, h4 small {
+  color: #525252;
+}
+
+strong {
+  color: #626262;
+}
+
+pre {
+  border: 1px solid rgba(0, 0, 0, .2);
+}
+
+.page-header {
+  border-bottom: 1px solid #525252;
+  box-shadow: 0 1px 0 rgba(100, 100, 100, 0.5);
+}*/
