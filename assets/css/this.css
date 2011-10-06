@@ -1,7 +1,10 @@
 body, html {
-  padding-top: 40px;
   background-color: #CFCFCF;
   color: #626262;
+}
+
+body {
+  padding-top: 50px;
 }
 
 h1 small, h2 small, h3 small, h4 small {
