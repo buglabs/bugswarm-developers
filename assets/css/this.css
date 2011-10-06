@@ -21,15 +21,17 @@ pre code {
 
 .masthead {
   padding-bottom: 15px;
-  background-color: #616469;
   color: #FFFFFF;
   margin-top: -10px;
   margin-bottom: 10px;
+
+  background-image: url('../images/bg.gif');
+  background-repeat: repeat-x;
 }
 
 .masthead h1 {
   color: #FFFFFF;
-  margin-top: 10px;
+  margin-top: 30px;
 }
 
 #tagline {
@@ -47,20 +49,3 @@ pre code {
 a {
   color: #09C;
 }
-
-/*h1 small, h2 small, h3 small, h4 small {
-  color: #525252;
-}
-
-strong {
-  color: #626262;
-}
-
-pre {
-  border: 1px solid rgba(0, 0, 0, .2);
-}
-
-.page-header {
-  border-bottom: 1px solid #525252;
-  box-shadow: 0 1px 0 rgba(100, 100, 100, 0.5);
-}*/
