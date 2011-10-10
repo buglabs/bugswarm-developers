@@ -9,6 +9,6 @@
   { "pretest": "rm -rf tmp; mkdir tmp"
   , "test": "cd src; jade -o '{ filename: \".\" }' -O ../tmp *jade; cd .. && cp -a assets/* tmp; npm run-script install-google-verification; npm run-script open-index"
   , "install-google-verification": "echo 'google-site-verification: googleeed5e812cc5b4fc5.html' > tmp/googleeed5e812cc5b4fc5.html"
-  , "doc": "git checkout gh-pages; cd .; rm -rf bootstrap css images js *html; mv tmp/* . && rm -r tmp && git add -A *html assets* && git commit -a -m 'regenerated docs'; git pull --rebase; echo file:///`pwd`/index.html; echo git checkout master"
-  , "open-tmp": "[ \"$OSTYPE\" = \"darwin11.0\" ] && open tmp/index.html; echo file:///`pwd`/tmp/index.html" }
+  , "open-index": "[ $OSTYPE = darwin11 ] && open tmp/index.html || echo file:///`pwd`/tmp/index.html" }
+  , "doc": "git checkout gh-pages; cd .; rm -rf bootstrap css images js *html; mv tmp/* . && rm -r tmp && git add -A \\* && git commit -a -m 'regenerated docs'; git pull --rebase; echo file:///`pwd`/index.html; echo git checkout master"
 }
