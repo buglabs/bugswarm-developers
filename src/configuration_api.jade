@@ -20,6 +20,7 @@ html(lang='en')
             li: h5: a(href='#user-resources') User Resources
             li: h5: a(href='#swarms') Swarms
             li: h5: a(href='#swarm-resources') Swarm Resources
+            li: h5: a(href='#invitations') Invitations
 
       // CONTENT
       .content
@@ -236,3 +237,54 @@ html(lang='en')
               | List the resources in a swarm. Users may choose to list all resources, only
               | consuming resources, or only producing resources.
         .page-header
+
+        // Invitations
+        h3: a#invitations(href='restful_invitations.html') Invitations
+        p
+          | Expose BUGswarm's unique social presence by inviting other users' resources to join your swarms
+          | and share in the production and consumption of data. Accept invitations from other users to join
+          | their swarms as well.
+        .row
+          .span6.columns
+            h5 Method
+          .span6.columns
+            h5 Description
+        .page-header
+
+        // send
+        .row
+          .span6.columns
+            a(href='restful_invitations.html#send') Send (POST)
+          .span10.columns
+            p
+              | Send an invitation to another user's resource to join your swarm.
+        .page-header
+        
+        // list sent invitations
+        .row
+          .span6.columns
+            a(href='restful_invitations.html#list-sent-invitations') List Sent Invitations (GET)
+          .span10.columns
+            p
+              | List all the invitations sent from your user account for resources to join a specific swarm.
+        .page-header
+        
+        // list received invitations
+        .row
+          .span6.columns
+            a(href='restful_invitations.html#list-received-invitations') List Received Invitations (GET)
+          .span10.columns
+            p
+              | List the invitations received by your user account from other users. List all invitations or only those
+              | sent to specific resources.
+        .page-header
+
+        // respond
+        .row
+          .span6.columns
+            a(href='restful_invitations.html#respond') Respond (PUT)
+          .span10.columns
+            p
+              | Respond to received invitations by either accepting or rejecting.
+        .page-header
+        
