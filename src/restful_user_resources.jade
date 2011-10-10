@@ -71,18 +71,17 @@ html(lang='en')
               | user's resource to participate in a swarm, however, the user must first
               a(href='restful_swarm_resources.html#add') add 
               | that resource to the swarm. Creating a 
-              | resource involves passing a JSON file containing the configuration of the resource as a header.
+              | resource involves passing a JSON file containing the configuration of the resource.
 
         // body
         strong Body: 
-        | The "id", "name", and "machine_type" fields are
+        | The "name", and "machine_type" fields are
         strong required
         | . The "description" and "position" fields are
         strong optional
         | .
         pre.prettyprint.language-javascript.
           \n{
-              "id": "my unique resource id",
               "name": "My resource",
               "machine_type": "pc",
               "description": "My Resource description",
@@ -101,9 +100,22 @@ html(lang='en')
           curl -X POST -d@create_resource.json --header "x-bugswarmapikey: 911cbc244827dba9c6dbdd09aff3e5e8fe5eee02" --header "content-type: application/json" http://api.bugswarm.net/resources          
         // returns
         strong Returns: 
-        a(href='http_response_codes.html') HTTP Response Codes
+        | The created resource in JSON format.
         br
-        br
+        pre.prettyprint.language-javascript.
+          \n{
+              "id": "4735f4417f4fd2eb67ace9f2d2e7948e2d9f43f9",
+              "user_id": "username",
+              "description": "My Resource description",
+              "machine_type": "pc",
+              "name": "My resource",
+              "created_at": "2011-10-09T22:58:39.710Z",
+              "position": {
+                              "longitude": 0,
+                              "latitude": 0
+                          }
+          }
+
         .page-header
 
         // Update
@@ -122,7 +134,7 @@ html(lang='en')
                 li
                   strong Headers: 
                   br
-                  code "x-bugswarmapikey: ${API_KEY}",
+                  code "x-bugswarmapikey: ${API_KEY}"
                   ,
                   br
                   code "content-type: application/json"
@@ -163,10 +175,25 @@ html(lang='en')
 
         // returns
         strong Returns: 
-        a(href='http_response_codes.html') HTTP Response Codes
+        | The updated resource in JSON format, including a "modified_at" field.
         br
-        br
+        pre.prettyprint.language-javascript.
+          \n{
+              "modified_at": "2011-10-10T00:12:58.354Z",
+              "id": "4735f4417f4fd2eb67ace9f2d2e7948e2d9f43f9",
+              "user_id": "username",
+              "description": "My Resource description",
+              "machine_type": "pc",
+              "name": "My resource",
+              "created_at": "2011-10-09T22:58:39.710Z",
+              "position": {
+                              "longitude": 0,
+                              "latitude": 0
+                          }
+          }
+
         .page-header
+
 
         // Destroy
         h3#destroy Destroy
@@ -230,46 +257,50 @@ html(lang='en')
                     | None
                   li
                     strong Parameters (Optional): 
-                    | Resource type
+                    | None
           .span8.columns
             p
-              | List all of the resources owned by the user. When listing resources, users have
-              | the option of specifying whether they would like to list all resources, only producers, 
-              | or only consumers. The option can be passed into the url as seen below.
+              | List all of the resources owned by the user. To get the information of a specific
+              | resource only, use the
+              a(href='#get-resource-info') Get Resource Info 
+              | method. 
 
         // usage
         strong Usage: 
         pre.prettyprint.language-javascript.
           curl -X GET --header "x-bugswarmapikey: 911cbc244827dba9c6dbdd09aff3e5e8fe5eee02" http://api.bugswarm.net/resources
-          curl -X GET --header "x-bugswarmapikey: 911cbc244827dba9c6dbdd09aff3e5e8fe5eee02" http://api.bugswarm.net/resources?type=producer
-          curl -X GET --header "x-bugswarmapikey: 911cbc244827dba9c6dbdd09aff3e5e8fe5eee02" http://api.bugswarm.net/resources?type=consumer
 
         // returns
         strong Returns: 
         | A list of resources in JSON format.
         pre.prettyprint.language-javascript.
           [
-              {
-                  "_id": "4e612e4e8371a27b5a0031bd",
-                  "created_at": "2011-09-02T19:28:14.644Z",
-                  "description": "My Resource description",
-                  "id": "My Resource id",
-                  "machine_type": "pc",
-                  "modified_at": "2011-09-12T00:17:29.254Z",
-                  "name": "My Resource",
-                  "user_id": "username"
-              },
-              {
-                  "_id": "4e626c1d0c693fe05b011ef7",
-                  "created_at": "2011-09-03T18:04:13.882Z",
-                  "description": "My Other Resource description",
-                  "id": "My Other Resource id",
-                  "machine_type": "smartphone",
-                  "modified_at": "2011-09-12T00:22:00.414Z",
-                  "name": "My Other Resource",
-                  "user_id": "username"
-              },
+            {
+              "id": "33e675f7888c1d7f6f5da41bcccdff7b67f6c9a0"
+              "user_id": "username",
+              "description": "My Resource description",
+              "machine_type": "pc",
+              "name": "My resource",
+              "created_at": "2011-10-09T22:58:39.710Z",
+              "position": {
+                              "longitude": 0,
+                              "latitude": 0
+                          }
+            },
+            {
+              "id": "4735f4417f4fd2eb67ace9f2d2e7948e2d9f43f9",
+              "user_id": "username",
+              "description": "My Other Resource description",
+              "machine_type": "bug",
+              "name": "My other resource",
+              "created_at": "2011-10-09T22:58:39.710Z",
+              "position": {
+                              "longitude": 0,
+                              "latitude": 0
+                          }
+            }
           ]
+
         .page-header
 
         // Get Resource Info
@@ -311,16 +342,19 @@ html(lang='en')
         strong Returns: 
         | A resource in JSON format.
         pre.prettyprint.language-javascript.
-          {
-                  "_id": "4e626c1d0c693fe05b011ef7",
-                  "created_at": "2011-09-03T18:04:13.882Z",
-                  "description": "My Other Resource description",
-                  "id": "My Other Resource id",
-                  "machine_type": "smartphone",
-                  "modified_at": "2011-09-12T00:22:00.414Z",
-                  "name": "My Other Resource",
-                  "user_id": "username"
-              }
+          \n{
+              "id": "4735f4417f4fd2eb67ace9f2d2e7948e2d9f43f9",
+              "user_id": "username",
+              "description": "My Resource description",
+              "machine_type": "pc",
+              "name": "My resource",
+              "created_at": "2011-10-09T22:58:39.710Z",
+              "position": {
+                              "longitude": 0,
+                              "latitude": 0
+                          }
+          }
+ 
         .page-header
 
         // List Swarms With Resource
@@ -365,31 +399,42 @@ html(lang='en')
         pre.prettyprint.language-javascript.
           [
               {
-                  "_id": "4e5bf3c4cc1fdb5970000028",
-                  "created_at": "2011-08-29T20:17:08.676Z",
-                  "description": "My Swarm description",
                   "id": "a16fb1d896817c58d4f4be9dea51e74b86519579",
+                  "user_id": "username",
+                  "description": "My Swarm description",
                   "name": "My Swarm",
-                  "public": true,
+                  "created_at": "2011-08-29T20:17:08.676Z",
                   "resources": [
                       {
-                          "_id": "4e5bf5c8cc1fdb597000005b",
-                          "created_at": "2011-08-29T20:25:44.565Z",
-                          "id": "My Resource id",
-                          "swarm_id": "a16fb1d896817c58d4f4be9dea51e74b86519579",
-                          "type": "producer",
-                          "user_id": "username"
+                          "resource_id": "33e675f7888c1d7f6f5da41bcccdff7b67f6c9a0",
+                          "resource_type": "producer",
+                          "user_id": "username",
+                          "url": "http://api.bugswarm.net/resources/33e675f7888c1d7f6f5da41bcccdff7b67f6c9a0"
                       },
                       {
-                          "_id": "4e5bf5c8cc1fdb597000005b",
-                          "created_at": "2011-08-29T20:25:44.565Z",
-                          "id": "My Other Resource id",
-                          "swarm_id": "a16fb1d896817c58d4f4be9dea51e74b86519579",
-                          "type": "consumer",
-                          "user_id": "username"
+                          "resource_id": "4735f4417f4fd2eb67ace9f2d2e7948e2d9f43f9",
+                          "resource_type": "both",
+                          "user_id": "username",
+                          "url": "http://api.bugswarm.net/resources/4735f4417f4fd2eb67ace9f2d2e7948e2d9f43f9"
                       }
                   ],
-                  "user_id": "username"
+                  "public": true
+              },
+              {
+                  "id": "92236421f64633430baa54fd9848e03aa2696111",
+                  "user_id": "username",
+                  "description": "My Other Swarm description",
+                  "name": "My Other Swarm",
+                  "created_at": "2011-08-29T20:17:08.676Z",
+                  "resources": [
+                      {
+                          "resource_id": "33e675f7888c1d7f6f5da41bcccdff7b67f6c9a0",
+                          "resource_type": "consumer",
+                          "user_id": "username",
+                          "url": "http://api.bugswarm.net/resources/33e675f7888c1d7f6f5da41bcccdff7b67f6c9a0"
+                      }                      
+                  ],
+                  "public": false
               }
           ]
         .page-header

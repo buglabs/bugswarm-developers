@@ -73,20 +73,26 @@ html(lang='en')
               | can use this method to create a swarm. The method passes a JSON file containing 
               | information relevant to the creation of a swarm. Once a swarm is created, users can then
               a(href='restful_swarm_resources.html#add') add
-              |  resources to it.
+              |  resources to it. Additionally, users may specify any of their own resources to add to the
+              | swarm by default upon creation. This is configured in the JSON file that gets passed.
 
         // body
         strong Body: 
         | The "name" and "description" fields are
         strong required
-        | . The "public" field is
+        | . The "public" and "resources" fields are
         strong optional
         | .
         pre.prettyprint.language-javascript.
           {
-              "name": "My Swarm",
-              "description": "My Swarm Description",
-              "public": false
+              "name": "My Other Swarm",
+              "description": "My Other Swarm Description",
+              "public": false,               
+              "resources": [
+                  { "resource_id": "33e675f7888c1d7f6f5da41bcccdff7b67f6c9a0",
+                    "resource_type": "consumer"
+                  }
+              ]
           }
 
         // usage
@@ -99,10 +105,24 @@ html(lang='en')
 
         // returns
         strong Returns: 
-        | The created swarm and its unique ID in JSON format.
+        | The created swarm and its configuration in JSON format. The "resources" field will exist as an empty
+        | array if no resources are given upon creation.
         pre.prettyprint.language-javascript.
           {
-              "swarm":"a16fb1d896817c58d4f4be9dea51e74b86519579"
+              "id": "92236421f64633430baa54fd9848e03aa2696111",
+              "user_id": "username",
+              "description": "My Other Swarm description",
+              "name": "My Other Swarm"
+              "created_at": "2011-08-29T20:17:08.676Z",
+              "resources": [
+                  {
+                      "resource_id": "33e675f7888c1d7f6f5da41bcccdff7b67f6c9a0",
+                      "resource_type": "consumer",
+                      "user_id": "username",
+                      "url": "http://api.bugswarm.net/resources/33e675f7888c1d7f6f5da41bcccdff7b67f6c9a0"
+                  }                      
+              ],
+              "public": false
           }
         .page-header
 
@@ -155,13 +175,32 @@ html(lang='en')
         code update_swarm.json
         |  and matching the above format. Then execute: 
         pre.prettyprint.language-javascript.
-          curl -X PUT -d@update_swarm.json --header "x-bugswarmapikey: 911cbc244827dba9c6dbdd09aff3e5e8fe5eee02" --header "content-type: application/json" http://api.bugswarm.net/swarms/a16fb1d896817c58d4f4be9dea51e74b86519579
+          curl -X PUT -d@update_swarm.json --header "x-bugswarmapikey: 911cbc244827dba9c6dbdd09aff3e5e8fe5eee02" --header "content-type: application/json" http://api.bugswarm.net/swarms/SWARM_ID
 
         // returns
         strong Returns: 
-        a(href='http_response_codes.html') HTTP Response Codes
-        br
-        br
+        | The updated swarm in JSON format, including a "modifed_at" field.
+        pre.prettyprint.language-javascript.
+          {
+              "description": "My Other Swarm description",
+              "modified_at": "2011-10-10T01:08:54.688Z",
+              "id": "92236421f64633430baa54fd9848e03aa2696111",
+              "name": "My Other Swarm"
+              "user_id": "username",
+              "created_at": "2011-08-29T20:17:08.676Z",
+              "resources": [
+                  {
+                      "resource_id": "33e675f7888c1d7f6f5da41bcccdff7b67f6c9a0",
+                      "resource_type": "consumer",
+                      "swarm_id": "92236421f64633430baa54fd9848e03aa2696111",
+                      "user_id": "username",
+                      "url": "http://api.bugswarm.net/resources/33e675f7888c1d7f6f5da41bcccdff7b67f6c9a0"
+                      "_id": "4e92440324ecf2190900006f",
+                      "member_since": "2011-10-10T01:01:55.184Z"
+                  }                      
+              ],
+              "public": true
+          }        
         .page-header
 
         // Destroy
@@ -195,7 +234,7 @@ html(lang='en')
         // usage
         strong Usage: 
         pre.prettyprint.language-javascript.
-          \ncurl -X DELETE --header "x-bugswarmapikey: 911cbc244827dba9c6dbdd09aff3e5e8fe5eee02" http://api.bugswarm.net/swarms/a16fb1d896817c58d4f4be9dea51e74b86519579          
+          \ncurl -X DELETE --header "x-bugswarmapikey: 911cbc244827dba9c6dbdd09aff3e5e8fe5eee02" http://api.bugswarm.net/swarms/SWARM_ID
 
         // returns
         strong Returns: 
@@ -243,33 +282,51 @@ html(lang='en')
         pre.prettyprint.language-javascript.
           [
               {
-                  "_id": "4e5bf3c4cc1fdb5970000028",
-                  "created_at": "2011-08-29T20:17:08.676Z",
-                  "description": "My Swarm description",
                   "id": "a16fb1d896817c58d4f4be9dea51e74b86519579",
+                  "user_id": "username",
+                  "description": "My Swarm description",
                   "name": "My Swarm",
-                  "public": true,
+                  "created_at": "2011-08-29T20:17:08.676Z",
                   "resources": [
                       {
-                          "_id": "4e5bf5c8cc1fdb597000005b",
-                          "created_at": "2011-08-29T20:25:44.565Z",
-                          "id": "My Resource id",
-                          "swarm_id": "a16fb1d896817c58d4f4be9dea51e74b86519579",
-                          "type": "producer",
-                          "user_id": "username"
+                          "resource_id": "33e675f7888c1d7f6f5da41bcccdff7b67f6c9a0",
+                          "resource_type": "producer",
+                          "user_id": "username",
+                          "url": "http://api.bugswarm.net/resources/33e675f7888c1d7f6f5da41bcccdff7b67f6c9a0",
+                          "_id": "4e92440324ecf2190900006f",
+                          "member_since": "2011-10-10T01:01:55.184Z"
                       },
                       {
-                          "_id": "4e5bf5c8cc1fdb597000005b",
-                          "created_at": "2011-08-29T20:25:44.565Z",
-                          "id": "My Other Resource id",
-                          "swarm_id": "a16fb1d896817c58d4f4be9dea51e74b86519579",
-                          "type": "consumer",
-                          "user_id": "username"
+                          "resource_id": "4735f4417f4fd2eb67ace9f2d2e7948e2d9f43f9",
+                          "resource_type": "both",
+                          "user_id": "username",
+                          "url": "http://api.bugswarm.net/resources/4735f4417f4fd2eb67ace9f2d2e7948e2d9f43f9",
+                          "_id": "4e92440324ecf2190900705a",
+                          "member_since": "2011-10-10T01:01:55.184Z"
                       }
                   ],
-                  "user_id": "username"
+                  "public": true
+              },
+              {
+                  "id": "92236421f64633430baa54fd9848e03aa2696111",
+                  "user_id": "username",
+                  "description": "My Other Swarm description",
+                  "name": "My Other Swarm",
+                  "created_at": "2011-08-29T20:17:08.676Z",
+                  "resources": [
+                      {
+                          "resource_id": "33e675f7888c1d7f6f5da41bcccdff7b67f6c9a0",
+                          "resource_type": "consumer",
+                          "user_id": "username",
+                          "url": "http://api.bugswarm.net/resources/33e675f7888c1d7f6f5da41bcccdff7b67f6c9a0",
+                          "_id": "4e92440324ecf2190900006f",
+                          "member_since": "2011-10-10T01:01:55.184Z"
+                      }                      
+                  ],
+                  "public": false
               }
           ]
+
         .page-header
 
         // Get Swarm Info
@@ -281,7 +338,7 @@ html(lang='en')
             ul.unstyled
               li
                 strong URL: 
-                code http://api.bugswarm.net/swarms/${SWARM_ID}
+                code http://api.bugswarm.net/swarms/SWARM_ID
                 li
                   strong Method: 
                   | GET
@@ -297,7 +354,7 @@ html(lang='en')
                     | None
           .span8.columns
             p
-              | Swarms in a user's carry with them a list of information regarding the swarm in
+              | Swarms in a user's account carry with them a list of information regarding the swarm in
               | addition to representations of the resources they contain. This method retrieves 
               | that information for a given swarm and prints it in JSON format. The ID of the 
               | swarm to retrieve the information from is given in the URL.
@@ -305,39 +362,30 @@ html(lang='en')
         // usage
         strong Usage: 
         pre.prettyprint.language-javascript.
-          curl -X GET --header "x-bugswarmapikey: 911cbc244827dba9c6dbdd09aff3e5e8fe5eee02" http://api.bugswarm.net/swarms/a16fb1d896817c58d4f4be9dea51e74b86519579
+          curl -X GET --header "x-bugswarmapikey: 911cbc244827dba9c6dbdd09aff3e5e8fe5eee02" http://api.bugswarm.net/swarms/SWARM_ID
 
         // returns
         strong Returns: 
         | A swarm in JSON format with its contained resources.
         pre.prettyprint.language-javascript.
-          [
-              {
-                  "_id": "4e5bf3c4cc1fdb5970000028",
-                  "created_at": "2011-08-29T20:17:08.676Z",
-                  "description": "My Swarm description",
-                  "id": "a16fb1d896817c58d4f4be9dea51e74b86519579",
-                  "name": "My Swarm",
-                  "public": true,
-                  "resources": [
-                      {
-                          "_id": "4e5bf5c8cc1fdb597000005b",
-                          "created_at": "2011-08-29T20:25:44.565Z",
-                          "id": "My Resource id",
-                          "swarm_id": "a16fb1d896817c58d4f4be9dea51e74b86519579",
-                          "type": "producer",
-                          "user_id": "username"
-                      },
-                      {
-                          "_id": "4e5bf5c8cc1fdb597000005b",
-                          "created_at": "2011-08-29T20:25:44.565Z",
-                          "id": "My Other Resource id",
-                          "swarm_id": "a16fb1d896817c58d4f4be9dea51e74b86519579",
-                          "type": "consumer",
-                          "user_id": "username"
-                      }
-                  ],
-                  "user_id": "username"
-              }
-          ]
+          {
+              "description": "My Other Swarm description",
+              "id": "92236421f64633430baa54fd9848e03aa2696111",
+              "modified_at": "2011-10-10T01:08:54.688Z",
+              "name": "My Other Swarm"
+              "user_id": "username",
+              "created_at": "2011-08-29T20:17:08.676Z",
+              "resources": [
+                  {
+                      "resource_id": "33e675f7888c1d7f6f5da41bcccdff7b67f6c9a0",
+                      "resource_type": "consumer",
+                      "user_id": "username",
+                      "url": "http://api.bugswarm.net/resources/33e675f7888c1d7f6f5da41bcccdff7b67f6c9a0"
+                      "_id": "4e92440324ecf2190900006f",
+                      "member_since": "2011-10-10T01:01:55.184Z"
+                  }                      
+              ],
+              "public": true
+          }        
+
         .page-header
