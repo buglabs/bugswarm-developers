@@ -1,10 +1,5 @@
 $(document).ready(function() {
 
-  // add prettyprint class to all <pre><code></code></pre> blocks
-  $("pre code").parent().each(function() {
-      $(this).addClass('prettyprint');
-  });
-
   // Instantiate prettyprint
   prettyPrint();
 
