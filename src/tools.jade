@@ -2,15 +2,15 @@
 html(lang='en')
   head
     include includes/assets
-  
+
   body(onload="loadValues()")
-    
+
     // NAVIGATION
     include includes/navigation
-    
+
     // CONTENT
     .container
-      
+
       // Path
       .page-header
         a(href='index.html') Home
@@ -33,8 +33,8 @@ html(lang='en')
         | removes any need for curl and nicely formats the JSON returned by some of the methods in the API.
 
       h4
-        a(href='https://github.com/buglabs/bugswarm-tools') BUGswarm-Tools on GitHub
-        
+        a(href='https://github.com/buglabs/bugswarm-tools') BUGswarm Tools on GitHub
+
       // BUGswarm Console
       .page-header
         h2 BUGswarm Console
@@ -48,7 +48,7 @@ html(lang='en')
       p
         | BUGswarm is one of the few cloud messaging platforms that allows for real-time communication between devices.
         | Use this embedded tool to observe these real-time messages.
-      
+
       form#swarmfields(name='swarmfields')
         fieldset
           .clearfix
@@ -56,7 +56,7 @@ html(lang='en')
               strong Consumer API Key
             .input
               input.xxlarge#apikey(name="apikey", size="14", type="text")
-          
+
           .clearfix
             label(for="swarmID") 
               strong Swarm ID
@@ -75,6 +75,3 @@ html(lang='en')
             button.btn(type="reset") Cancel
 
       script(language="javascript", type="text/javascript", src="js/messaging.js")
-
-
- 
