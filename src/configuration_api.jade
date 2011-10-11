@@ -2,7 +2,7 @@
 html(lang='en')
   head
     include includes/assets
-  
+
   body
 
     // NAVIGATION
@@ -10,9 +10,9 @@ html(lang='en')
 
     // CONTAINER
     .container-fluid
-      
+
       // SIDEBAR
-      .sidebar     
+      .sidebar
 
         strong Jump to:
         ul.unstyled
@@ -24,7 +24,7 @@ html(lang='en')
 
       // CONTENT
       .content
-        
+
         // Path
         .page-header
           a(href='index.html') Home
@@ -48,7 +48,7 @@ html(lang='en')
           .span6.columns
             h5 Description
         .page-header
-        
+
         // create
         .row
           .span6.columns
@@ -68,7 +68,7 @@ html(lang='en')
             p
               | List your API keys. Keys are listed as JSON.
         .page-header
-        
+
         // User Resources
         h3: a#user-resources(href='restful_user_resources.html') User Resources
         p
@@ -80,7 +80,7 @@ html(lang='en')
           .span6.columns
             h5 Description
         .page-header
-        
+
         // create
         .row
           .span6.columns
@@ -90,7 +90,7 @@ html(lang='en')
               | Create a resource. POST a JSON file containing information about the resource to be
               | created.
         .page-header
-        
+
         // update
         .row
           .span6.columns
@@ -100,7 +100,7 @@ html(lang='en')
               | Update an already existing resource. PUT a JSON file containing the information
               | to update.
         .page-header
-        
+
         // destroy
         .row
           .span6.columns
@@ -109,7 +109,7 @@ html(lang='en')
             p
               | Destroy a resource. Remove a resource from your user account.
         .page-header
-        
+
         // list
         .row
           .span6.columns
@@ -118,7 +118,7 @@ html(lang='en')
             p
               | List all of the resources in your user account.  Resources listed as JSON.
         .page-header
-        
+
         // get resource info
         .row
           .span6.columns
@@ -127,7 +127,7 @@ html(lang='en')
             p
               | Get the information relating to a specific resource. Information presented as JSON.
         .page-header
-        
+
         // list swarms with resource
         .row
           .span6.columns
@@ -136,7 +136,7 @@ html(lang='en')
             p
               | List the swarms that a specific resource is a member of. Swarms listed as JSON.
         .page-header
-        
+
         // Swarms
         h3: a#swarms(href='restful_swarms.html') Swarms
         p
@@ -147,7 +147,7 @@ html(lang='en')
           .span6.columns
             h5 Description
         .page-header
-        
+
         // create
         .row
           .span6.columns
@@ -157,7 +157,7 @@ html(lang='en')
               | Create a swarm. POST a JSON file containing information about the swarm to be
               | created.
         .page-header
-         
+
         // update
         .row
           .span6.columns
@@ -167,7 +167,7 @@ html(lang='en')
               | Update an already existing swarm. PUT a JSON file containing the information to
               | update.
         .page-header
-        
+
         // destroy
         .row
           .span6.columns
@@ -176,7 +176,7 @@ html(lang='en')
             p
               | Destroy a swarm. Remove a swarm from your user account.
         .page-header
-        
+
         // list
         .row
           .span6.columns
@@ -185,7 +185,7 @@ html(lang='en')
             p
               | List all of the swarms in your user account. Swarms listed as JSON.
         .page-header
-        
+
         // get swarm info
         .row
           .span6.columns
@@ -195,7 +195,7 @@ html(lang='en')
               | Get the information relating to a specific swarm, including it's contained resources.
               | Information presented as JSON.
         .page-header
-        
+
         // Swarm Resources
         h3: a#swarm-resources(href='restful_swarm_resources.html') Swarm Resources
         p
@@ -217,7 +217,7 @@ html(lang='en')
               | Add a resource to a swarm. POST a JSON file containing the swarm-relevant information 
               | regarding the resource to be added.
         .page-header
-        
+
         // remove
         .row
           .span6.columns
@@ -227,7 +227,7 @@ html(lang='en')
               | Remove a resource from a swarm. Send a JSON file containing swarm-relevant information
               | regarding the resource to remove.
         .page-header
-        
+
         // list
         .row
           .span6.columns
@@ -259,7 +259,7 @@ html(lang='en')
             p
               | Send an invitation to another user's resource to join your swarm.
         .page-header
-        
+
         // list sent invitations
         .row
           .span6.columns
@@ -268,7 +268,7 @@ html(lang='en')
             p
               | List all the invitations sent from your user account for resources to join a specific swarm.
         .page-header
-        
+
         // list received invitations
         .row
           .span6.columns
@@ -287,4 +287,4 @@ html(lang='en')
             p
               | Respond to received invitations by either accepting or rejecting.
         .page-header
-        
+
