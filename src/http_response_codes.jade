@@ -1,0 +1,63 @@
+!!! 5
+html(lang='en')
+  head
+    include includes/assets
+
+  body
+
+    // NAVIGATION
+    include includes/navigation
+
+    // CONTENT
+    .container
+
+      // Path
+      .page-header
+        a(href='index.html') Home
+        |  &rarr;
+        a(href='api_documentation.html') API Documentation
+        |  &rarr;
+        a(href='configuration_api.html') Configuration
+
+      // Header
+      h1 HTTP Response Codes
+      p
+        | A list of HTTP response codes that may be returned when using the BUGswarm API and their associated meanings.
+
+      .page-header
+        h2 Codes
+      ul.unstyled
+        li
+          strong 200:
+          |  Request was received and handled without error. The server will return information based on the request.
+        li
+          strong 201:
+          |  The entity was succesfully created.
+        li
+          strong 204:
+          |  Request was received and handled without error. No information will be returned by the server.
+        li
+          strong 400:
+          |  Bad request. There was something wrong with the specified data. It may have been an unrecognizable format
+          | or missing a field. The platform will provide a descriptive message with the application error code for easier
+          | debugging.
+        li
+          strong 401:
+          |  Unauthorized. You man not have specified the HTTP header containing your API key.
+        li
+          strong 403:
+          |  Forbidden. The resource may exist, but you do not have access to it due to application-level constraints.
+        li
+          strong 404:
+          |  Not found. Either the specified URL does not exist in the server or the entity itself does not exist in the database.
+        li
+          strong 409:
+          |  Conflict. There was a conflict with the request.
+        li
+          strong 500:
+          |  Internal error. Something went wrong with the server. If you receive this error response, please notify the BUGswarm development team.
+      
+      .page-header
+        h2 Format
+      pre.prettyprint.language-javascript
+        {errors: [{code: 'xxx', description: 'foo'}, {code: 'yyy', description: 'bar'}]}  
