@@ -18,8 +18,9 @@ html(lang='en')
       // Header
       h1 API Documentation
       p
-        | The BUGswarm API can be broken down into two primary sections, configuration and participation.
-        | Configuration includes the creation, updating, and destruction of swarms and their resources.
+        | The BUGswarm API can be broken down into two primary actions, configuration and participation.
+        | Configuration includes the creation, updating, and destruction of swarms and their resources 
+        | in addition to inviting other users' resources into your swarms and accepting or rejecting pending invitations.
         | Participation inclues producing and consuming data within one or many swarms. 
   
       // Descriptions
@@ -27,25 +28,34 @@ html(lang='en')
         .span8
           h3
             a(href='configuration_api.html') Configuration 
-            small Establish swarms and their resources
+            small Establish swarms, resources, and invitations
           p
             | BUGswarm uses a RESTful (Representational State Transfer) API for configuring swarms
             | and their resources. This API is used for creating and destroying swarms and resources,
-            | adding and removing resources from swarms, and generating API keys. The RESTful API is not
-            | a streaming API. For each method called, connections are closed after the requests are processed.
+            | adding and removing resources from swarms, and generating API keys. In addition to these configuration
+            | methods, the RESTful API also takes care of the social aspect of BUGswarm, sending invitations to other users' 
+            | resources to join your swarms as well as accepting and rejecting pending invitations. The RESTful API is not
+            | a streaming API. For each method called, connections are closed after the requests are processed. To make 
+            | development easier, the configuration API has been wrapped up in 
+            a(href='http://github.com/buglabs/bugswarm-tools') BUGswarm Tools
+            | , a set of python scripts used to make the development process simple and easy.
         .span8
           h3
             a(href='participation_api.html') Participation 
             small Produce and consume data
           p
             | BUGswarm makes use of an HTTP streaming API to participate in a
-            | configured swarm. The streaming API is used for producing and consuming
+            | swarm. The streaming API is used for producing to and consuming
             | data from a swarm. While it uses HTTP requests, the streaming API is 
             strong not RESTful
             | . For each method call, connections remain open while bidirectional HTTP requests are processed.
             | The streaming API has been wrapped in a set of  
             a(href='libraries.html') libraries 
-            | that make it easy to get your resources participating in swarms as soon as possible.
+            | that make it easy to get your resources participating in swarms as soon as possible. In addition to these
+            | libraries, 
+            a(href='http://github.com/buglabs/bugswarm-tools') BUGswarm Tools 
+            | contains produce and consume scripts that allow for simple
+            | command line use of the participation API.
  
       // Tools
       h3 Tools
