@@ -5,7 +5,7 @@ Installation
 
     git clone git@github.com:buglabs/bugswarm-developers.git && cd bugswarm-developers
     git submodule init && git submodule update
-    npm install
+    npm install -g
 
 Contributing
 ------------
