@@ -17,9 +17,12 @@ html(lang='en')
 
         strong Jump to:
         ul.unstyled
+          li: h5: a(href='#notifications-and-messages') Notifications and Messages
+          li: h5: a(href='#using-the-streaming-api') Using the Streaming API
+          li: h5: a(href='#formats') Formats
 
       // CONTENT
-      .container
+      .content
 
         // Path
         .page-header
@@ -29,7 +32,6 @@ html(lang='en')
 
         // Header
         h1 Participation
-        h2 Overview
         p
           | Resources use the participation API to communicate with swarms. 
           | Resources can send and receive presence notifications, private 
@@ -37,102 +39,198 @@ html(lang='en')
           | messages if an attempt has been made to use the API incorrectly
           | or to do something that is not allowed by the credentials that
           | were provided.
-        h3 Presence Notifications
+
+        br
+
+        .page-header
+          h2#notifications-and-messages Notifications and Messages
+        
+        .row
+          .span8.columns
+            h3 Presence Notifications          
+            p
+              | Presence notifications indicate that a resource has joined or left
+              | the swarm. A resources sends a presence notification to the swarm(s)
+              | that it wishes to join. Members of that swarm then receive a 
+              | notification that the resource has joined the swarm.
+              | Resources can also send presence notifications indicating that they
+              | are leaving the swarm.
+            p
+              | Direct presence notifications are sent automatically by BUGswarm to resources
+              | that are owned by the same user as the resource that has just
+              | connected to BUGswarm. For example, if resources A, B, and C belong
+              | to Alice, and A and B are connected to BUGswarm, then A and B will
+              | receive a direct presence notification when resource C connects to
+              | BUGswarm, and another direct presence notification when resource C
+              | leaves BUGswarm.
+          .span8.columns
+            h3 Messages
+            p
+              | Messages are sent from a resource to one of the following: all
+              | resources in all swarms that the sender has joined, all resources
+              | in a specified swarm, or only a specified resource. The message
+              | contains data that the recipient can use to determine whether it
+              | is receiving a private message or a public message. Messages can
+              | be sent between resources that belong to the same swarm and between
+              | resources that belong to the same user.
+          .span8.columns
+            h3 Errors
+            p
+              | Errors are sent to a resource when something has gone wrong.
+              | This usually means that a resource has attempted to use the
+              | API to do something that is not allowed, such as writing to a swarm
+              | when it is a consumer or attempting to connect to a swarm that it
+              | does not belong to. Errors contain a list of HTTP codes and
+              | descriptions for each error that occured during an attempted
+              | operation. Some operations my cause more than one error, so the list
+              | may have more than one element.
+
+        br
+
+        .page-header
+          h2#using-the-streaming-api Using the Streaming API
+
+        h3 URL:
+        pre.prettyprint.language-javascript
+          'http://api.bugswarm.net/stream'
+  
+        h3 Methods:
         p
-          | Presence notifications indicate that a resource has joined or left
-          | the swarm. A resources sends a presence notification to the swarm(s)
-          | that it wishes to join. Members of that swarm then receive a 
-          | notification that the resource has joined the swarm.
-          | Resources can also send presence notifications indicating that they
-          | are leaving the swarm.
+          | Using the BUGswarm streaming API for participation in swarms requires the use of the above URL along with a combination of appended swarm
+          | and resource IDs. For instance, in order to connect to a given swarm with a specific resource, the following URL format would be used:
+        pre.prettyprint.language-javascript
+          'http://api.bugswarm.net/stream?swarm_id=SWARM_ID&resource_id=RESOURCE_ID
         p
-          | Direct presence notification are sent automatically by BUGswarm to resources
-          | that are owned by the same user as a resource that has just
-          | connected to BUGswarm. For example, if resources A, B, and C belong
-          | to Alice and A and B are connected to BUGswarm then A and B will
-          | receive a direct presence message when resource C connects to
-          | BUGswarm, and another direct presence message when resource C
-          | leaves BUGswarm.
-        h3 Messages
+          | In the above format, SWARM_ID and RESOURCE_ID would be replaced with the IDs corresponding to the swarm being connected to and the resource doing
+          | the connecting respectively. Note that a swarm must be 
+          a(href='configuration_api.html') configured 
+          | to contain the connecting resource before that resource can successfully connect.
         p
-          | Messages are sent from one resource to one of the following: all
-          | resources in all swarms that the sender has joined, all resources
-          | in a specified swarm, or only a specified resource. The message
-          | contains data that the recipient can use to determine whether it
-          | is receiving a private message or a public message. Messages can
-          | be sent between resources that belong to the same swarm and between
-          | resources that belong to the same user.
-        h3 Errors
-        p
-          | Errors are sent to the resource when something has gone wrong.
-          | Usually this means that a resource has attempted to use the
-          | API to do something that is not allowed, such as writing to a swarm
-          | when it is a consumer, or attempting to connect to a swarm that it
-          | does not belong to. Errors contain a list of HTTP codes and
-          | descriptions for each error that occured during an attempted
-          | operation. Some operations my cause more than one error, so the list
-          | may have more than one element.
-        h2 Using the Streaming API
-        h3 URL and Methods
-        p
-          | The streaming API is available at <br/>
-          code http://api.bugswarm.net/stream
-          | <br/> with the resource ID and swarm IDs listed as parameters after the
-          | URL. For example, to connect to the swarms 
-          | 911cbc244827dba9c6dbdd09aff3e5e8fe5eee02 and 
-          | 57438aab86c98e09809a775110fd01426daa23c1 with the resource ID
-          | b3af18bb34ce8032d20afce5a4b57c73da33e94f you would use this URL: <br/>
-          code http://api.bugswarm.net/stream?swarm_id=911cbc244827dba9c6dbdd09aff3e5e8fe5eee02&swarm_id=57438aab86c98e09809a775110fd01426daa23c1&resource_id=b3af18bb34ce8032d20afce5a4b57c73da33e94f
-          | <br/>Using HTTP GET allows you to read from the stream, while using HTTP 
-          | POST allows reading and writing. You need to set the <br/>
+          | Using HTTP GET allows you to read from the stream, while using HTTP 
+          | POST allows reading and writing since the stream will be bidirectional. 
+          | When using this streaming API, you must set the
           code x-bugswarmapikey
-          | <br/>header to your Participation API key. The stream that is
-          | created on a POST request is bidirectional.
-        h3 Format
+          |  header to your participation API key. 
+
+        h5 Example:
         p
-          | Resources send and receive presence notification and messages in 
+          | In order to connect a resource with ID
+          code b3af18bb34ce8032d20afce5a4b57c73da33e94f
+          |  to two swarms with IDs
+          code 911cbc244827dba9c6dbdd09aff3e5e8fe5eee02
+          |  and
+          code 57438aab86c98e09809a775110fd01426daa23c1
+          | , you would use the follwoing URL:
+
+        pre.prettyprint.language-javascript
+          'http://api.bugswarm.net/stream?swarm_id=911cbc244827dba9c6dbdd09aff3e5e8fe5eee02&swarm_id=57438aab86c98e09809a775110fd01426daa23c1&resource_id=b3af18bb34ce8032d20afce5a4b57c73da33e94f'
+
+        p
+          | Note that this example shows how you may string together multiple swarm IDs to connect to multiple swarms at once with the same resource.
+          
+        br
+
+        .page-header
+          h2#formats Formats
+        
+        p
+          | Resources send and receive presence notifications and messages in 
           | JSON format.
-        h4 Presence Notifications
-        h5 Sender
-        | To join swarms 234 and 333:
-        pre.prettyprint.language-javascript
-          {"presence": {"to": ["234", "333"]}}
-        | To leave swarms 234 and 333:
-        pre.prettyprint.language-javascript
-          {"presence": {"to": ["234", "333"], type: "unavailable"}}
-        h5 Recipient
-        | When resource 222 has joined swarm 234:
-        pre.prettyprint.language-javascript
-          {"presence": {"from": {"swarm": "234", "resource": "222", "user": "c4milo"}}
-        | When resource 222 has left swarm 234:
-        pre.prettyprint.language-javascript
-          {"presence": {"from": {"swarm": "234", "resource": "222", "user": "c4milo"}, "type": "unavailable"}
-        | When a resource that is owned by the same user connects to BUGswarm:
-        pre.prettyprint.language-javascript
-          {"presence": {"from": {"resource": "222"}}}
-        | When a resource that is owned by the same user disconnects from BUGswarm:
-        pre.prettyprint.language-javascript
-          {"presence": {"from": {"resource": "222"} "type": "unavailable"}}
-        h4 Messages
-        h5 Sender
-        | To send a public message to all the swarms that the resource has joined:
-        pre.prettyprint.language-javascript
-          {"message": {"payload": {"x":1}}}
-        | To send a public message to swarms 234 and 123:
-        pre.prettyprint.language-javascript
-          {"message": {"to": ["234", "123"], "payload": {"x":1}}}
-        | To send a private message to resource 222 in swarm 234:
-        pre.prettyprint.language-javascript
-          {"message": {"to": [{"swarm": "234", "resource": "222"}], "payload": {"y":2}}}
-        h5 Recipient
-        | When a resource receives public message from resource 123:
-        pre.prettyprint.language-javascript
-          {"message": {"from": {"swarm": "234", "resource":"123"}, "public": true, "payload": {"x": 1}}}
-        | When a resource receives private message from resource 123:
-        pre.prettyprint.language-javascript
-          {"message": {"from": {"swarm": "234", resource: "123"}, "public": false, "payload": {"y": 2}}}
-        h4 Errors
-        h5 Recipient
+
+        h3 Presence Notifications
+        .row
+          ul  
+          .span12.columns
+            li: h5 Sender
+
+            | To join swarms 234 and 333:
+            br
+            br
+            pre.prettyprint.language-javascript
+              {"presence": {"to": ["234", "333"]}}
+
+            | To leave swarms 234 and 333:
+            br
+            br
+            pre.prettyprint.language-javascript
+              {"presence": {"to": ["234", "333"], type: "unavailable"}}
+          .span13.columns
+            li: h5 Recipient
+
+            | When resource 222 has joined swarm 234:
+            br
+            br
+            pre.prettyprint.language-javascript
+              {"presence": {"from": {"swarm": "234", "resource": "222", "user": "c4milo"}}
+  
+            | When resource 222 has left swarm 234:
+            br
+            br
+            pre.prettyprint.language-javascript
+              {"presence": {"from": {"swarm": "234", "resource": "222", "user": "c4milo"}, "type": "unavailable"}
+
+            | When a resource that is owned by the same user connects to BUGswarm:
+            br
+            br
+            pre.prettyprint.language-javascript
+              {"presence": {"from": {"resource": "222"}}}
+
+            | When a resource that is owned by the same user disconnects from BUGswarm:
+            br
+            br
+            pre.prettyprint.language-javascript
+              {"presence": {"from": {"resource": "222"} "type": "unavailable"}}
+
+        .page-header
+
+        h3 Messages
+
+        .row
+          ul
+          .span12.columns
+            li: h5 Sender
+
+            | To send a public message to all the swarms that the resource has joined:
+            br
+            br
+            pre.prettyprint.language-javascript
+              {"message": {"payload": {"x":1}}}
+
+            | To send a public message to swarms 234 and 123:
+            br
+            br
+            pre.prettyprint.language-javascript
+              {"message": {"to": ["234", "123"], "payload": {"x":1}}}
+
+            | To send a private message to resource 222 in swarm 234:
+            br
+            br
+            pre.prettyprint.language-javascript
+              {"message": {"to": [{"swarm": "234", "resource": "222"}], "payload": {"y":2}}}
+          .span13.columns
+            li: h5 Recipient
+
+            | When a resource receives public message from resource 123:
+            br
+            br
+            pre.prettyprint.language-javascript
+              {"message": {"from": {"swarm": "234", "resource":"123"}, "public": true, "payload": {"x": 1}}}
+
+            | When a resource receives private message from resource 123:
+            br
+            br
+            pre.prettyprint.language-javascript
+              {"message": {"from": {"swarm": "234", resource: "123"}, "public": false, "payload": {"y": 2}}}
+
+        .page-header
+
+        h3 Errors
+
+        ul
+          li: h5 Recipient
+
         | When an error occurs:
+        br
+        br
         pre.prettyprint.language-javascript
           {"errors": [{"code": "xxx", description: "foo"}, {"code": "yyy", "description": "bar"}]}
