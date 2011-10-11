@@ -1,0 +1,51 @@
+body, html {
+  background-color: #F8F8F8;
+  /*color: #626262;*/
+}
+
+body {
+  padding-top: 50px;
+}
+
+pre code {
+  background: none;
+}
+
+#banner {
+  color: #F1D32C;
+}
+
+#muc {
+  width: 100%;
+}
+
+.masthead {
+  padding-bottom: 15px;
+  color: #FFFFFF;
+  margin-top: -10px;
+  margin-bottom: 10px;
+
+  background-image: url('../images/bg.gif');
+  background-repeat: repeat-x;
+}
+
+.masthead h1 {
+  color: #FFFFFF;
+  margin-top: 30px;
+}
+
+#tagline {
+  font-size: 17px;
+}
+
+#cubes {
+  margin-top: 10px;
+}
+
+.actions {
+  background-color: #F1F1F1;
+}
+
+a {
+  color: #09C;
+}

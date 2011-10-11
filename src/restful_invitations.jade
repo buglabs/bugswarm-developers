@@ -1,0 +1,316 @@
+!!! 5
+html(lang='en')
+  head
+    include includes/assets
+
+  body
+
+    // NAVIGATION
+    include includes/navigation
+
+    // CONTAINER
+    .container-fluid
+
+      // SIDEBAR
+      .sidebar
+        
+        strong Jump to:
+        ul.unstyled
+          li: h5: a(href='#send') Send
+          li: h5: a(href='#list-sent-invitations') List Sent Invitations
+          li: h5: a(href='#list-received-invitations') List Received Invitations
+          li: h5: a(href='#respond') Respond
+
+      // CONTENT
+      .content
+
+        // Path
+        .page-header
+          a(href='index.html') Home
+          |  &rarr;
+          a(href='api_documentation.html') API Documentation
+          |  &rarr;
+          a(href='configuration_api.html') Configuration
+
+        // Header
+        h1 Invitations
+        p
+          | Send, list, and respond to invitations using the RESTful API.
+        .page-header
+
+        // Send
+        h3#send Send
+        
+        // description
+        .row
+          .span8.columns
+            ul.unstyled
+              li
+                strong URL: 
+                code http://api.bugswarm.net/swarms/SWARM_ID/invitations
+                li
+                  strong Method: 
+                  | GET
+                li
+                  strong Headers: 
+                  br
+                  code "x-bugswarmapikey: ${API_KEY}"
+                  ,
+                  br
+                  code "content-type: application/json"
+                li
+                  strong Parameters (Required): 
+                  | None
+                li
+                  strong Parameters (Optional): 
+                  | None
+          .span8.columns
+            p
+              | BUGswarm provides a unique social aspect to cloud messaging between embedded devices. Invitations allow
+              | the owners of swarms to let other users' resources join their swarms as producers, consumers, or both. This
+              | method sends an invitation to a specific resource for a given user to join the specified swarm.
+
+        // body
+        strong Body: 
+        | A JSON file containing the information of the invitation to be sent. The "description" field is
+        strong optional
+        | .
+        pre.prettyprint.language-javascript.
+          {
+              "to": "other username",
+              "resource_id": "16f101010e80dd123b87363af759cc22cf49ff5f",
+              "resource_type": "both",
+              "description": "Hey. Come join my awesome swarm!."
+          }
+
+        // usage
+        strong Usage: 
+        | Create a JSON file with the name
+        code invitation.json
+        |  and matching the above format. Then execute: 
+        pre.prettyprint.language-javascript.
+          curl -X POST -d@invitation.json --header "x-bugswarmapikey: 911cbc244827dba9c6dbdd09aff3e5e8fe5eee02" --header "content-type: application/json" http://api.bugswarm.net/swarms/SWARM_ID/invitations
+
+        // returns
+        strong Returns: 
+        | The sent invitation in JSON format.
+        pre.prettyprint.language-javascript.
+          {
+              "id": "fba0ca4bc9c63a964d9781c5487617e5f17dffd9",
+              "from": "username",
+              "swarm_id": "3a147bd1a79a7d075b8cd2f1d48db9719c1f6739",
+              "description": "Hey. Come join my awesome swarm!",
+              "resource_type": "both",
+              "resource_id": "16f101010e80dd123b87363af759cc22cf49ff5f",
+              "to": "other username",
+              "sent_at": "2011-10-10T03:12:11.773Z",
+              "status": "new"
+          }
+        
+        .page-header
+
+        // List Sent Invitations
+        h3#list-sent-invitations List Sent Invitations
+        
+        // description
+        .row
+          .span8.columns
+            ul.unstyled
+              li
+                strong URL: 
+                code http://api.bugswarm.net/swarms/SWARM_ID/invitations
+                li
+                  strong Method: 
+                  | GET
+                li
+                  strong Headers: 
+                  br
+                  code "x-bugswarmapikey: ${API_KEY}"
+                li
+                  strong Parameters (Required): 
+                  | None
+                li
+                  strong Parameters (Optional): 
+                  | None
+          .span8.columns
+            p
+              | Use this method to monitor the status of invitations sent to resources to join a given swarm.
+
+        // usage
+        strong Usage: 
+        pre.prettyprint.language-javascript.
+          curl -X GET "x-bugswarmapikey: 911cbc244827dba9c6dbdd09aff3e5e8fe5eee02" http://api.bugswarm.net/swarms/SWARM_ID/invitations
+
+        // returns
+        strong Returns: 
+        | A list of invitatios sent for the given swarm.
+        pre.prettyprint.language-javascript.
+          [
+              {
+                  "id": "fba0ca4bc9c63a964d9781c5487617e5f17dffd9",
+                  "from": "username",
+                  "swarm_id": "3a147bd1a79a7d075b8cd2f1d48db9719c1f6739",
+                  "description": "Hey. Come join my awesome swarm!",
+                  "resource_type": "both",
+                  "resource_id": "16f101010e80dd123b87363af759cc22cf49ff5f",
+                  "to": "other username",
+                  "sent_at": "2011-10-10T03:12:11.773Z",
+                  "status": "new"
+              },
+              {
+                  "accepted_at": "2011-10-10T03:28:56.083Z",
+                  "id": "b773a3c03b413d0f8398913aff719a00b7ef2d5"
+                  "from": "username",
+                  "swarm_id": "3a147bd1a79a7d075b8cd2f1d48db9719c1f6739",
+                  "description": "Hey. Come join my awesome swarm!",
+                  "resource_type": "producer",
+                  "resource_id": "052be4babe6efa128fa9a09997d4562250156aae"
+                  "to": "other username",
+                  "sent_at": "2011-10-10T03:12:11.773Z",
+                  "status": "accepted"
+              }
+          ]
+        
+        .page-header
+
+        // List Received Invitations
+        h3#list-received-invitations List Received Invitations
+        
+        // description
+        .row
+          .span8.columns
+            ul.unstyled
+              li
+                strong URL:
+                br 
+                code http://api.bugswarm.net/invitations
+                br
+                code http://api.bugswarm.net/resources/RESOURCE_ID/invitations
+                li
+                  strong Method: 
+                  | GET
+                li
+                  strong Headers: 
+                  br
+                  code "x-bugswarmapikey: ${API_KEY}"
+                li
+                  strong Parameters (Required): 
+                  | None
+                li
+                  strong Parameters (Optional): 
+                  | None
+          .span8.columns
+            p
+              | Use this method to keep track of what invitations you have received. You may either list all invitations 
+              | received by your user account by using the 
+              code http://api.bugswarm.net/invitations
+              |  URL, or list invitations received by a specific resource by using the 
+              code http://api.bugswarm.net/resources/RESOURCE_ID/invitations
+              |  URL.
+
+        // usage
+        strong Usage: 
+        pre.prettyprint.language-javascript.
+          curl -X GET "x-bugswarmapikey: 911cbc244827dba9c6dbdd09aff3e5e8fe5eee02" http://api.bugswarm.net/invitations
+          curl -X GET "x-bugswarmapikey: 911cbc244827dba9c6dbdd09aff3e5e8fe5eee02" http://api.bugswarm.net/resources/RESOURCE_ID/invitations
+
+        // returns
+        strong Returns: 
+        | A list of invitations sent to the user or a specific resource.
+        pre.prettyprint.language-javascript.
+          [
+              {
+                  "id": "fba0ca4bc9c63a964d9781c5487617e5f17dffd9",
+                  "from": "other username",
+                  "swarm_id": "3a147bd1a79a7d075b8cd2f1d48db9719c1f6739",
+                  "description": "Hey. Come join my awesome swarm!",
+                  "resource_type": "both",
+                  "resource_id": "16f101010e80dd123b87363af759cc22cf49ff5f",
+                  "to": "username",
+                  "sent_at": "2011-10-10T03:12:11.773Z",
+                  "status": "new"
+              },
+              {
+                  "accepted_at": "2011-10-10T03:28:56.083Z",
+                  "id": "b773a3c03b413d0f8398913aff719a00b7ef2d5"
+                  "from": "other username",
+                  "swarm_id": "3a147bd1a79a7d075b8cd2f1d48db9719c1f6739",
+                  "description": "Hey. Come join my awesome swarm!",
+                  "resource_type": "producer",
+                  "resource_id": "052be4babe6efa128fa9a09997d4562250156aae"
+                  "to": "username",
+                  "sent_at": "2011-10-10T03:12:11.773Z",
+                  "status": "accepted"
+              }
+          ]
+        
+        .page-header
+
+        // Respond
+        h3#respond Respond
+        
+        // description
+        .row
+          .span8.columns
+            ul.unstyled
+              li
+                strong URL: 
+                code http://api.bugswarm.net/resources/RESOURCE_ID
+                br
+                code > /invitations/INVITATION_ID
+                li
+                  strong Method: 
+                  | PUT
+                li
+                  strong Headers: 
+                  br
+                  code "x-bugswarmapikey: ${API_KEY}"
+                  ,
+                  br
+                  code "content-type: application/json"
+                li
+                  strong Parameters (Required): 
+                  | None
+                li
+                  strong Parameters (Optional): 
+                  | None
+          .span8.columns
+            p
+              | At any point in time, users may choose to respond to pending invitations for a given resource.
+              | Use this method to either accept or reject these invitations.
+
+        // body
+        strong Body: 
+        | A JSON file containing the status of the response, either accepting ("accept") or rejecting ("reject") the invitation.
+        pre.prettyprint.language-javascript.
+          {
+              "status": "accept"
+          }
+
+        // usage
+        strong Usage: 
+        | Create a JSON file with the name
+        code response.json
+        |  and matching the above format. Then execute: 
+        pre.prettyprint.language-javascript.
+          curl -X PUT -d@invitation.json --header "x-bugswarmapikey: 911cbc244827dba9c6dbdd09aff3e5e8fe5eee02" --header "content-type: application/json" http://api.bugswarm.net/resources/RESOURCE_ID/invitations/INVITATION_ID
+
+        // returns
+        strong Returns: 
+        | The invitation with an updated "status" field and either an "accepted_at" or "rejected_at" field.
+        pre.prettyprint.language-javascript.
+          {
+              "accepted_at": "2011-10-10T03:28:56.083Z",
+              "description": "Hey. Come join my awesome swarm!",
+              "from": "other username",
+              "id": "fba0ca4bc9c63a964d9781c5487617e5f17dffd9",
+              "resource_id": "16f101010e80dd123b87363af759cc22cf49ff5f",
+              "resource_type": "both",
+              "sent_at": "2011-10-10T03:12:11.773Z",
+              "status": "accepted",
+              "swarm_id": "3a147bd1a79a7d075b8cd2f1d48db9719c1f6739",
+              "to": "username"
+          }
+        
+        .page-header        
+
