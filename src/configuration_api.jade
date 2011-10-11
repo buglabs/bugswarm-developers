@@ -34,9 +34,12 @@ html(lang='en')
         // Header
         h1 Configuration
         p
-          | Configure swarms and their resources through the use of our RESTful API. Be sure to check out the
+          | Configure swarms and their resources through the use of our RESTful API. Manage the social aspect of swarm
+          | by sending and responding to invitations. Be sure to check out the
           a(href='tools.html') Tools
-          |  page for quick and easy ways to jump right into using this API.
+          |  page for quick and easy ways to get started, including 
+          a(href='http://github.com/bugswarm-tools') BUGswarm Tools
+          | , a simple set of python scripts that wraps up the BUGswarm API.
 
         // API Keys
         h3: a#api-keys(href='restful_api_keys.html') API Keys
@@ -55,9 +58,7 @@ html(lang='en')
             a(href='restful_api_keys.html#create') Create (POST)
           .span10.columns
             p
-              | Create an API key. Users can hold up to three API keys, a master key, a producer key, 
-              | and a consumer key. Each key holds a different set of permissions regarding swarm and
-              | resource configuration.
+              | Create an API key. Users can hold up to two API keys, a configuration key and a participation key.
         .page-header
 
         // list
@@ -285,6 +286,6 @@ html(lang='en')
             a(href='restful_invitations.html#respond') Respond (PUT)
           .span10.columns
             p
-              | Respond to received invitations by either accepting or rejecting.
+              | Respond to received invitations by either accepting or rejecting them.
         .page-header
 
