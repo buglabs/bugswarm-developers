@@ -1,5 +1,3 @@
-	<script language="javascript" type="text/javascript">
-//<![CDATA[
    function supports_html5_storage() {
         try {
     return 'localStorage' in window && window['localStorage'] !== null;
@@ -68,5 +66,5 @@
 			}
         	}
 	}
-    //]]>
-    </script>
+
+
