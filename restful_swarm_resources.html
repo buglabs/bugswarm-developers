@@ -8,7 +8,7 @@
 Swarms can contain the resources of many members. This method adds a resource 
 to a given swarm. The method passes a JSON file containing the swarm-relevant 
 information regarding the resource to add. The "type" field passed in the JSON 
-refers to whether the resource will act as a producer, consumer, or both.
+refers to whether the resource will act as a producer or a consumer.
 </p></div></div><!-- body --><strong>Body: </strong>A JSON file containing the information of the resource to add that is relevant to
 the context of a swarm.
 <pre class="prettyprint language-javascript">{
@@ -60,7 +60,7 @@ curl -X GET --header &quot;x-bugswarmapikey: 911cbc244827dba9c6dbdd09aff3e5e8fe5
     },
     {
         &quot;resource_id&quot;: &quot;4735f4417f4fd2eb67ace9f2d2e7948e2d9f43f9&quot;,
-        &quot;resource_type&quot;: &quot;both&quot;,
+        &quot;resource_type&quot;: &quot;consumer&quot;,
         &quot;swarm_id&quot;: &quot;a16fb1d896817c58d4f4be9dea51e74b86519579&quot;,
         &quot;user_id&quot;: &quot;username&quot;,
         &quot;url&quot;: &quot;http://api.dev.bugswarm.net/resources/4735f4417f4fd2eb67ace9f2d2e7948e2d9f43f9&quot;,
