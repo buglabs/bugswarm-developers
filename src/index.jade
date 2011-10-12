@@ -1,4 +1,3 @@
-xb
 !!! 5
 html(lang='en')
   head
@@ -54,13 +53,14 @@ html(lang='en')
       p
         | Participate in the BUGswarm developer preview (happening right now!) to receive free access for a limited time to our services.
         | Doing so will allow you to use BUGswarm to its fullest potential. Sign up below and see all that BUGswarm has to offer.
+
       form#mc-embedded-subscribe-form.validate.actions(action='http://bugswarm.us2.list-manage.com/subscribe/post?u=876a1af227de66fbb5520a055&id=5e569d1e96', method='post', name='mc-embedded-subscribe-form')
         fieldset
           .clearfix
             label(for='mce-EMAIL')
               strong Email
             .input
-              input#mce-EMAIL.xlarge.email(type='email', value='', name='EMAIL', placeholder='email address', size='30', required='required')
-              br
-              br
-              input#mc-embedded-subscribe.btn.danger(type='submit', value='Sign Me Up!')
+              input.xlarge.email#mce-EMAIL(type='email', name='EMAIL', placeholder='email address', required='required')          
+          .clearfix
+            .input
+              input.btn.danger#mc-embedded-subscribe(type='submit', value='Sign Me Up!')
