@@ -22,16 +22,43 @@ html(lang='en')
       h1 Swarmlight
       p
         a(href='https://github.com/buglabs/bugswarm-applications/tree/master/swarmlight') Swarmlight 
-        | is one of the first applications built on the BUGswarm platform and makes use of a BUGbase,
-        | x10 outlets, and 
+        | is one of the first applications built on the BUGswarm platform and makes use of a BUGbasases,
+        | external appliances, and 
         a(href='http://github.com/buglabs/bugswarm-tools') BUGswarm Tools 
-        | to flip the Chistmas lights in the Bug Labs office on and off by simply using the controls below from
+        | to control lights around the Bug Labs office by simply using the controls below from
         | anywhere in the world.
 
       br
 
-      input.btn.danger(type="button", value="Lights On", onclick="javascript: lighton()")
+      // Christmas Lights
+      h2 Christmas Lights
+
+      br
+      
+      input.btn.danger(type="button", value="Xmas Lights On", onclick="javascript: xmaslightson()")
       |    
-      input.btn.danger(type="button", value="Lights Off", onclick="javascript: lightoff()")
+      input.btn.danger(type="button", value="Xmas Lights Off", onclick="javascript: xmaslightsoff()")
+
+      br
+      br
+
+      .page-header
+
+      // Traffic Light
+      h2 Traffic Light
+
+      br
+
+      input.btn.danger(type="button", value="Red On", onclick="javascript: redon()")
+      |    
+      input.btn.danger(type="button", value="Red Off", onclick="javascript: redoff()")
+      | 
+      input.btn.alert-message(type="button", value="Yellow On", onclick="javascript: yellowon()")
+      |    
+      input.btn.alert-message(type="button", value="Yellow Off", onclick="javascript: yellowoff()")
+      | 
+      input.btn.success(type="button", value="Green On", onclick="javascript: greenon()")
+      |    
+      input.btn.success(type="button", value="Green Off", onclick="javascript: greenoff()")
 
       script(language="javascript", tpe="text/javascript", src="js/swarmlight.js")
