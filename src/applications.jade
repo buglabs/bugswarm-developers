@@ -2,29 +2,50 @@
 html(lang='en')
   head
     include includes/assets
-
   body
-
-    // NAVIGATION
     include includes/navigation
 
-    // CONTAINER
-    .container-fluid
-
-      // SIDEBAR
+    .container
       .sidebar
-
-        strong Jump to:
-        ul.unstyled
-
-      // CONTENT
       .content
+        .row
+          .page-header
+            a(href='index.html') Home
 
-        // Path
-        .page-header
-          a(href='index.html') Home
+        .row
+          h1 Applications
+          p Here are some of the applications people have built using swarm. If you create something, 
+            a(href='mailto:list@buglabs.net') share it
+            !
 
-        // Header
-        h1 Applications
-        p
-          | Coming soon.
+        .row
+          h2
+            a(href='http://github.com/buglabs/Lepidoptera') Lepidoptera
+          .span-one-third
+            a(href='http://github.com/buglabs/Lepidoptera')
+              img(src='images/lepidoptera.png', height='100')
+          .span-two-thirds
+            p A web application that visualizes a fleet of vehicles moving around NY.
+
+        .row
+          h2
+            a(href='https://gist.github.com/1265034') HNTR
+          .span-two-thirds
+            p A shared shopping list for the oncoming winter. From the 
+              a(href='tutorial.html') tutorial
+              .
+          .span-one-third
+            a(href='https://gist.github.com/1265034')
+              img(src='images/hntr.jpg',  height='100')
+
+        .row
+          h2
+            a(href='http://developer.bugswarm.net/swarmlight.html') swarmlight
+          .span-one-third
+            a(href='http://developer.bugswarm.net/swarmlight.html')
+              img(src='images/swarmlight.jpg', height='100')
+          .span-two-thirds
+            p.
+              A quick and dirty website that can control the holiday lights in our fourth floor window.
+              Come down to 598 broadway (next to hollister on houston) and control them from your phone!
+              Also, come up to the fourth floor to chat :)
