@@ -1,6 +1,6 @@
 SWARM.connect({apikey: 'a35c8276f241a967d8bdf59a07d4b5d522447b17',
                resource: 'd339b0c7d52fa3fb5a0a7b6add02a8fa06f8c0c7',
-               swarms: ['74b9ae0e70eebb084d5e97014a1a29668911c070'],
+               swarms: ['d0e0de97f0b1ebe17762654f209b3bd100de6bf6'],
                onmessage: function() {},
                onpresence: function() {},
                onerror: function() {},
@@ -39,16 +39,22 @@ SWARM.connect({apikey: 'a35c8276f241a967d8bdf59a07d4b5d522447b17',
                            $('#dpad-left').replaceWith('<li id=\"dpad-left\"> Left <div class=\"button\"></div></li>');
                        } else if (button == '1' && action == 'DOWN') {
                            $('#button-1').replaceWith('<li id=\"button-1\"> 1 <div class=\"button-on\"></div></li>');
+                           SWARM.send('REDON');
                        } else if (button == '1' && action == 'UP') {
                            $('#button-1').replaceWith('<li id=\"button-1\"> 1 <div class=\"button\"></div></li>');
+                           SWARM.send('REDOFF');
                        } else if (button == '2' && action == 'DOWN') {
                            $('#button-2').replaceWith('<li id=\"button-2\"> 2 <div class=\"button-on\"></div></li>');
+                           SWARM.send('YELLOWON');
                        } else if (button == '2' && action == 'UP') {
                            $('#button-2').replaceWith('<li id=\"button-2\"> 2 <div class=\"button\"></div></li>');
+                           SWARM.send('YELLOWOFF');
                        } else if (button == '3' && action == 'DOWN') {
                            $('#button-3').replaceWith('<li id=\"button-3\"> 3 <div class=\"button-on\"></div></li>');
+                           SWARM.send('GREENON');
                        } else if (button == '3' && action == 'UP') {
                            $('#button-3').replaceWith('<li id=\"button-3\"> 3 <div class=\"button\"></div></li>');
+                           SWARM.send('GREENOFF');
                        } else if (button == '4' && action == 'DOWN') {
                            $('#button-4').replaceWith('<li id=\"button-4\"> 4 <div class=\"button-on\"></div></li>');
                        } else if (button == '4' && action == 'UP') {
