@@ -1,6 +1,6 @@
 SWARM.connect({apikey: 'a35c8276f241a967d8bdf59a07d4b5d522447b17',
                resource: 'd339b0c7d52fa3fb5a0a7b6add02a8fa06f8c0c7',
-               swarms: ['d0e0de97f0b1ebe17762654f209b3bd100de6bf6'],
+               swarms: ['74b9ae0e70eebb084d5e97014a1a29668911c070'],
                onmessage: function() {},
                onpresence: function() {},
                onerror: function() {},
