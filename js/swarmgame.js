@@ -39,22 +39,16 @@ SWARM.connect({apikey: 'a35c8276f241a967d8bdf59a07d4b5d522447b17',
                            $('#dpad-left').replaceWith('<li id=\"dpad-left\"> Left <div class=\"button\"></div></li>');
                        } else if (button == '1' && action == 'DOWN') {
                            $('#button-1').replaceWith('<li id=\"button-1\"> 1 <div class=\"button-on\"></div></li>');
-                           SWARM.send('REDON');
                        } else if (button == '1' && action == 'UP') {
                            $('#button-1').replaceWith('<li id=\"button-1\"> 1 <div class=\"button\"></div></li>');
-                           SWARM.send('REDOFF');
                        } else if (button == '2' && action == 'DOWN') {
                            $('#button-2').replaceWith('<li id=\"button-2\"> 2 <div class=\"button-on\"></div></li>');
-                           SWARM.send('YELLOWON');
                        } else if (button == '2' && action == 'UP') {
                            $('#button-2').replaceWith('<li id=\"button-2\"> 2 <div class=\"button\"></div></li>');
-                           SWARM.send('YELLOWOFF');
                        } else if (button == '3' && action == 'DOWN') {
                            $('#button-3').replaceWith('<li id=\"button-3\"> 3 <div class=\"button-on\"></div></li>');
-                           SWARM.send('GREENON');
                        } else if (button == '3' && action == 'UP') {
                            $('#button-3').replaceWith('<li id=\"button-3\"> 3 <div class=\"button\"></div></li>');
-                           SWARM.send('GREENOFF');
                        } else if (button == '4' && action == 'DOWN') {
                            $('#button-4').replaceWith('<li id=\"button-4\"> 4 <div class=\"button-on\"></div></li>');
                        } else if (button == '4' && action == 'UP') {
