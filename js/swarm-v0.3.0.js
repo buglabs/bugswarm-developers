@@ -1,4 +1,4 @@
-/*! Socket.IO.js build:0.7.5, development. Copyright(c) 2011 LearnBoost <dev@learnboost.com> MIT Licensed */
+/*! Socket.IO.js build:0.8.5, development. Copyright(c) 2011 LearnBoost <dev@learnboost.com> MIT Licensed */
 
 /**
  * socket.io
@@ -22,7 +22,7 @@
    * @api public
    */
 
-  io.version = '0.7.5';
+  io.version = '0.8.5';
 
   /**
    * Protocol implemented.
@@ -1122,7 +1122,7 @@
    * @api private
    */
 
-  var regexp = /^([^:]+):([0-9]+)?(\+)?:([^:]+)?:?(.*)?$/;
+  var regexp = /([^:]+):([0-9]+)?(\+)?:([^:]+)?:?([\s\S]*)?/;
 
   parser.decodePacket = function (data) {
     var pieces = data.match(regexp);
@@ -1503,6 +1503,7 @@
       , 'max reconnection attempts': 10
       , 'sync disconnect on unload': true
       , 'auto connect': true
+      , 'flash policy port': 10843
     };
 
     io.util.merge(this.options, options);
@@ -1602,7 +1603,7 @@
 
     if (this.isXDomain()) {
       var insertAt = document.getElementsByTagName('script')[0]
-        , script = document.createElement('SCRIPT');
+        , script = document.createElement('script');
 
       script.src = url + '&jsonp=' + io.j.length;
       insertAt.parentNode.insertBefore(script, insertAt);
@@ -1675,6 +1676,8 @@
       );
 
       function connect (transports){
+        if (self.transport) self.transport.clearTimeouts();
+
         self.transport = self.getTransport(transports);
         if (!self.transport) return self.publish('connect_failed');
 
@@ -1803,8 +1806,10 @@
 
   Socket.prototype.isXDomain = function () {
 
-    var locPort = window.location.port || 80;
-    return this.options.host !== document.domain || this.options.port != locPort;
+    var port = window.location.port ||
+      ('https:' == window.location.protocol ? 443 : 80);
+
+    return this.options.host !== document.domain || this.options.port != port;
   };
 
   /**
@@ -1814,13 +1819,15 @@
    */
 
   Socket.prototype.onConnect = function () {
-    this.connected = true;
-    this.connecting = false;
-    if (!this.doBuffer) {
-      // make sure to flush the buffer
-      this.setBuffer(false);
+    if (!this.connected) {
+      this.connected = true;
+      this.connecting = false;
+      if (!this.doBuffer) {
+        // make sure to flush the buffer
+        this.setBuffer(false);
+      }
+      this.emit('connect');
     }
-    this.emit('connect');
   };
 
   /**
@@ -2274,12 +2281,17 @@
    */
 
   WS.prototype.open = function () {
-    var self = this
-      , query = io.util.query(this.socket.options.query);
+    var query = io.util.query(this.socket.options.query)
+      , self = this
+      , Socket
 
-    this.websocket = new WebSocket(this.prepareUrl() + query);
 
-    var self = this;
+    if (!Socket) {
+      Socket = window.MozWebSocket || window.WebSocket;
+    }
+
+    this.websocket = new Socket(this.prepareUrl() + query);
+
     this.websocket.onopen = function () {
       self.onOpen();
       self.socket.setBuffer(false);
@@ -2366,7 +2378,8 @@
    */
 
   WS.check = function () {
-    return 'WebSocket' in window && !('__addTask' in WebSocket);
+    return ('WebSocket' in window && !('__addTask' in WebSocket))
+          || 'MozWebSocket' in window;
   };
 
   /**
@@ -2387,7 +2400,6 @@
    */
 
   io.transports.push('websocket');
-
 
 })(
     'undefined' != typeof io ? io.Transport : module.exports
@@ -2439,7 +2451,7 @@
   Flashsocket.prototype.name = 'flashsocket';
 
   /**
-   *Disconnect the established `FlashSocket` connection. This is done by adding a 
+   * Disconnect the established `FlashSocket` connection. This is done by adding a 
    * new task to the FlashSocket. The rest will be handled off by the `WebSocket` 
    * transport.
    *
@@ -2500,6 +2512,7 @@
   Flashsocket.prototype.ready = function (socket, fn) {
     function init () {
       var options = socket.options
+        , port = options['flash policy port']
         , path = [
               'http' + (options.secure ? 's' : '') + ':/'
             , options.host + ':' + options.port
@@ -2514,6 +2527,10 @@
         if (typeof WEB_SOCKET_SWF_LOCATION === 'undefined') {
           // Set the correct file based on the XDomain settings
           WEB_SOCKET_SWF_LOCATION = path.join('/');
+        }
+
+        if (port !== 843) {
+          WebSocket.loadFlashPolicyFile('xmlsocket://' + options.host + ':' + port);
         }
 
         WebSocket.__initialize();
@@ -2544,7 +2561,7 @@
       || !('__initialize' in WebSocket) || !swfobject
     ) return false;
 
-    return swfobject.getFlashPlayerVersion().major >= 1;
+    return swfobject.getFlashPlayerVersion().major >= 10;
   };
 
   /**
@@ -3082,7 +3099,7 @@ var swfobject=function(){var D="undefined",r="object",S="Shockwave Flash",W="Sho
 
   XHR.prototype.request = function (method) {
     var req = io.util.request(this.socket.isXDomain())
-      , query = io.util.query(this.socket.options.query, + 't=' + +new Date);
+      , query = io.util.query(this.socket.options.query, 't=' + +new Date);
 
     req.open(method || 'GET', this.prepareUrl() + query, true);
 
@@ -3541,8 +3558,8 @@ var swfobject=function(){var D="undefined",r="object",S="Shockwave Flash",W="Sho
         );
 
     if (!this.form) {
-      var form = document.createElement('FORM')
-        , area = document.createElement('TEXTAREA')
+      var form = document.createElement('form')
+        , area = document.createElement('textarea')
         , id = this.iframeId = 'socketio_iframe_' + this.index
         , iframe;
 
@@ -3617,7 +3634,7 @@ var swfobject=function(){var D="undefined",r="object",S="Shockwave Flash",W="Sho
 
   JSONPPolling.prototype.get = function () {
     var self = this
-      , script = document.createElement('SCRIPT')
+      , script = document.createElement('script')
       , query = io.util.query(
              this.socket.options.query
           , 't='+ (+new Date) + '&i=' + this.index
@@ -3751,155 +3768,135 @@ if (!Array.isArray) {
  *
  * @author Bug Labs Inc.
  **/
+
 (function(exports, io) {
-    if (!io || !io.connect) {
-        throw new Error('No socket.io detected');
+    function connect() {
+        var self = this;
+
+        var socket = io.connect('http://api.bugswarm.net:80');
+        socket.on('connect', function() {
+            var credentials = { apikey: self.options.apikey,
+                                resource: self.options.resource,
+                                swarms: self.options.swarms };
+
+            socket.emit('swarm:connect', credentials);
+        });
+
+        socket.on('swarm:connected', function() {
+            self.online = true;
+            self.options.onconnect();
+        });
+
+        socket.on('swarm:message', self.options.onmessage);
+        socket.on('swarm:presence', self.options.onpresence);
+        socket.on('swarm:error', self.options.onerror);
+
+        socket.on('swarm:system:error', function(error) {
+            if (self.debug) {
+                console.log(error);
+            }
+        });
+
+        socket.on('disconnect', function() {
+            self.online = false;
+            if (self.debug) {
+                console.log('disconnected');
+            }
+        });
+
+        socket.on('error', function(error) {
+            if (self.debug) {
+                console.log(JSON.stringify(error));
+            }
+        });
+
+        self.socket = socket;
     }
 
     /**
-     * Creates Swarm instances.
-     * @param {String} apikey The Api Key with permissions to join Swarms.
      * @constructor
      **/
     var Swarm = function() {
         this.online = false;
     };
 
-    /**
-     * Clones an object.
-     * @param {Object} obj The object to be copied.
-     * @return {Object} The copy of the object.
-     **/
+    Swarm.prototype.debug = false;
 
-    function clone(obj) {
-        if (obj == null ||
-            typeof(obj) != 'object') {
-            return obj;
-        }
+    Swarm.prototype.connect = function(options) {
 
-        var copy = new obj.constructor();
+        //this.options = this.options || {};
 
-        for (var key in obj) {
-            copy[key] = clone(obj[key]);
-        }
-        return copy;
-    }
-
-
-    /**
-     * Sends messages to every joined swarm or a subset of them.
-     * @param {Object} stanza A javascript object representing the stanza.
-     * @param {Array} _swarms An array of a selected group
-     * of previously joined swarms.
-     * to which the user wants to send the message.
-     * @private
-     **/
-    function send(stanza, _swarms) {
-        var self = this;
-
-        var swarms = [];
-        if (_swarms) {
-            swarms = _swarms;
-        } else {
-            swarms = this.swarms;
-        }
-
-        var len = swarms.length;
-        for (var i = 0; i < len; i++) {
-            var _stanza = clone(stanza);
-            if (_stanza.presence) {
-                _stanza.presence.to = swarms[i] + '@' +
-                self.swarmsrv + '/' + self.nickname;
-            } else if (_stanza.message) {
-                _stanza.message.to = swarms[i] + '@' + self.swarmsrv;
-            }
-            console.log('Sending ' + JSON.stringify(_stanza));
-            self.socket.emit('message', _stanza);
-        }
-    }
-
-    /**
-     * Connects to Swarm server.
-     * @param {Function} callback The function to be
-     * called to send connection statuses.
-     * @private
-     **/
-    function connect(callback) {
-        var self = this;
-
-        var socket = io.connect('http://api.bugswarm.net:80');
-        socket.on('connect', function() {
-            socket.emit('apikey', self.apikey);
-        });
-
-        socket.on('disconnect', function() {
-            self.online = false;
-            console.log('disconnected');
-        });
-
-        socket.on('connected to backend', function(server) {
-            self.nickname = 'browser-' +
-            (Math.random() + '' + Date.now()).split('.')[1];
-            //self.server = server;
-            self.server = server || 'bugswarm.net';
-            self.swarmsrv = 'swarms.' + self.server;
-            self.online = true;
-
-            callback.call(self);
-        });
-
-        socket.on('error', function(error) {
-            console.log(JSON.stringify(error));
-        });
-
-        self.socket = socket;
-    }
-
-    Swarm.prototype.join = function(options) {
-        var self = this;
         if (!options.apikey) {
-            throw new Error('You must provide an API ' +
-            'Key in order to join Swarms.');
+            throw new Error('You must provide a Participation API ' +
+            'Key in order to join Swarms. Please go to ' +
+            'http://developer.bugswarm.net/restful_api_keys.html#create ' +
+            'to know how to create your API Keys.');
         }
 
-        if (!options.swarms) {
+        if (!options.resource) {
+            throw new Error('You must provide a resource id ' +
+            'in order to join Swarms. Please go to ' +
+            'http://developer.bugswarm.net/restful_user_resources.html#create' +
+            ' to know how to create your resources and ' +
+            'http://developer.bugswarm.net/restful_swarm_resources.html#add ' +
+            'for instructions about how to add your resource ' +
+            'to your existing Swarm.');
+        }
+
+        if (!options.swarms ||
+            (Array.isArray(options.swarms) && !options.swarms.length)) {
             throw new Error('You need to specify which ' +
-            'Swarm(s) you would like to join.');
+            'Swarm(s) you would like to join. Please go to ' +
+            'http://developer.bugswarm.net/restful_swarms.html#create ' +
+            'if you want to know how to create them.');
         }
 
-        /*if (!options.messagecb || typeof options.messagecb != 'function') {
-            throw new Error('In order to receive Swarm ' +
-            'messages you need to provide a function callback');
-        }*/
-
-        if (!options.callback || typeof options.callback != 'function') {
-            throw new Error('In order to receive Swarm messages ' +
-            'you need to provide a function callback');
+        if (options.onmessage && typeof options.onmessage !== 'function') {
+            throw new Error('onmessage needs to be a function.');
         }
 
-        this.apikey = options.apikey;
-
-        function _join() {
-            self.swarms = options.swarms;
-
-            if (!Array.isArray(self.swarms)) {
-                self.swarms = [self.swarms];
-            }
-
-            send.call(self, {
-                presence: {}
-            });
+        if (options.onpresence && typeof options.onpresence !== 'function') {
+            throw new Error('onpresence needs to be a function.');
         }
+
+        if (options.onerror && typeof options.onerror !== 'function') {
+            throw new Error('onerror needs to be a function.');
+        }
+
+        if (options.onconnect && typeof options.onconnect !== 'function') {
+            throw new Error('onconnect needs to a function.');
+        }
+
+        if (!Array.isArray(options.swarms)) {
+            options.swarms = [options.swarms];
+        }
+
+        this.options = options;
+
+        options.onerror = options.onerror || function() {};
+        options.onpresence = options.onpresence || function() {};
+        options.onmessage = options.onmessage || function() {};
+        options.onconnect = options.onconnect || function() {};
 
         if (!this.online) {
-            connect.call(this, function() {
-                _join();
-            });
-        } else {
-            _join();
+            connect.call(this);
+        }
+    };
+
+    Swarm.prototype.send = function(payload, swarms) {
+        if (!this.online) {
+            return;
         }
 
-        this.socket.on('message', options.callback);
+        var message = {};
+        if (swarms && !Array.isArray(swarms)) {
+            swarms = [swarms];
+            message.swarms = swarms;
+        }
+
+        message.payload = payload;
+
+        this.socket.emit('swarm:send', message);
     };
 
     Swarm.prototype.leave = function(swarms) {
@@ -3907,44 +3904,28 @@ if (!Array.isArray) {
             return;
         }
 
-        if (swarms && ! Array.isArray(swarms)) {
+        if (swarms && !Array.isArray(swarms)) {
             swarms = [swarms];
         }
 
-        send.call(this, {
-            presence: {
-                type: 'unavailable'
-            }
-        },
-        swarms);
-
-        if (swarms) {
-            var len = this.swarms.length;
-            for (var i = 0; i < len; i++) {
-                var len_ = swarms.length;
-                for (var j = 0; j < len_; j++) {
-                    if (this.swarms[i] == swarms[j]) {
-                        this.swarms.splice(i, 1);
-                    }
-                }
-            }
-        } else {
-            this.swarms = [];
-        }
+        this.socket.emit('swarm:leave', swarms);
     };
 
-    Swarm.prototype.send = function(payload) {
-        if (typeof payload == 'object') {
-            payload = JSON.stringify(payload);
+    Swarm.prototype.join = function(swarms) {
+        if (!this.online) {
+            return;
         }
-        var stanza = {
-            message: {
-                to: '', //workaround for json2xml converter
-                type: 'groupchat',
-                body: { $t: payload }
-            }
-        };
-        send.call(this, stanza);
+
+        if (!swarms) {
+            throw new Error('You need to specify the ' +
+            'swarm or swarms you would like to join.');
+        }
+
+        if (!Array.isArray(swarms)) {
+            swarms = [swarms];
+        }
+
+        this.socket.emit('swarm:join', swarms);
     };
 
     exports.SWARM = new Swarm();
