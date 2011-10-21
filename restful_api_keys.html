@@ -13,20 +13,31 @@ associated with the
 </li></li></ul></div><div class="span8 columns"><p>Each user must possess at least a configuration API key. In addition to the configuration key, 
 a participation key can be generated for use with producing and consuming data on the platform. 
 This method is used to create API keys. If a key already exists,
-this method will replace that key with a new one. For the participation key, users must specify
+this method will replace that key with a new one. To create a specific key, users must specify
 the key type in the URL. For instance,
 <code>http://api.bugswarm.net/keys/participation</code> will generate the participation key, while
-<code>http://api.bugswarm.net/keys</code> will generate the configuration key by default. The configuration key may also be created by 
-specifying the key type in the URL. 
+<code>http://api.bugswarm.net/keys</code> will generate both keys by default. 
 </p></div></div><!-- usage--><strong>Usage: </strong><pre class="prettyprint language-javascript">curl -X POST --user &quot;username:password&quot; http://api.bugswarm.net/keys
 curl -X POST --user &quot;username:password&quot; http://api.bugswarm.net/keys/configuration
 curl -X POST --user &quot;username:password&quot; http://api.bugswarm.net/keys/participation
 
 </pre><!-- returns--><strong>Returns: </strong> The created key in JSON format.
-<pre class="prettyprint language-javascript">{
-  &quot;apikey&quot;: &quot;911cbc244827dba9c6dbdd09aff3e5e8fe5eee02&quot;,
-  &quot;type&quot;: &quot;configuration&quot;
-}
+<pre class="prettyprint language-javascript">[
+  {
+    &quot;created_at&quot;: &quot;2011-10-21T15:37:35.636Z&quot;, 
+    &quot;key&quot;: &quot;b8c2382d0fd9123f3d0ccc760afa03854c652fdb&quot;, 
+    &quot;status&quot;: &quot;active&quot;, 
+    &quot;type&quot;: &quot;configuration&quot;, 
+    &quot;user_id&quot;: &quot;username&quot;
+  }, 
+  {
+    &quot;created_at&quot;: &quot;2011-10-21T15:37:35.744Z&quot;, 
+    &quot;key&quot;: &quot;c0eb23bb29bcf123d74d79801bdc5b06f1e97bdd&quot;, 
+    &quot;status&quot;: &quot;active&quot;, 
+    &quot;type&quot;: &quot;participation&quot;, 
+    &quot;user_id&quot;: &quot;username&quot;
+  }
+]
 
 </pre><div class="page-header"></div><!-- List--><h3 id="list">List</h3><!-- description--><div class="row"><div class="span8 columns"><ul class="unstyled"><li><strong>URL: </strong><code>http://api.bugswarm.net/keys</code><li><strong>Method: </strong>GET
 </li><li><strong>Authentication: </strong><code>"username:password"</code></li><li><strong>Parameters (Required): </strong>None
