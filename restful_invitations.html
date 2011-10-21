@@ -8,14 +8,14 @@ Invitations
 <br><code>"content-type: application/json"</code></li><li><strong>Parameters (Required): </strong>None
 </li><li><strong>Parameters (Optional): </strong>None
 </li></li></ul></div><div class="span8 columns"><p>BUGswarm provides a unique social aspect to cloud messaging between embedded devices. Invitations allow
-the owners of swarms to let other users' resources join their swarms as producers, consumers, or both. This
+the owners of swarms to let other users' resources join their swarms as producers or consumers. This
 method sends an invitation to a specific resource for a given user to join the specified swarm.
 </p></div></div><!-- body--><strong>Body: </strong>A JSON file containing the information of the invitation to be sent. The "description" field is
 <strong>optional</strong>.
 <pre class="prettyprint language-javascript">{
     &quot;to&quot;: &quot;other username&quot;,
     &quot;resource_id&quot;: &quot;16f101010e80dd123b87363af759cc22cf49ff5f&quot;,
-    &quot;resource_type&quot;: &quot;both&quot;,
+    &quot;resource_type&quot;: &quot;consumer&quot;,
     &quot;description&quot;: &quot;Hey. Come join my awesome swarm!.&quot;
 }
 
@@ -29,7 +29,7 @@ method sends an invitation to a specific resource for a given user to join the s
     &quot;from&quot;: &quot;username&quot;,
     &quot;swarm_id&quot;: &quot;3a147bd1a79a7d075b8cd2f1d48db9719c1f6739&quot;,
     &quot;description&quot;: &quot;Hey. Come join my awesome swarm!&quot;,
-    &quot;resource_type&quot;: &quot;both&quot;,
+    &quot;resource_type&quot;: &quot;consumer&quot;,
     &quot;resource_id&quot;: &quot;16f101010e80dd123b87363af759cc22cf49ff5f&quot;,
     &quot;to&quot;: &quot;other username&quot;,
     &quot;sent_at&quot;: &quot;2011-10-10T03:12:11.773Z&quot;,
@@ -49,7 +49,7 @@ method sends an invitation to a specific resource for a given user to join the s
         &quot;from&quot;: &quot;username&quot;,
         &quot;swarm_id&quot;: &quot;3a147bd1a79a7d075b8cd2f1d48db9719c1f6739&quot;,
         &quot;description&quot;: &quot;Hey. Come join my awesome swarm!&quot;,
-        &quot;resource_type&quot;: &quot;both&quot;,
+        &quot;resource_type&quot;: &quot;consumer&quot;,
         &quot;resource_id&quot;: &quot;16f101010e80dd123b87363af759cc22cf49ff5f&quot;,
         &quot;to&quot;: &quot;other username&quot;,
         &quot;sent_at&quot;: &quot;2011-10-10T03:12:11.773Z&quot;,
@@ -86,7 +86,7 @@ curl -X GET &quot;x-bugswarmapikey: 911cbc244827dba9c6dbdd09aff3e5e8fe5eee02&quo
         &quot;from&quot;: &quot;other username&quot;,
         &quot;swarm_id&quot;: &quot;3a147bd1a79a7d075b8cd2f1d48db9719c1f6739&quot;,
         &quot;description&quot;: &quot;Hey. Come join my awesome swarm!&quot;,
-        &quot;resource_type&quot;: &quot;both&quot;,
+        &quot;resource_type&quot;: &quot;consumer&quot;,
         &quot;resource_id&quot;: &quot;16f101010e80dd123b87363af759cc22cf49ff5f&quot;,
         &quot;to&quot;: &quot;username&quot;,
         &quot;sent_at&quot;: &quot;2011-10-10T03:12:11.773Z&quot;,
@@ -128,7 +128,7 @@ Use this method to either accept or reject these invitations.
     &quot;from&quot;: &quot;other username&quot;,
     &quot;id&quot;: &quot;fba0ca4bc9c63a964d9781c5487617e5f17dffd9&quot;,
     &quot;resource_id&quot;: &quot;16f101010e80dd123b87363af759cc22cf49ff5f&quot;,
-    &quot;resource_type&quot;: &quot;both&quot;,
+    &quot;resource_type&quot;: &quot;consumer&quot;,
     &quot;sent_at&quot;: &quot;2011-10-10T03:12:11.773Z&quot;,
     &quot;status&quot;: &quot;accepted&quot;,
     &quot;swarm_id&quot;: &quot;3a147bd1a79a7d075b8cd2f1d48db9719c1f6739&quot;,
