@@ -69,7 +69,7 @@ html(lang='en')
           .span8.columns
             p
               | BUGswarm provides a unique social aspect to cloud messaging between embedded devices. Invitations allow
-              | the owners of swarms to let other users' resources join their swarms as producers, consumers, or both. This
+              | the owners of swarms to let other users' resources join their swarms as producers or consumers. This
               | method sends an invitation to a specific resource for a given user to join the specified swarm.
 
         // body
@@ -81,7 +81,7 @@ html(lang='en')
           {
               "to": "other username",
               "resource_id": "16f101010e80dd123b87363af759cc22cf49ff5f",
-              "resource_type": "both",
+              "resource_type": "consumer",
               "description": "Hey. Come join my awesome swarm!."
           }
 
@@ -102,7 +102,7 @@ html(lang='en')
               "from": "username",
               "swarm_id": "3a147bd1a79a7d075b8cd2f1d48db9719c1f6739",
               "description": "Hey. Come join my awesome swarm!",
-              "resource_type": "both",
+              "resource_type": "consumer",
               "resource_id": "16f101010e80dd123b87363af759cc22cf49ff5f",
               "to": "other username",
               "sent_at": "2011-10-10T03:12:11.773Z",
@@ -153,7 +153,7 @@ html(lang='en')
                   "from": "username",
                   "swarm_id": "3a147bd1a79a7d075b8cd2f1d48db9719c1f6739",
                   "description": "Hey. Come join my awesome swarm!",
-                  "resource_type": "both",
+                  "resource_type": "consumer",
                   "resource_id": "16f101010e80dd123b87363af759cc22cf49ff5f",
                   "to": "other username",
                   "sent_at": "2011-10-10T03:12:11.773Z",
@@ -226,7 +226,7 @@ html(lang='en')
                   "from": "other username",
                   "swarm_id": "3a147bd1a79a7d075b8cd2f1d48db9719c1f6739",
                   "description": "Hey. Come join my awesome swarm!",
-                  "resource_type": "both",
+                  "resource_type": "consumer",
                   "resource_id": "16f101010e80dd123b87363af759cc22cf49ff5f",
                   "to": "username",
                   "sent_at": "2011-10-10T03:12:11.773Z",
@@ -307,7 +307,7 @@ html(lang='en')
               "from": "other username",
               "id": "fba0ca4bc9c63a964d9781c5487617e5f17dffd9",
               "resource_id": "16f101010e80dd123b87363af759cc22cf49ff5f",
-              "resource_type": "both",
+              "resource_type": "consumer",
               "sent_at": "2011-10-10T03:12:11.773Z",
               "status": "accepted",
               "swarm_id": "3a147bd1a79a7d075b8cd2f1d48db9719c1f6739",
