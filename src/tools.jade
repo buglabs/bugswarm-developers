@@ -1,7 +1,7 @@
 !!! 5
 html(lang='en')
   head
-    script(src='js/swarm-v1.0.0.beta.js')
+    script(src='js/swarm-v0.3.0.js')
     include includes/assets
 
   body(onload="loadValues()")
@@ -71,7 +71,7 @@ html(lang='en')
         fieldset
           .clearfix
             label(for="apikey") 
-              strong Consumer API Key
+              strong Participation API Key
             .input
               input.xxlarge#apikey(name="apikey", size="14", type="text")
 
@@ -80,6 +80,12 @@ html(lang='en')
               strong Swarm ID
             .input
               input.xxlarge#swarmID(name="swarmID", size="14", type="text")
+
+          .clearfix
+            label(for="resourceID") 
+              strong Consumer Resource ID
+            .input
+              input.xxlarge#resourceID(name="resourceID", size="14", type="text")
 
           .clearfix
             label(for="muc")
