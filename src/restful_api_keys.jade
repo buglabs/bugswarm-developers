@@ -71,13 +71,12 @@ html(lang='en')
               | Each user must possess at least a configuration API key. In addition to the configuration key, 
               | a participation key can be generated for use with producing and consuming data on the platform. 
               | This method is used to create API keys. If a key already exists,
-              | this method will replace that key with a new one. For the participation key, users must specify
+              | this method will replace that key with a new one. To create a specific key, users must specify
               | the key type in the URL. For instance,
               code http://api.bugswarm.net/keys/participation
               |  will generate the participation key, while
               code http://api.bugswarm.net/keys
-              |  will generate the configuration key by default. The configuration key may also be created by 
-              | specifying the key type in the URL. 
+              |  will generate both keys by default. 
 
         // usage
         strong Usage: 
@@ -90,10 +89,22 @@ html(lang='en')
         strong Returns: 
         |  The created key in JSON format.
         pre.prettyprint.language-javascript.
-          {
-            "apikey": "911cbc244827dba9c6dbdd09aff3e5e8fe5eee02",
-            "type": "configuration"
-          }
+          [
+            {
+              "created_at": "2011-10-21T15:37:35.636Z", 
+              "key": "b8c2382d0fd9123f3d0ccc760afa03854c652fdb", 
+              "status": "active", 
+              "type": "configuration", 
+              "user_id": "username"
+            }, 
+            {
+              "created_at": "2011-10-21T15:37:35.744Z", 
+              "key": "c0eb23bb29bcf123d74d79801bdc5b06f1e97bdd", 
+              "status": "active", 
+              "type": "participation", 
+              "user_id": "username"
+            }
+          ]
 
         .page-header
 
