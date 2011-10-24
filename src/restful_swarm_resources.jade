@@ -69,7 +69,12 @@ html(lang='en')
               | Swarms can contain the resources of many members. This method adds a resource 
               | to a given swarm. The method passes a JSON file containing the swarm-relevant 
               | information regarding the resource to add. The "type" field passed in the JSON 
-              | refers to whether the resource will act as a producer or a consumer.
+              | refers to whether the resource will act as a producer or a consumer. This method
+              | can only be used to add your resources to a swarm that you own. To add another
+              | member's resource(s) to your swarm or to join another member's swarm with your
+              | resources, please see the 
+              a(href='restfu_invitations.html') invitations 
+              | section of the API documentation.
 
         // body 
         strong Body: 
