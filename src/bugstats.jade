@@ -3,32 +3,64 @@ html(lang='en')
   head
     script(src='http://cdn.buglabs.net/swarm/swarm-v0.3.0.js')
     include includes/assets
+    link(rel='stylesheet', href='css/bugstats.css')
 
   body
 
     // NAVIGATION
-    include includes/navigation
+    .topbar
+      .topbar-inner
+        .container
+          h3: a#banner(href='index.html') SAATCHI & SAATCHI
+          ul.nav
+            li
+              a(href='http://saatchi.com') Corporate
 
     // CONTENT
-    .container
+    .bugstats.container
 
-      // Path
-      .page-header
-        a(href='index.html') Home
-        | &rarr;
-        a(href='applications.html') Applications
-        | &rarr;
-        | BUGstats
+      #header
+        // Header
+        h1 Freebie Stats
+        p
+          | Using 
+          a(href='http://developer.bugswarm.net') BUGswarm
+          | , an M2M cloud messaging platform built by 
+          a(href='http://buglabs.net') Bug Labs
+          | , this application allows you to monitor the vital
+          | statistics of each Freebie machine currently deployed.
 
-      // Header
-      h1 BUGstats
-      p
-        | Monitor the vitals of your BUG using BUGswarm and this application.
+      #aggregate
+        h1 Aggregate Information
+        #aggregate-data
+          .row
+            .span-smallstats
+              h3 User %              
+              ul.unstyled
+                li.data#aggregate-usr Data pending...
+            .span-smallstats
+              h3 Nice %
+              ul.unstyled
+                li.data#aggregate-nice Data Pending...
+            .span-smallstats
+              h3 System %
+              ul.unstyled
+                li.data#aggregate-sys Data pending...
+            .span-datetime
+              h3 Datetime
+              ul.unstyled
+                li.data#aggregate-datetime Data pending...
+   
+      #divider
+        .page-header
 
-      br
+      #controls
 
       #resources
+      
+      #map
+        h1 Map
 
-      input.btn.danger(type="button", value="Get Stats", onclick="javascript: getStats()")
+      br
   
       script(src="js/bugstats.js", type="text/javascript")
