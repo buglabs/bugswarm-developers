@@ -1,0 +1,34 @@
+!!! 5
+html(lang='en')
+  head
+    script(src='http://cdn.buglabs.net/swarm/swarm-v0.3.0.js')
+    include includes/assets
+
+  body
+
+    // NAVIGATION
+    include includes/navigation
+
+    // CONTENT
+    .container
+
+      // Path
+      .page-header
+        a(href='index.html') Home
+        | &rarr;
+        a(href='applications.html') Applications
+        | &rarr;
+        | BUGstats
+
+      // Header
+      h1 BUGstats
+      p
+        | Monitor the vitals of your BUG using BUGswarm and this application.
+
+      br
+
+      #resources
+
+      input.btn.danger(type="button", value="Get Stats", onclick="javascript: getStats()")
+  
+      script(src="js/bugstats.js", type="text/javascript")
