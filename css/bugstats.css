@@ -1,0 +1,63 @@
+a {
+    color: #0069d6;
+}
+
+#banner {
+    color: #FFFFFF;
+}
+
+.container {
+    width: 90%;
+}
+
+#header {
+    width: 40%;
+    height: 150px;
+    float: left;
+}
+
+#aggregate {
+    width: 57%;
+    height: 150px;
+    margin-left: 3%;
+    float: right;
+}
+
+#divider {
+    width: 100%;
+    float: left;
+}
+
+#controls {
+    width: 100%;
+    float: left;
+}
+
+#resources {
+    width: 40%;
+    float: left;
+}
+
+.bugstats-resource {
+    width: 100%;
+}
+
+.span-smallstats {
+    width: 16%;
+}
+
+.span-datetime {
+    width: 30%;
+}
+
+.data {
+    font-size: 14px;
+}
+
+#map {
+    width: 57%;
+    height: 400px;
+    margin-left: 3%;
+    float: right;
+    background-color: #888888;
+}
