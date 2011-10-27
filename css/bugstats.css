@@ -1,21 +1,30 @@
+/* This stylesheet complements bootstrap.css. It is loaded following
+bootstrap.css, so if any attributes mofified here will overwrite
+the same attributes in bootstrap.css */
+
+/* general */
 a {
     color: #0069d6;
 }
 
+/* navigation */
 #banner {
     color: #FFFFFF;
 }
 
+/* container */
 .container {
-    width: 90%;
+    width: 1024px;
 }
 
+/* header */
 #header {
     width: 40%;
     height: 150px;
     float: left;
 }
 
+/* aggregate information */
 #aggregate {
     width: 57%;
     height: 150px;
@@ -23,16 +32,23 @@ a {
     float: right;
 }
 
+.aggregate-data {
+    font-size: 14px;
+}
+
+/* divider */
 #divider {
     width: 100%;
     float: left;
 }
 
+/* controls */
 #controls {
-    width: 100%;
+    width: 100%%;
     float: left;
 }
 
+/* list of resources */
 #resources {
     width: 40%;
     float: left;
@@ -51,13 +67,30 @@ a {
 }
 
 .data {
-    font-size: 14px;
+    font-size: 12px;
 }
 
+.immediate {
+    color: #0069d6;
+}
+
+.even {
+    color: #303030;    
+}
+
+.odd {
+    color: #909090;
+}
+
+/* map */
 #map {
     width: 57%;
-    height: 400px;
     margin-left: 3%;
     float: right;
-    background-color: #888888;
+}
+
+#map-canvas {
+    width: 100%;
+    height: 500px;
+    border: 1px solid #404040;
 }
