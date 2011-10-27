@@ -15,12 +15,12 @@ SWARM.connect({apikey: 'a35c8276f241a967d8bdf59a07d4b5d522447b17',
                        messageObj = JSON.parse(message);
                        data = messageObj.message.payload;
                        for (var key in data) {
-                           if (key == "Button") {
+                           if (key == 'Button') {
                                button = data[key];
                                console.log(button);
-                           } else if (key == "Action") {
-                               action = data[key]
-                               console.log(action)
+                           } else if (key == 'Action') {
+                               action = data[key];
+                               console.log(action);
                            }
                        }
                        if (button == 'Y' && action == 'FORWARD') {

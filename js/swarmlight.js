@@ -11,41 +11,41 @@ SWARM.connect({apikey: 'a35c8276f241a967d8bdf59a07d4b5d522447b17',
               });
 
 xmaslightson = function() {
-    console.log("xmaslights on");
-    SWARM.send("XMASON");
+    console.log('xmaslights on');
+    SWARM.send('XMASON');
 };
 
 xmaslightsoff = function() {
-    console.log("xmaslights off");
-    SWARM.send("XMASOFF");
+    console.log('xmaslights off');
+    SWARM.send('XMASOFF');
 };
 
 redon = function() {
-    console.log("red on");
-    SWARM.send("REDON");
-}
+    console.log('red on');
+    SWARM.send('REDON');
+};
 
 redoff = function() {
-    console.log("red off");
-    SWARM.send("REDOFF");
-}
+    console.log('red off');
+    SWARM.send('REDOFF');
+};
 
 greenon = function() {
-    console.log("green on");
-    SWARM.send("GREENON");
-}
+    console.log('green on');
+    SWARM.send('GREENON');
+};
 
 greenoff = function() {
-    console.log("green off");
-    SWARM.send("GREENOFF");
-}
+    console.log('green off');
+    SWARM.send('GREENOFF');
+};
 
 yellowon = function()  {
-    console.log("yellow on");
-    SWARM.send("YELLOWON");
-}
+    console.log('yellow on');
+    SWARM.send('YELLOWON');
+};
 
 yellowoff = function()  {
-    console.log("yellow off");
-    SWARM.send("YELLOWOFF");
-}
+    console.log('yellow off');
+    SWARM.send('YELLOWOFF');
+};
