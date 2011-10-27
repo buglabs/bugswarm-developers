@@ -2,10 +2,12 @@
 html(lang='en')
   head
     script(src='http://cdn.buglabs.net/swarm/swarm-v0.3.0.js')
+    script(src='http://maps.googleapis.com/maps/api/js?sensor=false')
+    script(src="js/bugstats.js", type="text/javascript")
     include includes/assets
     link(rel='stylesheet', href='css/bugstats.css')
 
-  body
+  body(onload="mapInitialize()")
 
     // NAVIGATION
     .topbar
@@ -21,7 +23,7 @@ html(lang='en')
 
       #header
         // Header
-        h1 Freebie Stats
+        h1 P&G Freebie Machines
         p
           | Using 
           a(href='http://developer.bugswarm.net') BUGswarm
@@ -31,36 +33,37 @@ html(lang='en')
           | statistics of each Freebie machine currently deployed.
 
       #aggregate
-        h1 Aggregate Information
+        h1 Swarm Overview
         #aggregate-data
           .row
             .span-smallstats
               h3 User %              
               ul.unstyled
-                li.data#aggregate-usr Data pending...
+                li.aggregate-data#aggregate-usr Pending
             .span-smallstats
               h3 Nice %
               ul.unstyled
-                li.data#aggregate-nice Data Pending...
+                li.aggregate-data#aggregate-nice Pending
             .span-smallstats
               h3 System %
               ul.unstyled
-                li.data#aggregate-sys Data pending...
+                li.aggregate-data#aggregate-sys Pending
             .span-datetime
               h3 Datetime
               ul.unstyled
-                li.data#aggregate-datetime Data pending...
+                li.aggregate-data#aggregate-datetime Pending
    
       #divider
         .page-header
 
-      #controls
-
       #resources
+        h1 Members
+        #controls
+        #resources-list
       
       #map
-        h1 Map
-
+        h1 Locations
+        #map-canvas
+   
       br
   
-      script(src="js/bugstats.js", type="text/javascript")
