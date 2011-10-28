@@ -1,15 +1,61 @@
-// global vars
-var me = "1671ae80f13f60ca93a757b764d3fdceaf6cc9d4";
-var availableResources = [];
-var invalidResources = [me, "admin"]; //resources whose presence and message stanzas should not be handled
+// swarm stuff
 var bugstatsSwarm = '83537f005a15bc5f65935997ef858461c8f86608';
+var configurationKey = 'b92464a8d6d803ed881f4dee8a0d5b45bf20f0f1'
+var participationKey = 'a35c8276f241a967d8bdf59a07d4b5d522447b17';
+var me = "1671ae80f13f60ca93a757b764d3fdceaf6cc9d4";
+
+// global vars
+var invalidResources = [me, "admin"]; //resources whose presence and message stanzas should not be handled
+var memberResources = [];
+var availableResources = [];
+var resourceNameMap = {"7ebaf88e69998588f961c2aaf9950e8f1409371a": "Freebie 1", "a3992d35a9dc8f841dbc45e809d5c5b892d8e6d6": "Freebie 2"};
 var aggregate = null;
 var map = null;
-var mapMarkers = [];
 
-// main 
-SWARM.connect({apikey: 'a35c8276f241a967d8bdf59a07d4b5d522447b17',
-               resource: '1671ae80f13f60ca93a757b764d3fdceaf6cc9d4',
+// swarm management
+getMembers = function() {
+    membersCORS('http://api.bugswarm.net/swarms/' + bugstatsSwarm + '/resources', configurationKey, function(data){populateMemberResources(data)});
+};
+
+membersCORS = function(url, key, callback) {
+    $.ajax({
+        url: url,
+        type: 'GET',
+        headers: {'x-bugswarmapikey': key},
+        success: callback
+    });
+};
+
+populateMemberResources = function(data) {
+    for (var i=0; i < data.length; i++) {
+        if ((data[i].resource_type) == "producer" && (!isInvalid(data[i].resource_id))) {
+            resource = data[i].resource_id;
+            console.log("Producer Member: " + resource);
+            memberResources.push(resource);
+        }
+    }
+    console.log("Member Resources: " + memberResources);
+    appendMembers();
+};
+
+appendMembers = function() {
+    for (var i=0; i < memberResources.length; i++) {
+        toAppend = memberResources[i];
+        if (hasName(toAppend)) {
+            toAppendName = getName(toAppend);
+        } else {
+            toAppendName = toAppend.slice(0, 24) + '...';
+        }
+        var $disconnectedResourceDiv = $('<div class="bugstats-resource disconnected" id="' + toAppend + '-disconnected"><h4>Resource: ' + toAppendName + '</h4><h5>Disconnected...</h5><div class="page-header"></div></div>');
+        $("#resources-list").append($disconnectedResourceDiv);
+    }  
+};
+
+getMembers();
+
+// main (connect to swarm and event callbacks)
+SWARM.connect({apikey: participationKey,
+               resource: me,
                swarms: [bugstatsSwarm],
                onmessage: function() {},
                onpresence: function() {},
@@ -18,7 +64,7 @@ SWARM.connect({apikey: 'a35c8276f241a967d8bdf59a07d4b5d522447b17',
                // callbacks
                onconnect:
                    function onConnect() {
-                       console.log('I have connected to swarm ' + bugstatsSwarm + '!');
+                       console.log('I have connected to swarm ' + bugstatsSwarm + '!');                       
                    },
                onpresence:
                    function onPresence(presence) {
@@ -55,7 +101,7 @@ SWARM.connect({apikey: 'a35c8276f241a967d8bdf59a07d4b5d522447b17',
                    function onMessage(message) {
                        messageObj = JSON.parse(message);                      
                      
-                       // exit is not swarm message
+                       // exit if not swarm message
                        if (!isSwarmMessage(messageObj)) {
                            return;
                        }
@@ -87,12 +133,11 @@ presenceUnavailable = function(presenceResource) {
             console.log("Resource " + presenceResource + " removed.");
 
             // DOM
-            removeResource(presenceResource);                                    
+            disconnectedResource(presenceResource);                                    
 
-            // remove controls if no resources left
-            console.log("Available Resources Length" + availableResources.length);
+            // remove controls if no resources left            
             if (availableResources.length <= 0) {
-                $("#get-immediate-stats").remove();
+                $("#get-immediate-stats").replaceWith('<inpud class="btn primary disabled" disabled="disabled" id="get-immediate-stats" type="button" value="Update All" onclick="javascript: getImmediateStats()">');
             }            
         } 
     }
@@ -111,16 +156,22 @@ presenceAvailable = function(presenceResource) {
     console.log("Resource " + presenceResource + " added.");
     
     // DOM
-    appendResource(presenceResource);        
+    connectedResource(presenceResource);        
 
     // add controls if only one resource
     if (availableResources.length == 1) {
-        $("#controls").append('<input class="btn primary" id="get-immediate-stats" type="button" value="Update All" onclick="javascript: getImmediateStats()"><br><br><div class="page-header"></div>');
+        $("#get-immediate-stats").replaceWith('<input class="btn primary" id="get-immediate-stats" type="button" value="Update All" onclick="javascript: getImmediateStats()">');
     }
 };
 
-removeResource = function(toRemove) {
-    $("#" + toRemove).remove();
+disconnectedResource = function(toRemove) {
+    if (hasName(toRemove)) {
+        toRemoveName = getName(toRemove);
+    } else {
+        toRemoveName = toRemove.slice(0, 24) + '...';
+    }
+    var $disconnectedResourceDiv = $('<div class="bugstats-resource disconnected" id="' + toRemove + '-disconnected"><h4>Resource: ' + toRemoveName + '</h4><h5>Disconnected...</h5><div class="page-header"></div></div>');
+    $("#" + toRemove).replaceWith($disconnectedResourceDiv);
 
     window[toRemove + '_usr_array'] = null;
     window[toRemove + '_nice_array'] = null;
@@ -138,10 +189,15 @@ removeResource = function(toRemove) {
     window[toRemove + '_infowindow'] = null;
 };
 
-appendResource = function(toAppend) {
-    var $resourceDiv = $('<div class="bugstats-resource" id="' + toAppend + '"><h4>Resource: ' + toAppend.slice(0,24) + '...</h4><strong>Location: </strong><span id="' + toAppend + '-location">Pending</span><div class="row"><div class="span-smallstats"><h5>User %</h5><ul class="unstyled" id="' + toAppend + '-usr"><li class="data">Pending</li></ul></div><div class="span-smallstats"><h5>Nice %</h5><ul class="unstyled" id="' + toAppend + '-nice"><li class="data">Pending</li></ul></div><div class="span-smallstats"><h5>System %</h5><ul class="unstyled" id="' + toAppend + '-sys"><li class="data">Pending</li></ul></div><div class="span-datetime"><h5>Datetime</h5><ul class="unstyled" id="' + toAppend + '-datetime"><li class="data">Pending</li></ul></div></div><div class="page-header"></div></div>');
+connectedResource = function(toAppend) {
+    if (hasName(toAppend)) {
+        toAppendName = getName(toAppend);
+    } else {
+        toAppendName = toAppend.slice(0, 24) + '...';
+    }
+    var $connectedResourceDiv = $('<div class="bugstats-resource" id="' + toAppend + '"><h4>Resource: ' + toAppendName + '</h4><strong>Location: </strong><span id="' + toAppend + '-location">Pending</span><div class="row"><div class="span-smallstats"><h5>User %</h5><ul class="unstyled" id="' + toAppend + '-usr"><li class="data">Pending</li></ul></div><div class="span-smallstats"><h5>Nice %</h5><ul class="unstyled" id="' + toAppend + '-nice"><li class="data">Pending</li></ul></div><div class="span-smallstats"><h5>System %</h5><ul class="unstyled" id="' + toAppend + '-sys"><li class="data">Pending</li></ul></div><div class="span-datetime"><h5>Datetime</h5><ul class="unstyled" id="' + toAppend + '-datetime"><li class="data">Pending</li></ul></div></div><div class="page-header"></div></div>');
     
-    $("#resources-list").append($resourceDiv);
+    $("#" + toAppend + "-disconnected").replaceWith($connectedResourceDiv);
 
     window[toAppend + '_usr_array'] = [];
     window[toAppend + '_nice_array'] = [];
@@ -153,7 +209,7 @@ appendResource = function(toAppend) {
     window[toAppend + '_longitude'] = null;
     window[toAppend + '_latlng'] = new google.maps.LatLng(0,0);
     window[toAppend + '_marker'] = new google.maps.Marker({position: window[toAppend + '_latlng'], map: null, title: toAppend});
-
+    
     contentString = 'Resource: ' + toAppend.slice(0,24) + '...'; 
     window[toAppend + '_infowindow'] = new google.maps.InfoWindow({content: contentString});
     google.maps.event.addListener(window[toAppend + '_marker'], 'click', function() {
@@ -205,7 +261,7 @@ updateProducer = function(producer, latitude, longitude, usr, nice, sys, datetim
     $("#" + producer + "-nice").replaceWith($niceLogReplace);
     $("#" + producer + "-sys").replaceWith($sysLogReplace);
     $("#" + producer + "-datetime").replaceWith($datetimeLogReplace);
-}
+};
 
 updateAggregate = function(usr, nice, sys, datetime) {
     if (!aggregate) {
@@ -226,7 +282,7 @@ updateAggregate = function(usr, nice, sys, datetime) {
     $("#aggregate-nice").replaceWith('<li class="aggregate-data" id="aggregate-nice">' + aggregate.nice.toPrecision(5) + '</li>');
     $("#aggregate-sys").replaceWith('<li class="aggregate-data" id="aggregate-sys">' + aggregate.sys.toPrecision(5) + '</li>');
     $("#aggregate-datetime").replaceWith('<li class="aggregate-data" id="aggregate-datetime">' + datetime.slice(0,19) + '</li>');
-}
+};
 
 updateLocation = function(producer, latitude, longitude) {
     if (!positionChanged(producer, latitude, longitude)) {
@@ -338,7 +394,7 @@ isSwarmMessage = function(messageObj) {
     } else {
         return false;
     }
-}
+};
 
 isInvalid = function(resource) {
     for (var i=0; i < invalidResources.length; i++) {
@@ -347,7 +403,7 @@ isInvalid = function(resource) {
         }
     }
     return false;
-}
+};
 
 isStatsMessage = function(data) {
     if (data.sys) {
@@ -355,13 +411,22 @@ isStatsMessage = function(data) {
     } else {
         return false;
     }
-} 
+}; 
 
 alreadyAvailable = function(resource) {
     for (var i=0; i < availableResources.length; i++) {
         if (availableResources[i] == presenceResource) {
             return true;
             console.log("Resource already exists in table. Not adding.");
+        }
+    }
+    return false;
+};
+
+hasName = function(resource) {
+    for (var i in resourceNameMap) {
+        if (i == resource) {
+            return true;
         }
     }
     return false;
@@ -376,6 +441,15 @@ positionChanged = function(resource, latitude, longitude) {
 };
 
 
+// get/set
+getName = function(resource) {
+    for (var i in resourceNameMap) {
+        if (i == resource) {
+            return resourceNameMap[i];
+        }
+    }
+};
+
 // UI functions
 getImmediateStats = function() {
     console.log("Requesting stats from all resources.");
@@ -383,7 +457,7 @@ getImmediateStats = function() {
 };
 
 // map
-mapInitialize = function() {
+mapInitialize = function() {    
     var myLatLng = new google.maps.LatLng(39, -95);
     var mapOptions = {
         zoom: 8,

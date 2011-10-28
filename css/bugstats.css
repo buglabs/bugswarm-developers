@@ -58,6 +58,14 @@ a {
     width: 100%;
 }
 
+.disconnected h4 {
+    color: #888888;
+}
+
+.disconnected h5 {
+    color: #888888;
+}
+
 .span-smallstats {
     width: 16%;
 }
