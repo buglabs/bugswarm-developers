@@ -236,8 +236,14 @@ connectedResource = function(toAppend) {
     window[toAppend + '_longitude'] = null;
     window[toAppend + '_latlng'] = new google.maps.LatLng(0,0);
     window[toAppend + '_marker'] = new google.maps.Marker({position: window[toAppend + '_latlng'], map: null, title: toAppend});
+
+    if (hasName(toAppend)) {
+        markerResource = getName(toAppend);
+    } else {
+        markerResource = toAppend.slice(0,24) + '...';
+    }
     
-    contentString = 'Resource: ' + toAppend.slice(0,24) + '...'; 
+    contentString = 'Resource: ' + markerResource; 
     window[toAppend + '_infowindow'] = new google.maps.InfoWindow({content: contentString});
     google.maps.event.addListener(window[toAppend + '_marker'], 'click', function() {
         window[toAppend + '_infowindow'].open(map, window[toAppend + '_marker']);
