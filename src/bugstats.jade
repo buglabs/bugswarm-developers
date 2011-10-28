@@ -13,11 +13,8 @@ html(lang='en')
     .topbar
       .topbar-inner
         .container
-          h3: a#banner(href='index.html') SAATCHI & SAATCHI
-          ul.nav
-            li
-              a(href='http://saatchi.com') Corporate
-
+          a(href='http://saatchix.com'): img#logo(src="images/saatchi.jpg", alt="Saatchi Logo");
+          
     // CONTENT
     .bugstats.container
 
@@ -32,24 +29,27 @@ html(lang='en')
           | , this application allows you to monitor the vital
           | statistics of each Freebie machine currently deployed.
 
-      #aggregate
+      #swarm-overview
         h1 Swarm Overview
-        #aggregate-data
+        #swarm-info
+        .page-header
+        h3#aggregate-head Averages:
+        #aggregate-stats
           .row
             .span-smallstats
-              h3 User %              
+              h4 User %              
               ul.unstyled
                 li.aggregate-data#aggregate-usr Pending
             .span-smallstats
-              h3 Nice %
+              h4 Nice %
               ul.unstyled
                 li.aggregate-data#aggregate-nice Pending
             .span-smallstats
-              h3 System %
+              h4 System %
               ul.unstyled
                 li.aggregate-data#aggregate-sys Pending
             .span-datetime
-              h3 Datetime
+              h4 Datetime
               ul.unstyled
                 li.aggregate-data#aggregate-datetime Pending
    

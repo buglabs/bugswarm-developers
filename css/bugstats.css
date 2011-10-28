@@ -8,6 +8,15 @@ a {
 }
 
 /* navigation */
+#logo {
+    width: 180px;
+    height: 30px;
+    margin-top: 3px;
+    -webkit-border-radius: 7px;
+    -moz-border-radius: 7px;
+    border-radius: 7px;
+}
+
 #banner {
     color: #FFFFFF;
 }
@@ -20,20 +29,43 @@ a {
 /* header */
 #header {
     width: 40%;
-    height: 150px;
+    height: 160px;
     float: left;
 }
 
 /* aggregate information */
-#aggregate {
+#swarm-overview {
     width: 57%;
-    height: 150px;
+    height: 160px;
     margin-left: 3%;
     float: right;
 }
 
+#swarm-info {
+    margin-top: -8px;
+    margin-bottom: 5px;
+}
+
+.span-one-third {
+    width: 28%;
+}
+
+.swarm-info-head {
+    font-size: 18px;
+}
+
+.swarm-info-content {
+    font-size: 18px;
+    color: gray;
+}
+
+#aggregate-head {
+    margin-bottom: -10px;
+    margin-top: -15px;
+}
+
 .aggregate-data {
-    font-size: 14px;
+    font-size: 14px;    
 }
 
 /* divider */
@@ -64,6 +96,10 @@ a {
 
 .disconnected h5 {
     color: #888888;
+}
+
+.dc-head {
+    margin-top: -10px;
 }
 
 .span-smallstats {
