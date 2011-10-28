@@ -13,11 +13,24 @@ var aggregate = null;
 var map = null;
 
 // swarm management
+getSwarmInfo = function() {
+    getSwarmInfoCORS('http://api.bugswarm.net/swarms/' + bugstatsSwarm, configurationKey, function(data){populateSwarmInfo(data)});
+}
+
 getMembers = function() {
-    membersCORS('http://api.bugswarm.net/swarms/' + bugstatsSwarm + '/resources', configurationKey, function(data){populateMemberResources(data)});
+    listSwarmResourcesCORS('http://api.bugswarm.net/swarms/' + bugstatsSwarm + '/resources', configurationKey, function(data){populateMemberResources(data)});
 };
 
-membersCORS = function(url, key, callback) {
+getSwarmInfoCORS = function(url, key, callback) {
+    $.ajax({
+        url: url,
+        type: 'GET',
+        headers: {'x-bugswarmapikey': key},
+        success: callback
+    });
+}
+
+listSwarmResourcesCORS = function(url, key, callback) {
     $.ajax({
         url: url,
         type: 'GET',
@@ -25,6 +38,19 @@ membersCORS = function(url, key, callback) {
         success: callback
     });
 };
+
+populateSwarmInfo = function(data) {
+    console.log(JSON.stringify(data));
+    name = data.name;
+    owner = data.user_id;
+    if (data.public == true) {
+        access = "Public";
+    } else {
+        access = "Private";
+    }
+
+    $("#swarm-info").append('<div class=row><div class="span-one-third"><strong class="swarm-info-head">Name: </strong><span class="swarm-info-content">' + name + '</span></div><div class="span-one-third"><strong class="swarm-info-head">Owner: </strong><span class="swarm-info-content">' + owner + '</span></div><div class="span-one-third"><strong class="swarm-info-head">Access: </strong><span class="swarm-info-content">' + access + '</span></div></div>');
+}
 
 populateMemberResources = function(data) {
     for (var i=0; i < data.length; i++) {
@@ -46,11 +72,12 @@ appendMembers = function() {
         } else {
             toAppendName = toAppend.slice(0, 24) + '...';
         }
-        var $disconnectedResourceDiv = $('<div class="bugstats-resource disconnected" id="' + toAppend + '-disconnected"><h4>Resource: ' + toAppendName + '</h4><h5>Disconnected...</h5><div class="page-header"></div></div>');
+        var $disconnectedResourceDiv = $('<div class="bugstats-resource disconnected" id="' + toAppend + '-disconnected"><h4>Resource: ' + toAppendName + '</h4><h5 class="dc-head">Disconnected...</h5><div class="page-header"></div></div>');
         $("#resources-list").append($disconnectedResourceDiv);
     }  
 };
 
+getSwarmInfo();
 getMembers();
 
 // main (connect to swarm and event callbacks)
@@ -170,7 +197,7 @@ disconnectedResource = function(toRemove) {
     } else {
         toRemoveName = toRemove.slice(0, 24) + '...';
     }
-    var $disconnectedResourceDiv = $('<div class="bugstats-resource disconnected" id="' + toRemove + '-disconnected"><h4>Resource: ' + toRemoveName + '</h4><h5>Disconnected...</h5><div class="page-header"></div></div>');
+    var $disconnectedResourceDiv = $('<div class="bugstats-resource disconnected" id="' + toRemove + '-disconnected"><h4>Resource: ' + toRemoveName + '</h4><h5 class="dc-head">Disconnected...</h5><div class="page-header"></div></div>');
     $("#" + toRemove).replaceWith($disconnectedResourceDiv);
 
     window[toRemove + '_usr_array'] = null;
