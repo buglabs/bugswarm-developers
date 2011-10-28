@@ -137,7 +137,7 @@ presenceUnavailable = function(presenceResource) {
 
             // remove controls if no resources left            
             if (availableResources.length <= 0) {
-                $("#get-immediate-stats").replaceWith('<inpud class="btn primary disabled" disabled="disabled" id="get-immediate-stats" type="button" value="Update All" onclick="javascript: getImmediateStats()">');
+                $("#get-immediate-stats").replaceWith('<input class="btn primary disabled" disabled="disabled" id="get-immediate-stats" type="button" value="Update All" onclick="javascript: getImmediateStats()">');
             }            
         } 
     }
