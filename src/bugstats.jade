@@ -3,8 +3,8 @@ html(lang='en')
   head
     script(src='http://cdn.buglabs.net/swarm/swarm-v0.3.0.js')
     script(src='http://maps.googleapis.com/maps/api/js?sensor=false')
-    script(src="js/bugstats.js", type="text/javascript")
     include includes/assets
+    script(src="js/bugstats.js", type="text/javascript")
     link(rel='stylesheet', href='css/bugstats.css')
 
   body(onload="mapInitialize()")
@@ -59,6 +59,10 @@ html(lang='en')
       #resources
         h1 Members
         #controls
+          input(class="btn primary disabled", disabled="disabled", id="get-immediate-stats", type="button", value="Update All", onclick="javascript: getImmediateStats()")
+          br
+          br
+          .page-header
         #resources-list
       
       #map
