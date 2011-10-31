@@ -1,14 +1,14 @@
 // swarm stuff
-var bugstatsSwarm = '83537f005a15bc5f65935997ef858461c8f86608';
-var configurationKey = 'b92464a8d6d803ed881f4dee8a0d5b45bf20f0f1'
-var participationKey = 'a35c8276f241a967d8bdf59a07d4b5d522447b17';
-var me = "1671ae80f13f60ca93a757b764d3fdceaf6cc9d4";
+var bugstatsSwarm = '0c966d48e16908975ae483642ed7302e7b6ec7d7';
+var configurationKey = '53ebd64e50ed786ef13f3e64f0cdbdd6223013bc'
+var participationKey = '7a849e6548dbd6f8034bb7cc1a37caa0b1a2654b';
+var me = 'fd8d4b5c1113eb5ac8fb846ed4b58ed2db906d6c';
 
 // global vars
 var invalidResources = [me, "admin"]; //resources whose presence and message stanzas should not be handled
 var memberResources = [];
 var availableResources = [];
-var resourceNameMap = {"7ebaf88e69998588f961c2aaf9950e8f1409371a": "BUG 1", "a3992d35a9dc8f841dbc45e809d5c5b892d8e6d6": "BUG 2"};
+var resourceNameMap = {"1c85f72ef0a57fc2722540294e349343fccfd1c1": "BUG 1", "1f8757afbd3b814f85e1da02fe6ce1c802abb1a7": "BUG 2"};
 var aggregate = null;
 var map = null;
 
