@@ -2,25 +2,6 @@
 bootstrap.css, so if any attributes mofified here will overwrite
 the same attributes in bootstrap.css */
 
-/* general */
-a {
-    color: #0069d6;
-}
-
-/* navigation */
-#logo {
-    width: 180px;
-    height: 30px;
-    margin-top: 3px;
-    -webkit-border-radius: 7px;
-    -moz-border-radius: 7px;
-    border-radius: 7px;
-}
-
-#banner {
-    color: #FFFFFF;
-}
-
 /* container */
 .container {
     width: 1024px;
