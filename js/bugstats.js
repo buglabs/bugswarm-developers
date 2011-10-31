@@ -8,7 +8,7 @@ var me = "1671ae80f13f60ca93a757b764d3fdceaf6cc9d4";
 var invalidResources = [me, "admin"]; //resources whose presence and message stanzas should not be handled
 var memberResources = [];
 var availableResources = [];
-var resourceNameMap = {"7ebaf88e69998588f961c2aaf9950e8f1409371a": "Freebie 1", "a3992d35a9dc8f841dbc45e809d5c5b892d8e6d6": "Freebie 2"};
+var resourceNameMap = {"7ebaf88e69998588f961c2aaf9950e8f1409371a": "BUG 1", "a3992d35a9dc8f841dbc45e809d5c5b892d8e6d6": "BUG 2"};
 var aggregate = null;
 var map = null;
 
@@ -164,7 +164,7 @@ presenceUnavailable = function(presenceResource) {
 
             // remove controls if no resources left            
             if (availableResources.length <= 0) {
-                $("#get-immediate-stats").replaceWith('<input class="btn primary disabled" disabled="disabled" id="get-immediate-stats" type="button" value="Update All" onclick="javascript: getImmediateStats()">');
+                $("#get-immediate-stats").replaceWith('<input class="btn danger disabled" disabled="disabled" id="get-immediate-stats" type="button" value="Update All" onclick="javascript: getImmediateStats()">');
             }            
         } 
     }
@@ -187,7 +187,7 @@ presenceAvailable = function(presenceResource) {
 
     // add controls if only one resource
     if (availableResources.length == 1) {
-        $("#get-immediate-stats").replaceWith('<input class="btn primary" id="get-immediate-stats" type="button" value="Update All" onclick="javascript: getImmediateStats()">');
+        $("#get-immediate-stats").replaceWith('<input class="btn danger" id="get-immediate-stats" type="button" value="Update All" onclick="javascript: getImmediateStats()">');
     }
 };
 

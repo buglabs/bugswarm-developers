@@ -10,24 +10,21 @@ html(lang='en')
   body(onload="mapInitialize()")
 
     // NAVIGATION
-    .topbar
-      .topbar-inner
-        .container
-          a(href='http://saatchix.com'): img#logo(src="images/saatchi.jpg", alt="Saatchi Logo");
+    include includes/navigation
           
     // CONTENT
     .bugstats.container
 
       #header
         // Header
-        h1 P&G Freebie Machines
+        h1 BUGstats
         p
           | Using 
           a(href='http://developer.bugswarm.net') BUGswarm
           | , an M2M cloud messaging platform built by 
           a(href='http://buglabs.net') Bug Labs
           | , this application allows you to monitor the vital
-          | statistics of each Freebie machine currently deployed.
+          | statistics of each BUG in your swarm.
 
       #swarm-overview
         h1 Swarm Overview
@@ -59,7 +56,7 @@ html(lang='en')
       #resources
         h1 Members
         #controls
-          input(class="btn primary disabled", disabled="disabled", id="get-immediate-stats", type="button", value="Update All", onclick="javascript: getImmediateStats()")
+          input(class="btn danger disabled", disabled="disabled", id="get-immediate-stats", type="button", value="Update All", onclick="javascript: getImmediateStats()")
           br
           br
           .page-header
