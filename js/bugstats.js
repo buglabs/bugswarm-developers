@@ -491,9 +491,9 @@ getImmediateStats = function() {
 
 // map
 mapInitialize = function() {    
-    var myLatLng = new google.maps.LatLng(39, -95);
+    var myLatLng = new google.maps.LatLng(40.73, -73.99);
     var mapOptions = {
-        zoom: 8,
+        zoom: 14,
         center: myLatLng,
         mapTypeId: google.maps.MapTypeId.ROADMAP
     };
