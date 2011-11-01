@@ -8,7 +8,10 @@ var me = 'fd8d4b5c1113eb5ac8fb846ed4b58ed2db906d6c';
 var invalidResources = [me, "admin"]; //resources whose presence and message stanzas should not be handled
 var memberResources = [];
 var availableResources = [];
-var resourceNameMap = {"1c85f72ef0a57fc2722540294e349343fccfd1c1": "BUG 1", "1f8757afbd3b814f85e1da02fe6ce1c802abb1a7": "BUG 2"};
+var resourceNameMap = {"1c85f72ef0a57fc2722540294e349343fccfd1c1": "BUG 1", "1f8757afbd3b814f85e1da02fe6ce1c802abb1a7": "BUG 2", "6a7166dd0f14cdca9b95f260cbee86129aac8991": "BUG 3", 
+                       "29f7ba8c5fc61cbf3fc97f43d72b755c55073cfd": "BUG 4", "9cd5ee810ca0f8ed99114ef5e17afa854e3852ea": "BUG 5", "8969c03718274cbb62be0ab056b9d37c6471fe4a": "BUG 6",
+                       "b1eb3f1c13b581a1f5b962e4d5378f10f06780dd": "BUG 7", "39525163ebef8bc83dc6fd891e7cea1e8fe21987": "BUG 8", "a540cd12f6e098cdde71404bab964a2302da2f23": "BUG 9",
+                       "4588344415bc95e0edd00a51e33452ab70808878": "BUG 10"};
 var aggregate = null;
 var map = null;
 
