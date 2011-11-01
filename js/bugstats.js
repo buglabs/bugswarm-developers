@@ -333,13 +333,13 @@ updateLocation = function(producer, latitude, longitude) {
 
 updateUsrLog = function(producer, data, status) {
     currentUsrArray = window[producer + '_usr_array'];
-    while (currentUsrArray.length >= 10) {
+    while (currentUsrArray.length >= 5) {
         currentUsrArray.splice(0, 1);
     }
 
     toPush = {"data": data, "status": status};
     currentUsrArray.push(toPush);
-    console.log("Last 10 Usr Logs: " + currentUsrArray);
+    console.log("Last 5 Usr Logs: " + currentUsrArray);
 
     usrLogHTML = '<ul class="unstyled" id="' + producer + '-usr">';
     
@@ -354,13 +354,13 @@ updateUsrLog = function(producer, data, status) {
 
 updateNiceLog = function(producer, data, status) {
     currentNiceArray = window[producer + '_nice_array'];
-    while (currentNiceArray.length >= 10) {
+    while (currentNiceArray.length >= 5) {
         currentNiceArray.splice(0, 1);
     }
     
     toPush = {"data": data, "status": status};
     currentNiceArray.push(toPush);
-    console.log("Last 10 Nice Logs: " + currentNiceArray);
+    console.log("Last 5 Nice Logs: " + currentNiceArray);
 
     niceLogHTML = '<ul class="unstyled" id="' + producer + '-nice">';
     
@@ -375,13 +375,13 @@ updateNiceLog = function(producer, data, status) {
 
 updateSysLog = function(producer, data) {
     currentSysArray = window[producer + '_sys_array'];
-    while (currentSysArray.length >= 10) {
+    while (currentSysArray.length >= 5) {
         currentSysArray.splice(0, 1);
     }
     
     toPush = {"data": data, "status": status};
     currentSysArray.push(toPush);
-    console.log("Last 10 Sys Logs: " + currentSysArray);
+    console.log("Last 5 Sys Logs: " + currentSysArray);
 
     sysLogHTML = '<ul class="unstyled" id="' + producer + '-sys">';
     
@@ -396,13 +396,13 @@ updateSysLog = function(producer, data) {
 
 updateDatetimeLog = function(producer, data) {
     currentDatetimeArray = window[producer + '_datetime_array'];
-    while (currentDatetimeArray.length >= 10) {
+    while (currentDatetimeArray.length >= 5) {
         currentDatetimeArray.splice(0, 1);
     }
     
     toPush = {"data": data, "status": status};
     currentDatetimeArray.push(toPush);
-    console.log("Last 10 Datetime Logs: " + currentDatetimeArray);
+    console.log("Last 5 Datetime Logs: " + currentDatetimeArray);
 
     datetimeLogHTML = '<ul class="unstyled" id="' + producer + '-datetime">';
     
@@ -496,7 +496,7 @@ getImmediateStats = function() {
 mapInitialize = function() {    
     var myLatLng = new google.maps.LatLng(40.73, -73.99);
     var mapOptions = {
-        zoom: 14,
+        zoom: 8,
         center: myLatLng,
         mapTypeId: google.maps.MapTypeId.ROADMAP
     };
