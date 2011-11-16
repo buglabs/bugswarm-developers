@@ -1,0 +1,41 @@
+!!! 5
+html(lang='en')
+  head
+    include includes/assets
+
+  body
+    include includes/navigation
+
+    .container
+      .page-header
+        a(href='index.html') Home
+        |  &rarr;
+        |  Hardware
+
+      h1 Hardware
+
+      .row
+        .span
+          p Here is a list of hardware and platforms that people have been using in conjunction with BUGswarm. If you get BUGswarm running on a new device, 
+            a(href='mailto:list@buglabs.net') let us know
+            !
+
+      .row
+        .span
+          h2: a(href='http://github.com/buglabs/Perugia') Arduino
+      .row
+        .span-one-third
+          a(href='http://github.com/buglabs/Perugia')
+            img(src='images/arduino.jpg', height='100')
+        .span-two-thirds
+          p Would you like to use an Arduino with BUGswarm? Perugia teaches your networked Arduino how to talk to browsers and other BUGswarm resources.
+
+      .row
+        .span
+          h2: a(href='https://github.com/buglabs/bugswarm-api') Android
+      .row
+        .span-two-thirds
+          p Coming soon, publish system info from your Android device.
+        .span-one-third
+          a(href='https://github.com/buglabs/bugswarm-api')
+            img(src='images/android.png',  height='100')
