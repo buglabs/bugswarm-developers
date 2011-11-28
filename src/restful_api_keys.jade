@@ -26,9 +26,9 @@ html(lang='en')
         .page-header
           a(href='index.html') Home
           |  &rarr; 
-          a(href='api_documentation.html') API Documentation
+          a(href='documentation.html') Documentation
           |  &rarr; 
-          a(href='configuration_api.html') Configuration
+          a(href='configuration_api.html') Configuration API
           |  &rarr; 
           | API Keys
 
@@ -87,7 +87,7 @@ html(lang='en')
 
         // returns
         strong Returns: 
-        |  The created key in JSON format.
+        |  The created key(s) in JSON format. Note that if a type is specified, a JSON object is returned rather than an array.
         pre.prettyprint.language-javascript.
           [
             {
@@ -150,7 +150,7 @@ html(lang='en')
 
         // returns
         strong Returns: 
-        | The desired key(s) and their relative information in JSON format.
+        | The desired key(s) and their relative information in JSON format. Note that if a type is specified, a JSON object is returned rather than an array.
         br
         pre.prettyprint.language-javascript.
           \n[

@@ -17,9 +17,9 @@ html(lang='en')
         strong Jump to:
         ul.unstyled
           li: h5: a(href='#send') Send
-          li: h5: a(href='#list-sent-invitations') List Sent Invitations
-          li: h5: a(href='#list-received-invitations') List Received Invitations
           li: h5: a(href='#respond') Respond
+          li: h5: a(href='#list-sent') List Sent
+          li: h5: a(href='#list-received') List Received
 
       // CONTENT
       .content
@@ -28,9 +28,9 @@ html(lang='en')
         .page-header
           a(href='index.html') Home
           |  &rarr; 
-          a(href='api_documentation.html') API Documentation
+          a(href='documentation.html') Documentation
           |  &rarr; 
-          a(href='configuration_api.html') Configuration
+          a(href='configuration_api.html') Configuration API
           |  &rarr; 
           | Invitations
 
@@ -111,8 +111,77 @@ html(lang='en')
 
         .page-header
 
-        // List Sent Invitations
-        h3#list-sent-invitations List Sent Invitations
+        // Respond
+        h3#respond Respond
+
+        // description
+        .row
+          .span8.columns
+            ul.unstyled
+              li
+                strong URL: 
+                code http://api.bugswarm.net/resources/RESOURCE_ID
+                br
+                code > /invitations/INVITATION_ID
+                li
+                  strong Method: 
+                  | PUT
+                li
+                  strong Headers: 
+                  br
+                  code "x-bugswarmapikey: ${API_KEY}"
+                  ,
+                  br
+                  code "content-type: application/json"
+                li
+                  strong Parameters (Required): 
+                  | None
+                li
+                  strong Parameters (Optional): 
+                  | None
+          .span8.columns
+            p
+              | At any point in time, users may choose to respond to pending invitations for a given resource.
+              | Use this method to either accept or reject these invitations.
+
+        // body
+        strong Body: 
+        | A JSON file containing the status of the response, either accepting ("accept") or rejecting ("reject") the invitation.
+        pre.prettyprint.language-javascript.
+          {
+              "status": "accept"
+          }
+
+        // usage
+        strong Usage: 
+        | Create a JSON file with the name
+        code response.json
+        |  and matching the above format. Then execute: 
+        pre.prettyprint.language-javascript.
+          curl -X PUT -d@invitation.json --header "x-bugswarmapikey: 911cbc244827dba9c6dbdd09aff3e5e8fe5eee02" --header "content-type: application/json" http://api.bugswarm.net/resources/RESOURCE_ID/invitations/INVITATION_ID
+
+        // returns
+        strong Returns: 
+        | The invitation with an updated "status" field and either an "accepted_at" or "rejected_at" field.
+        pre.prettyprint.language-javascript.
+          {
+              "accepted_at": "2011-10-10T03:28:56.083Z",
+              "description": "Hey. Come join my awesome swarm!",
+              "from": "other username",
+              "id": "fba0ca4bc9c63a964d9781c5487617e5f17dffd9",
+              "resource_id": "16f101010e80dd123b87363af759cc22cf49ff5f",
+              "resource_type": "consumer",
+              "sent_at": "2011-10-10T03:12:11.773Z",
+              "status": "accepted",
+              "swarm_id": "3a147bd1a79a7d075b8cd2f1d48db9719c1f6739",
+              "to": "username"
+          }
+
+        .page-header        
+
+
+        // List Sent
+        h3#list-sent List Sent
 
         // description
         .row
@@ -175,8 +244,8 @@ html(lang='en')
 
         .page-header
 
-        // List Received Invitations
-        h3#list-received-invitations List Received Invitations
+        // List Received
+        h3#list-received List Received
 
         // description
         .row
@@ -247,72 +316,3 @@ html(lang='en')
           ]
 
         .page-header
-
-        // Respond
-        h3#respond Respond
-
-        // description
-        .row
-          .span8.columns
-            ul.unstyled
-              li
-                strong URL: 
-                code http://api.bugswarm.net/resources/RESOURCE_ID
-                br
-                code > /invitations/INVITATION_ID
-                li
-                  strong Method: 
-                  | PUT
-                li
-                  strong Headers: 
-                  br
-                  code "x-bugswarmapikey: ${API_KEY}"
-                  ,
-                  br
-                  code "content-type: application/json"
-                li
-                  strong Parameters (Required): 
-                  | None
-                li
-                  strong Parameters (Optional): 
-                  | None
-          .span8.columns
-            p
-              | At any point in time, users may choose to respond to pending invitations for a given resource.
-              | Use this method to either accept or reject these invitations.
-
-        // body
-        strong Body: 
-        | A JSON file containing the status of the response, either accepting ("accept") or rejecting ("reject") the invitation.
-        pre.prettyprint.language-javascript.
-          {
-              "status": "accept"
-          }
-
-        // usage
-        strong Usage: 
-        | Create a JSON file with the name
-        code response.json
-        |  and matching the above format. Then execute: 
-        pre.prettyprint.language-javascript.
-          curl -X PUT -d@invitation.json --header "x-bugswarmapikey: 911cbc244827dba9c6dbdd09aff3e5e8fe5eee02" --header "content-type: application/json" http://api.bugswarm.net/resources/RESOURCE_ID/invitations/INVITATION_ID
-
-        // returns
-        strong Returns: 
-        | The invitation with an updated "status" field and either an "accepted_at" or "rejected_at" field.
-        pre.prettyprint.language-javascript.
-          {
-              "accepted_at": "2011-10-10T03:28:56.083Z",
-              "description": "Hey. Come join my awesome swarm!",
-              "from": "other username",
-              "id": "fba0ca4bc9c63a964d9781c5487617e5f17dffd9",
-              "resource_id": "16f101010e80dd123b87363af759cc22cf49ff5f",
-              "resource_type": "consumer",
-              "sent_at": "2011-10-10T03:12:11.773Z",
-              "status": "accepted",
-              "swarm_id": "3a147bd1a79a7d075b8cd2f1d48db9719c1f6739",
-              "to": "username"
-          }
-
-        .page-header        
-
