@@ -19,8 +19,8 @@ html(lang='en')
           li: h5: a(href='#update') Update
           li: h5: a(href='#destroy') Destroy
           li: h5: a(href='#list') List
-          li: h5: a(href='#get-resource-info') Get Resource Info
-          li: h5: a(href='#list-swarms-with-resource') List Swarms With Resources
+          li: h5: a(href='#get-info') Get Info
+          li: h5: a(href='#list-swarms') List Swarms
 
       // CONTENT
       .content
@@ -29,13 +29,13 @@ html(lang='en')
         .page-header
           a(href='index.html') Home
           |  &rarr; 
-          a(href='api_documentation.html') API Documentation
+          a(href='documentation.html') Documentation
           |  &rarr; 
-          a(href='configuration_api.html') Configuration
+          a(href='configuration_api.html') Configuration API
           |  &rarr; 
-          | User Resources
+          | Resources
         // Header
-        h1 User Resources
+        h1 Resources
         p
           | Manage your resources with the RESTful API.
         .page-header
@@ -70,7 +70,7 @@ html(lang='en')
             p
               | Resources belong to users and may be created using this method. In order for a
               | user's resource to participate in a swarm, however, the user must first
-              a(href='restful_swarm_resources.html#add') add 
+              a(href='restful_swarms.html#add-resource') add 
               | that resource to the swarm. Creating a 
               | resource involves passing a JSON file containing the configuration of the resource.
 
@@ -263,7 +263,7 @@ html(lang='en')
             p
               | List all of the resources owned by the user. To get the information of a specific
               | resource only, use the
-              a(href='#get-resource-info') Get Resource Info 
+              a(href='#get-info') Get Info 
               | method. 
 
         // usage
@@ -304,8 +304,8 @@ html(lang='en')
 
         .page-header
 
-        // Get Resource Info
-        h3#get-resource-info Get Resource Info
+        // Get Info
+        h3#get-info Get Info
 
         // description
         .row
@@ -358,8 +358,8 @@ html(lang='en')
 
         .page-header
 
-        // List Swarms With Resource
-        h3#list-swarms-with-resource List Swarms With Resource
+        // List Swarms
+        h3#list-swarms List Swarms
 
         // description
         .row
@@ -384,7 +384,7 @@ html(lang='en')
           .span8.columns
             p
               | Resources can be
-              a(href='restful_swarm_resources.html#add') added
+              a(href='restful_swarms.html#add-resource') added
               |  to one or many swarms. This method takes
               | a unique resource ID and lists all of the swarms of which that resource is a
               | member. A JSON representation of the swarm(s) and their resources is printed.

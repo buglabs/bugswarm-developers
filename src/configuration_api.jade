@@ -17,9 +17,8 @@ html(lang='en')
         strong Jump to:
         ul.unstyled
           li: h5: a(href='#api-keys') API Keys
-          li: h5: a(href='#user-resources') User Resources
+          li: h5: a(href='#resources') Resources
           li: h5: a(href='#swarms') Swarms
-          li: h5: a(href='#swarm-resources') Swarm Resources
           li: h5: a(href='#invitations') Invitations
 
       // CONTENT
@@ -29,12 +28,12 @@ html(lang='en')
         .page-header
           a(href='index.html') Home
           |  &rarr; 
-          a(href='api_documentation.html') API Documentation
+          a(href='documentation.html') Documentation
           |  &rarr; 
           | Configuration API
 
         // Header
-        h1 Configuration
+        h1 Configuration API
         p
           | Configure swarms and their resources through the use of our RESTful API. Manage the social aspect of swarm
           | by sending and responding to invitations. Be sure to check out the
@@ -72,8 +71,8 @@ html(lang='en')
               | List your API keys. Keys are listed as JSON.
         .page-header
 
-        // User Resources
-        h3: a#user-resources(href='restful_user_resources.html') User Resources
+        // Resources
+        h3: a#resources(href='restful_resources.html') Resources
         p
           | Resources belong to a given user account and may be created, updated, and
           | destroyed.
@@ -87,7 +86,7 @@ html(lang='en')
         // create
         .row
           .span6.columns
-            a(href='restful_user_resources.html#create') Create (POST)
+            a(href='restful_resources.html#create') Create (POST)
           .span10.columns
             p
               | Create a resource. POST a JSON file containing information about the resource to be
@@ -97,7 +96,7 @@ html(lang='en')
         // update
         .row
           .span6.columns
-            a(href='restful_user_resources.html#update') Update (PUT)
+            a(href='restful_resources.html#update') Update (PUT)
           .span10.columns
             p
               | Update an already existing resource. PUT a JSON file containing the information
@@ -107,7 +106,7 @@ html(lang='en')
         // destroy
         .row
           .span6.columns
-            a(href='restful_user_resources.html#destroy') Destroy (DELETE)
+            a(href='restful_resources.html#destroy') Destroy (DELETE)
           .span10.columns
             p
               | Destroy a resource. Remove a resource from your user account.
@@ -116,25 +115,25 @@ html(lang='en')
         // list
         .row
           .span6.columns
-            a(href='restful_user_resources.html#list') List (GET)
+            a(href='restful_resources.html#list') List (GET)
           .span10.columns
             p
               | List all of the resources in your user account.  Resources listed as JSON.
         .page-header
 
-        // get resource info
+        // get info
         .row
           .span6.columns
-            a(href='restful_user_resources.html#get-resource-info') Get Resource Info (GET)
+            a(href='restful_resources.html#get-info') Get Info (GET)
           .span10.columns
             p
               | Get the information relating to a specific resource. Information presented as JSON.
         .page-header
 
-        // list swarms with resource
+        // list swarms
         .row
           .span6.columns
-            a(href='restful_user_resources.html#list-swarms-with-resource') List Swarms With Resource (GET)
+            a(href='restful_resources.html#list-swarms') List Swarms (GET)
           .span10.columns
             p
               | List the swarms that a specific resource is a member of. Swarms listed as JSON.
@@ -189,52 +188,40 @@ html(lang='en')
               | List all of the swarms in your user account. Swarms listed as JSON.
         .page-header
 
-        // get swarm info
+        // get info
         .row
           .span6.columns
-            a(href='restful_swarms.html#get-swarm-info') Get Swarm Info (GET)
+            a(href='restful_swarms.html#get-info') Get Info (GET)
           .span10.columns
             p
               | Get the information relating to a specific swarm, including it's contained resources.
               | Information presented as JSON.
         .page-header
 
-        // Swarm Resources
-        h3: a#swarm-resources(href='restful_swarm_resources.html') Swarm Resources
-        p
-          | Resources can be added and removed from a swarm. Additionally, all of the
-          | resources in a swarm may be listed.
+        // add resource
         .row
           .span6.columns
-            h5 Method
-          .span6.columns
-            h5 Description
-        .page-header
-
-        // add
-        .row
-          .span6.columns
-            a(href='restful_swarm_resources.html#add') Add (POST)
+            a(href='restful_swarms.html#add-resource') Add Resource (POST)
           .span10.columns
             p
               | Add a resource to a swarm. POST a JSON file containing the swarm-relevant information 
               | regarding the resource to be added.
         .page-header
 
-        // remove
+        // remove resource
         .row
           .span6.columns
-            a(href='restful_swarm_resources.html#remove') Remove (DELETE)
+            a(href='restful_swarms.html#remove-resource') Remove Resource (DELETE)
           .span10.columns
             p
               | Remove a resource from a swarm. Send a JSON file containing swarm-relevant information
               | regarding the resource to remove.
         .page-header
 
-        // list
+        // list resources
         .row
           .span6.columns
-            a(href='restful_swarm_resources.html#list') List (GET)
+            a(href='restful_swarms.html#list-resources') List Resources (GET)
           .span10.columns
             p
               | List the resources in a swarm. Users may choose to list all resources, only
@@ -263,25 +250,6 @@ html(lang='en')
               | Send an invitation to another user's resource to join your swarm.
         .page-header
 
-        // list sent invitations
-        .row
-          .span6.columns
-            a(href='restful_invitations.html#list-sent-invitations') List Sent Invitations (GET)
-          .span10.columns
-            p
-              | List all the invitations sent from your user account for resources to join a specific swarm.
-        .page-header
-
-        // list received invitations
-        .row
-          .span6.columns
-            a(href='restful_invitations.html#list-received-invitations') List Received Invitations (GET)
-          .span10.columns
-            p
-              | List the invitations received by your user account from other users. List all invitations or only those
-              | sent to specific resources.
-        .page-header
-
         // respond
         .row
           .span6.columns
@@ -291,3 +259,22 @@ html(lang='en')
               | Respond to received invitations by either accepting or rejecting them.
         .page-header
 
+
+        // list sent
+        .row
+          .span6.columns
+            a(href='restful_invitations.html#list-sent') List Sent (GET)
+          .span10.columns
+            p
+              | List all the invitations sent from your user account for resources to join a specific swarm.
+        .page-header
+
+        // list received
+        .row
+          .span6.columns
+            a(href='restful_invitations.html#list-received') List Received (GET)
+          .span10.columns
+            p
+              | List the invitations received by your user account from other users. List all invitations or only those
+              | sent to specific resources.
+        .page-header
