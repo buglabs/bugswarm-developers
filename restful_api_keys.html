@@ -1,6 +1,6 @@
 <!DOCTYPE html><html lang="en"><head><title>BUGswarm Developers</title><link rel="stylesheet" href="bootstrap/bootstrap.css"><link rel="stylesheet" href="css/this.css"><link rel="stylesheet" href="js/google-code-prettify/prettify.css"><script src="http://code.jquery.com/jquery-1.5.2.js"></script><script src="js/google-code-prettify/prettify.js"></script><script src="js/application.js"></script><script src="js/google-analytics.js"></script></head><body><!-- NAVIGATION--><div class="topbar"><div class="topbar-inner"><div class="container"><h3><a id="banner" href="index.html">BUGswarm Developers</a></h3><ul class="nav"><li class="dropdown nav-dropdown"><a href="documentation.html" class="dropdown-toggle">Documentation</a><ul class="dropdown-menu"><li><a href="configuration_api.html">Configuration</a></li><li><a href="participation_api.html">Participation</a></li></ul></li><li><a href="tools.html">Tools</a></li><li><a href="libraries.html">Libraries</a></li><li><a href="tutorial.html">Tutorial</a></li><li><a href="applications.html">Applications</a></li><li><a href="hardware.html">Hardware</a></li><li><a href="contact.html">Contact</a></li></ul></div></div></div><!-- CONTAINER--><div class="container-fluid"><!-- SIDEBAR--><div class="sidebar"><strong>Jump to:</strong><ul class="unstyled"><li><h5><a href="#create">Create</a></h5></li><li><h5><a href="#list">List</a></h5></li></ul></div><!-- CONTENT--><div class="content"><!-- Path--><div class="page-header"><a href="index.html">Home</a> &rarr; 
-<a href="api_documentation.html">API Documentation</a> &rarr; 
-<a href="configuration_api.html">Configuration</a> &rarr; 
+<a href="documentation.html">Documentation</a> &rarr; 
+<a href="configuration_api.html">Configuration API</a> &rarr; 
 API Keys
 </div><!-- Header--><h1>API Keys</h1><p>Create and manage your API keys with the RESTful API. Users may hold up to two API keys, a configuration key and a participation key.
 Use the configuration API key for all methods associated with the 
@@ -21,7 +21,7 @@ the key type in the URL. For instance,
 curl -X POST --user &quot;username:password&quot; http://api.bugswarm.net/keys/configuration
 curl -X POST --user &quot;username:password&quot; http://api.bugswarm.net/keys/participation
 
-</pre><!-- returns--><strong>Returns: </strong> The created key in JSON format.
+</pre><!-- returns--><strong>Returns: </strong> The created key(s) in JSON format. Note that if a type is specified, a JSON object is returned rather than an array.
 <pre class="prettyprint language-javascript">[
   {
     &quot;created_at&quot;: &quot;2011-10-21T15:37:35.636Z&quot;, 
@@ -53,7 +53,7 @@ curl -X GET --user &quot;username:password&quot; http://api.bugswarm.net/keys
 curl -X GET --user &quot;username:password&quot; http://api.bugswarm.net/keys/configuration
 curl -X GET --user &quot;username:password&quot; http://api.bugswarm.net/keys/participation
 
-</pre><!-- returns--><strong>Returns: </strong>The desired key(s) and their relative information in JSON format.
+</pre><!-- returns--><strong>Returns: </strong>The desired key(s) and their relative information in JSON format. Note that if a type is specified, a JSON object is returned rather than an array.
 <br><pre class="prettyprint language-javascript">
 [
     {

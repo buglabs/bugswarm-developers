@@ -1,6 +1,6 @@
-<!DOCTYPE html><html lang="en"><head><title>BUGswarm Developers</title><link rel="stylesheet" href="bootstrap/bootstrap.css"><link rel="stylesheet" href="css/this.css"><link rel="stylesheet" href="js/google-code-prettify/prettify.css"><script src="http://code.jquery.com/jquery-1.5.2.js"></script><script src="js/google-code-prettify/prettify.js"></script><script src="js/application.js"></script><script src="js/google-analytics.js"></script></head><body><!-- NAVIGATION--><div class="topbar"><div class="topbar-inner"><div class="container"><h3><a id="banner" href="index.html">BUGswarm Developers</a></h3><ul class="nav"><li class="dropdown nav-dropdown"><a href="documentation.html" class="dropdown-toggle">Documentation</a><ul class="dropdown-menu"><li><a href="configuration_api.html">Configuration</a></li><li><a href="participation_api.html">Participation</a></li></ul></li><li><a href="tools.html">Tools</a></li><li><a href="libraries.html">Libraries</a></li><li><a href="tutorial.html">Tutorial</a></li><li><a href="applications.html">Applications</a></li><li><a href="hardware.html">Hardware</a></li><li><a href="contact.html">Contact</a></li></ul></div></div></div><!-- CONTAINER--><div class="container-fluid"><!-- SIDEBAR--><div class="sidebar"><strong>Jump to:</strong><ul class="unstyled"><li><h5><a href="#send">Send</a></h5></li><li><h5><a href="#list-sent-invitations">List Sent Invitations</a></h5></li><li><h5><a href="#list-received-invitations">List Received Invitations</a></h5></li><li><h5><a href="#respond">Respond</a></h5></li></ul></div><!-- CONTENT--><div class="content"><!-- Path--><div class="page-header"><a href="index.html">Home</a> &rarr; 
-<a href="api_documentation.html">API Documentation</a> &rarr; 
-<a href="configuration_api.html">Configuration</a> &rarr; 
+<!DOCTYPE html><html lang="en"><head><title>BUGswarm Developers</title><link rel="stylesheet" href="bootstrap/bootstrap.css"><link rel="stylesheet" href="css/this.css"><link rel="stylesheet" href="js/google-code-prettify/prettify.css"><script src="http://code.jquery.com/jquery-1.5.2.js"></script><script src="js/google-code-prettify/prettify.js"></script><script src="js/application.js"></script><script src="js/google-analytics.js"></script></head><body><!-- NAVIGATION--><div class="topbar"><div class="topbar-inner"><div class="container"><h3><a id="banner" href="index.html">BUGswarm Developers</a></h3><ul class="nav"><li class="dropdown nav-dropdown"><a href="documentation.html" class="dropdown-toggle">Documentation</a><ul class="dropdown-menu"><li><a href="configuration_api.html">Configuration</a></li><li><a href="participation_api.html">Participation</a></li></ul></li><li><a href="tools.html">Tools</a></li><li><a href="libraries.html">Libraries</a></li><li><a href="tutorial.html">Tutorial</a></li><li><a href="applications.html">Applications</a></li><li><a href="hardware.html">Hardware</a></li><li><a href="contact.html">Contact</a></li></ul></div></div></div><!-- CONTAINER--><div class="container-fluid"><!-- SIDEBAR--><div class="sidebar"><strong>Jump to:</strong><ul class="unstyled"><li><h5><a href="#send">Send</a></h5></li><li><h5><a href="#respond">Respond</a></h5></li><li><h5><a href="#list-sent">List Sent</a></h5></li><li><h5><a href="#list-received">List Received</a></h5></li></ul></div><!-- CONTENT--><div class="content"><!-- Path--><div class="page-header"><a href="index.html">Home</a> &rarr; 
+<a href="documentation.html">Documentation</a> &rarr; 
+<a href="configuration_api.html">Configuration API</a> &rarr; 
 Invitations
 </div><!-- Header--><h1>Invitations</h1><p>Send, list, and respond to invitations using the RESTful API.
 </p><div class="page-header"></div><!-- Send--><h3 id="send">Send</h3><!-- description--><div class="row"><div class="span8 columns"><ul class="unstyled"><li><strong>URL: </strong><code>http://api.bugswarm.net/swarms/SWARM_ID/invitations</code><li><strong>Method: </strong>POST
@@ -36,7 +36,36 @@ method sends an invitation to a specific resource for a given user to join the s
     &quot;status&quot;: &quot;new&quot;
 }
 
-</pre><div class="page-header"></div><!-- List Sent Invitations--><h3 id="list-sent-invitations">List Sent Invitations</h3><!-- description--><div class="row"><div class="span8 columns"><ul class="unstyled"><li><strong>URL: </strong><code>http://api.bugswarm.net/swarms/SWARM_ID/invitations</code><li><strong>Method: </strong>GET
+</pre><div class="page-header"></div><!-- Respond--><h3 id="respond">Respond</h3><!-- description--><div class="row"><div class="span8 columns"><ul class="unstyled"><li><strong>URL: </strong><code>http://api.bugswarm.net/resources/RESOURCE_ID</code><br><code>> /invitations/INVITATION_ID</code><li><strong>Method: </strong>PUT
+</li><li><strong>Headers: </strong><br><code>"x-bugswarmapikey: ${API_KEY}"</code>,
+<br><code>"content-type: application/json"</code></li><li><strong>Parameters (Required): </strong>None
+</li><li><strong>Parameters (Optional): </strong>None
+</li></li></ul></div><div class="span8 columns"><p>At any point in time, users may choose to respond to pending invitations for a given resource.
+Use this method to either accept or reject these invitations.
+</p></div></div><!-- body--><strong>Body: </strong>A JSON file containing the status of the response, either accepting ("accept") or rejecting ("reject") the invitation.
+<pre class="prettyprint language-javascript">{
+    &quot;status&quot;: &quot;accept&quot;
+}
+
+</pre><!-- usage--><strong>Usage: </strong>Create a JSON file with the name
+<code>response.json</code> and matching the above format. Then execute: 
+<pre class="prettyprint language-javascript">curl -X PUT -d@invitation.json --header &quot;x-bugswarmapikey: 911cbc244827dba9c6dbdd09aff3e5e8fe5eee02&quot; --header &quot;content-type: application/json&quot; http://api.bugswarm.net/resources/RESOURCE_ID/invitations/INVITATION_ID
+
+</pre><!-- returns--><strong>Returns: </strong>The invitation with an updated "status" field and either an "accepted_at" or "rejected_at" field.
+<pre class="prettyprint language-javascript">{
+    &quot;accepted_at&quot;: &quot;2011-10-10T03:28:56.083Z&quot;,
+    &quot;description&quot;: &quot;Hey. Come join my awesome swarm!&quot;,
+    &quot;from&quot;: &quot;other username&quot;,
+    &quot;id&quot;: &quot;fba0ca4bc9c63a964d9781c5487617e5f17dffd9&quot;,
+    &quot;resource_id&quot;: &quot;16f101010e80dd123b87363af759cc22cf49ff5f&quot;,
+    &quot;resource_type&quot;: &quot;consumer&quot;,
+    &quot;sent_at&quot;: &quot;2011-10-10T03:12:11.773Z&quot;,
+    &quot;status&quot;: &quot;accepted&quot;,
+    &quot;swarm_id&quot;: &quot;3a147bd1a79a7d075b8cd2f1d48db9719c1f6739&quot;,
+    &quot;to&quot;: &quot;username&quot;
+}
+
+</pre><div class="page-header"></div><!-- List Sent--><h3 id="list-sent">List Sent</h3><!-- description--><div class="row"><div class="span8 columns"><ul class="unstyled"><li><strong>URL: </strong><code>http://api.bugswarm.net/swarms/SWARM_ID/invitations</code><li><strong>Method: </strong>GET
 </li><li><strong>Headers: </strong><br><code>"x-bugswarmapikey: ${API_KEY}"</code></li><li><strong>Parameters (Required): </strong>None
 </li><li><strong>Parameters (Optional): </strong>None
 </li></li></ul></div><div class="span8 columns"><p>Use this method to monitor the status of invitations sent to resources to join a given swarm.
@@ -69,7 +98,7 @@ method sends an invitation to a specific resource for a given user to join the s
     }
 ]
 
-</pre><div class="page-header"></div><!-- List Received Invitations--><h3 id="list-received-invitations">List Received Invitations</h3><!-- description--><div class="row"><div class="span8 columns"><ul class="unstyled"><li><strong>URL:</strong><br><code>http://api.bugswarm.net/invitations</code><br><code>http://api.bugswarm.net/resources/RESOURCE_ID/invitations</code><li><strong>Method: </strong>GET
+</pre><div class="page-header"></div><!-- List Received--><h3 id="list-received">List Received</h3><!-- description--><div class="row"><div class="span8 columns"><ul class="unstyled"><li><strong>URL:</strong><br><code>http://api.bugswarm.net/invitations</code><br><code>http://api.bugswarm.net/resources/RESOURCE_ID/invitations</code><li><strong>Method: </strong>GET
 </li><li><strong>Headers: </strong><br><code>"x-bugswarmapikey: ${API_KEY}"</code></li><li><strong>Parameters (Required): </strong>None
 </li><li><strong>Parameters (Optional): </strong>None
 </li></li></ul></div><div class="span8 columns"><p>Use this method to keep track of what invitations you have received. You may either list all invitations 
@@ -105,34 +134,5 @@ curl -X GET &quot;x-bugswarmapikey: 911cbc244827dba9c6dbdd09aff3e5e8fe5eee02&quo
         &quot;status&quot;: &quot;accepted&quot;
     }
 ]
-
-</pre><div class="page-header"></div><!-- Respond--><h3 id="respond">Respond</h3><!-- description--><div class="row"><div class="span8 columns"><ul class="unstyled"><li><strong>URL: </strong><code>http://api.bugswarm.net/resources/RESOURCE_ID</code><br><code>> /invitations/INVITATION_ID</code><li><strong>Method: </strong>PUT
-</li><li><strong>Headers: </strong><br><code>"x-bugswarmapikey: ${API_KEY}"</code>,
-<br><code>"content-type: application/json"</code></li><li><strong>Parameters (Required): </strong>None
-</li><li><strong>Parameters (Optional): </strong>None
-</li></li></ul></div><div class="span8 columns"><p>At any point in time, users may choose to respond to pending invitations for a given resource.
-Use this method to either accept or reject these invitations.
-</p></div></div><!-- body--><strong>Body: </strong>A JSON file containing the status of the response, either accepting ("accept") or rejecting ("reject") the invitation.
-<pre class="prettyprint language-javascript">{
-    &quot;status&quot;: &quot;accept&quot;
-}
-
-</pre><!-- usage--><strong>Usage: </strong>Create a JSON file with the name
-<code>response.json</code> and matching the above format. Then execute: 
-<pre class="prettyprint language-javascript">curl -X PUT -d@invitation.json --header &quot;x-bugswarmapikey: 911cbc244827dba9c6dbdd09aff3e5e8fe5eee02&quot; --header &quot;content-type: application/json&quot; http://api.bugswarm.net/resources/RESOURCE_ID/invitations/INVITATION_ID
-
-</pre><!-- returns--><strong>Returns: </strong>The invitation with an updated "status" field and either an "accepted_at" or "rejected_at" field.
-<pre class="prettyprint language-javascript">{
-    &quot;accepted_at&quot;: &quot;2011-10-10T03:28:56.083Z&quot;,
-    &quot;description&quot;: &quot;Hey. Come join my awesome swarm!&quot;,
-    &quot;from&quot;: &quot;other username&quot;,
-    &quot;id&quot;: &quot;fba0ca4bc9c63a964d9781c5487617e5f17dffd9&quot;,
-    &quot;resource_id&quot;: &quot;16f101010e80dd123b87363af759cc22cf49ff5f&quot;,
-    &quot;resource_type&quot;: &quot;consumer&quot;,
-    &quot;sent_at&quot;: &quot;2011-10-10T03:12:11.773Z&quot;,
-    &quot;status&quot;: &quot;accepted&quot;,
-    &quot;swarm_id&quot;: &quot;3a147bd1a79a7d075b8cd2f1d48db9719c1f6739&quot;,
-    &quot;to&quot;: &quot;username&quot;
-}
 
 </pre><div class="page-header"></div></div></div></body></html>
