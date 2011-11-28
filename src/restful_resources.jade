@@ -1,0 +1,441 @@
+!!! 5
+html(lang='en')
+  head
+    include includes/assets
+  body
+
+    // NAVIGATION
+    include includes/navigation
+
+    // CONTAINER
+    .container-fluid
+
+      // SIDEBAR
+      .sidebar
+
+        strong Jump to:
+        ul.unstyled
+          li: h5: a(href='#create') Create
+          li: h5: a(href='#update') Update
+          li: h5: a(href='#destroy') Destroy
+          li: h5: a(href='#list') List
+          li: h5: a(href='#get-info') Get Info
+          li: h5: a(href='#list-swarms') List Swarms
+
+      // CONTENT
+      .content
+
+        // Path
+        .page-header
+          a(href='index.html') Home
+          |  &rarr; 
+          a(href='documentation.html') Documentation
+          |  &rarr; 
+          a(href='configuration_api.html') Configuration API
+          |  &rarr; 
+          | Resources
+        // Header
+        h1 Resources
+        p
+          | Manage your resources with the RESTful API.
+        .page-header
+
+        // Create
+        h3#create Create
+
+        // description
+        .row
+          .span8.columns
+            ul.unstyled
+              li
+                strong URL: 
+                code http://api.bugswarm.net/resources
+                li
+                  strong Method: 
+                  | POST
+                li
+                  strong Headers: 
+                  br
+                  code "x-bugswarmapikey: ${API_KEY}"
+                  ,
+                  br
+                  code "content-type: application/json"
+                li
+                  strong Parameters (Required): 
+                  | None
+                li
+                  strong Parameters (Optional): 
+                  | None
+          .span8.columns
+            p
+              | Resources belong to users and may be created using this method. In order for a
+              | user's resource to participate in a swarm, however, the user must first
+              a(href='restful_swarms.html#add-resource') add 
+              | that resource to the swarm. Creating a 
+              | resource involves passing a JSON file containing the configuration of the resource.
+
+        // body
+        strong Body: 
+        | The "name", and "machine_type" fields are
+        strong required
+        | . The "description" and "position" fields are
+        strong optional
+        | .
+        pre.prettyprint.language-javascript.
+          \n{
+              "name": "My resource",
+              "machine_type": "pc", # current valid types are "pc", "bug", and "smartphone"
+              "description": "My Resource description",
+              "position": {
+                              "longitude": 0,
+                              "latitude": 0
+                          }
+          }
+
+        // usage
+        strong Usage: 
+        | Create a JSON file with the name
+        code create_resource.json
+        |  and matching the above format. Then execute: 
+        pre.prettyprint.language-javascript.
+          curl -X POST -d@create_resource.json --header "x-bugswarmapikey: 911cbc244827dba9c6dbdd09aff3e5e8fe5eee02" --header "content-type: application/json" http://api.bugswarm.net/resources          
+        // returns
+        strong Returns: 
+        | The created resource in JSON format.
+        br
+        pre.prettyprint.language-javascript.
+          \n{
+              "id": "4735f4417f4fd2eb67ace9f2d2e7948e2d9f43f9",
+              "user_id": "username",
+              "description": "My Resource description",
+              "machine_type": "pc",
+              "name": "My resource",
+              "created_at": "2011-10-09T22:58:39.710Z",
+              "position": {
+                              "longitude": 0,
+                              "latitude": 0
+                          }
+          }
+
+        .page-header
+
+        // Update
+        h3#update Update
+
+        // description
+        .row
+          .span8.columns
+            ul.unstyled
+              li
+                strong URL: 
+                code http://api.bugswarm.net/resources/RESOURCE_ID
+                li
+                  strong Method: 
+                  | PUT
+                li
+                  strong Headers: 
+                  br
+                  code "x-bugswarmapikey: ${API_KEY}"
+                  ,
+                  br
+                  code "content-type: application/json"
+                  li
+                    strong Parameters (Required): 
+                    | None
+                  li
+                    strong Parameters (Optional): 
+                    | None
+          .span8.columns
+            p
+              | Resources belonging to a given user can have some of their information updated after creation. 
+              | Updating a resource involves passing a JSON file containing the fields that the user wishes to update.
+
+        // body
+        strong Body: 
+        | All fields are
+        strong optional
+        | .
+        pre.prettyprint.language-javascript.
+          {
+              "name": "My Resource Updated",
+              "machine_type": "bug",
+              "description": "My Resource description updated",
+              "position": {
+                              "longitude": 1,
+                              "latitude": 1
+                          }
+          }
+
+        // usage
+        strong Usage: 
+        | Create a JSON file with the name
+        code update_resource.json
+        |  and matching the above format. Then execute: 
+        pre.prettyprint.language-javascript.
+          curl -X PUT -d@update_resource.json --header "x-bugswarmapikey: 911cbc244827dba9c6dbdd09aff3e5e8fe5eee02" --header "content-type: application/json" http://api.bugswarm.net/resources/RESOURCE_ID
+
+        // returns
+        strong Returns: 
+        | The updated resource in JSON format, including a "modified_at" field.
+        br
+        pre.prettyprint.language-javascript.
+          \n{
+              "modified_at": "2011-10-10T00:12:58.354Z",
+              "id": "4735f4417f4fd2eb67ace9f2d2e7948e2d9f43f9",
+              "user_id": "username",
+              "description": "My Resource description updated",
+              "machine_type": "bug",
+              "name": "My Resource Updated",
+              "created_at": "2011-10-09T22:58:39.710Z",
+              "position": {
+                              "longitude": 1,
+                              "latitude": 1
+                          }
+          }
+
+        .page-header
+
+
+        // Destroy
+        h3#destroy Destroy
+
+        // description
+        .row
+          .span8.columns
+            ul.unstyled
+              li
+                strong URL: 
+                code http://api.bugswarm.net/resources/RESOURCE_ID
+                li
+                  strong Method: 
+                  | DELETE
+                li
+                  strong Headers: 
+                  code "x-bugswarmapikey: ${API_KEY}"
+                  li
+                    strong Parameters (Required): 
+                    | None
+                  li
+                    strong Parameters (Optional): 
+                    | None
+          .span8.columns
+            p
+              | Destroy a resource. Destroying a resource removes it completely from the user
+              | account and any swarms of which it is a member. The method uses the unique resource 
+              | id specified in the URL to determine which resource to destroy.
+
+        // usage
+        strong Usage: 
+        pre.prettyprint.language-javascript.
+          curl -X DELETE --header "x-bugswarmapikey: 911cbc244827dba9c6dbdd09aff3e5e8fe5eee02" http://api.bugswarm.net/resources/RESOURCE_ID          
+
+        // returns
+        strong Returns: 
+        a(href='http_response_codes.html') HTTP Response Codes
+        br
+        br
+        .page-header
+
+        // List
+        h3#list List
+
+        // description
+        .row
+          .span8.columns
+            ul.unstyled
+              li
+                strong URL: 
+                code http://api.bugswarm.net/resources
+                li
+                  strong Method: 
+                  | GET
+                li
+                  strong Headers: 
+                  br
+                  code "x-bugswarmapikey: ${API_KEY}"
+                  li
+                    strong Parameters (Required): 
+                    | None
+                  li
+                    strong Parameters (Optional): 
+                    | None
+          .span8.columns
+            p
+              | List all of the resources owned by the user. To get the information of a specific
+              | resource only, use the
+              a(href='#get-info') Get Info 
+              | method. 
+
+        // usage
+        strong Usage: 
+        pre.prettyprint.language-javascript.
+          curl -X GET --header "x-bugswarmapikey: 911cbc244827dba9c6dbdd09aff3e5e8fe5eee02" http://api.bugswarm.net/resources
+
+        // returns
+        strong Returns: 
+        | A list of resources in JSON format.
+        pre.prettyprint.language-javascript.
+          [
+            {
+              "id": "33e675f7888c1d7f6f5da41bcccdff7b67f6c9a0"
+              "user_id": "username",
+              "description": "My Resource description",
+              "machine_type": "pc",
+              "name": "My resource",
+              "created_at": "2011-10-09T22:58:39.710Z",
+              "position": {
+                              "longitude": 0,
+                              "latitude": 0
+                          }
+            },
+            {
+              "id": "4735f4417f4fd2eb67ace9f2d2e7948e2d9f43f9",
+              "user_id": "username",
+              "description": "My Other Resource description",
+              "machine_type": "bug",
+              "name": "My other resource",
+              "created_at": "2011-10-09T22:58:39.710Z",
+              "position": {
+                              "longitude": 0,
+                              "latitude": 0
+                          }
+            }
+          ]
+
+        .page-header
+
+        // Get Info
+        h3#get-info Get Info
+
+        // description
+        .row
+          .span8.columns
+            ul.unstyled
+              li
+                strong URL: 
+                code http://api.bugswarm.net/resources/RESOURCE_ID
+                li
+                  strong Method: 
+                  | GET
+                li
+                  strong Headers: 
+                  br
+                  code "x-bugswarmapikey: ${API_KEY}"
+                  li
+                    strong Parameters (Required): 
+                    | None
+                  li
+                    strong Parameters (Optional): 
+                    | None
+          .span8.columns
+            p
+              | Resources in a user's account carry with them a small set of information that can
+              | be retrieved upon request. This information includes the resource's name, the date 
+              | of resource creation, and several other fields. This method returns this information 
+              | in JSON format.
+
+        // usage
+        strong Usage: 
+        pre.prettyprint.language-javascript.
+          curl -X GET --header "x-bugswarmapikey: 911cbc244827dba9c6dbdd09aff3e5e8fe5eee02" http://api.bugswarm.net/resources/RESOURCE_ID
+
+        // returns
+        strong Returns: 
+        | A resource in JSON format.
+        pre.prettyprint.language-javascript.
+          \n{
+              "id": "4735f4417f4fd2eb67ace9f2d2e7948e2d9f43f9",
+              "user_id": "username",
+              "description": "My Resource description",
+              "machine_type": "pc",
+              "name": "My resource",
+              "created_at": "2011-10-09T22:58:39.710Z",
+              "position": {
+                              "longitude": 0,
+                              "latitude": 0
+                          }
+          }
+
+        .page-header
+
+        // List Swarms
+        h3#list-swarms List Swarms
+
+        // description
+        .row
+          .span8.columns
+            ul.unstyled
+              li
+                strong URL: 
+                code http://api.bugswarm.net/resources/RESOURCE_ID/swarms
+                li
+                  strong Method: 
+                  | GET
+                li
+                  strong Headers: 
+                  br
+                  code "x-bugswarmapikey: ${API_KEY}"
+                  li
+                    strong Parameters (Required): 
+                    | None
+                  li
+                    strong Parameters (Optional): 
+                    | None
+          .span8.columns
+            p
+              | Resources can be
+              a(href='restful_swarms.html#add-resource') added
+              |  to one or many swarms. This method takes
+              | a unique resource ID and lists all of the swarms of which that resource is a
+              | member. A JSON representation of the swarm(s) and their resources is printed.
+
+        // usage
+        strong Usage: 
+        pre.prettyprint.language-javascript.
+          curl -X GET --header "x-bugswarmapikey: 911cbc244827dba9c6dbdd09aff3e5e8fe5eee02" http://api.bugswarm.net/resources/RESOURCE_ID/swarms
+
+        // returns
+        strong Returns: 
+        | A list of swarms that the given resource is a member of in JSON format.
+        pre.prettyprint.language-javascript.
+          [
+              {
+                  "id": "a16fb1d896817c58d4f4be9dea51e74b86519579",
+                  "user_id": "username",
+                  "description": "My Swarm description",
+                  "name": "My Swarm",
+                  "created_at": "2011-08-29T20:17:08.676Z",
+                  "resources": [
+                      {
+                          "resource_id": "33e675f7888c1d7f6f5da41bcccdff7b67f6c9a0",
+                          "resource_type": "producer",
+                          "user_id": "username",
+                          "url": "http://api.bugswarm.net/resources/33e675f7888c1d7f6f5da41bcccdff7b67f6c9a0"
+                      },
+                      {
+                          "resource_id": "4735f4417f4fd2eb67ace9f2d2e7948e2d9f43f9",
+                          "resource_type": "both",
+                          "user_id": "username",
+                          "url": "http://api.bugswarm.net/resources/4735f4417f4fd2eb67ace9f2d2e7948e2d9f43f9"
+                      }
+                  ],
+                  "public": true
+              },
+              {
+                  "id": "92236421f64633430baa54fd9848e03aa2696111",
+                  "user_id": "username",
+                  "description": "My Other Swarm description",
+                  "name": "My Other Swarm",
+                  "created_at": "2011-08-29T20:17:08.676Z",
+                  "resources": [
+                      {
+                          "resource_id": "33e675f7888c1d7f6f5da41bcccdff7b67f6c9a0",
+                          "resource_type": "consumer",
+                          "user_id": "username",
+                          "url": "http://api.bugswarm.net/resources/33e675f7888c1d7f6f5da41bcccdff7b67f6c9a0"
+                      }                      
+                  ],
+                  "public": false
+              }
+          ]
+        .page-header
