@@ -35,13 +35,12 @@ html(lang='en')
         // Header
         h1 API Keys
         p
-          | Create and manage your API keys with the RESTful API. Users may hold up to two API keys, a configuration key and a participation key.
-          | Use the configuration API key for all methods associated with the 
+          | Create and list your API keys. The Configuration API key is used for all methods associated with the 
           a(href='configuration_api.html') Configuration API
-          | , including establishing swarms and their resources as well as managing invitations. Use the participation API key for all methods
-          | associated with the 
+          | , including establishing swarms and their resources as well as managing invitations. The Participation API key is used for connecting
+          | resources to the swarms they are members of to allow production and consumption of data in those swarms. More information on this use can be found in the 
           a(href='participation_api.html') Participation API
-          | , including producing and consuming data within one or many swarms. 
+          | .
         .page-header
 
         // Create
@@ -68,8 +67,6 @@ html(lang='en')
                   | Key type
           .span8.columns
             p
-              | Each user must possess at least a configuration API key. In addition to the configuration key, 
-              | a participation key can be generated for use with producing and consuming data on the platform. 
               | This method is used to create API keys. If a key already exists,
               | this method will replace that key with a new one. To create a specific key, users must specify
               | the key type in the URL. For instance,
@@ -87,7 +84,7 @@ html(lang='en')
 
         // returns
         strong Returns: 
-        |  The created key(s) in JSON format. Note that if a type is specified, a JSON object is returned rather than an array.
+        |  The created key(s) as either a JSON object or, if no type of is specified, an array of JSON objects.
         pre.prettyprint.language-javascript.
           [
             {
@@ -132,14 +129,13 @@ html(lang='en')
                   | Key type
           .span8.columns
             p
-              | A user's API key must be passed as a header when using the
-              | methods in the BUGswarm API as a form of account authorization. This method will list the API keys
-              | associated with the user's account. Users may specify which key they would like to retrieve through
+              | This method will list the API keys
+              | associated with the user's account. Users may specify which key they would like to retrieve by specifying the key type in the
               | the URL. For instance,
               code http://api.bugswarm.net/keys/configuration
               |  will retrieve the configuration key, while
               code http://api.bugswarm.net/keys/participation
-              |  will retrieve the participation key. If no key type is specified in the URL, all keys will be listed.
+              |  will retrieve the participation key. If no key type is specified in the URL, all keys will be returned.
 
         // usage
         strong Usage: 
@@ -150,7 +146,7 @@ html(lang='en')
 
         // returns
         strong Returns: 
-        | The desired key(s) and their relative information in JSON format. Note that if a type is specified, a JSON object is returned rather than an array.
+        | The desired key(s) as either a JSON object or, if no type is specified, an array of JSON objects.
         br
         pre.prettyprint.language-javascript.
           \n[
