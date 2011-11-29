@@ -1,60 +1,79 @@
-<!DOCTYPE html><html lang="en"><head><title>BUGswarm Developers</title><link rel="stylesheet" href="bootstrap/bootstrap.css"><link rel="stylesheet" href="css/this.css"><link rel="stylesheet" href="js/google-code-prettify/prettify.css"><script src="http://code.jquery.com/jquery-1.5.2.js"></script><script src="js/google-code-prettify/prettify.js"></script><script src="js/application.js"></script><script src="js/google-analytics.js"></script></head><body><!-- NAVIGATION--><div class="topbar"><div class="topbar-inner"><div class="container"><h3><a id="banner" href="index.html">BUGswarm Developers</a></h3><ul class="nav"><li class="dropdown nav-dropdown"><a href="documentation.html" class="dropdown-toggle">Documentation</a><ul class="dropdown-menu"><li><a href="configuration_api.html">Configuration</a></li><li><a href="participation_api.html">Participation</a></li></ul></li><li><a href="tools.html">Tools</a></li><li><a href="libraries.html">Libraries</a></li><li><a href="tutorial.html">Tutorial</a></li><li><a href="applications.html">Applications</a></li><li><a href="hardware.html">Hardware</a></li><li><a href="contact.html">Contact</a></li></ul></div></div></div><!-- CONTAINER--><div class="container-fluid"><!-- SIDEBAR--><div class="sidebar"><strong>Jump to:</strong><ul class="unstyled"><li><h5><a href="#notifications-and-messages">Notifications and Messages</a></h5></li><li><h5><a href="#using-the-streaming-api">Using the Streaming API</a></h5></li><li><h5><a href="#formats">Formats</a></h5></li></ul></div><!-- CONTENT--><div class="content"><!-- Path--><div class="page-header"><a href="index.html">Home</a> &rarr;
+<!DOCTYPE html><html lang="en"><head><title>BUGswarm Developers</title><link rel="stylesheet" href="bootstrap/bootstrap.css"><link rel="stylesheet" href="css/this.css"><link rel="stylesheet" href="js/google-code-prettify/prettify.css"><script src="http://code.jquery.com/jquery-1.5.2.js"></script><script src="js/google-code-prettify/prettify.js"></script><script src="js/application.js"></script><script src="js/google-analytics.js"></script></head><body><!-- NAVIGATION--><div class="topbar"><div class="topbar-inner"><div class="container"><h3><a id="banner" href="index.html">BUGswarm Developers</a></h3><ul class="nav"><li class="dropdown nav-dropdown"><a href="documentation.html" class="dropdown-toggle">Documentation</a><ul class="dropdown-menu"><li><a href="configuration_api.html">Configuration</a></li><li><a href="participation_api.html">Participation</a></li></ul></li><li><a href="tools.html">Tools</a></li><li><a href="libraries.html">Libraries</a></li><li><a href="tutorial.html">Tutorial</a></li><li><a href="applications.html">Applications</a></li><li><a href="hardware.html">Hardware</a></li><li><a href="contact.html">Contact</a></li></ul></div></div></div><!-- CONTAINER--><div class="container-fluid"><!-- SIDEBAR--><div class="sidebar"><strong>Jump to:</strong><ul class="unstyled"><li><h5><a href="#opening-a-connection">Opening a Connection</a></h5></li><li><h5><a href="#sending-messages">Sending Messages</a></h5></li><li><h5><a href="#receiving-messages">Receiving Messages</a></h5></li><li><h5><a href="#presence-and-errors">Presence and Errors</a></h5></li></ul></div><!-- CONTENT--><div class="content"><!-- Path--><div class="page-header"><a href="index.html">Home</a> &rarr;
 <a href="documentation.html">Documentation</a> &rarr; 
 Participation API
-</div><!-- Header--><h1>Participation API</h1><p>Resources use the participation API to communicate with swarms. 
-Resources can send and receive presence notifications, private 
-messages, and public messages. BUGswarm will also send error
-messages if an attempt has been made to use the API incorrectly
-or to do something that is not allowed by the credentials that
-were provided.
-</p><br><div class="page-header"><h2 id="notifications-and-messages">Notifications and Messages</h2></div><div class="row"><div class="span8 columns"><h3>Presence Notifications          </h3><p>Presence notifications indicate that a resource has joined or left
-the swarm. A resources sends a presence notification to the swarm(s)
-that it wishes to join. Members of that swarm then receive a 
-notification that the resource has joined the swarm.
-Resources can also send presence notifications indicating that they
-are leaving the swarm.
-</p><p>Direct presence notifications are sent automatically by BUGswarm to resources
-that are owned by the same user as the resource that has just
-connected to BUGswarm. For example, if resources A, B, and C belong
-to Alice, and A and B are connected to BUGswarm, then A and B will
-receive a direct presence notification when resource C connects to
-BUGswarm, and another direct presence notification when resource C
-leaves BUGswarm.
-</p></div><div class="span8 columns"><h3>Messages</h3><p>Messages are sent from a resource to one of the following: all
-resources in all swarms that the sender has joined, all resources
-in a specified swarm, or only a specified resource. The message
-contains data that the recipient can use to determine whether it
-is receiving a private message or a public message. Messages can
-be sent between resources that belong to the same swarm and between
-resources that belong to the same user.
-</p></div><div class="span8 columns"><h3>Errors</h3><p>Errors are sent to a resource when something has gone wrong.
+</div><!-- Header--><h1>Participation API</h1><p>The Participation API is used to connect resources to the swarms they are a member of. 
+Once connected, resources may produce data, consume data, or do both, depending on their level of access to the swarm. 
+Throughout this process, the BUGswarm platform generates presence notifications and error messages when necessary in addition to passing
+along the messages being produced in the swarm. The Participation API makes use of HTTP streaming, meaning that once a connection has been opened,
+bidirectional communication between the resource and the swarm may continue until the connection is closed.
+</p><br><div class="page-header"><h2 id="opening-a-connection">Opening a Connection</h2></div><ul></ul><li><h3>Production</h3></li><p>To open a connection between a resource and a swarm for the purpose of producing data,
+send an HTTP 
+<strong>POST </strong> request to the following URL with the following headers.
+</p><h5 class="sub-header">URL:</h5><pre class="prettyprint language-javascript">'http://api.bugswarm.net/stream?swarm_id=SWARM_ID&amp;resource_id=RESOURCE_ID'
+</pre><p>Replace 
+<code>SWARM_ID</code> and 
+<code>RESOURCE_ID</code>  with the id of the swarm you would like to connect to and the resource you would
+like to connect with. Additionally, you may connect the resource to multiple swarms at once by appending multiple 
+<code>&swarm_id=SWARM_ID</code> statements to the single 
+<code>swarm_id=SWARM_ID</code> that is given above. Keep in mind that a resource must be 
+added to the swarm using the Configuration API's  
+<a href="restful_swarms.html#add-resource">Add Resource</a> method for swarms before it may connect to the swarm and being producing.
+</p><h5 class="sub-header">Headers:</h5><ul class="unstyled"><li><strong>x-bugswarmapikey: </strong>PARTICIPATION_KEY
+</li><li><strong>transfer-encoding: </strong>chunked
+</li></ul><p><strong>Note </strong>that a first message must be sent in order for the connection to open. 
+This can easily be done by sending an empty new line message in the format described below.
+For instance, as long as you follow the explained chunked coding format,  
+<code>{"message": {"to": [SWARM_ID], "payload":}}</code> is a valid message to send that will allow the resource to successfully connect. Of course, messages containing
+information in the payload are also valid ways of opening connections.
+</p><div class="page-header"></div><li><h3>Consumption</h3></li><p>To open a connection between a resource and a swarm for the purpose of consuming data,
+send an HTTP 
+<strong>GET </strong> request to the following URL
+</p><h5 class="sub-header">URL:</h5><pre class="prettyprint language-javascript">'http://api.bugswarm.net/stream?swarm_id=SWARM_ID&amp;resource_id=RESOURCE_ID'
+</pre><p>Replace 
+<code>SWARM_ID</code> and 
+<code>RESOURCE_ID</code>  with the id of the swarm you would like to connect to and the resource you would
+like to connect with. Additionally, you may connect the resource to multiple swarms at once by appending multiple 
+<code>&swarm_id=SWARM_ID</code> statements to the single 
+<code>swarm_id=SWARM_ID</code> that is given above. Keep in mind that a resource must be 
+added to the swarm using the Configuration API's  
+<a href="restful_swarms.html#add-resource">Add Resource</a> method for swarms before it may connect to the swarm and being producing.
+</p><h5 class="sub-header">Headers:</h5><ul class="unstyled"><li><strong>x-bugswarmapikey: </strong>PARTICIPATION_KEY
+</li></ul><div class="page-header"></div><br><br><div class="page-header"><h2 id="sending-messages">Sending Messages</h2></div><p>Once a connection has has been successfully opened for production, you may freely send
+messages from your connected resource to the swarm. However, messages must be sent with chunked encoding as JSON objects
+in the following formats.
+</p><li><h4 class="sub-header">Chunked Encoding</h4></li><p>Chunked encoding consists of sending a hexadecimal representation of the message's size followed
+by the message itself, appending the characters "\r\n" to the end of each. More information about chunked
+encoding can be found in section 3.6.1 of 
+<a href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec3.html">this page</a> as well as 
+<a href="http://en.wikipedia.org/wiki/Chunked_transfer_encoding#Format">Wikipedia</a>.
+</p><li><h4 class="sub-header">Formats</h4></li><strong>Public message to all swarms the resource is connected to:</strong><br><br><pre class="prettyprint language-javascript">{&quot;message&quot;: {&quot;payload&quot;: {&quot;x&quot;:1}}}
+</pre><strong>Public message to specific swarm(s):</strong><br><br><pre class="prettyprint language-javascript">{&quot;message&quot;: {&quot;to&quot;: [&quot;234&quot;, &quot;123&quot;], &quot;payload&quot;: {&quot;x&quot;:1}}}
+</pre><strong>Private message to specific resource in specific swarm:</strong><br><br><pre class="prettyprint language-javascript">{&quot;message&quot;: {&quot;to&quot;: [{&quot;swarm&quot;: &quot;234&quot;, &quot;resource&quot;: &quot;222&quot;}], &quot;payload&quot;: {&quot;y&quot;:2}}}
+</pre><p><strong>Note</strong> that, within the message, the 
+<strong>payload</strong> itself must also be a 
+<strong>JSON object or JSON array</strong> .
+</p><div class="page-header"></div><br><br><div class="page-header"><h2 id="receiving-messages">Receiving Messages</h2></div><p>Messages will be received in the following formats depending on whether they are public or private.
+</p><br><strong>Public message received from resource 123 as observed by all resources connected to the swarm.</strong><br><br><pre class="prettyprint language-javascript">{&quot;message&quot;: {&quot;from&quot;: {&quot;swarm&quot;: &quot;234&quot;, &quot;resource&quot;:&quot;123&quot;}, &quot;public&quot;: true, &quot;payload&quot;: {&quot;x&quot;: 1}}}
+</pre><strong>Private mesage recieved from resource 123 as observed by the receiving resource.</strong><br><br><pre class="prettyprint language-javascript">{&quot;message&quot;: {&quot;from&quot;: {&quot;swarm&quot;: &quot;234&quot;, resource: &quot;123&quot;}, &quot;public&quot;: false, &quot;payload&quot;: {&quot;y&quot;: 2}}}
+</pre><div class="page-header"></div><br><br><div class="page-header"><h2 id="presence-and-errors">Presence and Errors</h2></div><div class="row"><div class="span10 columns"><h3>Presence Notifications          </h3><li><h5 class="sub-header">Swarm Presence</h5></li><p>When a resource connects to a swarm, a swarm presence notification is sent to each
+of the resources currently connected to that swarm. Additionally, the connecting resource
+receives swarm presence notifications from those resources that are currently connected. 
+When a resource disconnects from a swarm, a swarm presence notification of type "unavailable" is
+sent to each of the currently connected resources.
+</p><li><h5 class="sub-header">Direct Presence</h5></li><p>When a resource connects to its first swarm, a direct presence notification is sent to each resource under that
+user account that is also connected to a swarm. Additionally, the connecting resource
+receives direct presence notifications from all other resources under the same user account that are already
+connected to at least one swarm. When a resource disconnects from it's last swarm, a direct presence notification of
+type "unavailable" is sent to each of the resources under the same user account that are connected to at leaset one swarm. 
+</p></div><div class="span10 columns"><h3>Errors</h3><p>Errors are sent to a resource when something has gone wrong.
 This usually means that a resource has attempted to use the
-API to do something that is not allowed, such as writing to a swarm
-when it is a consumer or attempting to connect to a swarm that it
-does not belong to. Errors contain a list of HTTP codes and
-descriptions for each error that occured during an attempted
+API to do something that is not permited, such as producing to a swarm
+when it is only connected as a consumer or attempting to connect to a swarm that it
+is not a member of. Errors contain a list of HTTP codes and
+descriptions for each error that occured during the attempted
 operation. Some operations my cause more than one error, so the list
 may have more than one element.
-</p></div></div><br><div class="page-header"><h2 id="using-the-streaming-api">Using the Streaming API</h2></div><h3>URL:</h3><pre class="prettyprint language-javascript">'http://api.bugswarm.net/stream'
-</pre><h3>Methods:</h3><p>Using the BUGswarm streaming API for participation in swarms requires the use of the above URL along with a combination of appended swarm
-and resource IDs. For instance, in order to connect to a given swarm with a specific resource, the following URL format would be used:
-</p><pre class="prettyprint language-javascript">'http://api.bugswarm.net/stream?swarm_id=SWARM_ID&amp;resource_id=RESOURCE_ID
-</pre><p>In the above format, SWARM_ID and RESOURCE_ID would be replaced with the IDs corresponding to the swarm being connected to and the resource doing
-the connecting respectively. Note that a swarm must be 
-<a href="configuration_api.html">configured </a>to contain the connecting resource before that resource can successfully connect.
-</p><p>Using HTTP GET allows you to read from the stream, while using HTTP 
-POST allows reading and writing since the stream will be bidirectional. 
-When using this streaming API, you must set the
-<code>x-bugswarmapikey</code> header to your participation API key. 
-</p><h5>Example:</h5><p>In order to connect a resource with ID
-<code>b3af18bb34ce8032d20afce5a4b57c73da33e94f</code> to two swarms with IDs
-<code>911cbc244827dba9c6dbdd09aff3e5e8fe5eee02</code> and
-<code>57438aab86c98e09809a775110fd01426daa23c1</code>, you would use the follwoing URL:
-</p><pre class="prettyprint language-javascript">'http://api.bugswarm.net/stream?swarm_id=911cbc244827dba9c6dbdd09aff3e5e8fe5eee02&amp;swarm_id=57438aab86c98e09809a775110fd01426daa23c1&amp;resource_id=b3af18bb34ce8032d20afce5a4b57c73da33e94f'
-</pre><p>Note that this example shows how you may string together multiple swarm IDs to connect to multiple swarms at once with the same resource.
-</p><br><div class="page-header"><h2 id="formats">Formats</h2></div><p>Resources send and receive presence notifications and messages in 
-JSON format.
-</p><h3>Presence Notifications</h3><div class="row"><ul></ul><div class="span12 columns"><li><h5>Sender</h5></li>To join swarms 234 and 333:
+</p></div></div><div class="page-header"></div><h3>Formats</h3><h4 class="sub-header">Presence Notifications</h4><div class="row"><ul></ul><div class="span12 columns"><li><h5>Sender</h5></li>To join swarms 234 and 333:
 <br><br><pre class="prettyprint language-javascript">{&quot;presence&quot;: {&quot;to&quot;: [&quot;234&quot;, &quot;333&quot;]}}
 </pre>To leave swarms 234 and 333:
 <br><br><pre class="prettyprint language-javascript">{&quot;presence&quot;: {&quot;to&quot;: [&quot;234&quot;, &quot;333&quot;], type: &quot;unavailable&quot;}}
@@ -66,16 +85,6 @@ JSON format.
 <br><br><pre class="prettyprint language-javascript">{&quot;presence&quot;: {&quot;from&quot;: {&quot;resource&quot;: &quot;222&quot;}}}
 </pre>When a resource that is owned by the same user disconnects from BUGswarm:
 <br><br><pre class="prettyprint language-javascript">{&quot;presence&quot;: {&quot;from&quot;: {&quot;resource&quot;: &quot;222&quot;} &quot;type&quot;: &quot;unavailable&quot;}}
-</pre></div></div><div class="page-header"></div><h3>Messages</h3><div class="row"><ul></ul><div class="span12 columns"><li><h5>Sender</h5></li>To send a public message to all the swarms that the resource has joined:
-<br><br><pre class="prettyprint language-javascript">{&quot;message&quot;: {&quot;payload&quot;: {&quot;x&quot;:1}}}
-</pre>To send a public message to swarms 234 and 123:
-<br><br><pre class="prettyprint language-javascript">{&quot;message&quot;: {&quot;to&quot;: [&quot;234&quot;, &quot;123&quot;], &quot;payload&quot;: {&quot;x&quot;:1}}}
-</pre>To send a private message to resource 222 in swarm 234:
-<br><br><pre class="prettyprint language-javascript">{&quot;message&quot;: {&quot;to&quot;: [{&quot;swarm&quot;: &quot;234&quot;, &quot;resource&quot;: &quot;222&quot;}], &quot;payload&quot;: {&quot;y&quot;:2}}}
-</pre></div><div class="span13 columns"><li><h5>Recipient</h5></li>When a resource receives public message from resource 123:
-<br><br><pre class="prettyprint language-javascript">{&quot;message&quot;: {&quot;from&quot;: {&quot;swarm&quot;: &quot;234&quot;, &quot;resource&quot;:&quot;123&quot;}, &quot;public&quot;: true, &quot;payload&quot;: {&quot;x&quot;: 1}}}
-</pre>When a resource receives private message from resource 123:
-<br><br><pre class="prettyprint language-javascript">{&quot;message&quot;: {&quot;from&quot;: {&quot;swarm&quot;: &quot;234&quot;, resource: &quot;123&quot;}, &quot;public&quot;: false, &quot;payload&quot;: {&quot;y&quot;: 2}}}
-</pre></div></div><div class="page-header"></div><h3>Errors</h3><ul><li><h5>Recipient</h5></li></ul>When an error occurs:
+</pre></div></div><div class="page-header"></div><h4 class="sub-header">Errors</h4><ul><li><h5>Recipient</h5></li></ul>When an error occurs:
 <br><br><pre class="prettyprint language-javascript">{&quot;errors&quot;: [{&quot;code&quot;: &quot;xxx&quot;, description: &quot;foo&quot;}, {&quot;code&quot;: &quot;yyy&quot;, &quot;description&quot;: &quot;bar&quot;}]}
 </pre></div></div></body></html>
