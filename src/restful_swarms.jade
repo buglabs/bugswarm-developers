@@ -42,7 +42,7 @@ html(lang='en')
         // Header
         h1 Swarms
         p
-          | Manage your swarms with the RESTful API.
+          | Create and manage your swarms.
         .page-header
 
         // Create
@@ -73,13 +73,11 @@ html(lang='en')
                   | None
           .span8.columns
             p
-              | Each swarm is created by and belongs to a given user, however, many user's
-              | resources may be members of a swarm at the swarm owner's discretion. Users 
-              | can use this method to create a swarm. The method passes a JSON file containing 
-              | information relevant to the creation of a swarm. Once a swarm is created, users can then
+              | Create a swarm by passing a JSON object representing the swarm to create. After creation,
+              | you may 
               a(href='restful_swarms.html#add-resource') add
-              |  resources to it. Additionally, users may specify any of their own resources to add to the
-              | swarm by default upon creation. This is configured in the JSON file that gets passed.
+              |  resources to the swarm. Additionally, users may specify any of their own resources to add to the
+              | swarm by default upon creation. This is configured in the JSON object that gets passed.
 
         // body
         strong Body: 
@@ -112,7 +110,7 @@ html(lang='en')
 
         // returns
         strong Returns: 
-        | The created swarm and its configuration in JSON format. The "resources" field will exist as an empty
+        | The created swarm and its configuration as a JSON object. The "resources" field will exist as an empty
         | array if no resources are given upon creation.
         pre.prettyprint.language-javascript.
           {
@@ -161,9 +159,8 @@ html(lang='en')
                   | None
           .span8.columns
             p
-              | Swarms belonging to a given user can have some of their information updated after
-              | creation. Updating a swarm involves passing a JSON file containing the fields that 
-              | the user wishes to update.
+              | Update a swarm by passing a JSON object containing the fields that 
+              | the you wish to update.
 
         // body
         strong Body: 
@@ -187,7 +184,7 @@ html(lang='en')
 
         // returns
         strong Returns: 
-        | The updated swarm in JSON format, including a "modified_at" field.
+        | The updated swarm as a JSON object, including a "modified_at" field.
         pre.prettyprint.language-javascript.
           {
               "description": "My Other Swarm description updated",
@@ -285,7 +282,7 @@ html(lang='en')
 
         // returns
         strong Returns: 
-        | A list of swarms in JSON format.
+        | A list of swarms as a JSON array.
         pre.prettyprint.language-javascript.
           [
               {
@@ -358,9 +355,8 @@ html(lang='en')
                     | None
           .span8.columns
             p
-              | Swarms in a user's account carry with them a list of information regarding the swarm in
-              | addition to representations of the resources they contain. This method retrieves 
-              | that information for a given swarm and prints it in JSON format. The ID of the 
+              | This method retrieves 
+              | the information for a given swarm. The id of the 
               | swarm to retrieve the information from is given in the URL.
 
         // usage
@@ -370,7 +366,7 @@ html(lang='en')
 
         // returns
         strong Returns: 
-        | A swarm in JSON format with its contained resources.
+        | A swarm as a JSON object.
         pre.prettyprint.language-javascript.
           {
               "description": "My Other Swarm description",
@@ -552,7 +548,7 @@ html(lang='en')
 
         // returns 
         strong Returns: 
-        | A list of resources in JSON format and their swarm-relevant information.
+        | A list of resources as as JSON array.
         pre.prettyprint.language-javascript.
           [
               {
