@@ -37,7 +37,7 @@ html(lang='en')
         // Header
         h1 Resources
         p
-          | Manage your resources with the RESTful API.
+          | Create and manage your resources.
         .page-header
 
         // Create
@@ -72,7 +72,7 @@ html(lang='en')
               | user's resource to participate in a swarm, however, the user must first
               a(href='restful_swarms.html#add-resource') add 
               | that resource to the swarm. Creating a 
-              | resource involves passing a JSON file containing the configuration of the resource.
+              | resource involves passing a JSON object containing the resource's meta-data.
 
         // body
         strong Body: 
@@ -101,7 +101,7 @@ html(lang='en')
           curl -X POST -d@create_resource.json --header "x-bugswarmapikey: 911cbc244827dba9c6dbdd09aff3e5e8fe5eee02" --header "content-type: application/json" http://api.bugswarm.net/resources          
         // returns
         strong Returns: 
-        | The created resource in JSON format.
+        | The created resource as a JSON object.
         br
         pre.prettyprint.language-javascript.
           \n{
@@ -148,7 +148,7 @@ html(lang='en')
           .span8.columns
             p
               | Resources belonging to a given user can have some of their information updated after creation. 
-              | Updating a resource involves passing a JSON file containing the fields that the user wishes to update.
+              | Updating a resource involves passing a JSON object containing the fields that the user wishes to update.
 
         // body
         strong Body: 
@@ -176,7 +176,7 @@ html(lang='en')
 
         // returns
         strong Returns: 
-        | The updated resource in JSON format, including a "modified_at" field.
+        | The updated resource as a JSON object, including a "modified_at" field.
         br
         pre.prettyprint.language-javascript.
           \n{
@@ -220,7 +220,7 @@ html(lang='en')
                     | None
           .span8.columns
             p
-              | Destroy a resource. Destroying a resource removes it completely from the user
+              | Destroying a resource removes it completely from the user
               | account and any swarms of which it is a member. The method uses the unique resource 
               | id specified in the URL to determine which resource to destroy.
 
@@ -261,10 +261,7 @@ html(lang='en')
                     | None
           .span8.columns
             p
-              | List all of the resources owned by the user. To get the information of a specific
-              | resource only, use the
-              a(href='#get-info') Get Info 
-              | method. 
+              | List all of the resources belonging to the user. 
 
         // usage
         strong Usage: 
@@ -273,7 +270,7 @@ html(lang='en')
 
         // returns
         strong Returns: 
-        | A list of resources in JSON format.
+        | A list of resources as a JSON array.
         pre.prettyprint.language-javascript.
           [
             {
@@ -329,10 +326,7 @@ html(lang='en')
                     | None
           .span8.columns
             p
-              | Resources in a user's account carry with them a small set of information that can
-              | be retrieved upon request. This information includes the resource's name, the date 
-              | of resource creation, and several other fields. This method returns this information 
-              | in JSON format.
+              | This method returns the given resource and its meta-data as a JSON object.
 
         // usage
         strong Usage: 
@@ -341,7 +335,7 @@ html(lang='en')
 
         // returns
         strong Returns: 
-        | A resource in JSON format.
+        | A resource as a JSON object.
         pre.prettyprint.language-javascript.
           \n{
               "id": "4735f4417f4fd2eb67ace9f2d2e7948e2d9f43f9",
@@ -386,8 +380,8 @@ html(lang='en')
               | Resources can be
               a(href='restful_swarms.html#add-resource') added
               |  to one or many swarms. This method takes
-              | a unique resource ID and lists all of the swarms of which that resource is a
-              | member. A JSON representation of the swarm(s) and their resources is printed.
+              | a unique resource id and lists all of the swarms of which that resource is a
+              | member. A JSON array of the swarm(s) and their resources is printed.
 
         // usage
         strong Usage: 
@@ -396,7 +390,7 @@ html(lang='en')
 
         // returns
         strong Returns: 
-        | A list of swarms that the given resource is a member of in JSON format.
+        | A list of swarms that the given resource is a member as a JSON array.
         pre.prettyprint.language-javascript.
           [
               {
