@@ -2,17 +2,14 @@
 <a href="documentation.html">Documentation</a> &rarr; 
 <a href="configuration_api.html">Configuration API</a> &rarr; 
 API Keys
-</div><!-- Header--><h1>API Keys</h1><p>Create and manage your API keys with the RESTful API. Users may hold up to two API keys, a configuration key and a participation key.
-Use the configuration API key for all methods associated with the 
-<a href="configuration_api.html">Configuration API</a>, including establishing swarms and their resources as well as managing invitations. Use the participation API key for all methods
-associated with the 
-<a href="participation_api.html">Participation API</a>, including producing and consuming data within one or many swarms. 
+</div><!-- Header--><h1>API Keys</h1><p>Create and list your API keys. The Configuration API key is used for all methods associated with the 
+<a href="configuration_api.html">Configuration API</a>, including establishing swarms and their resources as well as managing invitations. The Participation API key is used for connecting
+resources to the swarms they are members of to allow production and consumption of data in those swarms. More information on this use can be found in the 
+<a href="participation_api.html">Participation API</a>.
 </p><div class="page-header"></div><!-- Create--><h3 id="create">Create</h3><!-- description--><div class="row"><div class="span8 columns"><ul class="unstyled"><li><strong>URL: </strong><code>http://api.bugswarm.net/keys</code><li><strong>Method: </strong>POST
 </li><li><strong>Authentication: </strong><code>"username:password"</code></li><li><strong>Parameters (Required): </strong>None
 </li><li><strong>Parameters (Optional): </strong>Key type
-</li></li></ul></div><div class="span8 columns"><p>Each user must possess at least a configuration API key. In addition to the configuration key, 
-a participation key can be generated for use with producing and consuming data on the platform. 
-This method is used to create API keys. If a key already exists,
+</li></li></ul></div><div class="span8 columns"><p>This method is used to create API keys. If a key already exists,
 this method will replace that key with a new one. To create a specific key, users must specify
 the key type in the URL. For instance,
 <code>http://api.bugswarm.net/keys/participation</code> will generate the participation key, while
@@ -21,7 +18,7 @@ the key type in the URL. For instance,
 curl -X POST --user &quot;username:password&quot; http://api.bugswarm.net/keys/configuration
 curl -X POST --user &quot;username:password&quot; http://api.bugswarm.net/keys/participation
 
-</pre><!-- returns--><strong>Returns: </strong> The created key(s) in JSON format. Note that if a type is specified, a JSON object is returned rather than an array.
+</pre><!-- returns--><strong>Returns: </strong> The created key(s) as either a JSON object or, if no type of is specified, an array of JSON objects.
 <pre class="prettyprint language-javascript">[
   {
     &quot;created_at&quot;: &quot;2011-10-21T15:37:35.636Z&quot;, 
@@ -42,18 +39,17 @@ curl -X POST --user &quot;username:password&quot; http://api.bugswarm.net/keys/p
 </pre><div class="page-header"></div><!-- List--><h3 id="list">List</h3><!-- description--><div class="row"><div class="span8 columns"><ul class="unstyled"><li><strong>URL: </strong><code>http://api.bugswarm.net/keys</code><li><strong>Method: </strong>GET
 </li><li><strong>Authentication: </strong><code>"username:password"</code></li><li><strong>Parameters (Required): </strong>None
 </li><li><strong>Parameters (Optional): </strong>Key type
-</li></li></ul></div><div class="span8 columns"><p>A user's API key must be passed as a header when using the
-methods in the BUGswarm API as a form of account authorization. This method will list the API keys
-associated with the user's account. Users may specify which key they would like to retrieve through
+</li></li></ul></div><div class="span8 columns"><p>This method will list the API keys
+associated with the user's account. Users may specify which key they would like to retrieve by specifying the key type in the
 the URL. For instance,
 <code>http://api.bugswarm.net/keys/configuration</code> will retrieve the configuration key, while
-<code>http://api.bugswarm.net/keys/participation</code> will retrieve the participation key. If no key type is specified in the URL, all keys will be listed.
+<code>http://api.bugswarm.net/keys/participation</code> will retrieve the participation key. If no key type is specified in the URL, all keys will be returned.
 </p></div></div><!-- usage--><strong>Usage: </strong><pre class="prettyprint language-javascript">
 curl -X GET --user &quot;username:password&quot; http://api.bugswarm.net/keys
 curl -X GET --user &quot;username:password&quot; http://api.bugswarm.net/keys/configuration
 curl -X GET --user &quot;username:password&quot; http://api.bugswarm.net/keys/participation
 
-</pre><!-- returns--><strong>Returns: </strong>The desired key(s) and their relative information in JSON format. Note that if a type is specified, a JSON object is returned rather than an array.
+</pre><!-- returns--><strong>Returns: </strong>The desired key(s) as either a JSON object or, if no type is specified, an array of JSON objects.
 <br><pre class="prettyprint language-javascript">
 [
     {
