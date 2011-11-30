@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en"><head><title>BUGswarm Developers</title><link rel="stylesheet" href="bootstrap/bootstrap.css"><link rel="stylesheet" href="css/this.css"><link rel="stylesheet" href="js/google-code-prettify/prettify.css"><script src="http://code.jquery.com/jquery-1.5.2.js"></script><script src="js/google-code-prettify/prettify.js"></script><script src="js/application.js"></script><script src="js/google-analytics.js"></script></head><body><!-- NAVIGATION--><div class="topbar"><div class="topbar-inner"><div class="container"><h3><a id="banner" href="index.html">BUGswarm Developers</a></h3><ul class="nav"><li class="dropdown nav-dropdown"><a href="documentation.html" class="dropdown-toggle">Documentation</a><ul class="dropdown-menu"><li><a href="configuration_api.html">Configuration</a></li><li><a href="participation_api.html">Participation</a></li></ul></li><li><a href="tools.html">Tools</a></li><li><a href="libraries.html">Libraries</a></li><li><a href="tutorial.html">Tutorial</a></li><li><a href="applications.html">Applications</a></li><li><a href="hardware.html">Hardware</a></li><li><a href="contact.html">Contact</a></li></ul></div></div></div><!-- CONTAINER--><div class="container-fluid"><!-- SIDEBAR--><div class="sidebar"><strong>Jump to:</strong><ul class="unstyled"><li><h5><a href="#opening-a-connection">Opening a Connection</a></h5></li><li><h5><a href="#sending-messages">Sending Messages</a></h5></li><li><h5><a href="#receiving-messages">Receiving Messages</a></h5></li><li><h5><a href="#presence-and-errors">Presence and Errors</a></h5></li></ul></div><!-- CONTENT--><div class="content"><!-- Path--><div class="page-header"><a href="index.html">Home</a> &rarr;
+<!DOCTYPE html><html lang="en"><head><title>BUGswarm Developers</title><link rel="stylesheet" href="bootstrap/bootstrap.css"><link rel="stylesheet" href="css/this.css"><link rel="stylesheet" href="js/google-code-prettify/prettify.css"><script src="http://code.jquery.com/jquery-1.5.2.js"></script><script src="js/google-code-prettify/prettify.js"></script><script src="js/application.js"></script><script src="js/google-analytics.js"></script></head><body><!-- NAVIGATION--><div class="topbar"><div class="topbar-inner"><div class="container"><h3><a id="banner" href="index.html">BUGswarm Developers</a></h3><ul class="nav"><li class="dropdown nav-dropdown"><a href="documentation.html" class="dropdown-toggle">Documentation</a><ul class="dropdown-menu"><li><a href="configuration_api.html">Configuration</a></li><li><a href="participation_api.html">Participation</a></li></ul></li><li><a href="tools.html">Tools</a></li><li><a href="libraries.html">Libraries</a></li><li><a href="tutorial.html">Tutorial</a></li><li><a href="applications.html">Applications</a></li><li><a href="hardware.html">Hardware</a></li><li><a href="contact.html">Contact</a></li></ul></div></div></div><!-- CONTAINER--><div class="container"><!-- Path--><div class="page-header"><a href="index.html">Home</a> &rarr;
 <a href="documentation.html">Documentation</a> &rarr; 
 Participation API
 </div><!-- Header--><h1>Participation API</h1><p>The Participation API is used to connect resources to the swarms they are a member of. 
@@ -55,7 +55,7 @@ encoding can be found in section 3.6.1 of
 </p><div class="page-header"></div><br><br><div class="page-header"><h2 id="receiving-messages">Receiving Messages</h2></div><p>Messages will be received in the following formats depending on whether they are public or private.
 </p><br><strong>Public message received from resource 123 as observed by all resources connected to the swarm.</strong><br><br><pre class="prettyprint language-javascript">{&quot;message&quot;: {&quot;from&quot;: {&quot;swarm&quot;: &quot;234&quot;, &quot;resource&quot;:&quot;123&quot;}, &quot;public&quot;: true, &quot;payload&quot;: {&quot;x&quot;: 1}}}
 </pre><strong>Private mesage recieved from resource 123 as observed by the receiving resource.</strong><br><br><pre class="prettyprint language-javascript">{&quot;message&quot;: {&quot;from&quot;: {&quot;swarm&quot;: &quot;234&quot;, resource: &quot;123&quot;}, &quot;public&quot;: false, &quot;payload&quot;: {&quot;y&quot;: 2}}}
-</pre><div class="page-header"></div><br><br><div class="page-header"><h2 id="presence-and-errors">Presence and Errors</h2></div><div class="row"><div class="span10 columns"><h3>Presence Notifications          </h3><li><h5 class="sub-header">Swarm Presence</h5></li><p>When a resource connects to a swarm, a swarm presence notification is sent to each
+</pre><div class="page-header"></div><br><br><div class="page-header"><h2 id="presence-and-errors">Presence and Errors</h2></div><div class="row"><div class="span8 columns"><h3>Presence Notifications          </h3><li><h5 class="sub-header">Swarm Presence</h5></li><p>When a resource connects to a swarm, a swarm presence notification is sent to each
 of the resources currently connected to that swarm. Additionally, the connecting resource
 receives swarm presence notifications from those resources that are currently connected. 
 When a resource disconnects from a swarm, a swarm presence notification of type "unavailable" is
@@ -65,7 +65,7 @@ user account that is also connected to a swarm. Additionally, the connecting res
 receives direct presence notifications from all other resources under the same user account that are already
 connected to at least one swarm. When a resource disconnects from it's last swarm, a direct presence notification of
 type "unavailable" is sent to each of the resources under the same user account that are connected to at leaset one swarm. 
-</p></div><div class="span10 columns"><h3>Errors</h3><p>Errors are sent to a resource when something has gone wrong.
+</p></div><div class="span8 columns"><h3>Errors</h3><p>Errors are sent to a resource when something has gone wrong.
 This usually means that a resource has attempted to use the
 API to do something that is not permited, such as producing to a swarm
 when it is only connected as a consumer or attempting to connect to a swarm that it
@@ -73,11 +73,11 @@ is not a member of. Errors contain a list of HTTP codes and
 descriptions for each error that occured during the attempted
 operation. Some operations my cause more than one error, so the list
 may have more than one element.
-</p></div></div><div class="page-header"></div><h3>Formats</h3><h4 class="sub-header">Presence Notifications</h4><div class="row"><ul></ul><div class="span12 columns"><li><h5>Sender</h5></li>To join swarms 234 and 333:
+</p></div></div><div class="page-header"></div><h3>Formats</h3><h4 class="sub-header">Presence Notifications</h4><div class="row"><ul></ul><div class="span8 columns"><li><h5>Sender</h5></li>To join swarms 234 and 333:
 <br><br><pre class="prettyprint language-javascript">{&quot;presence&quot;: {&quot;to&quot;: [&quot;234&quot;, &quot;333&quot;]}}
 </pre>To leave swarms 234 and 333:
 <br><br><pre class="prettyprint language-javascript">{&quot;presence&quot;: {&quot;to&quot;: [&quot;234&quot;, &quot;333&quot;], type: &quot;unavailable&quot;}}
-</pre></div><div class="span13 columns"><li><h5>Recipient</h5></li>When resource 222 has joined swarm 234:
+</pre></div><div class="span8 columns"><li><h5>Recipient</h5></li>When resource 222 has joined swarm 234:
 <br><br><pre class="prettyprint language-javascript">{&quot;presence&quot;: {&quot;from&quot;: {&quot;swarm&quot;: &quot;234&quot;, &quot;resource&quot;: &quot;222&quot;, &quot;user&quot;: &quot;c4milo&quot;}}
 </pre>When resource 222 has left swarm 234:
 <br><br><pre class="prettyprint language-javascript">{&quot;presence&quot;: {&quot;from&quot;: {&quot;swarm&quot;: &quot;234&quot;, &quot;resource&quot;: &quot;222&quot;, &quot;user&quot;: &quot;c4milo&quot;}, &quot;type&quot;: &quot;unavailable&quot;}
@@ -87,4 +87,4 @@ may have more than one element.
 <br><br><pre class="prettyprint language-javascript">{&quot;presence&quot;: {&quot;from&quot;: {&quot;resource&quot;: &quot;222&quot;} &quot;type&quot;: &quot;unavailable&quot;}}
 </pre></div></div><div class="page-header"></div><h4 class="sub-header">Errors</h4><ul><li><h5>Recipient</h5></li></ul>When an error occurs:
 <br><br><pre class="prettyprint language-javascript">{&quot;errors&quot;: [{&quot;code&quot;: &quot;xxx&quot;, description: &quot;foo&quot;}, {&quot;code&quot;: &quot;yyy&quot;, &quot;description&quot;: &quot;bar&quot;}]}
-</pre></div></div></body></html>
+</pre></div></body></html>
