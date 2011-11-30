@@ -2,6 +2,7 @@
 html(lang='en')
   head
     script(src='js/swarm-v0.3.0.js')
+    script(src='http://www.webtoolkit.info/djs/webtoolkit.base64.js')
     include includes/assets
 
   body(onload="loadValues()")
@@ -24,19 +25,6 @@ html(lang='en')
         | Here you will find a set of tools to help you develop on the BUGswarm platform. These tools are
         | designed to make the process straightforward and developer-friendly.
 
-      // API Key Management Tool
-      .page-header
-        h2 API Key Management Tool
-      p
-        | If you have had a chance to take a look at the 
-        a(href='api_documentation.html') BUGswarm API 
-        | you may notice the use of API keys for account authorization when using 
-        | the various API methods. Because these keys are used so often, we have 
-        | developed this tool to make the creation and reference of these keys
-        | just a bit easier.
-
-      h4: a(href='api_key_management.html') Use the API Key Management Tool
-
       // BUGswarm Tools
       .page-header
         h2 BUGswarm Tools
@@ -53,16 +41,71 @@ html(lang='en')
       h4
         a(href='https://github.com/buglabs/bugswarm-tools') BUGswarm Tools on GitHub
 
-      // BUGswarm Console
+      br
+
+      // API Key Management
       .page-header
-        h2 BUGswarm Console
+        h2 API Key Management
       p
-        | The BUGswarm Console consists of embedded tools designed to make the use of our API as simple as possible.
-        | Spend less time looking up API documentation, and more time creating the next best application on BUGswarm.
+        | If you have had a chance to take a look at the 
+        a(href='api_documentation.html') BUGswarm API 
+        | you may notice the use of API keys for account authorization when using 
+        | the various API methods. Because these keys are used so often, we have 
+        | developed this tool to make the creation and reference of these keys
+        | just a bit easier.
+
+      br
+      .page-header
+
+      form#account_fields(name='account_fields')
+        fieldset
+          legend: h3 Input
+          .clearfix
+            label(for="login")
+              strong Username
+            .input
+              input.medium#login(name="login", size="14", type="text")
+          .clearfix
+            label(for="pass")
+              strong Password
+            .input
+              input.medium#pass(name="pass", size="14", type="password")
+          .clearfix
+            .input
+              input.btn.danger(type="button", value="Create", onclick="javascript: createKeys()")
+              | 
+              input.btn.danger(type="button", value="List", onclick="javascript: getKeys()")
+              | 
+              input.btn(type="reset") Cancel
+
+      .page-header
+
+      form#api_key_fields(name='api_key_fields')
+        fieldset
+          legend: h3 Output
+          .clearfix
+            label(for="login")
+              strong Configuration Key
+            .input
+              input.xxlarge#configuration(name="configuration", size="14", type="text")
+          .clearfix
+            label(for="pass")
+              strong Participation Key
+            .input
+              input.xxlarge#participation(name="participation", size="14", type="text")
+
+      .page-header
+
+      br
+
+      // Console
+      .page-header
+        h2 Console
+      p
+        | This console consists of embedded tools designed to make the use of our API as simple as possible.
 
       // real-time messaging 
-      h3
-        Real-Time Messaging
+      h3 Real-Time Messaging
       p
         | BUGswarm is one of the few cloud messaging platforms that allows for real-time communication between devices.
         | Use this embedded tool to observe these real-time messages.
@@ -98,4 +141,5 @@ html(lang='en')
             | 
             button.btn(type="reset") Cancel
 
+      script(language="javascript", type="text/javascript", src="js/api_key_management.js")
       script(language="javascript", type="text/javascript", src="js/messaging.js")
