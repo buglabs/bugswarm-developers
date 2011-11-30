@@ -4,45 +4,208 @@ html(lang='en')
     include includes/assets
 
   body
+
+    // NAVIGATION
     include includes/navigation
 
+    // CONTAINER
     .container
+
+      // Path
       .page-header
         a(href='index.html') Home
-        |  &rarr; 
+        |  &rarr;
         | Tutorial
+    
+      // Header
+      h1 Tutorial
+      p
+        | The following tutorial will teach you how write a BUGswarm application from the ground up. It will
+        | take you through the steps of configuring your swarm using the 
+        a(href="configuration_api.html") Configuration API
+        |  and participate in it using the 
+        a(href="participation_api.html") Participation API
+        | . If you haven't yet, we would advise that you take a quick look at how these APIs are implemented.
 
-      :markdown
-        Tutorial
-        ========
+      .page-header
 
-        Note: Take a moment to familiarize yourself with the [Documentation](documentation.html) before running through this tutorial.
+      // The Application
+      h2 The Application
+      p
+        | Uh oh! We're out of cookies here at the Bug Labs office and it's up to either John or Andy to go down to 
+        | the store to buy some more. To decide who has to go, John and Andy have decided to play a game of tag. 
+        | In order to help them save some energy and avoid disrupting everyone else at work,
+        | we've decided to create a virtual game of tag, and what better way to do so than using BUGswarm!
+      p
+        | To create this application, we are going to need the following.
+      ul
+        li: strong Resources representing John and Andy
+        li: strong A resource used for monitoring the game
+        li: strong A swarm for them to play virtual tag in
 
-        Let's say Prometheus and Bob have a shopping list for their brand new cave.
-        They both hunt in different jungles, and have a common set of supplies
-        needed for the winter:
+      p
+        | To build our application, we are going to use a set of Python-based development tools.
+        | If you haven't already, please go ahead and check out the 
+        a(href="https://github.com/buglabs/bugswarm-tools") BUGswarm Tools
+        |  repository from our github page. Be sure to run the <strong>init.py</strong> script with your Bug Labs account credentials.
 
-          * impala meat
-          * flint
-          * red vine fruit
-          * snakeskin
+      p
+        | In addition to BUGswarm Tools, we are going to use our JavaScript library for building our monitoring web application. You can
+        | find more information about this library on the 
+        a(href="libraries.html") Libraries
+        |  page.
 
-        Last year both had made a similar list before hunting, but when they joined
-        up before winter found that both had found way too much impala meat and no
-        flint to cook it with!
+      p
+        | But that's enough talking for now. Let's get to it!
 
-        This year, they have shiny new smartphones and decide to make a synced todo
-        list that can be checked at each hunter's convenience. The lists should update
-        silently to not scare away any impala.
+      .page-header
 
-        Lets start with Bob's job - make the website:
+      // Configuration
+      h3 Configuration
+      p
+        | Before we can begin producing and consuming information on the platform, we must first create resources
+        | to do the producing and consuming, a swarm for them to produce and consume in, and then
+        | add those resources to the swarm. You can think of the swarm as a chatroom and the resources as participants in that chatroom.
 
-      script(src="https://gist.github.com/1265034.js?file=hntr.html")
+      ul
+        li: h4 Creating the Resources
+          p
+            | Using the <strong>resources.py</strong> BUGswarm Tools script, create a resource using the following command.
+          pre.prettyprint.
+            ./resources.py create John pc -d "This is John"
+          
+          p
+            | Output: (Some values will be different of course)
+          pre.prettyprint.language-javascript.
+            {
+                "created_at": "2011-11-30T20:07:45.228Z", 
+                "description": "This is John", 
+                "id": "19c2db197ad341215a265063fb7cd989df66c784", 
+                "machine_type": "pc", 
+                "name": "John", 
+                "user_id": "username"
+            }
 
-      :markdown
-        So Bob might not win any design awards but he at least included the .js files for Prometheus.
+          p
+            | Do the same for Andy and our monitoring web resource that we will simply call 'Monitor'. After doing so, 
+            | running the <strong>list</strong> method of the <strong>resources.py</strong> script should produce the following output.
+          pre.prettyprint.language-javascript.
+            [
+                {
+                    "created_at": "2011-11-30T20:07:45.228Z", 
+                    "description": "This is John", 
+                    "id": "19c2db197ad341215a265063fb7cd989df66c784", 
+                    "machine_type": "pc", 
+                    "name": "John", 
+                    "user_id": "username"
+                }, 
+                {
+                    "created_at": "2011-11-30T20:11:20.929Z", 
+                    "description": "This is Andy", 
+                    "id": "badca6a822f35976ea4c7d9eab2362dfac5f7e9f", 
+                    "machine_type": "pc", 
+                    "name": "Andy", 
+                    "user_id": "username"
+                }, 
+                {
+                    "created_at": "2011-11-30T20:11:39.445Z", 
+                    "description": "This is the monitor", 
+                    "id": "765a4517de59e18be11d7d9e09864f2de5521a58", 
+                    "machine_type": "pc", 
+                    "name": "Monitor", 
+                     "user_id": "username"
+                }
+            ]
 
-        And now here is Prometheus' code:
+          p
+            | Well there you go. We have now created the necessary resources for our application. Unfortunately, they are not
+            | members of any swarm. In fact, there isn't even a swarm for them to become members of! That's where the next step comes in.
 
-      script(src="https://gist.github.com/1265034.js?file=hntr.js")
+        li: h4 Creating the Swarm
+          p
+            | In order for our resources to communicate with each other, we must first create a place for them to communicate.
+            | Using the <strong>swarms.py</strong> script, create a swarm using the following command. Notice that we are creating a 
+            | private swarm (the -p option). This is an exclusive game of tag and we don't want just anyone to be able to play!
+          pre.prettyprint.language-javascript.
+            ./swarms.py create "Tag Swarm" "The swarm used for playing tag" -p false
+          
+          p
+            | Output: (Some values will be different of course)
+          pre.prettyprint.language-javascript.
+            {
+                "created_at": "2011-11-30T20:27:03.401Z", 
+                "description": "The swarm used for playing tag", 
+                "id": "de6cabfc8ee26d2bd1f312d5e876f327f9d919f3", 
+                "name": "Tag Swarm", 
+                "public": false, 
+                "resources": [], 
+                "user_id": "username"
+            }
+          
+          p
+            | Great, now we have a swarm to play tag in! Unfortunately, as you can see from the 'resources' field, our swarm is
+            | empty. This is because we haven't added John, Andy, or the monitor to the swarm yet. Let's go ahead and do that.
 
+        li: h4 Adding Resources to the Swarm
+          p
+            | In order for John and Andy to play tag in the swarm, they must first be configured to be members of the swarm. At the
+            | same time, if we want to be able to monitor their game of tag, we better go ahead and add the monitor to the swarm as well.
+            | To do so, use the <strong>add_resource</strong> method of the <strong>swarms.py</strong> script. For instance, to add John 
+            | to the swarm, run the following command. Notice that the parameters given are the swarm's ID, the resource's ID, and the type of
+            | resource it is going to be. For Andy and John, we will be adding them as producers, since they will be doing the tagging. For
+            | the monitor, we will be adding it as a consumer, since it is just monitoring the game.
+          pre.prettyprint.language-javascript.
+            ./swarms.py add_resource de6cabfc8ee26d2bd1f312d5e876f327f9d919f3 19c2db197ad341215a265063fb7cd989df66c784 producer
+
+          p
+            | After adding all three resources to the swarm, performing the <strong>get_info</strong> command of the <strong>swarms.py</strong>
+            | script for our swarm should produce the following output.
+          pre.prettyprint.language-javascript.
+            {
+                "created_at": "2011-11-30T20:27:03.401Z", 
+                "description": "The swarm used for playing tag", 
+                "id": "de6cabfc8ee26d2bd1f312d5e876f327f9d919f3", 
+                "name": "Tag Swarm", 
+                "public": false, 
+                "resources": [
+                    {
+                        "member_since": "2011-11-30T20:40:26.727Z", 
+                        "resource_id": "19c2db197ad341215a265063fb7cd989df66c784", 
+                        "resource_type": "producer", 
+                        "url": "http://api.bugswarm.net/resources/19c2db197ad341215a265063fb7cd989df66c784", 
+                        "user_id": "username"
+                    }, 
+                    {
+                        "member_since": "2011-11-30T20:40:35.767Z", 
+                        "resource_id": "badca6a822f35976ea4c7d9eab2362dfac5f7e9f", 
+                        "resource_type": "producer", 
+                        "url": "http://api.bugswarm.net/resources/badca6a822f35976ea4c7d9eab2362dfac5f7e9f", 
+                        "user_id": "username"
+                    }, 
+                    {
+                        "member_since": "2011-11-30T20:40:45.975Z", 
+                        "resource_id": "765a4517de59e18be11d7d9e09864f2de5521a58", 
+                        "resource_type": "consumer", 
+                        "url": "http://api.bugswarm.net/resources/765a4517de59e18be11d7d9e09864f2de5521a58", 
+                        "user_id": "username"
+                    }
+                ], 
+                "user_id": "username"
+            }    
+
+          p
+            | If your output looks something like the one above, then we have successfully added our resources to the swarm and 
+            | we are ready to being building the participation part of our application! 
+
+          strong Congratulations! You just learned how to create and configure a swarm.
+          p
+            | Keep in mind, while we used BUGswarm Tools to do this, you can use anything that implements our RESTful
+            a(href="configuration_api.html") Configuration API
+            | , including some of our 
+            a(href="libraries.html") Libraries
+            | , your own implementations, or basic curl commands.
+
+      .page-header
+
+      // Participation
+      h3 Participation
