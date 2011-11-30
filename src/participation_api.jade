@@ -10,20 +10,7 @@ html(lang='en')
     include includes/navigation
 
     // CONTAINER
-    .container-fluid
-
-      // SIDEBAR
-      .sidebar
-
-        strong Jump to:
-        ul.unstyled
-          li: h5: a(href='#opening-a-connection') Opening a Connection
-          li: h5: a(href='#sending-messages') Sending Messages
-          li: h5: a(href='#receiving-messages') Receiving Messages
-          li: h5: a(href='#presence-and-errors') Presence and Errors
-
-      // CONTENT
-      .content
+    .container
 
         // Path
         .page-header
@@ -202,7 +189,7 @@ html(lang='en')
         .page-header
           h2#presence-and-errors Presence and Errors
         .row
-          .span10.columns
+          .span8.columns
             h3 Presence Notifications          
             li
               h5.sub-header Swarm Presence
@@ -220,7 +207,7 @@ html(lang='en')
               | receives direct presence notifications from all other resources under the same user account that are already
               | connected to at least one swarm. When a resource disconnects from it's last swarm, a direct presence notification of
               | type "unavailable" is sent to each of the resources under the same user account that are connected to at leaset one swarm. 
-          .span10.columns     
+          .span8.columns     
             h3 Errors
             p
               | Errors are sent to a resource when something has gone wrong.
@@ -239,7 +226,7 @@ html(lang='en')
         h4.sub-header Presence Notifications
         .row
           ul  
-          .span12.columns
+          .span8.columns
             li: h5 Sender
 
             | To join swarms 234 and 333:
@@ -253,7 +240,7 @@ html(lang='en')
             br
             pre.prettyprint.language-javascript
               {"presence": {"to": ["234", "333"], type: "unavailable"}}
-          .span13.columns
+          .span8.columns
             li: h5 Recipient
 
             | When resource 222 has joined swarm 234:

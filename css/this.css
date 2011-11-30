@@ -49,3 +49,17 @@ pre code {
 a {
   color: #09C;
 }
+
+.sub-header {
+    color: #606060;
+}
+
+.container-fluid > .content {
+    width: 940px;
+    margin-left: 400px;
+    margin-right: auto;
+}
+
+
+
+
