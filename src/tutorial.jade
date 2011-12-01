@@ -209,3 +209,28 @@ html(lang='en')
 
       // Participation
       h3 Participation
+
+      p
+        | Now that we have configured the resources to talk to each other over swarm, time to build the application logic.
+        | Let's start with a minimal webpage, which shows the players and any messages sent:
+
+        script(src="https://gist.github.com/1420093.js?file=tutorial_application.html")
+
+      p
+        | Now the application logic. The javascript api has many optional callbacks, but its recommended to fill out each one.
+        | The unique callbacks are onMessage and onPresence. You may want to add a console.log(response) in the handlers or
+        | just check over the websocket to see what objects are being passed around, though they are described in the a(href="documentation.html") documentation.
+
+        script(src="https://gist.github.com/1420093.js?file=tutorial_application.js")
+      p
+        | Opening up the page in a browser shows the connected player, which is actually whatever resource id you are using for the javascript connection.
+        | Once all the players have the page open, its time to start tagging people.
+        | To do this, we will use the
+        a(href="tools.html") BugSwarm tools
+        | produce feature.
+
+      p
+        | `./produce.py produce SWARM_ID RESOURCE_ID -w`
+        | The -w will wait for input from the keyboard and send it on a carraige return.
+        | The message format should be `{ "communication" : "JOHN IS IT!" }`, which will update on everyone's page at once.
+        | Let the chaotic game of tag begin!
