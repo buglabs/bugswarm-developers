@@ -1,11 +1,29 @@
-<!DOCTYPE html><html lang="en"><head><title>BUGswarm Developers</title><link rel="stylesheet" href="bootstrap/bootstrap.css"><link rel="stylesheet" href="css/this.css"><link rel="stylesheet" href="js/google-code-prettify/prettify.css"><script src="http://code.jquery.com/jquery-1.5.2.js"></script><script src="js/google-code-prettify/prettify.js"></script><script src="js/application.js"></script><script src="js/google-analytics.js"></script></head><body><!-- NAVIGATION--><div class="topbar"><div class="topbar-inner"><div class="container"><h3><a id="banner" href="index.html">BUGswarm Developers</a></h3><ul class="nav"><li class="dropdown nav-dropdown"><a href="documentation.html" class="dropdown-toggle">Documentation</a><ul class="dropdown-menu"><li><a href="configuration_api.html">Configuration</a></li><li><a href="participation_api.html">Participation</a></li></ul></li><li><a href="tools.html">Tools</a></li><li><a href="libraries.html">Libraries</a></li><li><a href="tutorial.html">Tutorial</a></li><li><a href="applications.html">Applications</a></li><li><a href="hardware.html">Hardware</a></li><li><a href="contact.html">Contact</a></li></ul></div></div></div><!-- MASTHEAD--><div class="masthead"><div class="container"><div class="row"><div class="span10 columns"><h1>Welcome to BUGswarm</h1><p id="tagline">BUGswarm is a way to acquire data from and control embedded devices using JavaScript or plain old HTTP.
-</p></div><div class="span6 columns"><img id="cubes" src="images/bs_cubes.png" alt=""></div></div></div></div><!-- CONTENT--><div class="container"><!-- About--><div class="page-header"><h1>About BUGswarm
-</h1></div><div class="row"><div class="span-one-third"><h3>Create Groups</h3><p>Group resources together by adding them to swarms.
-Once a resource is part of a swarm, it can communicate with other resources in that swarm.
-</p></div><div class="span-one-third"><h3>Control Access</h3><p>Control the way resources access a swarm.
+<!DOCTYPE html><html lang="en"><head><title>BUGswarm Developers</title><link rel="stylesheet" href="bootstrap/bootstrap.css"><link rel="stylesheet" href="css/this.css"><link rel="stylesheet" href="js/google-code-prettify/prettify.css"><script src="http://code.jquery.com/jquery-1.5.2.js"></script><script src="js/google-code-prettify/prettify.js"></script><script src="js/application.js"></script><script src="js/google-analytics.js"></script></head><body><!-- NAVIGATION--><div class="topbar"><div class="topbar-inner"><div class="container"><h3><a id="banner" href="index.html">BUGswarm Developers</a></h3><ul class="nav"><li class="dropdown nav-dropdown"><a href="documentation.html" class="dropdown-toggle">Documentation</a><ul class="dropdown-menu"><li><a href="configuration_api.html">Configuration</a></li><li><a href="participation_api.html">Participation</a></li></ul></li><li><a href="tools.html">Tools</a></li><li><a href="libraries.html">Libraries</a></li><li><a href="tutorial.html">Tutorial</a></li><li><a href="applications.html">Applications</a></li><li><a href="hardware.html">Hardware</a></li><li><a href="contact.html">Contact</a></li></ul></div></div></div><!-- MASTHEAD--><div class="masthead"><div class="container"><div class="row"><div class="span10 columns"><h1>Welcome to BUGswarm</h1><p id="tagline">Acquire data from and control embedded devices using JavaScript or plain old HTTP.
+</p></div><div class="span6 columns"><img id="cubes" src="images/bs_cubes.png" alt=""></div></div></div></div><!-- CONTENT--><div class="container"><!-- Features--><h2>Features
+<small>Why BUGswarm?</small></h2><div class="row"><div class="span-one-third"><h3 class="sub-header">Group Resources</h3><p>Combine multiple resources together to create a swarm.
+Once a member of a swarm, a resource can communicate and share data with other resources in that swarm.
+</p></div><div class="span-one-third"><h3 class="sub-header">Control Access</h3><p>Control the level of access a resource has to a swarm.
 Grant a resource permission to produce data, consume data, or do both.
-</p></div><div class="span-one-third"><h3>Share with Others</h3><p>Invite other users' resources into your swarms, and join their swarms.
-If you create something useful, share it!
+</p></div><div class="span-one-third"><h3 class="sub-header">Share With Others</h3><p>Invite another user's resources into your swarms and accept invitations to place your resources
+in somebody else's swarms. Share your data easily and securely.
+</p></div></div><div class="page-header"></div><!-- Platform--><h2>Platform
+<small>Swarms of resources</small></h2><div class="row"><div class="span8"><h3 class="sub-header">Resources</h3><p>A resource is an application or device that is configured to produce or
+consume data over BUGswarm. A resource may be a physical device, such as a
+smartphone, BUG, or Arduino, as well as a web or mobile application. Anything than 
+can communicate through HTTP can be configured to join a swarm and being producing and 
+consuming data.
+</p></div><div class="span8"><h3 class="sub-header">Swarms</h3><p>A swarm is a collection of resources. Once a swarm is created, users may configure it
+to allow their own resources to participate as well as invite another user's resources to become members.
+The owner of the swarm may control what level of access (production, consumption, or both) each resource in the swarm has.
+</p></div></div><div class="page-header"></div><!-- Getting Started--><h2>Getting Started
+<small>Quick and simple</small></h2><div class="row"><div class="span-one-third"><h3 class="sub-header">1. Sign Up</h3><p>Sign up below for the developer preview to create a Bug Labs account. Then, use the 
+<a href="api_key_management.html">API Key Management Tool</a> to list your given API keys or create new ones. 
+</p></div><div class="span-one-third"><h3 class="sub-header">2. Create Resources and Swarms</h3><p>Use the RESTful
+<a href="configuration_api.html">Configuration API</a> to create resources and swarms. Add resources to swarms
+as producers, consumers, or both.
+</p></div><div class="span-one-third"><h3 class="sub-header">3. Produce and Consume Data</h3><p>Use the 
+<a href="participation_api.html">Participation API</a> to connect resources to the swarms they are members of
+and begin producing and consuming data.
 </p></div></div><div class="page-header"></div><!-- Developer Preview--><h2>Developer Preview
 <small>Happening now!</small></h2><p>Participate in the BUGswarm developer preview (happening right now!) to receive free access for a limited time to our services.
 Doing so will allow you to use BUGswarm to its fullest potential. Sign up below and see all that BUGswarm has to offer.
