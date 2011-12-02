@@ -4,53 +4,50 @@ html(lang='en')
     include includes/assets
 
   body
+
+    // NAVIGATION
     include includes/navigation
 
+    // CONTAINER
     .container
       .page-header
         a(href='index.html') Home
         |  &rarr; 
         | Applications
 
+      // Header
       h1 Applications
 
-      .row
-        .span
-          p Here are some of the applications people have built using swarm. If you create something, 
-            a(href='mailto:list@buglabs.net') share it
-            !
+      p 
+        | Below are some of the applications people have built using BUGswarm. If you've created something you feel is worthy of display, 
+        a(href='mailto:list@buglabs.net') share it with us!
 
+      // BUGstats
+      h2: a(href="https://gist.github.com/6f3593466869402988a4") BUGstats
       .row
-        .span
-          h2: a(href='http://github.com/buglabs/Lepidoptera') Lepidoptera
-      .row
-        .span-one-third
-          a(href='http://github.com/buglabs/Lepidoptera')
-            img(src='images/lepidoptera.png', height='100')
-        .span-two-thirds
-          p A web application that visualizes a fleet of vehicles moving around NY.
+        .span3.columns
+          a(href="bugstats.html")
+            img.app-image(src='images/bugstats.png', height='100')
 
+        .span13.columns
+          p
+            | An application for monitoring hardware statistics on your BUG. Makes use of BUGswarm's 
+            a(href='https://github.com/buglabs/bugswarm-api/tree/master/javascript') JavaScript library
+            |  and Python.
+
+      .page-header
+
+      // HNTR
+      h2: a(href='https://gist.github.com/1265034') HNTR
       .row
-        .span
-          h2: a(href='https://gist.github.com/1265034') HNTR
-      .row
-        .span-two-thirds
-          p A shared shopping list for the oncoming winter. From the 
-            a(href='tutorial.html') tutorial
-            .
-        .span-one-third
+        .span3.columns
           a(href='https://gist.github.com/1265034')
-            img(src='images/hntr.jpg',  height='100')
+            img.app-image(src='images/hntr.jpg',  height='100')
 
-      .row
-        .span
-          h2: a(href='http://developer.bugswarm.net/swarmlight.html') swarmlight
-      .row
-        .span-one-third
-          a(href='http://developer.bugswarm.net/swarmlight.html')
-            img(src='images/swarmlight.jpg', height='100')
-        .span-two-thirds
-          p.
-            A quick and dirty website that can control the holiday lights in our fourth floor window.
-            Come down to 598 broadway (next to hollister on houston) and control them from your phone!
-            Also, come up to the fourth floor to chat :)
+        .span13.columns
+          p 
+            | A shared shopping list for the oncoming winter. Makes use of BUGswarm's 
+            a(href='https://github.com/buglabs/bugswarm-api/tree/master/javascript') JavaScript library
+            | .
+
+      .page-header

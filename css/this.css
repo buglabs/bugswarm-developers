@@ -60,3 +60,7 @@ a {
     margin-left: 400px;
     margin-right: auto;
 }
+
+.app-image {
+    border: 1px solid black;
+}

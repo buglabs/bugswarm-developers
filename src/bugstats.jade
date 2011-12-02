@@ -1,16 +1,20 @@
 !!! 5
 html(lang='en')
   head
-    script(src='http://cdn.buglabs.net/swarm/swarm-v0.3.0.js')
+    script(src='http://cdn.buglabs.net/swarm/swarm-v0.3.1.js')
     script(src='http://maps.googleapis.com/maps/api/js?sensor=false')
-    include includes/assets
+    title BUGstats
+    link(rel='stylesheet', href='bootstrap/bootstrap.css')
+    link(rel='stylesheet', href='css/this.css')
+    link(rel='stylesheet', href='js/google-code-prettify/prettify.css')
+    script(src='http://code.jquery.com/jquery-1.5.2.js')
+    script(src='js/google-code-prettify/prettify.js')
+    script(src='js/application.js')
+    script(src='js/google-analytics.js')    
     script(src="js/bugstats.js", type="text/javascript")
     link(rel='stylesheet', href='css/bugstats.css')
 
-  body(onload="mapInitialize()")
-
-    // NAVIGATION
-    include includes/navigation
+  body(onload="mapInitialize()")    
           
     // CONTENT
     .container
