@@ -19,7 +19,7 @@ added to the swarm using the Configuration API's
 <a href="restful_swarms.html#add-resource">Add Resource</a> method for swarms before it may connect to the swarm and begin producing and/or consuming.
 </p><h5 class="sub-header">Headers:</h5><ul class="unstyled"><li><strong>x-bugswarmapikey: </strong>PARTICIPATION_KEY
 </li><li><strong>transfer-encoding: </strong>chunked
-</li><li><strong>connection:</strong>keep-alive
+</li><li><strong>connection: </strong>keep-alive
 </li></ul><p><strong>Note </strong>that a first chunk must be sent in order for the connection to open and resource presence to be observed. This first chunk 
 does not need to be in the 'message' format described below, or even valid JSON. However, this prevent that chunk from being viewed by the swarm.
 Additionally, although this use of HTTP POST
