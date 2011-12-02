@@ -63,6 +63,9 @@ html(lang='en')
           li
             strong transfer-encoding: 
             | chunked
+          li
+            strong connection:
+            | keep-alive
         p
           strong Note 
           | that a first chunk must be sent in order for the connection to open and resource presence to be observed. This first chunk 
