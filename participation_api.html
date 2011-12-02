@@ -2,7 +2,7 @@
 <a href="documentation.html">Documentation</a> &rarr; 
 Participation API
 </div><!-- Header--><h1>Participation API</h1><p>The Participation API is used to connect resources to the swarms they are a member of. 
-Once connected, resources may produce data, consume data, or do both, depending on their level of access to the swarm. 
+Once connected, resources may produce data, consume data, or do both, depending on their level of access to the swarm.
 Throughout this process, the BUGswarm platform generates presence notifications and error messages when necessary in addition to passing
 along the messages being produced in the swarm. The Participation API makes use of HTTP streaming, meaning that once a connection has been opened,
 bidirectional communication between the resource and the swarm may continue until the connection is closed.
@@ -15,7 +15,7 @@ bidirectional communication between the resource and the swarm may continue unti
 like to connect with. Additionally, you may connect the resource to multiple swarms at once by appending multiple 
 <code>&swarm_id=SWARM_ID</code> statements to the single 
 <code>swarm_id=SWARM_ID</code> that is given above. Keep in mind that a resource must be 
-added to the swarm using the Configuration API's  
+added to the swarm using the Configuration API's 
 <a href="restful_swarms.html#add-resource">Add Resource</a> method for swarms before it may connect to the swarm and begin producing and/or consuming.
 </p><h5 class="sub-header">Headers:</h5><ul class="unstyled"><li><strong>x-bugswarmapikey: </strong>PARTICIPATION_KEY
 </li><li><strong>transfer-encoding: </strong>chunked
