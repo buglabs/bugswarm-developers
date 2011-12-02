@@ -211,35 +211,47 @@ html(lang='en')
       h3 Participation
 
       ul
-        li: h4 Creating the webpage
+        li: h4 Creating the Webpage
           p
-            | Now that we have configured the resources to talk to each other over swarm, time to build the application logic.
-            | Let's start with a minimal webpage, which shows the players and any messages sent:
+            | Now that we have configured the resources to talk to each other over BUGswarm, it's time to build the application logic.
+            | Let's start with a minimal webpage, which shows the players and any messages sent.
 
           script(src="https://gist.github.com/1420093.js?file=tutorial_application.html")
       ul
-        li: h4 Creating the application
+        li: h4 Creating the Application
           p
-            | Now the application logic. The javascript api has many optional callbacks, but its recommended to fill out each one.
-            | The unique callbacks are onMessage and onPresence. You may want to add a console.log(response) in the handlers or
-            | just check over the websocket to see what objects are being passed around, though they are described in the a(href="documentation.html") documentation.
+            | Now the application logic. The JavaScript library has many optional callbacks, but it is recommended to implement each of them.
+            | The callbacks you really want to pay attention to are 
+            code onmessage
+            |  and 
+            code onpresence
+            | . These callbacks will drive the application. Additionally, you may want to add a console.log(response) in the handlers of these callbacks or
+            | just check over the websocket to see what objects are being passed around. Note that they are also described in the 
+            a(href="participation_api.html") Participation API
+            |  documentation.
 
           script(src="https://gist.github.com/1420093.js?file=tutorial_application.js")
       ul
-        li: h4 Starting to talk
+        li: h4 Starting to Talk
           p
-            | Opening up the page in a browser shows the connected player, which is actually whatever resource id you are using for the javascript connection.
-            | Once all the players have the page open, its time to start tagging people.
-            | To do this, we will use the
-            a(href="tools.html") BugSwarm tools
-            |  produce feature.
+            | Opening up the page in a browser shows the connected player, which is actually whatever resource id you are using for the JavaScript connection.
+            | Once all the players have the page open, it's time to start tagging people.
+            | To do this, we will use the BUGswarm Tools produce script.
 
           pre.prettyprint.language-javascript.
             ./produce.py produce SWARM_ID RESOURCE_ID -w
           p
-            | The -w will wait for input from the keyboard and send it on a carraige return.
+            | The -w will wrap your messages in the correct fomatting so that all you need to input is the payload, as documented in the
+            a(href="participation_api.html#sending-messages") sending messages
+            |  section of the Participation API documentation, 
             | To update everyone's page to display who is it, make sure your message is in the format:
             pre.prettyprint.language-javascript.
               { "communication" : "JOHN IS IT!" }
           p
             | Let the chaotic game of tag begin!
+
+          strong Hoorah! You just learned how to connect resources to a swarm and produce and consume data with them!
+          p
+            | If you would like to see other examples of how you can use BUGswarm, please visit the 
+            a(href="applications.html") Applications
+            |  page.
