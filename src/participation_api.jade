@@ -34,12 +34,8 @@ html(lang='en')
         .page-header
           h2#opening-a-connection Opening a Connection
         
-        ul
-        li
-          h3 Production
         p
-          | To open a connection between a resource and a swarm for the purpose of producing data,
-          | send an HTTP 
+          | To open a connection between a resource and a swarm, send an HTTP 
           strong POST 
           |  request to the following URL with the following headers.
         h5.sub-header URL:
@@ -58,7 +54,7 @@ html(lang='en')
           |  that is given above. Keep in mind that a resource must be 
           | added to the swarm using the Configuration API's  
           a(href="restful_swarms.html#add-resource") Add Resource
-          |  method for swarms before it may connect to the swarm and being producing.
+          |  method for swarms before it may connect to the swarm and begin producing and/or consuming.
         h5.sub-header Headers:
         ul.unstyled
           li
@@ -71,44 +67,14 @@ html(lang='en')
           strong Note 
           | that a first message must be sent in order for the connection to open. 
           | This can easily be done by sending an empty new line message in the format described below.
-          | For instance, as long as you follow the explained chunked coding format,  
+          | For instance, as long as you follow the explained chunked encoding format,  
           code {"message": {"to": [SWARM_ID], "payload":}}
           |  is a valid message to send that will allow the resource to successfully connect. Of course, messages containing
-          | information in the payload are also valid ways of opening connections.
+          | information in the payload are also valid ways of opening connections. Additionally, although thise use of HTTP POST
+          | allows for bidirectional communication, resources will have access to the swarm based on whether they are configured as producers,
+          | consumers, or both.
                 
-        .page-header
-        
-        li
-          h3 Consumption
-        p
-          | To open a connection between a resource and a swarm for the purpose of consuming data,
-          | send an HTTP 
-          strong GET 
-          |  request to the following URL
-        h5.sub-header URL:
-        pre.prettyprint.language-javascript
-          'http://api.bugswarm.net/stream?swarm_id=SWARM_ID&resource_id=RESOURCE_ID'
-        p
-          | Replace 
-          code SWARM_ID
-          |  and 
-          code RESOURCE_ID
-          |   with the id of the swarm you would like to connect to and the resource you would
-          | like to connect with. Additionally, you may connect the resource to multiple swarms at once by appending multiple 
-          code &swarm_id=SWARM_ID
-          |  statements to the single 
-          code swarm_id=SWARM_ID
-          |  that is given above. Keep in mind that a resource must be 
-          | added to the swarm using the Configuration API's  
-          a(href="restful_swarms.html#add-resource") Add Resource
-          |  method for swarms before it may connect to the swarm and being producing.
-        h5.sub-header Headers:
-        ul.unstyled
-          li
-            strong x-bugswarmapikey: 
-            | PARTICIPATION_KEY
-
-        .page-header
+        .page-header        
 
         br
         br
