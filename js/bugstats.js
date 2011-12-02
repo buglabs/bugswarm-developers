@@ -489,7 +489,7 @@ getName = function(resource) {
 // UI functions
 getImmediateStats = function() {
     console.log("Requesting stats from all resources.");
-    SWARM.send("stats");
+    SWARM.send({"out": "get stats"});
 };
 
 // map
