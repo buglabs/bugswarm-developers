@@ -4,38 +4,38 @@ html(lang='en')
     include includes/assets
 
   body
+
+    // NAVIGATION
     include includes/navigation
 
+    // CONTAINER
     .container
       .page-header
         a(href='index.html') Home
         |  &rarr;
         |  Hardware
 
+      // Header
       h1 Hardware
+      p 
+        | Below is a list of hardware and platforms that people have been using in conjunction with BUGswarm. If you get BUGswarm running on a new device, 
+        a(href='mailto:list@buglabs.net') let us know!
 
+      h2: a(href='http://github.com/buglabs/Perugia') Arduino
       .row
-        .span
-          p Here is a list of hardware and platforms that people have been using in conjunction with BUGswarm. If you get BUGswarm running on a new device, 
-            a(href='mailto:list@buglabs.net') let us know
-            !
-
-      .row
-        .span
-          h2: a(href='http://github.com/buglabs/Perugia') Arduino
-      .row
-        .span-one-third
+        .span4.columns
           a(href='http://github.com/buglabs/Perugia')
             img(src='images/arduino.jpg', height='100')
-        .span-two-thirds
-          p Would you like to use an Arduino with BUGswarm? Perugia teaches your networked Arduino how to talk to browsers and other BUGswarm resources.
+        .span12.columns
+          p 
+            | Would you like to use an Arduino with BUGswarm? Perugia teaches your networked Arduino how to talk to browsers and other BUGswarm resources.
 
-      .row
-        .span
-          h2: a(href='https://github.com/buglabs/bugswarm-api') Android
-      .row
-        .span-two-thirds
-          p Coming soon, publish system info from your Android device.
-        .span-one-third
-          a(href='https://github.com/buglabs/bugswarm-api')
-            img(src='images/android.png',  height='100')
+      .page-header
+
+      h2 In the Works
+      p
+        | BUGswarm integrations for these devices and platforms are currently being developed. Stay tuned to see their progress!
+
+      ul
+        li: strong Android
+        li: strong BUG
