@@ -129,18 +129,23 @@ we are ready to being building the participation part of our application!
 </p><strong>Congratulations! You just learned how to create and configure a swarm.</strong><p>Keep in mind, while we used BUGswarm Tools to do this, you can use anything that implements our RESTful
 <a href="configuration_api.html">Configuration API</a>, including some of our 
 <a href="libraries.html">Libraries</a>, your own implementations, or basic curl commands.
-</p></h4></li></ul><div class="page-header"></div><!-- Participation--><h3>Participation</h3><ul><li><h4>Creating the webpage<p>Now that we have configured the resources to talk to each other over swarm, time to build the application logic.
-Let's start with a minimal webpage, which shows the players and any messages sent:
-</p><script src="https://gist.github.com/1420093.js?file=tutorial_application.html"></script></h4></li></ul><ul><li><h4>Creating the application<p>Now the application logic. The javascript api has many optional callbacks, but its recommended to fill out each one.
-The unique callbacks are onMessage and onPresence. You may want to add a console.log(response) in the handlers or
-just check over the websocket to see what objects are being passed around, though they are described in the a(href="documentation.html") documentation.
-</p><script src="https://gist.github.com/1420093.js?file=tutorial_application.js"></script></h4></li></ul><ul><li><h4>Starting to talk<p>Opening up the page in a browser shows the connected player, which is actually whatever resource id you are using for the javascript connection.
-Once all the players have the page open, its time to start tagging people.
-To do this, we will use the
-<a href="tools.html">BugSwarm tools</a> produce feature.
+</p></h4></li></ul><div class="page-header"></div><!-- Participation--><h3>Participation</h3><ul><li><h4>Creating the Webpage<p>Now that we have configured the resources to talk to each other over BUGswarm, it's time to build the application logic.
+Let's start with a minimal webpage, which shows the players and any messages sent.
+</p><script src="https://gist.github.com/1420093.js?file=tutorial_application.html"></script></h4></li></ul><ul><li><h4>Creating the Application<p>Now the application logic. The JavaScript library has many optional callbacks, but it is recommended to implement each of them.
+The callbacks you really want to pay attention to are 
+<code>onmessage</code> and 
+<code>onpresence</code>. These callbacks will drive the application. Additionally, you may want to add a console.log(response) in the handlers of these callbacks or
+just check over the websocket to see what objects are being passed around. Note that they are also described in the 
+<a href="participation_api.html">Participation API</a> documentation.
+</p><script src="https://gist.github.com/1420093.js?file=tutorial_application.js"></script></h4></li></ul><ul><li><h4>Starting to Talk<p>Opening up the page in a browser shows the connected player, which is actually whatever resource id you are using for the JavaScript connection.
+Once all the players have the page open, it's time to start tagging people.
+To do this, we will use the BUGswarm Tools produce script.
 </p><pre class="prettyprint language-javascript">./produce.py produce SWARM_ID RESOURCE_ID -w
-</pre><p>The -w will wait for input from the keyboard and send it on a carraige return.
+</pre><p>The -w will wrap your messages in the correct fomatting so that all you need to input is the payload, as documented in the
+<a href="participation_api.html#sending-messages">sending messages</a> section of the Participation API documentation, 
 To update everyone's page to display who is it, make sure your message is in the format:
 <pre class="prettyprint language-javascript">{ &quot;communication&quot; : &quot;JOHN IS IT!&quot; }
 </pre></p><p>Let the chaotic game of tag begin!
+</p><strong>Hoorah! You just learned how to connect resources to a swarm and produce and consume data with them!</strong><p>If you would like to see other examples of how you can use BUGswarm, please visit the 
+<a href="applications.html">Applications</a> page.
 </p></h4></li></ul></div></body></html>
