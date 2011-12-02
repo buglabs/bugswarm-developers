@@ -1,5 +1,5 @@
 // swarm stuff
-var bugstatsSwarm = '0c966d48e16908975ae483642ed7302e7b6ec7d7';
+var bugstatsSwarm = '3c41ee51c92c0b2bf3b47d99fbf56d3cf9174689';
 var configurationKey = '53ebd64e50ed786ef13f3e64f0cdbdd6223013bc'
 var participationKey = '7a849e6548dbd6f8034bb7cc1a37caa0b1a2654b';
 var me = 'fd8d4b5c1113eb5ac8fb846ed4b58ed2db906d6c';
