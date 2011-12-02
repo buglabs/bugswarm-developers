@@ -6,8 +6,7 @@ Once connected, resources may produce data, consume data, or do both, depending 
 Throughout this process, the BUGswarm platform generates presence notifications and error messages when necessary in addition to passing
 along the messages being produced in the swarm. The Participation API makes use of HTTP streaming, meaning that once a connection has been opened,
 bidirectional communication between the resource and the swarm may continue until the connection is closed.
-</p><br><div class="page-header"><h2 id="opening-a-connection">Opening a Connection</h2></div><ul></ul><li><h3>Production</h3></li><p>To open a connection between a resource and a swarm for the purpose of producing data,
-send an HTTP 
+</p><br><div class="page-header"><h2 id="opening-a-connection">Opening a Connection</h2></div><p>To open a connection between a resource and a swarm, send an HTTP 
 <strong>POST </strong> request to the following URL with the following headers.
 </p><h5 class="sub-header">URL:</h5><pre class="prettyprint language-javascript">'http://api.bugswarm.net/stream?swarm_id=SWARM_ID&amp;resource_id=RESOURCE_ID'
 </pre><p>Replace 
@@ -17,28 +16,15 @@ like to connect with. Additionally, you may connect the resource to multiple swa
 <code>&swarm_id=SWARM_ID</code> statements to the single 
 <code>swarm_id=SWARM_ID</code> that is given above. Keep in mind that a resource must be 
 added to the swarm using the Configuration API's  
-<a href="restful_swarms.html#add-resource">Add Resource</a> method for swarms before it may connect to the swarm and being producing.
+<a href="restful_swarms.html#add-resource">Add Resource</a> method for swarms before it may connect to the swarm and begin producing and/or consuming.
 </p><h5 class="sub-header">Headers:</h5><ul class="unstyled"><li><strong>x-bugswarmapikey: </strong>PARTICIPATION_KEY
 </li><li><strong>transfer-encoding: </strong>chunked
-</li></ul><p><strong>Note </strong>that a first message must be sent in order for the connection to open. 
-This can easily be done by sending an empty new line message in the format described below.
-For instance, as long as you follow the explained chunked coding format,  
-<code>{"message": {"to": [SWARM_ID], "payload":}}</code> is a valid message to send that will allow the resource to successfully connect. Of course, messages containing
-information in the payload are also valid ways of opening connections.
-</p><div class="page-header"></div><li><h3>Consumption</h3></li><p>To open a connection between a resource and a swarm for the purpose of consuming data,
-send an HTTP 
-<strong>GET </strong> request to the following URL
-</p><h5 class="sub-header">URL:</h5><pre class="prettyprint language-javascript">'http://api.bugswarm.net/stream?swarm_id=SWARM_ID&amp;resource_id=RESOURCE_ID'
-</pre><p>Replace 
-<code>SWARM_ID</code> and 
-<code>RESOURCE_ID</code>  with the id of the swarm you would like to connect to and the resource you would
-like to connect with. Additionally, you may connect the resource to multiple swarms at once by appending multiple 
-<code>&swarm_id=SWARM_ID</code> statements to the single 
-<code>swarm_id=SWARM_ID</code> that is given above. Keep in mind that a resource must be 
-added to the swarm using the Configuration API's  
-<a href="restful_swarms.html#add-resource">Add Resource</a> method for swarms before it may connect to the swarm and being producing.
-</p><h5 class="sub-header">Headers:</h5><ul class="unstyled"><li><strong>x-bugswarmapikey: </strong>PARTICIPATION_KEY
-</li></ul><div class="page-header"></div><br><br><div class="page-header"><h2 id="sending-messages">Sending Messages</h2></div><p>Once a connection has has been successfully opened for production, you may freely send
+</li></ul><p><strong>Note </strong>that a first chunk must be sent in order for the connection to open and resource presence to be observed. This first chunk 
+does not need to be in the 'message' format described below, or even valid JSON. However, this prevent that chunk from being viewed by the swarm.
+Additionally, although this use of HTTP POST
+allows for bidirectional communication, resources will have access to the swarm based on whether they are configured as producers,
+consumers, or both.
+</p><div class="page-header"></div><br><br><div class="page-header"><h2 id="sending-messages">Sending Messages</h2></div><p>Once a connection has has been successfully opened for production, you may freely send
 messages from your connected resource to the swarm. However, messages must be sent with chunked encoding as JSON objects
 in the following formats.
 </p><li><h4 class="sub-header">Chunked Encoding</h4></li><p>Chunked encoding consists of sending a hexadecimal representation of the message's size followed
