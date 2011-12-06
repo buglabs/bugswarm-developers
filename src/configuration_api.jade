@@ -20,6 +20,17 @@ html(lang='en')
           |  &rarr; 
           | Configuration API
 
+        // Jump to dropdown
+        .topbar-inner.jump-bar
+          .nav.jump-nav
+            .dropdown.jump-dropdown
+              a.jump-header.dropdown-toggle(href='documentation.html') Jump to
+              ul.dropdown-menu.jump-menu
+                li: a(href='#api-keys') API Keys
+                li: a(href='#resources') Resources
+                li: a(href='#swarms') Swarms
+                li: a(href='#invitations') Invitations
+
         // Header
         h1 Configuration API
         p

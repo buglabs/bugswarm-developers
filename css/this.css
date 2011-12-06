@@ -48,7 +48,6 @@ pre code {
 
 a {
   color: #09C;
-<<<<<<< HEAD
 }
 
 .sub-header {
@@ -63,4 +62,24 @@ a {
 
 .app-image {
     border: 1px solid black;
+}
+
+.jump-bar {
+    width: 220px;
+    float: right;
+}
+
+.jump-header {
+    color: #BFBFBF;
+    font-size: 17px;
+    width: 220px;
+}
+
+.jump-header-open {
+    color: #FFFFFF;
+}
+
+.jump-menu {
+    width: 220px;
+    margin-left: -1px;;
 }

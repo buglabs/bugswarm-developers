@@ -3,7 +3,6 @@ html(lang='en')
   head
     include includes/assets
 
-
   body
 
     // NAVIGATION
@@ -21,6 +20,21 @@ html(lang='en')
           a(href='configuration_api.html') Configuration API
           |  &rarr; 
           | Swarms
+
+        // Jump to dropdown
+        .topbar-inner.jump-bar
+          .nav.jump-nav
+            .dropdown.jump-dropdown
+              a.jump-header.dropdown-toggle(href='documentation.html') Jump to
+              ul.dropdown-menu.jump-menu
+                li: a(href='#create') Create
+                li: a(href='#update') Update
+                li: a(href='#destroy') Destroy
+                li: a(href='#list') List
+                li: a(href='#get-info') Get Info
+                li: a(href='#add-resource') Add Resource
+                li: a(href='#remove-resource') Remove Resource
+                li: a(href='#list-resources') List Resources                 
 
         // Header
         h1 Swarms

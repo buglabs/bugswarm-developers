@@ -20,6 +20,17 @@ html(lang='en')
           |  &rarr; 
           | Participation API
 
+        // Jump to dropdown
+        .topbar-inner.jump-bar
+          .nav.jump-nav
+            .dropdown.jump-dropdown
+              a.jump-header.dropdown-toggle(href='documentation.html') Jump to
+              ul.dropdown-menu.jump-menu
+                li: a(href='#opening-a-connection') Opening a Connection
+                li: a(href='#sending-messages') Sending Messages
+                li: a(href='#receiving-messages') Receiving Messages
+                li: a(href='#presence-and-errors') Presence and Errors
+
         // Header
         h1 Participation API
         p

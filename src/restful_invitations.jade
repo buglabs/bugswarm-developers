@@ -21,6 +21,17 @@ html(lang='en')
           |  &rarr; 
           | Invitations
 
+        // Jump to dropdown
+        .topbar-inner.jump-bar
+          .nav.jump-nav
+            .dropdown.jump-dropdown
+              a.jump-header.dropdown-toggle(href='documentation.html') Jump to
+              ul.dropdown-menu.jump-menu
+                li: a(href='#send') Send
+                li: a(href='#respond') Respond
+                li: a(href='#list-sent') List Sent
+                li: a(href='#list-received') List Received
+
         // Header
         h1 Invitations
         p
