@@ -8,7 +8,7 @@ With a minimal amount of configuration and zero embedded code to write, you can 
 simplicity and ease, connectors follow a specific messaging contract with all applications that may be interested in the data that connectors produce. For instance, the 
 <a href="http://bugswarm.net">BUGswarm Management UI</a> is a web application used to create and configure swarms and resources. Additionally, the UI allows for communication with devices exhibiting the connector contract and producing
 Location and Acceleration feeds. For an example of how this communication between connectors and connector-interested applications such as the Management UI, check out our JavaScript-based 
-<a href="http://buglabs.github.com/web-connector/production">Web Connector</a>. Simply input your participation API key, the ID of the resource you wish to use as your web-connector device, and the ID of the swarm it is a member of and click 'Connect'.
+<a href="http://buglabs.github.com/web-connector/production.html">Web Connector</a>. Simply input your participation API key, the ID of the resource you wish to use as your web-connector device, and the ID of the swarm it is a member of and click 'Connect'.
 You should then be able to view that resource in the Management UI and observe that the Location and Acceleration services are now available. Keep in mind that if you are not using one of
 the supported devices listed in the web-connector, you may not receive valid data.
 </p><br><h1>Contract:</h1><br><div class="page-header"><h2>Events</h2></div><div class="row"><div class="span8 columns"><h4>Connector connects to a swarm:</h4></div><div class="span8 columns"><ol><li>Send a <strong>private</strong> Capabilities message to each swarm member based on 
@@ -23,7 +23,7 @@ the swarm presence available messages received.
 </li></ol></div></div><div class="page-header"></div><div class="row"><div class="span8 columns"><h4>Member leaves the swarm:</h4></div><div class="span8 columns"><ol><li>Cancel any active feed responses to that member.
 </li></ol></div></div><div class="page-header"></div><div class="row"><div class="span8 columns"><h4>Member requests a feed:</h4></div><div class="span8 columns"><ol><li>Parse the feed request.
 </li><li>Send a <strong>private</strong> feed response for that feed to the requesting member with the desired response parameters.
-</li></ol></div></div><div class="page-header"></div><br><br><div class="page-header"><h2>Messages</h2></div><div class="row"><div class="span-one-third columns"><h4>Capabilities:</h4><p>When a connector connects to a swarm, it sends the capabilities message to all members of that swarm. Additionally, once already
+</li></ol></div></div><div class="page-header"></div><br><br><div class="page-header"><h2>Messages</h2></div><div class="row"><div class="span-one-third columns"><h4>Capabilities:</h4><p>When a connector connects to a swarm, it sends the capabilities message privately to all members of that swarm. Additionally, once already
 connected, the connector sends a private capabilities message to each new member that connects to that swarm. The capabilities message
 contains relevant information regarding what the connected device is capable of producing. Currently, the capabilities message is simply
 a wrapper around the <code>feeds</code> message, but may contain more information in the future.
@@ -35,8 +35,8 @@ a wrapper around the <code>feeds</code> message, but may contain more informatio
 </pre></div><div class="span-one-third columns"><h5>Example:</h5><pre class="prettyprint language-javascript">{
     &quot;capabilities&quot; {
         &quot;feeds&quot;: [
-            Location,
-            Acceleration
+            &quot;Location&quot;,
+            &quot;Acceleration&quot;
         ]
     }
 }
