@@ -1,6 +1,97 @@
 <!DOCTYPE html><html lang="en"><head><title>BUGswarm Developers</title><link rel="stylesheet" href="bootstrap/bootstrap.css"><link rel="stylesheet" href="css/this.css"><link rel="stylesheet" href="js/google-code-prettify/prettify.css"><script src="http://code.jquery.com/jquery-1.5.2.js"></script><script src="js/google-code-prettify/prettify.js"></script><script src="js/application.js"></script><script src="js/google-analytics.js"></script></head><body><!-- NAVIGATION--><div class="topbar"><div class="topbar-inner"><div class="container"><h3><a id="banner" href="index.html"><img src="images/bs_logo.png"></a></h3><ul class="nav"><li class="dropdown nav-dropdown"><a href="documentation.html" class="dropdown-toggle">Documentation</a><ul class="dropdown-menu"><li><a href="configuration_api.html">Configuration</a></li><li><a href="participation_api.html">Participation</a></li></ul></li><li><a href="tools.html">Tools</a></li><li><a href="libraries.html">Libraries</a></li><li><a href="tutorial.html">Tutorial</a></li><li><a href="applications.html">Applications</a></li><li><a href="hardware.html">Hardware</a></li><li><a href="contact.html">Contact</a></li></ul></div></div></div><!-- CONTAINER--><div class="container"><div class="page-header"><a href="index.html">Home</a> &rarr;
  Hardware
-</div><!-- Header--><h1>Hardware</h1><p>Below is a list of hardware and platforms that people have been using in conjunction with BUGswarm. If you get BUGswarm running on a new device, 
-<a href="mailto:list@buglabs.net">let us know!</a></p><h2><a href="http://github.com/buglabs/Perugia">Arduino</a></h2><div class="row"><div class="span4 columns"><a href="http://github.com/buglabs/Perugia"><img src="images/arduino.jpg" height="100" class="app-image"></a></div><div class="span12 columns"><p>Would you like to use an Arduino with BUGswarm? Perugia teaches your networked Arduino how to talk to browsers and other BUGswarm resources.
-</p></div></div><div class="page-header"></div><h2>In the Works</h2><p>BUGswarm integrations for these devices and platforms are currently being developed. Stay tuned to see their progress!
-</p><ul><li><strong>Android</strong></li><li><strong>BUG</strong></li></ul></div></body></html>
+</div><!-- Header--><h1>Connectors</h1><p>While you can certainly use any of our 
+<a href="libraries.html">libraries</a> to develop applications for the embedded devices of your choosing, we also provide you with a series of hands-off device connectors
+that make it easy to get your device up and running on BUGswarm without having to write any embedded code.
+</p><br><h1>How they work:</h1><p>A connector is a client-side, device-specific application that allows you to quickly get your embedded devices connected to and participating on BUGswarm.
+With a minimal amount of configuration and zero embedded code to write, you can have your devices producing and consuming in a matter of minutes. In order to achieve this
+simplicity and ease, connectors follow a specific messaging contract with all applications that may be interested in the data that connectors produce. For instance, the 
+<a href="http://bugswarm.net">BUGswarm Management UI</a> is a web application used to create and configure swarms and resources. Additionally, the UI allows for communication with devices exhibiting the connector contract and producing
+Location and Acceleration feeds. For an example of how this communication between connectors and connector-interested applications such as the Management UI, check out our JavaScript-based 
+<a href="http://buglabs.github.com/web-connector/production">Web Connector</a>. Simply input your participation API key, the ID of the resource you wish to use as your web-connector device, and the ID of the swarm it is a member of and click 'Connect'.
+You should then be able to view that resource in the Management UI and observe that the Location and Acceleration services are now available. Keep in mind that if you are not using one of
+the supported devices listed in the web-connector, you may not receive valid data.
+</p><br><h1>Contract:</h1><br><div class="page-header"><h2>Events</h2></div><div class="row"><div class="span8 columns"><h4>Connector connects to a swarm:</h4></div><div class="span8 columns"><ol><li>Send a <strong>private</strong> Capabilities message to each swarm member based on 
+the swarm presence available messages received.
+</li></ol></div></div><div class="page-header"></div><div class="row"><div class="span8 columns"><h4>Connector disconnects from a swarm:</h4></div><div class="span8 columns"><ol><li>Cancel any active feed responses associated with that swarm.
+</li></ol></div></div><div class="page-header"></div><div class="row"><div class="span8 columns"><h4>Connector has a new feed:</h4></div><div class="span8 columns"><ol><li>Send a <strong>private</strong> `Capabilities` message to each swarm member based on 
+the swarm presence available messages received.
+</li></ol></div></div><div class="page-header"></div><div class="row"><div class="span8 columns"><h4>Connector loses a feed:</h4></div><div class="span8 columns"><ol><li>Send a <strong>private</strong> `Capabilities` message to each swarm member based on 
+the swarm presence available messages received.
+</li><li>Cancel any active feed responses associated with the swarms it is a member of for that feed.
+</li></ol></div></div><div class="page-header"></div><div class="row"><div class="span8 columns"><h4>Member joins the swarm:</h4></div><div class="span8 columns"><ol><li>Send a <strong>private</strong> `Capabilities` message to the new member.
+</li></ol></div></div><div class="page-header"></div><div class="row"><div class="span8 columns"><h4>Member leaves the swarm:</h4></div><div class="span8 columns"><ol><li>Cancel any active feed responses to that member.
+</li></ol></div></div><div class="page-header"></div><div class="row"><div class="span8 columns"><h4>Member requests a feed:</h4></div><div class="span8 columns"><ol><li>Parse the feed request.
+</li><li>Send a <strong>private</strong> feed response for that feed to the requesting member with the desired response parameters.
+</li></ol></div></div><div class="page-header"></div><br><br><div class="page-header"><h2>Messages</h2></div><div class="row"><div class="span-one-third columns"><h4>Capabilities:</h4><p>When a connector connects to a swarm, it sends the capabilities message to all members of that swarm. Additionally, once already
+connected, the connector sends a private capabilities message to each new member that connects to that swarm. The capabilities message
+contains relevant information regarding what the connected device is capable of producing. Currently, the capabilities message is simply
+a wrapper around the <code>feeds</code> message, but may contain more information in the future.
+</p></div><div class="span-one-third columns"><h5>Format:</h5><pre class="prettyprint language-javascript">{
+    &quot;capabilities&quot;: {
+        &lt;feeds message&gt;                   
+    }
+}
+</pre></div><div class="span-one-third columns"><h5>Example:</h5><pre class="prettyprint language-javascript">{
+    &quot;capabilities&quot; {
+        &quot;feeds&quot;: [
+            Location,
+            Acceleration
+        ]
+    }
+}
+
+</pre></div></div><div class="page-header"></div><div class="row"><div class="span-one-third columns"><h4>Feeds:</h4><p>The feeds message is sent as part of the <code>capabilities</code> message and contains an array of the services that the connected devices provides. Example services
+are <code>Location</code> and <code>Acceleration</code>. 
+</p></div><div class="span-one-third columns"><h5>Format:</h5><pre class="prettyprint language-javascript">{
+    &quot;feeds&quot;: [
+        &lt;feed name 1&gt;,
+        &lt;feed name 2&gt;
+    ]
+}
+</pre></div><div class="span-one-third columns"><h5>Example:</h5><pre class="prettyprint language-javascript">{
+    &quot;feeds&quot;: [
+        Location,
+        Acceleration
+    ]
+}
+
+</pre></div></div><div class="page-header"></div><div class="row"><div class="span-one-third columns"><h4>Feed Request:</h4><p>The feed request message is sent to a connector from applications or devices that are interested in that connector. The <code>capabilities</code> message
+that is privately sent to them by the connector lets them know what kind of feeds are available. In addition to which feed to request, the <code>type</code>
+field must be given. The <code>params</code> field is optional. If no parameters are given, the connector will respond with a single feed response message
+for the desired feed.  Possible parameters are <code>frequency</code>, which determines the interval frequency for the connector to send feed responses, and
+<code>status</code> which may be set to <code>off</code> to tell the connector to stop sending feed responses for that feed.
+</p></div><div class="span-one-third columns"><h5>Format:</h5><pre class="prettyprint language-javascript">{
+    &quot;type&quot;: &lt;type&gt;,
+    &quot;feed&quot;: &lt;feed name&gt;,
+    &quot;params&quot;: {
+        &lt;param 1&gt;: &lt;value 1&gt;,
+        &lt;param 2&gt;: &lt;value 2&gt;
+    }
+}
+</pre></div><div class="span-one-third columns"><h5>Example:</h5><pre class="prettyprint language-javascript">{
+    &quot;type&quot;: &quot;get&quot;,
+    &quot;feed&quot;: &quot;Location&quot;,
+    &quot;params&quot;: {
+        &quot;frequency&quot;: 60  #seconds
+    }
+}
+
+</pre></div></div><div class="page-header"></div><div class="row"><div class="span-one-third columns"><h4>Feed Response:</h4><p>The feed response message is send from the connector to a device or application that has sent a feed request to it. It is sent on an interval at the frequency
+that is given in the feed request or just once if no frequency is given. It contains the name of the feed that is being send and a feed object containing key:value
+pairs of data.
+</p></div><div class="span-one-third columns"><h5>Format:</h5><pre class="prettyprint language-javascript">{
+    &quot;name&quot;: &lt;feed name&gt;,
+    &quot;feed&quot;: {
+        &lt;key 1&gt;: &lt;value 1&gt;,
+        &lt;key 2&gt;: &lt;value 2&gt;
+    }
+}
+</pre></div><div class="span-one-third columns"><h5>Example:</h5><pre class="prettyprint language-javascript">{
+    &quot;name&quot;: &quot;Location&quot;,
+    &quot;feed&quot;: {
+        &quot;Latitude&quot;: &quot;-40.4545&quot;,
+        &quot;Longitude&quot;: &quot;72.482899&quot;
+    }
+}
+</pre></div></div><div class="page-header"></div></div></body></html>
