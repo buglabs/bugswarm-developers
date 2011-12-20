@@ -16,26 +16,236 @@ html(lang='en')
         |  Hardware
 
       // Header
-      h1 Hardware
+      h1 Connectors
       p 
-        | Below is a list of hardware and platforms that people have been using in conjunction with BUGswarm. If you get BUGswarm running on a new device, 
-        a(href='mailto:list@buglabs.net') let us know!
+        | While you can certainly use any of our 
+        a(href='libraries.html') libraries
+        |  to develop applications for the embedded devices of your choosing, we also provide you with a series of hands-off device connectors
+        | that make it easy to get your device up and running on BUGswarm without having to write any embedded code.
 
-      h2: a(href='http://github.com/buglabs/Perugia') Arduino
+      br
+
+      h1 How they work:
+      p
+        | A connector is a client-side, device-specific application that allows you to quickly get your embedded devices connected to and participating on BUGswarm.
+        | With a minimal amount of configuration and zero embedded code to write, you can have your devices producing and consuming in a matter of minutes. In order to achieve this
+        | simplicity and ease, connectors follow a specific messaging contract with all applications that may be interested in the data that connectors produce. For instance, the 
+        a(href='http://bugswarm.net') BUGswarm Management UI
+        |  is a web application used to create and configure swarms and resources. Additionally, the UI allows for communication with devices exhibiting the connector contract and producing
+        | Location and Acceleration feeds. For an example of how this communication between connectors and connector-interested applications such as the Management UI, check out our JavaScript-based 
+        a(href='http://buglabs.github.com/web-connector/production') Web Connector
+        | . Simply input your participation API key, the ID of the resource you wish to use as your web-connector device, and the ID of the swarm it is a member of and click 'Connect'.
+        | You should then be able to view that resource in the Management UI and observe that the Location and Acceleration services are now available. Keep in mind that if you are not using one of
+        | the supported devices listed in the web-connector, you may not receive valid data.
+
+      br
+
+      h1 Contract:
+
+      br
+
+      .page-header
+        h2 Events
+
       .row
-        .span4.columns
-          a(href='http://github.com/buglabs/Perugia')
-            img.app-image(src='images/arduino.jpg', height='100')
-        .span12.columns
-          p 
-            | Would you like to use an Arduino with BUGswarm? Perugia teaches your networked Arduino how to talk to browsers and other BUGswarm resources.
+        .span8.columns
+          h4 Connector connects to a swarm:
+        .span8.columns
+          ol
+            li 
+              | Send a <strong>private</strong> Capabilities message to each swarm member based on 
+              | the swarm presence available messages received.
 
       .page-header
 
-      h2 In the Works
-      p
-        | BUGswarm integrations for these devices and platforms are currently being developed. Stay tuned to see their progress!
+      .row
+        .span8.columns
+          h4 Connector disconnects from a swarm:
+        .span8.columns
+          ol
+            li 
+              | Cancel any active feed responses associated with that swarm.
 
-      ul
-        li: strong Android
-        li: strong BUG
+      .page-header
+
+      .row
+        .span8.columns
+          h4 Connector has a new feed:
+        .span8.columns
+          ol
+            li 
+              | Send a <strong>private</strong> `Capabilities` message to each swarm member based on 
+              | the swarm presence available messages received.
+
+      .page-header
+
+      .row
+        .span8.columns
+          h4 Connector loses a feed:
+        .span8.columns
+          ol
+            li 
+              | Send a <strong>private</strong> `Capabilities` message to each swarm member based on 
+              | the swarm presence available messages received.
+            li
+              | Cancel any active feed responses associated with the swarms it is a member of for that feed.
+
+      .page-header
+
+      .row
+        .span8.columns
+          h4 Member joins the swarm:
+        .span8.columns
+          ol
+            li 
+              | Send a <strong>private</strong> `Capabilities` message to the new member.
+
+      .page-header
+
+      .row
+        .span8.columns
+          h4 Member leaves the swarm:
+        .span8.columns
+          ol
+            li 
+              | Cancel any active feed responses to that member.
+
+      .page-header
+
+      .row
+        .span8.columns
+          h4 Member requests a feed:
+        .span8.columns
+          ol
+            li 
+              | Parse the feed request.
+            li
+              | Send a <strong>private</strong> feed response for that feed to the requesting member with the desired response parameters.
+
+      .page-header                  
+
+      br
+      br
+
+      .page-header
+        h2 Messages
+          
+      .row
+        .span-one-third.columns
+          h4 Capabilities:
+          p
+            | When a connector connects to a swarm, it sends the capabilities message privately to all members of that swarm. Additionally, once already
+            | connected, the connector sends a private capabilities message to each new member that connects to that swarm. The capabilities message
+            | contains relevant information regarding what the connected device is capable of producing. Currently, the capabilities message is simply
+            | a wrapper around the <code>feeds</code> message, but may contain more information in the future.
+        .span-one-third.columns
+          h5 Format:
+          pre.prettyprint.language-javascript.
+            {
+                "capabilities": {
+                    <feeds message>                   
+                }
+            }
+        .span-one-third.columns
+          h5 Example:
+          pre.prettyprint.language-javascript.
+            {
+                "capabilities" {
+                    "feeds": [
+                        "Location",
+                        "Acceleration"
+                    ]
+                }
+            }
+            
+      .page-header                         
+
+      .row
+        .span-one-third.columns
+          h4 Feeds:
+          p
+            | The feeds message is sent as part of the <code>capabilities</code> message and contains an array of the services that the connected devices provides. Example services
+            | are <code>Location</code> and <code>Acceleration</code>. 
+        .span-one-third.columns
+          h5 Format:
+          pre.prettyprint.language-javascript.
+
+            {
+                "feeds": [
+                    <feed name 1>,
+                    <feed name 2>
+                ]
+            }
+        .span-one-third.columns
+          h5 Example:
+          pre.prettyprint.language-javascript.
+            {
+                "feeds": [
+                    Location,
+                    Acceleration
+                ]
+            }
+            
+      .page-header                         
+
+      .row
+        .span-one-third.columns
+          h4 Feed Request:
+          p
+            | The feed request message is sent to a connector from applications or devices that are interested in that connector. The <code>capabilities</code> message
+            | that is privately sent to them by the connector lets them know what kind of feeds are available. In addition to which feed to request, the <code>type</code>
+            | field must be given. The <code>params</code> field is optional. If no parameters are given, the connector will respond with a single feed response message
+            | for the desired feed.  Possible parameters are <code>frequency</code>, which determines the interval frequency for the connector to send feed responses, and
+            | <code>status</code> which may be set to <code>off</code> to tell the connector to stop sending feed responses for that feed.
+        .span-one-third.columns
+          h5 Format:
+          pre.prettyprint.language-javascript.
+            {
+                "type": <type>,
+                "feed": <feed name>,
+                "params": {
+                    <param 1>: <value 1>,
+                    <param 2>: <value 2>
+                }
+            }
+        .span-one-third.columns
+          h5 Example:
+          pre.prettyprint.language-javascript.
+            {
+                "type": "get",
+                "feed": "Location",
+                "params": {
+                    "frequency": 60  #seconds
+                }
+            }
+
+      .page-header                         
+        
+      .row
+        .span-one-third.columns
+          h4 Feed Response:
+          p
+            | The feed response message is send from the connector to a device or application that has sent a feed request to it. It is sent on an interval at the frequency
+            | that is given in the feed request or just once if no frequency is given. It contains the name of the feed that is being send and a feed object containing key:value
+            | pairs of data.
+        .span-one-third.columns
+          h5 Format:
+          pre.prettyprint.language-javascript.
+            {
+                "name": <feed name>,
+                "feed": {
+                    <key 1>: <value 1>,
+                    <key 2>: <value 2>
+                }
+            }
+        .span-one-third.columns
+          h5 Example:
+          pre.prettyprint.language-javascript.
+            {
+                "name": "Location",
+                "feed": {
+                    "Latitude": "-40.4545",
+                    "Longitude": "72.482899"
+                }
+            }
+      .page-header                         
