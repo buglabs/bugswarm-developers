@@ -112,6 +112,10 @@
     repository from our github page. Be sure to run the
     <strong>init.py</strong> script with your Bug Labs account
     credentials.</p>
+    <pre class="prettyprint">
+./init.py init Username Password
+
+</pre>
 
     <p>In addition to BUGswarm Tools, we are going to use our
     JavaScript library for building our monitoring web application.
@@ -358,15 +362,10 @@
         have the page open, it's time to start tagging people. To
         do this, we will use the BUGswarm Tools produce script.</p>
         <pre class="prettyprint language-javascript">
-./produce.py produce SWARM_ID RESOURCE_ID -w
+./produce.py produce SWARM_ID RESOURCE_ID
 </pre>
 
-        <p>The -w will wrap your messages in the correct fomatting
-        so that all you need to input is the payload, as documented
-        in the <a href=
-        "participation_api.html#sending-messages">sending
-        messages</a> section of the Participation API
-        documentation, To update everyone's page to display who is
+        <p>To update everyone's page to display who is
         it, make sure your message is in the format:</p>
         <pre class="prettyprint language-javascript">
 { "communication" : "JOHN IS IT!" }
