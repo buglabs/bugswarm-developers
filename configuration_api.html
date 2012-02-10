@@ -1,42 +1,449 @@
-<!DOCTYPE html><html lang="en"><head><title>BUGswarm Developers</title><link rel="stylesheet" href="bootstrap/bootstrap.css"><link rel="stylesheet" href="css/this.css"><link rel="stylesheet" href="js/google-code-prettify/prettify.css"><script src="http://code.jquery.com/jquery-1.5.2.js"></script><script src="js/google-code-prettify/prettify.js"></script><script src="js/application.js"></script><script src="js/google-analytics.js"></script></head><body><!-- NAVIGATION--><div class="topbar"><div class="topbar-inner"><div class="container"><h3><a id="banner" href="index.html"><img src="images/bs_logo.png"></a></h3><ul class="nav"><li class="dropdown nav-dropdown"><a href="documentation.html" class="dropdown-toggle">Documentation</a><ul class="dropdown-menu"><li><a href="configuration_api.html">Configuration</a></li><li><a href="participation_api.html">Participation</a></li></ul></li><li><a href="tools.html">Tools</a></li><li><a href="libraries.html">Libraries</a></li><li><a href="tutorial.html">Tutorial</a></li><li><a href="applications.html">Applications</a></li><li><a href="hardware.html">Hardware</a></li><li><a href="contact.html">Contact</a></li></ul></div></div></div><!-- CONTAINER--><div class="container"><!-- Path--><div class="page-header"><a href="index.html">Home</a> &rarr; 
-<a href="documentation.html">Documentation</a> &rarr; 
-Configuration API
-</div><!-- Jump to dropdown--><div class="topbar-inner jump-bar"><div class="nav jump-nav"><div class="dropdown jump-dropdown"><a href="documentation.html" class="jump-header dropdown-toggle">Jump to</a><ul class="dropdown-menu jump-menu"><li><a href="#api-keys">API Keys</a></li><li><a href="#resources">Resources</a></li><li><a href="#swarms">Swarms</a></li><li><a href="#invitations">Invitations</a></li></ul></div></div></div><!-- Header--><h1>Configuration API</h1><p>Configure swarms and their resources through the use of our RESTful API. Manage the social aspect of swarm
-by sending and responding to invitations. Be sure to check out the
-<a href="tools.html">Tools</a> page for quick and easy ways to get started, including 
-<a href="http://github.com/bugswarm-tools">BUGswarm Tools</a>, a simple set of python scripts that wraps up both the Configuration and Participation APIs.
-</p><!-- API Keys--><h3><a id="api-keys" href="restful_api_keys.html">API Keys</a></h3><p>Used as credentials and passed as headers when making HTTP requests.
-</p><div class="row"><div class="span6 columns"><h5>Method</h5></div><div class="span6 columns"><h5>Description</h5></div></div><div class="page-header"></div><!-- create--><div class="row"><div class="span6 columns"><a href="restful_api_keys.html#create">Create (POST)</a></div><div class="span10 columns"><p>Create your participation key, configuration key, or both at once.
-</p></div></div><div class="page-header"></div><!-- list--><div class="row"><div class="span6 columns"><a href="restful_api_keys.html#list">List (GET)</a></div><div class="span10 columns"><p>Retrieve both of your API keys or just one based on type.
-</p></div></div><div class="page-header"></div><!-- Resources--><h3><a id="resources" href="restful_resources.html">Resources</a></h3><p>Used to produce and consume data in the swarms they are members of.
-</p><div class="row"><div class="span6 columns"><h5>Method</h5></div><div class="span6 columns"><h5>Description</h5></div></div><div class="page-header"></div><!-- create--><div class="row"><div class="span6 columns"><a href="restful_resources.html#create">Create (POST)</a></div><div class="span10 columns"><p>Create a resource. POST a JSON file containing information about the resource to be
-created.
-</p></div></div><div class="page-header"></div><!-- update--><div class="row"><div class="span6 columns"><a href="restful_resources.html#update">Update (PUT)</a></div><div class="span10 columns"><p>Update an already existing resource. PUT a JSON file containing the information
-to update.
-</p></div></div><div class="page-header"></div><!-- destroy--><div class="row"><div class="span6 columns"><a href="restful_resources.html#destroy">Destroy (DELETE)</a></div><div class="span10 columns"><p>Destroy a resource. Remove a resource from your user account.
-</p></div></div><div class="page-header"></div><!-- list--><div class="row"><div class="span6 columns"><a href="restful_resources.html#list">List (GET)</a></div><div class="span10 columns"><p>List all of the resources in your user account.
-</p></div></div><div class="page-header"></div><!-- get info--><div class="row"><div class="span6 columns"><a href="restful_resources.html#get-info">Get Info (GET)</a></div><div class="span10 columns"><p>Get a given resource's information.
-</p></div></div><div class="page-header"></div><!-- list swarms--><div class="row"><div class="span6 columns"><a href="restful_resources.html#list-swarms">List Swarms (GET)</a></div><div class="span10 columns"><p>List the swarms that a given resource is a member of.
-</p></div></div><div class="page-header"></div><!-- Swarms--><h3><a id="swarms" href="restful_swarms.html">Swarms</a></h3><p>Used to group together resources and allow them to share data with each other.
-</p><div class="row"><div class="span6 columns"><h5>Method</h5></div><div class="span6 columns"><h5>Description</h5></div></div><div class="page-header"></div><!-- create--><div class="row"><div class="span6 columns"><a href="restful_swarms.html#create">Create (POST)</a></div><div class="span10 columns"><p>Create a swarm. POST a JSON file containing information about the swarm to be
-created.
-</p></div></div><div class="page-header"></div><!-- update--><div class="row"><div class="span6 columns"><a href="restful_swarms.html#update">Update (PUT)</a></div><div class="span10 columns"><p>Update an already existing swarm. PUT a JSON file containing the information to
-update.
-</p></div></div><div class="page-header"></div><!-- destroy--><div class="row"><div class="span6 columns"><a href="restful_swarms.html#destroy">Destroy (DELETE)</a></div><div class="span10 columns"><p>Destroy a swarm. Remove a swarm from your user account.
-</p></div></div><div class="page-header"></div><!-- list--><div class="row"><div class="span6 columns"><a href="restful_swarms.html#list">List (GET)</a></div><div class="span10 columns"><p>List all of the swarms in your user account.
-</p></div></div><div class="page-header"></div><!-- get info--><div class="row"><div class="span6 columns"><a href="restful_swarms.html#get-info">Get Info (GET)</a></div><div class="span10 columns"><p>Get a given swarm's information, including it's member resources.
-</p></div></div><div class="page-header"></div><!-- add resource--><div class="row"><div class="span6 columns"><a href="restful_swarms.html#add-resource">Add Resource (POST)</a></div><div class="span10 columns"><p>Add a resource to a swarm. POST a JSON file containing the swarm-relevant information 
-regarding the resource to be added.
-</p></div></div><div class="page-header"></div><!-- remove resource--><div class="row"><div class="span6 columns"><a href="restful_swarms.html#remove-resource">Remove Resource (DELETE)</a></div><div class="span10 columns"><p>Remove a resource from a swarm. POST a JSON file containing swarm-relevant information
-regarding the resource to remove.
-</p></div></div><div class="page-header"></div><!-- list resources--><div class="row"><div class="span6 columns"><a href="restful_swarms.html#list-resources">List Resources (GET)</a></div><div class="span10 columns"><p>List a given swarm's member resources. Users may choose to list only producing resources,
-only consuming resourcs, or all resources at once.
-</p></div></div><div class="page-header"></div><!-- Invitations--><h3><a id="invitations" href="restful_invitations.html">Invitations</a></h3><p>Expose BUGswarm's unique social presence by inviting another user's resources to join your swarms
-and share in the production and consumption of data. Accept invitations from other users to join
-their swarms as well.
-</p><div class="row"><div class="span6 columns"><h5>Method</h5></div><div class="span6 columns"><h5>Description</h5></div></div><div class="page-header"></div><!-- send--><div class="row"><div class="span6 columns"><a href="restful_invitations.html#send">Send (POST)</a></div><div class="span10 columns"><p>Send an invitation to another user's resource to join your swarm.
-</p></div></div><div class="page-header"></div><!-- respond--><div class="row"><div class="span6 columns"><a href="restful_invitations.html#respond">Respond (PUT)</a></div><div class="span10 columns"><p>Respond to received invitations by either accepting or rejecting them.
-</p></div></div><div class="page-header"></div><!-- list sent--><div class="row"><div class="span6 columns"><a href="restful_invitations.html#list-sent">List Sent (GET)</a></div><div class="span10 columns"><p>List all the invitations sent from your user account for resources to join a given swarm.
-</p></div></div><div class="page-header"></div><!-- list received--><div class="row"><div class="span6 columns"><a href="restful_invitations.html#list-received">List Received (GET)</a></div><div class="span10 columns"><p>List the invitations received by your user account from other users. List all invitations or only those
-sent to specific resources.
-</p></div></div><div class="page-header"></div></div></body></html>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN">
+
+<html lang="en">
+<head>
+  <meta name="generator" content=
+  "HTML Tidy for Linux (vers 25 March 2009), see www.w3.org">
+
+  <title>BUGswarm Developers</title>
+  <link rel="stylesheet" href="bootstrap/bootstrap.css" type=
+  "text/css">
+  <link rel="stylesheet" href="css/this.css" type="text/css">
+  <link rel="stylesheet" href=
+  "js/google-code-prettify/prettify.css" type="text/css">
+  <script src="http://code.jquery.com/jquery-1.5.2.js" type=
+  "text/javascript">
+</script>
+  <script src="js/google-code-prettify/prettify.js" type=
+  "text/javascript">
+</script>
+  <script src="js/application.js" type="text/javascript">
+</script>
+  <script src="js/google-analytics.js" type="text/javascript">
+</script>
+</head>
+
+<body>
+  <!-- NAVIGATION-->
+
+  <div class="topbar">
+    <div class="topbar-inner">
+      <div class="container">
+        <h3><a id="banner" href="index.html" name=
+        "banner"><img src="images/bs_logo.png"></a></h3>
+
+        <ul class="nav">
+          <li class="dropdown nav-dropdown">
+            <a href="documentation.html" class=
+            "dropdown-toggle">Documentation</a>
+
+            <ul class="dropdown-menu">
+              <li><a href=
+              "configuration_api.html">Configuration</a></li>
+
+              <li><a href=
+              "participation_api.html">Participation</a></li>
+            </ul>
+          </li>
+
+          <li><a href="tools.html">Tools</a></li>
+
+          <li><a href="libraries.html">Libraries</a></li>
+
+          <li><a href="tutorial.html">Tutorial</a></li>
+
+          <li><a href="applications.html">Applications</a></li>
+
+          <li><a href="hardware.html">Hardware</a></li>
+
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+  </div><!-- CONTAINER-->
+
+  <div class="container">
+    <!-- Path-->
+
+    <div class="page-header">
+      <a href="index.html">Home</a> &rarr; <a href=
+      "documentation.html">Documentation</a> &rarr; Configuration
+      API
+    </div><!-- Jump to dropdown-->
+
+    <div class="topbar-inner jump-bar">
+      <div class="nav jump-nav">
+        <div class="dropdown jump-dropdown">
+          <a href="documentation.html" class=
+          "jump-header dropdown-toggle">Jump to</a>
+
+          <ul class="dropdown-menu jump-menu">
+            <li><a href="#api-keys">API Keys</a></li>
+
+            <li><a href="#resources">Resources</a></li>
+
+            <li><a href="#swarms">Swarms</a></li>
+
+            <li><a href="#invitations">Invitations</a></li>
+          </ul>
+        </div>
+      </div>
+    </div><!-- Header-->
+
+    <h1>Configuration API</h1>
+
+    <p>Configure swarms and their resources through the use of our
+    RESTful API. Manage the social aspect of swarm by sending and
+    responding to invitations. Be sure to check out the <a href=
+    "tools.html">Tools</a> page for quick and easy ways to get
+    started, including <a href=
+    "http://github.com/bugswarm-tools">BUGswarm Tools</a>, a simple
+    set of python scripts that wraps up both the Configuration and
+    Participation APIs.</p><!-- API Keys-->
+
+    <h3><a id="api-keys" href="restful_api_keys.html" name=
+    "api-keys">API Keys</a></h3>
+
+    <p>Used as credentials and passed as headers when making HTTP
+    requests.</p>
+
+    <div class="row">
+      <div class="span6 columns">
+        <h5>Method</h5>
+      </div>
+
+      <div class="span6 columns">
+        <h5>Description</h5>
+      </div>
+    </div>
+
+    <div class="page-header"></div><!-- create-->
+
+    <div class="row">
+      <div class="span6 columns">
+        <a href="restful_api_keys.html#create">Create (POST)</a>
+      </div>
+
+      <div class="span10 columns">
+        <p>Create your participation key, configuration key, or
+        both at once.</p>
+      </div>
+    </div>
+
+    <div class="page-header"></div><!-- list-->
+
+    <div class="row">
+      <div class="span6 columns">
+        <a href="restful_api_keys.html#list">List (GET)</a>
+      </div>
+
+      <div class="span10 columns">
+        <p>Retrieve both of your API keys or just one based on
+        type.</p>
+      </div>
+    </div>
+
+    <div class="page-header"></div><!-- Resources-->
+
+    <h3><a id="resources" href="restful_resources.html" name=
+    "resources">Resources</a></h3>
+
+    <p>Used to produce and consume data in the swarms they are
+    members of.</p>
+
+    <div class="row">
+      <div class="span6 columns">
+        <h5>Method</h5>
+      </div>
+
+      <div class="span6 columns">
+        <h5>Description</h5>
+      </div>
+    </div>
+
+    <div class="page-header"></div><!-- create-->
+
+    <div class="row">
+      <div class="span6 columns">
+        <a href="restful_resources.html#create">Create (POST)</a>
+      </div>
+
+      <div class="span10 columns">
+        <p>Create a resource. POST a JSON file containing
+        information about the resource to be created.</p>
+      </div>
+    </div>
+
+    <div class="page-header"></div><!-- update-->
+
+    <div class="row">
+      <div class="span6 columns">
+        <a href="restful_resources.html#update">Update (PUT)</a>
+      </div>
+
+      <div class="span10 columns">
+        <p>Update an already existing resource. PUT a JSON file
+        containing the information to update.</p>
+      </div>
+    </div>
+
+    <div class="page-header"></div><!-- destroy-->
+
+    <div class="row">
+      <div class="span6 columns">
+        <a href="restful_resources.html#destroy">Destroy
+        (DELETE)</a>
+      </div>
+
+      <div class="span10 columns">
+        <p>Destroy a resource. Remove a resource from your user
+        account.</p>
+      </div>
+    </div>
+
+    <div class="page-header"></div><!-- list-->
+
+    <div class="row">
+      <div class="span6 columns">
+        <a href="restful_resources.html#list">List (GET)</a>
+      </div>
+
+      <div class="span10 columns">
+        <p>List all of the resources in your user account.</p>
+      </div>
+    </div>
+
+    <div class="page-header"></div><!-- get info-->
+
+    <div class="row">
+      <div class="span6 columns">
+        <a href="restful_resources.html#get-info">Get Info
+        (GET)</a>
+      </div>
+
+      <div class="span10 columns">
+        <p>Get a given resource's information.</p>
+      </div>
+    </div>
+
+    <div class="page-header"></div><!-- list swarms-->
+
+    <div class="row">
+      <div class="span6 columns">
+        <a href="restful_resources.html#list-swarms">List Swarms
+        (GET)</a>
+      </div>
+
+      <div class="span10 columns">
+        <p>List the swarms that a given resource is a member
+        of.</p>
+      </div>
+    </div>
+
+    <div class="page-header"></div><!-- Swarms-->
+
+    <h3><a id="swarms" href="restful_swarms.html" name=
+    "swarms">Swarms</a></h3>
+
+    <p>Used to group together resources and allow them to share
+    data with each other.</p>
+
+    <div class="row">
+      <div class="span6 columns">
+        <h5>Method</h5>
+      </div>
+
+      <div class="span6 columns">
+        <h5>Description</h5>
+      </div>
+    </div>
+
+    <div class="page-header"></div><!-- create-->
+
+    <div class="row">
+      <div class="span6 columns">
+        <a href="restful_swarms.html#create">Create (POST)</a>
+      </div>
+
+      <div class="span10 columns">
+        <p>Create a swarm. POST a JSON file containing information
+        about the swarm to be created.</p>
+      </div>
+    </div>
+
+    <div class="page-header"></div><!-- update-->
+
+    <div class="row">
+      <div class="span6 columns">
+        <a href="restful_swarms.html#update">Update (PUT)</a>
+      </div>
+
+      <div class="span10 columns">
+        <p>Update an already existing swarm. PUT a JSON file
+        containing the information to update.</p>
+      </div>
+    </div>
+
+    <div class="page-header"></div><!-- destroy-->
+
+    <div class="row">
+      <div class="span6 columns">
+        <a href="restful_swarms.html#destroy">Destroy (DELETE)</a>
+      </div>
+
+      <div class="span10 columns">
+        <p>Destroy a swarm. Remove a swarm from your user
+        account.</p>
+      </div>
+    </div>
+
+    <div class="page-header"></div><!-- list-->
+
+    <div class="row">
+      <div class="span6 columns">
+        <a href="restful_swarms.html#list">List (GET)</a>
+      </div>
+
+      <div class="span10 columns">
+        <p>List all of the swarms in your user account.</p>
+      </div>
+    </div>
+
+    <div class="page-header"></div><!-- get info-->
+
+    <div class="row">
+      <div class="span6 columns">
+        <a href="restful_swarms.html#get-info">Get Info (GET)</a>
+      </div>
+
+      <div class="span10 columns">
+        <p>Get a given swarm's information, including it's member
+        resources.</p>
+      </div>
+    </div>
+
+    <div class="page-header"></div><!-- add resource-->
+
+    <div class="row">
+      <div class="span6 columns">
+        <a href="restful_swarms.html#add-resource">Add Resource
+        (POST)</a>
+      </div>
+
+      <div class="span10 columns">
+        <p>Add a resource to a swarm. POST a JSON file containing
+        the swarm-relevant information regarding the resource to be
+        added.</p>
+      </div>
+    </div>
+
+    <div class="page-header"></div><!-- remove resource-->
+
+    <div class="row">
+      <div class="span6 columns">
+        <a href="restful_swarms.html#remove-resource">Remove
+        Resource (DELETE)</a>
+      </div>
+
+      <div class="span10 columns">
+        <p>Remove a resource from a swarm. POST a JSON file
+        containing swarm-relevant information regarding the
+        resource to remove.</p>
+      </div>
+    </div>
+
+    <div class="page-header"></div><!-- list resources-->
+
+    <div class="row">
+      <div class="span6 columns">
+        <a href="restful_swarms.html#list-resources">List Resources
+        (GET)</a>
+      </div>
+
+      <div class="span10 columns">
+        <p>List a given swarm's member resources. Users may choose
+        to list only producing resources, only consuming resourcs,
+        or all resources at once.</p>
+      </div>
+    </div>
+
+    <div class="page-header"></div><!-- Invitations-->
+
+    <h3><a id="invitations" href="restful_invitations.html" name=
+    "invitations">Invitations</a></h3>
+
+    <p>Expose BUGswarm's unique social presence by inviting another
+    user's resources to join your swarms and share in the
+    production and consumption of data. Accept invitations from
+    other users to join their swarms as well.</p>
+
+    <div class="row">
+      <div class="span6 columns">
+        <h5>Method</h5>
+      </div>
+
+      <div class="span6 columns">
+        <h5>Description</h5>
+      </div>
+    </div>
+
+    <div class="page-header"></div><!-- send-->
+
+    <div class="row">
+      <div class="span6 columns">
+        <a href="restful_invitations.html#send">Send (POST)</a>
+      </div>
+
+      <div class="span10 columns">
+        <p>Send an invitation to another user's resource to join
+        your swarm.</p>
+      </div>
+    </div>
+
+    <div class="page-header"></div><!-- respond-->
+
+    <div class="row">
+      <div class="span6 columns">
+        <a href="restful_invitations.html#respond">Respond
+        (PUT)</a>
+      </div>
+
+      <div class="span10 columns">
+        <p>Respond to received invitations by either accepting or
+        rejecting them.</p>
+      </div>
+    </div>
+
+    <div class="page-header"></div><!-- list sent-->
+
+    <div class="row">
+      <div class="span6 columns">
+        <a href="restful_invitations.html#list-sent">List Sent
+        (GET)</a>
+      </div>
+
+      <div class="span10 columns">
+        <p>List all the invitations sent from your user account for
+        resources to join a given swarm.</p>
+      </div>
+    </div>
+
+    <div class="page-header"></div><!-- list received-->
+
+    <div class="row">
+      <div class="span6 columns">
+        <a href="restful_invitations.html#list-received">List
+        Received (GET)</a>
+      </div>
+
+      <div class="span10 columns">
+        <p>List the invitations received by your user account from
+        other users. List all invitations or only those sent to
+        specific resources.</p>
+      </div>
+    </div>
+
+    <div class="page-header"></div>
+  </div>
+</body>
+</html>

@@ -1,18 +1,129 @@
-<!DOCTYPE html><html lang="en"><head><title>BUGswarm Developers</title><link rel="stylesheet" href="bootstrap/bootstrap.css"><link rel="stylesheet" href="css/this.css"><link rel="stylesheet" href="js/google-code-prettify/prettify.css"><script src="http://code.jquery.com/jquery-1.5.2.js"></script><script src="js/google-code-prettify/prettify.js"></script><script src="js/application.js"></script><script src="js/google-analytics.js"></script></head><body><!-- NAVIGATION--><div class="topbar"><div class="topbar-inner"><div class="container"><h3><a id="banner" href="index.html"><img src="images/bs_logo.png"></a></h3><ul class="nav"><li class="dropdown nav-dropdown"><a href="documentation.html" class="dropdown-toggle">Documentation</a><ul class="dropdown-menu"><li><a href="configuration_api.html">Configuration</a></li><li><a href="participation_api.html">Participation</a></li></ul></li><li><a href="tools.html">Tools</a></li><li><a href="libraries.html">Libraries</a></li><li><a href="tutorial.html">Tutorial</a></li><li><a href="applications.html">Applications</a></li><li><a href="hardware.html">Hardware</a></li><li><a href="contact.html">Contact</a></li></ul></div></div></div><!-- CONTENT--><div class="container"><!-- Path--><div class="page-header"><a href="index.html">Home</a> &rarr; 
-<a href="api_documentation.html">API Documentation</a> &rarr; 
-<a href="configuration_api.html">Configuration</a> &rarr; 
-HTTP Response Codes
-</div><!-- Header--><h1>HTTP Response Codes</h1><p>A list of HTTP response codes that may be returned when using the BUGswarm API and their associated meanings.
-</p><div class="page-header"><h2>Codes</h2></div><ul class="unstyled"><li><strong>200:</strong> Request was received and handled without error. The server will return information based on the request.
-</li><li><strong>201:</strong> The entity was succesfully created.
-</li><li><strong>204:</strong> Request was received and handled without error. No information will be returned by the server.
-</li><li><strong>400:</strong> Bad request. There was something wrong with the specified data. It may have been an unrecognizable format
-or missing a field. The platform will provide a descriptive message with the application error code for easier
-debugging.
-</li><li><strong>401:</strong> Unauthorized. You may not have specified the HTTP header containing your API key.
-</li><li><strong>403:</strong> Forbidden. The resource may exist, but you do not have access to it due to application-level constraints.
-</li><li><strong>404:</strong> Not found. Either the specified URL does not exist in the server or the entity itself does not exist in the database.
-</li><li><strong>409:</strong> Conflict. There was a conflict with the request.
-</li><li><strong>500:</strong> Internal error. Something went wrong with the server. If you receive this error response, please notify the BUGswarm development team.
-</li></ul><div class="page-header"><h2>Format</h2></div><pre class="prettyprint language-javascript">[{code: 'xxx', description: 'foo'}, {code: 'yyy', description: 'bar'}]
-</pre></div></body></html>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN">
+
+<html lang="en">
+<head>
+  <meta name="generator" content=
+  "HTML Tidy for Linux (vers 25 March 2009), see www.w3.org">
+
+  <title>BUGswarm Developers</title>
+  <link rel="stylesheet" href="bootstrap/bootstrap.css" type=
+  "text/css">
+  <link rel="stylesheet" href="css/this.css" type="text/css">
+  <link rel="stylesheet" href=
+  "js/google-code-prettify/prettify.css" type="text/css">
+  <script src="http://code.jquery.com/jquery-1.5.2.js" type=
+  "text/javascript">
+</script>
+  <script src="js/google-code-prettify/prettify.js" type=
+  "text/javascript">
+</script>
+  <script src="js/application.js" type="text/javascript">
+</script>
+  <script src="js/google-analytics.js" type="text/javascript">
+</script>
+</head>
+
+<body>
+  <!-- NAVIGATION-->
+
+  <div class="topbar">
+    <div class="topbar-inner">
+      <div class="container">
+        <h3><a id="banner" href="index.html" name=
+        "banner"><img src="images/bs_logo.png"></a></h3>
+
+        <ul class="nav">
+          <li class="dropdown nav-dropdown">
+            <a href="documentation.html" class=
+            "dropdown-toggle">Documentation</a>
+
+            <ul class="dropdown-menu">
+              <li><a href=
+              "configuration_api.html">Configuration</a></li>
+
+              <li><a href=
+              "participation_api.html">Participation</a></li>
+            </ul>
+          </li>
+
+          <li><a href="tools.html">Tools</a></li>
+
+          <li><a href="libraries.html">Libraries</a></li>
+
+          <li><a href="tutorial.html">Tutorial</a></li>
+
+          <li><a href="applications.html">Applications</a></li>
+
+          <li><a href="hardware.html">Hardware</a></li>
+
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+  </div><!-- CONTENT-->
+
+  <div class="container">
+    <!-- Path-->
+
+    <div class="page-header">
+      <a href="index.html">Home</a> &rarr; <a href=
+      "api_documentation.html">API Documentation</a> &rarr;
+      <a href="configuration_api.html">Configuration</a> &rarr;
+      HTTP Response Codes
+    </div><!-- Header-->
+
+    <h1>HTTP Response Codes</h1>
+
+    <p>A list of HTTP response codes that may be returned when
+    using the BUGswarm API and their associated meanings.</p>
+
+    <div class="page-header">
+      <h2>Codes</h2>
+    </div>
+
+    <ul class="unstyled">
+      <li><strong>200:</strong> Request was received and handled
+      without error. The server will return information based on
+      the request.</li>
+
+      <li><strong>201:</strong> The entity was succesfully
+      created.</li>
+
+      <li><strong>204:</strong> Request was received and handled
+      without error. No information will be returned by the
+      server.</li>
+
+      <li><strong>400:</strong> Bad request. There was something
+      wrong with the specified data. It may have been an
+      unrecognizable format or missing a field. The platform will
+      provide a descriptive message with the application error code
+      for easier debugging.</li>
+
+      <li><strong>401:</strong> Unauthorized. You may not have
+      specified the HTTP header containing your API key.</li>
+
+      <li><strong>403:</strong> Forbidden. The resource may exist,
+      but you do not have access to it due to application-level
+      constraints.</li>
+
+      <li><strong>404:</strong> Not found. Either the specified URL
+      does not exist in the server or the entity itself does not
+      exist in the database.</li>
+
+      <li><strong>409:</strong> Conflict. There was a conflict with
+      the request.</li>
+
+      <li><strong>500:</strong> Internal error. Something went
+      wrong with the server. If you receive this error response,
+      please notify the BUGswarm development team.</li>
+    </ul>
+
+    <div class="page-header">
+      <h2>Format</h2>
+    </div>
+    <pre class="prettyprint language-javascript">
+[{code: 'xxx', description: 'foo'}, {code: 'yyy', description: 'bar'}]
+</pre>
+  </div>
+</body>
+</html>

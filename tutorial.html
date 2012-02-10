@@ -1,151 +1,386 @@
-<!DOCTYPE html><html lang="en"><head><title>BUGswarm Developers</title><link rel="stylesheet" href="bootstrap/bootstrap.css"><link rel="stylesheet" href="css/this.css"><link rel="stylesheet" href="js/google-code-prettify/prettify.css"><script src="http://code.jquery.com/jquery-1.5.2.js"></script><script src="js/google-code-prettify/prettify.js"></script><script src="js/application.js"></script><script src="js/google-analytics.js"></script></head><body><!-- NAVIGATION--><div class="topbar"><div class="topbar-inner"><div class="container"><h3><a id="banner" href="index.html"><img src="images/bs_logo.png"></a></h3><ul class="nav"><li class="dropdown nav-dropdown"><a href="documentation.html" class="dropdown-toggle">Documentation</a><ul class="dropdown-menu"><li><a href="configuration_api.html">Configuration</a></li><li><a href="participation_api.html">Participation</a></li></ul></li><li><a href="tools.html">Tools</a></li><li><a href="libraries.html">Libraries</a></li><li><a href="tutorial.html">Tutorial</a></li><li><a href="applications.html">Applications</a></li><li><a href="hardware.html">Hardware</a></li><li><a href="contact.html">Contact</a></li></ul></div></div></div><!-- CONTAINER--><div class="container"><!-- Path--><div class="page-header"><a href="index.html">Home</a> &rarr;
-Tutorial
-</div><!-- Header--><h1>Tutorial</h1><p>The following tutorial will teach you how write a BUGswarm application from the ground up. It will
-take you through the steps of configuring your swarm using the 
-<a href="configuration_api.html">Configuration API</a> and participate in it using the 
-<a href="participation_api.html">Participation API</a>. If you haven't yet, we would advise that you take a quick look at how these APIs are implemented.
-</p><div class="page-header"></div><!-- The Application--><h2>The Application</h2><p>Uh oh! We're out of cookies here at the Bug Labs office and it's up to either John or Andy to go down to 
-the store to buy some more. To decide who has to go, John and Andy have decided to play a game of tag. 
-In order to help them save some energy and avoid disrupting everyone else at work,
-we've decided to create a virtual game of tag, and what better way to do so than using BUGswarm!
-</p><p>To create this application, we are going to need the following.
-</p><ul><li><strong>Resources representing John and Andy</strong></li><li><strong>A resource used for monitoring the game</strong></li><li><strong>A swarm for them to play virtual tag in</strong></li></ul><p>To build our application, we are going to use a set of Python-based development tools.
-If you haven't already, please go ahead and check out the 
-<a href="https://github.com/buglabs/bugswarm-tools">BUGswarm Tools</a> repository from our github page. Be sure to run the <strong>init.py</strong> script with your Bug Labs account credentials.
-</p><p>In addition to BUGswarm Tools, we are going to use our JavaScript library for building our monitoring web application. You can
-find more information about this library on the 
-<a href="libraries.html">Libraries</a> page.
-</p><p>But that's enough talking for now. Let's get to it!
-</p><div class="page-header"></div><!-- Configuration--><h3>Configuration</h3><p>Before we can begin producing and consuming information on the platform, we must first create resources
-to do the producing and consuming, a swarm for them to produce and consume in, and then
-add those resources to the swarm. You can think of the swarm as a chatroom and the resources as participants in that chatroom.
-</p><ul><li><h4>Creating the Resources<p>Using the <strong>resources.py</strong> BUGswarm Tools script, create a resource using the following command.
-</p><pre class="prettyprint">./resources.py create John pc -d &quot;This is John&quot;
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN">
 
-</pre><p>Output: (Some values will be different of course)
-</p><pre class="prettyprint language-javascript">{
-    &quot;created_at&quot;: &quot;2011-11-30T20:07:45.228Z&quot;, 
-    &quot;description&quot;: &quot;This is John&quot;, 
-    &quot;id&quot;: &quot;19c2db197ad341215a265063fb7cd989df66c784&quot;, 
-    &quot;machine_type&quot;: &quot;pc&quot;, 
-    &quot;name&quot;: &quot;John&quot;, 
-    &quot;user_id&quot;: &quot;username&quot;
+<html lang="en">
+<head>
+  <meta name="generator" content=
+  "HTML Tidy for Linux (vers 25 March 2009), see www.w3.org">
+
+  <title>BUGswarm Developers</title>
+  <link rel="stylesheet" href="bootstrap/bootstrap.css" type=
+  "text/css">
+  <link rel="stylesheet" href="css/this.css" type="text/css">
+  <link rel="stylesheet" href=
+  "js/google-code-prettify/prettify.css" type="text/css">
+  <script src="http://code.jquery.com/jquery-1.5.2.js" type=
+  "text/javascript">
+</script>
+  <script src="js/google-code-prettify/prettify.js" type=
+  "text/javascript">
+</script>
+  <script src="js/application.js" type="text/javascript">
+</script>
+  <script src="js/google-analytics.js" type="text/javascript">
+</script>
+</head>
+
+<body>
+  <!-- NAVIGATION-->
+
+  <div class="topbar">
+    <div class="topbar-inner">
+      <div class="container">
+        <h3><a id="banner" href="index.html" name=
+        "banner"><img src="images/bs_logo.png"></a></h3>
+
+        <ul class="nav">
+          <li class="dropdown nav-dropdown">
+            <a href="documentation.html" class=
+            "dropdown-toggle">Documentation</a>
+
+            <ul class="dropdown-menu">
+              <li><a href=
+              "configuration_api.html">Configuration</a></li>
+
+              <li><a href=
+              "participation_api.html">Participation</a></li>
+            </ul>
+          </li>
+
+          <li><a href="tools.html">Tools</a></li>
+
+          <li><a href="libraries.html">Libraries</a></li>
+
+          <li><a href="tutorial.html">Tutorial</a></li>
+
+          <li><a href="applications.html">Applications</a></li>
+
+          <li><a href="hardware.html">Hardware</a></li>
+
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+  </div><!-- CONTAINER-->
+
+  <div class="container">
+    <!-- Path-->
+
+    <div class="page-header">
+      <a href="index.html">Home</a> &rarr; Tutorial
+    </div><!-- Header-->
+
+    <h1>Tutorial</h1>
+
+    <p>The following tutorial will teach you how write a BUGswarm
+    application from the ground up. It will take you through the
+    steps of configuring your swarm using the <a href=
+    "configuration_api.html">Configuration API</a> and participate
+    in it using the <a href="participation_api.html">Participation
+    API</a>. If you haven't yet, we would advise that you take a
+    quick look at how these APIs are implemented.</p>
+
+    <div class="page-header"></div><!-- The Application-->
+
+    <h2>The Application</h2>
+
+    <p>Uh oh! We're out of cookies here at the Bug Labs office and
+    it's up to either John or Andy to go down to the store to buy
+    some more. To decide who has to go, John and Andy have decided
+    to play a game of tag. In order to help them save some energy
+    and avoid disrupting everyone else at work, we've decided to
+    create a virtual game of tag, and what better way to do so than
+    using BUGswarm!</p>
+
+    <p>To create this application, we are going to need the
+    following.</p>
+
+    <ul>
+      <li><strong>Resources representing John and
+      Andy</strong></li>
+
+      <li><strong>A resource used for monitoring the
+      game</strong></li>
+
+      <li><strong>A swarm for them to play virtual tag
+      in</strong></li>
+    </ul>
+
+    <p>To build our application, we are going to use a set of
+    Python-based development tools. If you haven't already, please
+    go ahead and check out the <a href=
+    "https://github.com/buglabs/bugswarm-tools">BUGswarm Tools</a>
+    repository from our github page. Be sure to run the
+    <strong>init.py</strong> script with your Bug Labs account
+    credentials.</p>
+
+    <p>In addition to BUGswarm Tools, we are going to use our
+    JavaScript library for building our monitoring web application.
+    You can find more information about this library on the
+    <a href="libraries.html">Libraries</a> page.</p>
+
+    <p>But that's enough talking for now. Let's get to it!</p>
+
+    <div class="page-header"></div><!-- Configuration-->
+
+    <h3>Configuration</h3>
+
+    <p>Before we can begin producing and consuming information on
+    the platform, we must first create resources to do the
+    producing and consuming, a swarm for them to produce and
+    consume in, and then add those resources to the swarm. You can
+    think of the swarm as a chatroom and the resources as
+    participants in that chatroom.</p>
+
+    <ul>
+      <li>
+        <h4>Creating the Resources</h4>
+
+        <p>Using the <strong>resources.py</strong> BUGswarm Tools
+        script, create a resource using the following command.</p>
+        <pre class="prettyprint">
+./resources.py create John pc -d "This is John"
+
+</pre>
+
+        <p>Output: (Some values will be different of course)</p>
+        <pre class="prettyprint language-javascript">
+{
+    "created_at": "2011-11-30T20:07:45.228Z", 
+    "description": "This is John", 
+    "id": "19c2db197ad341215a265063fb7cd989df66c784", 
+    "machine_type": "pc", 
+    "name": "John", 
+    "user_id": "username"
 }
 
-</pre><p>Do the same for Andy and our monitoring web resource that we will simply call 'Monitor'. After doing so, 
-running the <strong>list</strong> method of the <strong>resources.py</strong> script should produce the following output.
-</p><pre class="prettyprint language-javascript">[
+</pre>
+
+        <p>Do the same for Andy and our monitoring web resource
+        that we will simply call 'Monitor'. After doing so, running
+        the <strong>list</strong> method of the
+        <strong>resources.py</strong> script should produce the
+        following output.</p>
+        <pre class="prettyprint language-javascript">
+[
     {
-        &quot;created_at&quot;: &quot;2011-11-30T20:07:45.228Z&quot;, 
-        &quot;description&quot;: &quot;This is John&quot;, 
-        &quot;id&quot;: &quot;19c2db197ad341215a265063fb7cd989df66c784&quot;, 
-        &quot;machine_type&quot;: &quot;pc&quot;, 
-        &quot;name&quot;: &quot;John&quot;, 
-        &quot;user_id&quot;: &quot;username&quot;
+        "created_at": "2011-11-30T20:07:45.228Z", 
+        "description": "This is John", 
+        "id": "19c2db197ad341215a265063fb7cd989df66c784", 
+        "machine_type": "pc", 
+        "name": "John", 
+        "user_id": "username"
     }, 
     {
-        &quot;created_at&quot;: &quot;2011-11-30T20:11:20.929Z&quot;, 
-        &quot;description&quot;: &quot;This is Andy&quot;, 
-        &quot;id&quot;: &quot;badca6a822f35976ea4c7d9eab2362dfac5f7e9f&quot;, 
-        &quot;machine_type&quot;: &quot;pc&quot;, 
-        &quot;name&quot;: &quot;Andy&quot;, 
-        &quot;user_id&quot;: &quot;username&quot;
+        "created_at": "2011-11-30T20:11:20.929Z", 
+        "description": "This is Andy", 
+        "id": "badca6a822f35976ea4c7d9eab2362dfac5f7e9f", 
+        "machine_type": "pc", 
+        "name": "Andy", 
+        "user_id": "username"
     }, 
     {
-        &quot;created_at&quot;: &quot;2011-11-30T20:11:39.445Z&quot;, 
-        &quot;description&quot;: &quot;This is the monitor&quot;, 
-        &quot;id&quot;: &quot;765a4517de59e18be11d7d9e09864f2de5521a58&quot;, 
-        &quot;machine_type&quot;: &quot;pc&quot;, 
-        &quot;name&quot;: &quot;Monitor&quot;, 
-         &quot;user_id&quot;: &quot;username&quot;
+        "created_at": "2011-11-30T20:11:39.445Z", 
+        "description": "This is the monitor", 
+        "id": "765a4517de59e18be11d7d9e09864f2de5521a58", 
+        "machine_type": "pc", 
+        "name": "Monitor", 
+         "user_id": "username"
 
     }
 ]
 
-</pre><p>Well there you go. We have now created the necessary resources for our application. Unfortunately, they are not
-members of any swarm. In fact, there isn't even a swarm for them to become members of! That's where the next step comes in.
-</p></h4></li><li><h4>Creating the Swarm<p>In order for our resources to communicate with each other, we must first create a place for them to communicate.
-Using the <strong>swarms.py</strong> script, create a swarm using the following command. Notice that we are creating a 
-private swarm (the -p option). This is an exclusive game of tag and we don't want just anyone to be able to play!
-</p><pre class="prettyprint language-javascript">./swarms.py create &quot;Tag Swarm&quot; &quot;The swarm used for playing tag&quot; -p false
+</pre>
 
-</pre><p>Output: (Some values will be different of course)
-</p><pre class="prettyprint language-javascript">{
-    &quot;created_at&quot;: &quot;2011-11-30T20:27:03.401Z&quot;, 
-    &quot;description&quot;: &quot;The swarm used for playing tag&quot;, 
-    &quot;id&quot;: &quot;de6cabfc8ee26d2bd1f312d5e876f327f9d919f3&quot;, 
-    &quot;name&quot;: &quot;Tag Swarm&quot;, 
-    &quot;public&quot;: false, 
-    &quot;resources&quot;: [], 
-    &quot;user_id&quot;: &quot;username&quot;
+        <p>Well there you go. We have now created the necessary
+        resources for our application. Unfortunately, they are not
+        members of any swarm. In fact, there isn't even a swarm for
+        them to become members of! That's where the next step comes
+        in.</p>
+      </li>
+
+      <li>
+        <h4>Creating the Swarm</h4>
+
+        <p>In order for our resources to communicate with each
+        other, we must first create a place for them to
+        communicate. Using the <strong>swarms.py</strong> script,
+        create a swarm using the following command. Notice that we
+        are creating a private swarm (the -p option). This is an
+        exclusive game of tag and we don't want just anyone to be
+        able to play!</p>
+        <pre class="prettyprint language-javascript">
+./swarms.py create "Tag Swarm" "The swarm used for playing tag" -p false
+
+</pre>
+
+        <p>Output: (Some values will be different of course)</p>
+        <pre class="prettyprint language-javascript">
+{
+    "created_at": "2011-11-30T20:27:03.401Z", 
+    "description": "The swarm used for playing tag", 
+    "id": "de6cabfc8ee26d2bd1f312d5e876f327f9d919f3", 
+    "name": "Tag Swarm", 
+    "public": false, 
+    "resources": [], 
+    "user_id": "username"
 }
 
-</pre><p>Great, now we have a swarm to play tag in! Unfortunately, as you can see from the 'resources' field, our swarm is
-empty. This is because we haven't added John, Andy, or the monitor to the swarm yet. Let's go ahead and do that.
-</p></h4></li><li><h4>Adding Resources to the Swarm<p>In order for John and Andy to play tag in the swarm, they must first be configured to be members of the swarm. At the
-same time, if we want to be able to monitor their game of tag, we better go ahead and add the monitor to the swarm as well.
-To do so, use the <strong>add_resource</strong> method of the <strong>swarms.py</strong> script. For instance, to add John 
-to the swarm, run the following command. Notice that the parameters given are the swarm's ID, the resource's ID, and the type of
-resource it is going to be. For Andy and John, we will be adding them as producers, since they will be doing the tagging. For
-the monitor, we will be adding it as a consumer, since it is just monitoring the game.
-</p><pre class="prettyprint language-javascript">./swarms.py add_resource de6cabfc8ee26d2bd1f312d5e876f327f9d919f3 19c2db197ad341215a265063fb7cd989df66c784 producer
+</pre>
 
-</pre><p>After adding all three resources to the swarm, performing the <strong>get_info</strong> command of the <strong>swarms.py</strong>
-script for our swarm should produce the following output.
-</p><pre class="prettyprint language-javascript">{
-    &quot;created_at&quot;: &quot;2011-11-30T20:27:03.401Z&quot;, 
-    &quot;description&quot;: &quot;The swarm used for playing tag&quot;, 
-    &quot;id&quot;: &quot;de6cabfc8ee26d2bd1f312d5e876f327f9d919f3&quot;, 
-    &quot;name&quot;: &quot;Tag Swarm&quot;, 
-    &quot;public&quot;: false, 
-    &quot;resources&quot;: [
+        <p>Great, now we have a swarm to play tag in!
+        Unfortunately, as you can see from the 'resources' field,
+        our swarm is empty. This is because we haven't added John,
+        Andy, or the monitor to the swarm yet. Let's go ahead and
+        do that.</p>
+      </li>
+
+      <li>
+        <h4>Adding Resources to the Swarm</h4>
+
+        <p>In order for John and Andy to play tag in the swarm,
+        they must first be configured to be members of the swarm.
+        At the same time, if we want to be able to monitor their
+        game of tag, we better go ahead and add the monitor to the
+        swarm as well. To do so, use the
+        <strong>add_resource</strong> method of the
+        <strong>swarms.py</strong> script. For instance, to add
+        John to the swarm, run the following command. Notice that
+        the parameters given are the swarm's ID, the resource's ID,
+        and the type of resource it is going to be. For Andy and
+        John, we will be adding them as producers, since they will
+        be doing the tagging. For the monitor, we will be adding it
+        as a consumer, since it is just monitoring the game.</p>
+        <pre class="prettyprint language-javascript">
+./swarms.py add_resource de6cabfc8ee26d2bd1f312d5e876f327f9d919f3 19c2db197ad341215a265063fb7cd989df66c784 producer
+
+</pre>
+
+        <p>After adding all three resources to the swarm,
+        performing the <strong>get_info</strong> command of the
+        <strong>swarms.py</strong> script for our swarm should
+        produce the following output.</p>
+        <pre class="prettyprint language-javascript">
+{
+    "created_at": "2011-11-30T20:27:03.401Z", 
+    "description": "The swarm used for playing tag", 
+    "id": "de6cabfc8ee26d2bd1f312d5e876f327f9d919f3", 
+    "name": "Tag Swarm", 
+    "public": false, 
+    "resources": [
         {
-            &quot;member_since&quot;: &quot;2011-11-30T20:40:26.727Z&quot;, 
-            &quot;resource_id&quot;: &quot;19c2db197ad341215a265063fb7cd989df66c784&quot;, 
-            &quot;resource_type&quot;: &quot;producer&quot;, 
-            &quot;url&quot;: &quot;http://api.bugswarm.net/resources/19c2db197ad341215a265063fb7cd989df66c784&quot;, 
-            &quot;user_id&quot;: &quot;username&quot;
+            "member_since": "2011-11-30T20:40:26.727Z", 
+            "resource_id": "19c2db197ad341215a265063fb7cd989df66c784", 
+            "resource_type": "producer", 
+            "url": "http://api.bugswarm.net/resources/19c2db197ad341215a265063fb7cd989df66c784", 
+            "user_id": "username"
         }, 
         {
-            &quot;member_since&quot;: &quot;2011-11-30T20:40:35.767Z&quot;, 
-            &quot;resource_id&quot;: &quot;badca6a822f35976ea4c7d9eab2362dfac5f7e9f&quot;, 
-            &quot;resource_type&quot;: &quot;producer&quot;, 
-            &quot;url&quot;: &quot;http://api.bugswarm.net/resources/badca6a822f35976ea4c7d9eab2362dfac5f7e9f&quot;, 
-            &quot;user_id&quot;: &quot;username&quot;
+            "member_since": "2011-11-30T20:40:35.767Z", 
+            "resource_id": "badca6a822f35976ea4c7d9eab2362dfac5f7e9f", 
+            "resource_type": "producer", 
+            "url": "http://api.bugswarm.net/resources/badca6a822f35976ea4c7d9eab2362dfac5f7e9f", 
+            "user_id": "username"
         }, 
         {
-            &quot;member_since&quot;: &quot;2011-11-30T20:40:45.975Z&quot;, 
-            &quot;resource_id&quot;: &quot;765a4517de59e18be11d7d9e09864f2de5521a58&quot;, 
-            &quot;resource_type&quot;: &quot;consumer&quot;, 
-            &quot;url&quot;: &quot;http://api.bugswarm.net/resources/765a4517de59e18be11d7d9e09864f2de5521a58&quot;, 
-            &quot;user_id&quot;: &quot;username&quot;
+            "member_since": "2011-11-30T20:40:45.975Z", 
+            "resource_id": "765a4517de59e18be11d7d9e09864f2de5521a58", 
+            "resource_type": "consumer", 
+            "url": "http://api.bugswarm.net/resources/765a4517de59e18be11d7d9e09864f2de5521a58", 
+            "user_id": "username"
         }
     ], 
-    &quot;user_id&quot;: &quot;username&quot;
+    "user_id": "username"
 }    
 
-</pre><p>If your output looks something like the one above, then we have successfully added our resources to the swarm and 
-we are ready to being building the participation part of our application! 
-</p><strong>Congratulations! You just learned how to create and configure a swarm.</strong><p>Keep in mind, while we used BUGswarm Tools to do this, you can use anything that implements our RESTful
-<a href="configuration_api.html">Configuration API</a>, including some of our 
-<a href="libraries.html">Libraries</a>, your own implementations, or basic curl commands.
-</p></h4></li></ul><div class="page-header"></div><!-- Participation--><h3>Participation</h3><ul><li><h4>Creating the Webpage<p>Now that we have configured the resources to talk to each other over BUGswarm, it's time to build the application logic.
-Let's start with a minimal webpage, which shows the players and any messages sent.
-</p><script src="https://gist.github.com/1420093.js?file=tutorial_application.html"></script></h4></li></ul><ul><li><h4>Creating the Application<p>Now the application logic. The JavaScript library has many optional callbacks, but it is recommended to implement each of them.
-The callbacks you really want to pay attention to are 
-<code>onmessage</code> and 
-<code>onpresence</code>. These callbacks will drive the application. Additionally, you may want to add a console.log(response) in the handlers of these callbacks or
-just check over the websocket to see what objects are being passed around. Note that they are also described in the 
-<a href="participation_api.html">Participation API</a> documentation.
-</p><script src="https://gist.github.com/1420093.js?file=tutorial_application.js"></script></h4></li></ul><ul><li><h4>Starting to Talk<p>Opening up the page in a browser shows the connected player, which is actually whatever resource id you are using for the JavaScript connection.
-Once all the players have the page open, it's time to start tagging people.
-To do this, we will use the BUGswarm Tools produce script.
-</p><pre class="prettyprint language-javascript">./produce.py produce SWARM_ID RESOURCE_ID -w
-</pre><p>The -w will wrap your messages in the correct fomatting so that all you need to input is the payload, as documented in the
-<a href="participation_api.html#sending-messages">sending messages</a> section of the Participation API documentation, 
-To update everyone's page to display who is it, make sure your message is in the format:
-<pre class="prettyprint language-javascript">{ &quot;communication&quot; : &quot;JOHN IS IT!&quot; }
-</pre></p><p>Let the chaotic game of tag begin!
-</p><strong>Hoorah! You just learned how to connect resources to a swarm and produce and consume data with them!</strong><p>If you would like to see other examples of how you can use BUGswarm, please visit the 
-<a href="applications.html">Applications</a> page.
-</p></h4></li></ul></div></body></html>
+</pre>
+
+        <p>If your output looks something like the one above, then
+        we have successfully added our resources to the swarm and
+        we are ready to being building the participation part of
+        our application!</p><strong>Congratulations! You just
+        learned how to create and configure a swarm.</strong>
+
+        <p>Keep in mind, while we used BUGswarm Tools to do this,
+        you can use anything that implements our RESTful <a href=
+        "configuration_api.html">Configuration API</a>, including
+        some of our <a href="libraries.html">Libraries</a>, your
+        own implementations, or basic curl commands.</p>
+      </li>
+    </ul>
+
+    <div class="page-header"></div><!-- Participation-->
+
+    <h3>Participation</h3>
+
+    <ul>
+      <li>
+        <h4>Creating the Webpage</h4>
+
+        <p>Now that we have configured the resources to talk to
+        each other over BUGswarm, it's time to build the
+        application logic. Let's start with a minimal webpage,
+        which shows the players and any messages
+        sent.</p><script src=
+        "https://gist.github.com/1420093.js?file=tutorial_application.html"
+        type="text/javascript">
+</script>
+      </li>
+    </ul>
+
+    <ul>
+      <li>
+        <h4>Creating the Application</h4>
+
+        <p>Now the application logic. The JavaScript library has
+        many optional callbacks, but it is recommended to implement
+        each of them. The callbacks you really want to pay
+        attention to are <code>onmessage</code> and
+        <code>onpresence</code>. These callbacks will drive the
+        application. Additionally, you may want to add a
+        console.log(response) in the handlers of these callbacks or
+        just check over the websocket to see what objects are being
+        passed around. Note that they are also described in the
+        <a href="participation_api.html">Participation API</a>
+        documentation.</p><script src=
+        "https://gist.github.com/1420093.js?file=tutorial_application.js"
+        type="text/javascript">
+</script>
+      </li>
+    </ul>
+
+    <ul>
+      <li>
+        <h4>Starting to Talk</h4>
+
+        <p>Opening up the page in a browser shows the connected
+        player, which is actually whatever resource id you are
+        using for the JavaScript connection. Once all the players
+        have the page open, it's time to start tagging people. To
+        do this, we will use the BUGswarm Tools produce script.</p>
+        <pre class="prettyprint language-javascript">
+./produce.py produce SWARM_ID RESOURCE_ID -w
+</pre>
+
+        <p>The -w will wrap your messages in the correct fomatting
+        so that all you need to input is the payload, as documented
+        in the <a href=
+        "participation_api.html#sending-messages">sending
+        messages</a> section of the Participation API
+        documentation, To update everyone's page to display who is
+        it, make sure your message is in the format:</p>
+        <pre class="prettyprint language-javascript">
+{ "communication" : "JOHN IS IT!" }
+</pre>
+
+        <p>Let the chaotic game of tag begin!</p><strong>Hoorah!
+        You just learned how to connect resources to a swarm and
+        produce and consume data with them!</strong>
+
+        <p>If you would like to see other examples of how you can
+        use BUGswarm, please visit the <a href=
+        "applications.html">Applications</a> page.</p>
+      </li>
+    </ul>
+  </div>
+</body>
+</html>
